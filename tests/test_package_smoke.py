@@ -1,8 +1,8 @@
 """Verify that the package imports and its installed metadata is available."""
 
 import importlib
-from importlib.metadata import distribution
 import unittest
+from importlib.metadata import distribution
 
 
 class PackageSmokeTest(unittest.TestCase):
