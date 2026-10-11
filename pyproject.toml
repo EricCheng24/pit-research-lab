@@ -16,6 +16,7 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "mypy>=2.4.0",
+    "pytest>=8.4,<10",
     "ruff>=0.17.0",
 ]
 
@@ -30,3 +31,10 @@ select = ["E4", "E7", "E9", "F", "I", "B", "UP"]
 python_version = "3.12"
 strict = true
 files = ["src/pit_research_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers -ra"
+markers = [
+    "integration: requires PostgreSQL/containers, external resources, or cross-component persistence",
+]
