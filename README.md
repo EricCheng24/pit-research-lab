@@ -45,8 +45,8 @@ The [architecture overview](docs/architecture/overview.md) describes the future
 boundary between generic research infrastructure, finance/quantamental logic,
 and TWSE adapters. None of those layers is implemented yet.
 
-The lead's [F1-0 requirements and milestone roadmap](CAP-F1-0-Repository-Initialization-Requirements.md#5-explicit-non-goals--defer-to-stage)
-define the subsequent work:
+The CAP-F1-0 requirements are maintained separately by the
+Technical Lead. The following milestones define the planned work:
 
 | Stage | Deferred work |
 | --- | --- |

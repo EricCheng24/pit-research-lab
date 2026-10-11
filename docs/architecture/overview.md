@@ -21,5 +21,6 @@ toward generic contracts. Generic code must not depend on finance or TWSE code.
 The repository is standalone, with no Survivor OS runtime dependency or copied
 historical sources. Packaging success establishes no actual PIT guarantees.
 
-See the [bootstrap scope and deferred milestones](../../CAP-F1-0-Repository-Initialization-Requirements.md#5-explicit-non-goals--defer-to-stage)
-and [local verification commands](../../README.md#local-setup-and-verification).
+The CAP-F1-0 requirements and milestone roadmap are maintained
+separately by the Technical Lead. See the
+[local verification commands](../../README.md#local-setup-and-verification).
