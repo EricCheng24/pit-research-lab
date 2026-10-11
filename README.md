@@ -5,7 +5,8 @@ and experimentation. The distribution is `pit-research-lab`; the Python import
 package is `pit_research_lab`.
 
 CAP-F1-1 adds development tooling, strict source type checking, and a tiny CLI
-to the CAP-F1-0 packaging foundation and standard-library smoke test.
+to the CAP-F1-0 packaging foundation. CAP-F1-2 adds native pytest smoke tests,
+an unknown-argument negative test, and fast/full test commands.
 There are no research contracts, domain features,
 production trading functions, provider credentials, research outcomes, or real
 PIT guarantees at this stage. It has no execution dependency on Survivor OS.
@@ -27,7 +28,9 @@ uv lock --check
 uv run --locked ruff check src tests
 uv run --locked ruff format --check src tests
 uv run --locked mypy src/pit_research_lab
-uv run --locked python -m unittest discover -s tests -p 'test_*.py'
+uv run --locked pytest -q -m "not integration"
+uv run --locked pytest -q
+uv run --locked pytest --collect-only -q
 uv run --locked pitlab --help
 uv run --locked pitlab --version
 uv build
@@ -38,8 +41,8 @@ git diff --check
 Python installation, dependency sync, and the first build may need internet
 access. `uv sync --locked --python 3.12` creates `.venv`, installs the project in
 editable mode using the `src/` layout, and includes the default `dev` dependency
-group. Ruff and mypy belong only to that group; the package has no runtime
-dependencies, and tests use standard-library `unittest`.
+group. Ruff, mypy, and pytest belong only to that group; the package has no runtime
+dependencies. Tests use native pytest functions and assertions.
 
 Keep `uv.lock` in Git: uv records exact dependency versions, artifacts, and
 hashes there. `--locked` refuses to update a stale lockfile; `uv lock --check`
@@ -53,13 +56,15 @@ Ruff targets Python 3.12 with a 100-column formatter and checks `src/` and
 `tests/`. Rules `E4`, `E7`, `E9`, and `F` catch common syntax and correctness
 issues; `I` orders imports, `B` catches likely bugs, and `UP` selects modern
 Python idioms. Strict mypy targets Python 3.12 and checks only
-`src/pit_research_lab`; test type checking is deferred to CAP-F1-2. There are no
-global lint/type suppressions.
+`src/pit_research_lab`; tests are linted and executed but are outside the strict
+mypy gate. There are no global lint/type suppressions.
 
 The installed `pitlab` console script supports `--help` and `--version`, with
 the version read from distribution metadata. It performs no network access,
 database work, file mutation, telemetry, or research/domain operations. Smoke
-tests check package metadata and invoke the installed CLI.
+tests check package metadata and invoke the installed CLI, including rejection
+of an unknown option. Each CLI test runs in a fresh temporary directory and
+asserts that the command creates no files.
 
 The portable POSIX Makefile provides these shortcuts. If `make` is missing on
 macOS, use the corresponding direct commands:
@@ -72,9 +77,11 @@ macOS, use the corresponding direct commands:
 | `make format-check` | `uv run --locked ruff format --check src tests` |
 | `make format` | `uv run --locked ruff format src tests` |
 | `make typecheck` | `uv run --locked mypy src/pit_research_lab` |
-| `make smoke` | `uv run --locked python -m unittest discover -s tests -p 'test_*.py'` |
+| `make test` | `uv run --locked pytest -q -m "not integration"` |
+| `make test-all` | `uv run --locked pytest -q` |
+| `make smoke` | Compatibility alias to `make test` |
 | `make build` | `uv build` |
-| `make check` | Run the five lock/lint/format-check/typecheck/smoke commands below |
+| `make check` | Run the five lock/lint/format-check/typecheck/fast-test commands below |
 
 The direct equivalent of `make check` is:
 
@@ -83,8 +90,21 @@ uv lock --check
 uv run --locked ruff check src tests
 uv run --locked ruff format --check src tests
 uv run --locked mypy src/pit_research_lab
-uv run --locked python -m unittest discover -s tests -p 'test_*.py'
+uv run --locked pytest -q -m "not integration"
 ```
+
+`make test` and `make check` exclude the registered `integration` marker and need
+no database or Docker. Mark tests as `integration` only when they require
+PostgreSQL/containers, external resources, or cross-component persistence;
+self-contained CLI tests belong in `tests/unit/`. Unregistered markers fail
+collection because `--strict-markers` is enabled. Pytest also reports failure
+and collection errors with nonzero exit codes; no collected tests is not success.
+
+`make test-all` runs every currently collected test. CAP-F1-2 has four unit tests
+and zero integration tests, so fast and full runs currently execute the same
+suite. Future integration tests will require their documented prerequisites
+before running the full suite. See the [testing guide](docs/development/testing.md)
+for fixture isolation, negative paths, and future synthetic PIT tests.
 
 `make format` intentionally rewrites source/test formatting. `make check` never
 calls it; all other quality checks leave tracked code unchanged. Sync installs
@@ -104,12 +124,11 @@ The [architecture overview](docs/architecture/overview.md) describes the future
 boundary between generic research infrastructure, finance/quantamental logic,
 and TWSE adapters. None of those layers is implemented yet.
 
-The CAP-F1-0 and CAP-F1-1 requirements are maintained separately by the
+The CAP-F1-0, CAP-F1-1, and CAP-F1-2 requirements are maintained separately by the
 Technical Lead. The following milestones define the planned work:
 
 | Stage | Deferred work |
 | --- | --- |
-| F1-2 | pytest, fixtures, test structure, quality conventions |
 | F1-3 | PostgreSQL, Docker Compose, SQLAlchemy, Alembic |
 | F1-4 | GitHub Actions, PR policies, branch rules |
 | F1-5 / F1-6 | Onboarding/doctor, teammate proof, integrated acceptance |

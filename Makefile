@@ -18,10 +18,15 @@ format:
 typecheck:
 	uv run --locked mypy src/pit_research_lab
 
-smoke:
-	uv run --locked python -m unittest discover -s tests -p 'test_*.py'
+test:
+	uv run --locked pytest -q -m "not integration"
+
+test-all:
+	uv run --locked pytest -q
+
+smoke: test
 
 build:
 	uv build
 
-check: lock-check lint format-check typecheck smoke
+check: lock-check lint format-check typecheck test
