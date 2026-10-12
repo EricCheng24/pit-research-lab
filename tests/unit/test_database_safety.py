@@ -240,7 +240,7 @@ def test_empty_integration_and_invalid_marker_fail(tmp_path):
     bad = tmp_path / "test_bad_marker.py"
     bad.write_text("import pytest\n@pytest.mark.not_registered\ndef test_bad(): pass\n")
     result = subprocess.run(
-        [sys.executable, "-m", "pytest", "-q", "--strict-markers", str(bad)],
+        [sys.executable, "-m", "pytest", "-q", "--strict-markers", "--tb=short", str(bad)],
         capture_output=True,
         text=True,
         timeout=10,
