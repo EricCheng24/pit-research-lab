@@ -110,6 +110,143 @@ jobs:
               subprocess.run(["git", "check-ignore", "-q", name], check=True)
           print("Both configuration files are ignored, owner-controlled regular files with mode 0600")
           PY
+      - name: Diagnose Compose structure without values
+        run: |
+          uv run --locked python - <<'PY'
+          import contextlib
+          import importlib.util
+          import io
+          import json
+          from pathlib import Path
+          import sys
+
+          def approved_schema():
+              labels = {key: None for key in (
+                  "io.pitlab.purpose", "io.pitlab.namespace", "io.pitlab.instance"
+              )}
+              return {
+                  "name": None,
+                  "services": {"postgres_test": {
+                      "image": None, "entrypoint": None, "command": [None] * 9,
+                      "environment": {key: None for key in (
+                          "POSTGRES_DB", "POSTGRES_USER", "POSTGRES_PASSWORD",
+                          "PITLAB_TARGET", "PITLAB_NAMESPACE", "PITLAB_INSTANCE_ID",
+                          "PITLAB_MIGRATOR_PASSWORD", "PITLAB_APP_PASSWORD",
+                          "POSTGRES_INITDB_ARGS"
+                      )},
+                      "ports": [{key: None for key in (
+                          "mode", "host_ip", "target", "published", "protocol"
+                      )}],
+                      "volumes": [
+                          {"type": None, "source": None, "target": None, "volume": {}},
+                          {"type": None, "source": None, "target": None,
+                           "read_only": None, "bind": {}},
+                      ],
+                      "labels": labels, "networks": {"default": None},
+                      "shm_size": None,
+                      "healthcheck": {"test": [None] * 2, "interval": None,
+                                      "timeout": None, "retries": None, "start_period": None},
+                      "logging": {"driver": None, "options": {"max-size": None, "max-file": None}},
+                  }},
+                  "volumes": {"pgdata_test": {"name": None, "labels": labels}},
+                  "networks": {"default": {"name": None, "ipam": {}, "labels": labels}},
+              }
+
+          def type_category(value):
+              categories = {dict: "object", list: "array", str: "string",
+                            int: "number", float: "number", bool: "boolean", type(None): "null"}
+              if type(value) not in categories:
+                  raise ValueError("redacted")
+              return categories[type(value)]
+
+          def validate_schema(expected, schema):
+              if type(schema) is dict:
+                  if type(expected) is not dict or set(expected) != set(schema):
+                      raise ValueError("redacted")
+                  for key in schema:
+                      validate_schema(expected[key], schema[key])
+              elif type(schema) is list:
+                  if type(expected) is not list or len(expected) != len(schema):
+                      raise ValueError("redacted")
+                  for value, child in zip(expected, schema):
+                      validate_schema(value, child)
+              elif type(expected) in (dict, list):
+                  raise ValueError("redacted")
+              else:
+                  type_category(expected)
+
+          def structural_report(actual, expected):
+              schema = approved_schema()
+              validate_schema(expected, schema)
+              findings = []
+              groups = 0
+              discrepancies = 0
+
+              def record(kind, path, expected_type="-", actual_type="-", count=1):
+                  nonlocal groups, discrepancies
+                  groups += 1
+                  discrepancies += count
+                  if len(findings) < 20:
+                      findings.append(
+                          "PITLAB-DIAG finding class=" + kind + " path=" + path
+                          + " expected-type=" + expected_type + " actual-type=" + actual_type
+                          + " count=" + str(min(count, 1000))
+                      )
+
+              def walk(actual, expected, schema, path):
+                  actual_type = type_category(actual)
+                  expected_type = type_category(expected)
+                  if type(actual) is not type(expected):
+                      record("type-mismatch", path, expected_type, actual_type)
+                  elif type(schema) is dict:
+                      extra = sum(1 for key in actual if key not in schema)
+                      if extra:
+                          record("unexpected-key", path + ".<unapproved-key>", count=extra)
+                      for key in sorted(schema):
+                          child_path = key if path == "$" else path + "." + key
+                          if key not in actual:
+                              record("missing-approved-key", child_path, type_category(expected[key]))
+                          else:
+                              walk(actual[key], expected[key], schema[key], child_path)
+                  elif type(schema) is list:
+                      if len(actual) != len(expected):
+                          record("list-length-mismatch", path, expected_type, actual_type)
+                      for index in range(min(len(actual), len(schema))):
+                          walk(actual[index], expected[index], schema[index], path + "[" + str(index) + "]")
+                  elif actual != expected:
+                      record("value-mismatch", path, expected_type, actual_type)
+
+              if type(actual) is not dict:
+                  record("model-type-invalid", "$", "object", type_category(actual))
+              else:
+                  walk(actual, expected, schema, "$")
+              summary = (
+                  "PITLAB-DIAG summary discrepancies=" + str(min(discrepancies, 1000))
+                  + " count-capped=" + str(discrepancies > 1000).lower()
+                  + " emitted=" + str(len(findings))
+                  + " truncated=" + str(groups > len(findings)).lower()
+              )
+              return [summary, *findings]
+
+          try:
+              with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                  root = Path.cwd()
+                  spec = importlib.util.spec_from_file_location("pitlab_ci_diagnostic", root / "scripts/database.py")
+                  helper = importlib.util.module_from_spec(spec)
+                  spec.loader.exec_module(helper)
+                  config = helper.load_config("test", helper.ROOT)
+                  environ = helper.child_env(config)
+                  actual = json.loads(helper.run(
+                      [*helper.compose_args(config, helper.ROOT), "config", "--format", "json"], environ
+                  ))
+                  expected = helper.expected_model(config, helper.ROOT)
+                  lines = structural_report(actual, expected)
+          except BaseException:
+              print("PITLAB-DIAG failed classification=indeterminate details=redacted")
+              sys.exit(1)
+          for line in lines:
+              print(line)
+          PY
       - name: Preflight Test PostgreSQL
         run: uv run --locked python scripts/database.py preflight test
       - name: Start guarded Test PostgreSQL
