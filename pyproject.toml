@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "A foundation for point-in-time research and experimentation."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = [
+    "psycopg[binary]>=3.3.6,<3.4",
+    "sqlalchemy>=2.0.54,<2.1",
+]
 
 [project.scripts]
 pitlab = "pit_research_lab.cli:main"
@@ -15,6 +18,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "alembic>=1.20,<1.21",
     "mypy>=2.4.0",
     "pytest>=8.4,<10",
     "ruff>=0.17.0",

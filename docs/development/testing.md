@@ -5,7 +5,7 @@ Run tests in the installed Python 3.12 environment:
 ```bash
 uv sync --locked --python 3.12
 uv run --locked pytest -q -m "not integration"  # make test; make smoke
-uv run --locked pytest -q                       # make test-all
+uv run --locked pytest -q -m integration         # second make test-all pass; Test DB required
 uv run --locked pytest --collect-only -q
 ```
 
@@ -19,16 +19,40 @@ changing formatting. A zero-test selection is not a passing test run.
 Keep pure or self-contained tests in `tests/unit/`, including deterministic CLI
 and future contract tests. The current suite checks package import and installed
 metadata, CLI help/version, and unknown-option rejection. All four tests are
-unit tests; there are no integration tests or integration placeholders.
+unit tests, and retain all four original assertions. Additional offline tests
+cover configuration, automatic physical-connection verification, lifecycle
+ownership, explicit migration routing and mandatory integration selection.
 
 The registered `integration` marker means a test requires PostgreSQL/containers,
-external resources, or cross-component persistence. Add `tests/integration/`
-and `@pytest.mark.integration` only when a real implementation needs that
-boundary tested. Self-contained tests must not receive the marker arbitrarily.
-The fast suite excludes it; the full suite collects everything and will need
-the relevant prerequisites once those tests exist. Strict marker enforcement
-rejects misspellings and unregistered markers. No database or hosted CI evidence
-is supplied by this milestone; F1-3 and F1-4 own those foundations.
+external resources, or cross-component persistence. Every real DB module in
+`tests/integration/database/` has `pytestmark = pytest.mark.integration`.
+Fixtures connect only when a test executes, never during imports/collection.
+Self-contained tests must not receive the marker arbitrarily. Strict marker
+enforcement rejects misspellings and unregistered markers. Pure collection tests
+check the DB taxonomy, empty integration exit 5 and mandatory Make failure propagation.
+No hosted CI evidence is supplied; F1-4 owns that foundation.
+
+`make test-all` runs the fast suite, then a separate mandatory `-m integration`
+pass. Either failure propagates; empty integration selection is a failure.
+See the [database guide](database.md) for one-time target configuration and
+explicit `make db-test-up`. Dev need not run. Missing config, stopped DB, wrong
+credentials/identity or failed SQL is a test error, never skip/xfail. Tests do not
+start containers or repair storage. To prove recovery, explicitly stop Test DB,
+require `make test-all` to fail, restart it, then run the suite twice successfully.
+
+Real DB tests prove effective role rights, wrong marker/role refusals, reconnect,
+two-connection commit visibility, fresh-snapshot uncommitted invisibility and
+caller-owned Session rollback/commit. UUID-named tiny tables have exact registered
+cleanup and explicit DML grants. Cleanup failures fail the run. Integration use is
+serialized with a nonblocking lock on the private test config file; parallel
+workers and concurrent lifecycle changes against that target are unsupported.
+Migration tests accept only base or the independent empty head and restore the
+starting revision; unexpected states are retained and reported, never reset.
+
+SQLite/fake connection probes in unit tests test factory/pool behavior only; they
+are not evidence of PostgreSQL AC-01/02/03/06/08/09. Real DB acceptance remains
+NOT RUN when Docker is inaccessible to Codex. Collection success or a healthy
+container alone does not meet that acceptance.
 
 ## Assertions and isolation
 

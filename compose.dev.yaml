@@ -1,0 +1,48 @@
+name: pitlab-${NAMESPACE}-dev
+services:
+  postgres_dev:
+    image: postgres:17.11-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826
+    environment:
+      POSTGRES_DB: pitlab_dev
+      POSTGRES_USER: pitlab_dev_admin
+      POSTGRES_PASSWORD: ${ADMIN_PASSWORD:?required}
+      PITLAB_TARGET: dev
+      PITLAB_NAMESPACE: ${NAMESPACE:?required}
+      PITLAB_INSTANCE_ID: ${INSTANCE_ID:?required}
+      PITLAB_MIGRATOR_PASSWORD: ${MIGRATOR_PASSWORD:?required}
+      PITLAB_APP_PASSWORD: ${APP_PASSWORD:?required}
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    ports:
+      - "127.0.0.1:${PORT:?required}:5432"
+    volumes:
+      - pgdata_dev:/var/lib/postgresql/data
+      - ./scripts/init-postgres.sh:/docker-entrypoint-initdb.d/10-pitlab.sh:ro
+    labels:
+      io.pitlab.purpose: dev
+      io.pitlab.namespace: ${NAMESPACE}
+      io.pitlab.instance: ${INSTANCE_ID}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pitlab_dev_admin -d pitlab_dev"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+    command: ["postgres", "-c", "shared_buffers=64MB", "-c", "max_connections=20", "-c", "log_statement=none", "-c", "log_min_error_statement=panic"]
+    shm_size: 134217728
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: "2"
+volumes:
+  pgdata_dev:
+    labels:
+      io.pitlab.purpose: dev
+      io.pitlab.namespace: ${NAMESPACE}
+      io.pitlab.instance: ${INSTANCE_ID}
+networks:
+  default:
+    labels:
+      io.pitlab.purpose: dev
+      io.pitlab.namespace: ${NAMESPACE}
+      io.pitlab.instance: ${INSTANCE_ID}
