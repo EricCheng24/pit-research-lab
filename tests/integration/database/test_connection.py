@@ -17,7 +17,6 @@ def test_connection_and_reconnect(runtime):
             "pitlab_test",
             "pitlab_test_app",
         )
-        assert 1 == 0, "CAP-F1-4A controlled integration failure after verified Test SQL identity"
         first = connection.exec_driver_sql("SELECT pg_backend_pid()").scalar_one()
         connection.rollback()
         connection.invalidate()
