@@ -70,10 +70,73 @@ def resources(config):
 
 def test_owned_and_missing_resource_plans():
     config = parse_config(config_values(), "test")
-    operator.verify_resources(config, *resources(config), ROOT)
+    verified = []
+    operator.verify_resources(
+        config, *resources(config), ROOT, bootstrap_verifier=lambda c: verified.append(c["Id"])
+    )
+    assert verified == ["c" * 64]
     operator.verify_resources(config, [], [], [], set(), ROOT)
     _, volumes, _, _ = resources(config)
     operator.verify_resources(config, [], volumes, [], set(), ROOT)
+
+
+@pytest.mark.parametrize("target", ["dev", "test"])
+def test_authored_bootstrap_explicitly_disables_creation(target):
+    # Exact authored block: resolved omission alone cannot prove the disabled policy.
+    authored = (ROOT / f"compose.{target}.yaml").read_text()
+    mounts = authored.split("    volumes:\n", 1)[1].split("    labels:\n", 1)[0]
+    assert mounts.splitlines() == [
+        f"      - pgdata_{target}:/var/lib/postgresql/data",
+        "      - type: bind",
+        "        source: ./scripts/init-postgres.sh",
+        "        target: /docker-entrypoint-initdb.d/10-pitlab.sh",
+        "        read_only: true",
+        "        bind:",
+        "          create_host_path: false",
+    ]
+    config = parse_config(config_values(target), target)
+    model = operator.expected_model(config, ROOT)
+    assert model["services"][f"postgres_{target}"]["volumes"][1]["bind"] == {}
+    operator.validate_model(model, config, ROOT)
+
+
+@pytest.mark.parametrize(
+    "options",
+    [{"create_host_path": value} for value in (True, False, "false", "true", 0, 1, None)]
+    + [
+        {"unknown": False},
+        {"propagation": "rprivate"},
+        {"selinux": "Z"},
+        {"recursive": "readonly"},
+        {"nested": {"create_host_path": False}},
+    ],
+)
+def test_unapproved_bind_options_refuse_without_mutation(monkeypatch, options):
+    config = parse_config(config_values(), "test")
+    model = operator.expected_model(config, ROOT)
+    model["services"]["postgres_test"]["volumes"][1]["bind"] = options
+    calls = []
+
+    def resolve(args, *a, **kw):
+        import json
+
+        calls.append(args)
+        if args[1:3] == ["context", "show"]:
+            return "default"
+        if args[1:3] == ["context", "inspect"]:
+            return json.dumps([{"Endpoints": {"docker": {"Host": "unix:///synthetic.sock"}}}])
+        if args[1] == "info":
+            return "synthetic-version"
+        if args[1] == "compose" and "config" in args:
+            return json.dumps(model)
+        pytest.fail("Reached inventory or mutation before exact model validation")
+
+    monkeypatch.setattr(operator, "child_env", lambda c: {})
+    monkeypatch.setattr(operator, "run", resolve)
+    with pytest.raises(PersistenceError, match="model"):
+        operator.lifecycle("up", config, ROOT)
+    assert len(calls) == 4
+    assert not any("up" in call or "down" in call for call in calls)
 
 
 @pytest.mark.parametrize(
@@ -130,6 +193,54 @@ def test_resolved_compose_cannot_expand_boundary(fault):
         model["services"]["postgres_test"]["volumes"][0]["source"] = "dev"
     else:
         model["services"]["postgres_test"]["image"] = "postgres:latest"
+    with pytest.raises(PersistenceError, match="model"):
+        operator.validate_model(model, config, ROOT)
+
+
+@pytest.mark.parametrize("target", ["dev", "test"])
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "source",
+        "target",
+        "writable",
+        "extra-mount",
+        "port",
+        "environment",
+        "role",
+        "labels",
+        "network",
+        "project",
+        "volume",
+    ],
+)
+def test_resolved_model_retains_exact_security_fields(target, fault):
+    config = parse_config(config_values(target), target)
+    model = operator.expected_model(config, ROOT)
+    service = model["services"][f"postgres_{target}"]
+    bind = service["volumes"][1]
+    if fault == "source":
+        bind["source"] = "/synthetic/foreign.sh"
+    elif fault == "target":
+        bind["target"] = "/synthetic/foreign.sh"
+    elif fault == "writable":
+        bind["read_only"] = False
+    elif fault == "extra-mount":
+        service["volumes"].append(copy.deepcopy(bind))
+    elif fault == "port":
+        service["ports"][0]["host_ip"] = "0.0.0.0"
+    elif fault == "environment":
+        service["environment"]["UNKNOWN"] = "synthetic"
+    elif fault == "role":
+        service["environment"]["POSTGRES_USER"] = "foreign"
+    elif fault == "labels":
+        service["labels"]["io.pitlab.purpose"] = "foreign"
+    elif fault == "network":
+        model["networks"]["default"]["name"] = "foreign"
+    elif fault == "project":
+        model["name"] = "foreign"
+    else:
+        model["volumes"][f"pgdata_{target}"]["name"] = "foreign"
     with pytest.raises(PersistenceError, match="model"):
         operator.validate_model(model, config, ROOT)
 

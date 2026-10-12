@@ -82,16 +82,60 @@ def bootstrap_archive(container_id: str, environ: dict[str, str]) -> bytes:
         raise PersistenceError("Bootstrap read unavailable/timed out; lifecycle refused.") from None
 
 
-def verify_bootstrap_content(container: dict, root: Path, environ: dict[str, str]) -> None:
-    """Fresh content identity for a translated source; no receipts or opaque-path cache."""
+def read_bootstrap(root: Path) -> bytes:
+    """Bounded fixed reference under a trusted resolved root; never follow scripts/leaf links.
+
+    Parents above root are outside this check. Descriptor identity checks reject observed
+    substitution during the read; a stable trusted checkout is still required afterwards.
+    """
     try:
-        path = root / "scripts/init-postgres.sh"
-        if not stat.S_ISREG(path.lstat().st_mode):
-            raise PersistenceError("Local bootstrap must be a regular file; lifecycle refused.")
-        with path.open("rb") as file:
-            expected = file.read(BOOTSTRAP_MAX_BYTES + 1)
-        if not expected or len(expected) > BOOTSTRAP_MAX_BYTES:
-            raise PersistenceError("Local bootstrap size exceeds bound; lifecycle refused.")
+        scripts = root / "scripts"
+        directory = os.open(scripts, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+        try:
+            directory_info = os.fstat(directory)
+            before = os.stat("init-postgres.sh", dir_fd=directory, follow_symlinks=False)
+            if not stat.S_ISREG(before.st_mode):
+                raise ValueError
+            descriptor = os.open(
+                "init-postgres.sh", os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=directory
+            )
+            with os.fdopen(descriptor, "rb") as file:
+                opened = os.fstat(file.fileno())
+                if not stat.S_ISREG(opened.st_mode) or opened != before:
+                    raise ValueError
+                content = file.read(BOOTSTRAP_MAX_BYTES + 1)
+                after = os.stat("init-postgres.sh", dir_fd=directory, follow_symlinks=False)
+                if (
+                    not content
+                    or len(content) > BOOTSTRAP_MAX_BYTES
+                    or any(
+                        getattr(info, field) != getattr(opened, field)
+                        for info in (os.fstat(file.fileno()), after)
+                        for field in (
+                            "st_dev",
+                            "st_ino",
+                            "st_mode",
+                            "st_size",
+                            "st_mtime_ns",
+                            "st_ctime_ns",
+                        )
+                    )
+                    or not os.path.samestat(scripts.lstat(), directory_info)
+                ):
+                    raise ValueError
+            return content
+        finally:
+            os.close(directory)
+    except (OSError, ValueError):
+        raise PersistenceError(
+            "Local bootstrap proof unavailable/invalid; retain resources and verify the checkout file privately."
+        ) from None
+
+
+def verify_bootstrap_content(container: dict, root: Path, environ: dict[str, str]) -> None:
+    """Fresh direct/translated mounted identity after ownership proof; never cache receipts."""
+    expected = read_bootstrap(root)
+    try:
         archive = bootstrap_archive(container["Id"], environ)
         # Uncompressed tar only: bounded input cannot expand through decompression.
         with tarfile.open(fileobj=io.BytesIO(archive), mode="r:") as tar:
@@ -324,10 +368,9 @@ def verify_resources(
     *,
     bootstrap_verifier: Callable[[dict], None] | None = None,
 ) -> None:
-    """Prove all metadata/consumers before reading any translated bootstrap mount."""
+    """Prove all metadata/consumers before reading any approved bootstrap mount."""
     project = config.project
     volume_name = f"{project}_pgdata_{config.target}"
-    translated = []
     if len(containers) > 1 or len(volumes) > 1 or len(networks) > 1:
         raise PersistenceError("Unexpected project resources; lifecycle refused.")
     for kind, resources in (("container", containers), ("volume", volumes), ("network", networks)):
@@ -374,7 +417,6 @@ def verify_resources(
                 if source != str(root / "scripts/init-postgres.sh"):
                     if not isinstance(source, str) or not DESKTOP_BIND_SOURCE.fullmatch(source):
                         raise PersistenceError("Foreign bootstrap source; lifecycle refused.")
-                    translated.append(resource)
                 ports = resource.get("Ports") or {}
                 if ports != {"5432/tcp": [{"HostIp": "127.0.0.1", "HostPort": str(config.port)}]}:
                     raise PersistenceError("Unexpected published ports; lifecycle refused.")
@@ -392,16 +434,16 @@ def verify_resources(
         raise PersistenceError("Foreign volume consumer; lifecycle refused.")
     if containers and (not volumes or not networks):
         raise PersistenceError("Incomplete resource ownership proof; lifecycle refused.")
-    for container in translated:
+    for container in containers:
         if bootstrap_verifier is None:
-            raise PersistenceError("Translated bootstrap source unverified; lifecycle refused.")
+            raise PersistenceError("Bootstrap source unverified; lifecycle refused.")
         bootstrap_verifier(container)
 
 
 def inventory(
     config: DatabaseConfig, root: Path, environ: dict[str, str], *, report: bool = False
 ) -> tuple[list, list, list]:
-    """Read ownership metadata and translated bootstrap only; never environments or DB data."""
+    """Read ownership metadata and approved bootstrap only; never environments or DB data."""
     result = []
     for kind in ("container", "volume", "network"):
         listing = (
@@ -563,6 +605,7 @@ def check_ports(config: DatabaseConfig, containers: list[dict], environ: dict[st
 
 def preflight(config: DatabaseConfig, root: Path, *, ports: bool) -> tuple[dict[str, str], tuple]:
     environ = child_env(config)
+    read_bootstrap(root)
     context = run(["docker", "context", "show"], environ).strip()
     endpoint = json.loads(run(["docker", "context", "inspect", context], environ))[0]["Endpoints"][
         "docker"
@@ -601,12 +644,14 @@ def lifecycle(action: str, config: DatabaseConfig, root: Path) -> None:
             probe_database(config)
     args = [*compose_args(config, root)]
     if action == "up":
+        read_bootstrap(root)
         run([*args, "up", "-d", "--wait", "--wait-timeout", "60"], environ, timeout=180)
         inventory(config, root, environ)
         probe_database(config)
     else:
         # Inventory immediately precedes mutation. No orphan removal or broadened retry.
         inventory(config, root, environ)
+        read_bootstrap(root)
         try:
             run(
                 [*args, "down", *(["--volumes"] if action == "destroy-test" else [])],
