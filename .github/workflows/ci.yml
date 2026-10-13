@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  PYTEST_ADDOPTS: --tb=no --show-capture=no
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  quality:
+    name: Quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12.13'
+          architecture: x64
+      - name: Install uv
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.11.29'
+          enable-cache: false
+      - name: Verify uv version
+        run: |
+          uv --version
+          python -c 'import subprocess; assert subprocess.check_output(["uv", "--version"], text=True).split()[1] == "0.11.29"'
+      - name: Sync locked dependencies
+        run: uv sync --locked --python 3.12
+      - name: Verify project Python version
+        run: uv run --locked python -c 'import sys; assert sys.version_info[:3] == (3, 12, 13); print(sys.version.split()[0])'
+      - name: Check quality
+        run: make check
+      - name: Build package
+        run: make build
+      - name: Verify dependency files unchanged
+        run: git diff --exit-code -- pyproject.toml uv.lock
+
+  postgres-integration:
+    name: PostgreSQL Integration
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12.13'
+          architecture: x64
+      - name: Install uv
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.11.29'
+          enable-cache: false
+      - name: Verify uv version
+        run: |
+          uv --version
+          python -c 'import subprocess; assert subprocess.check_output(["uv", "--version"], text=True).split()[1] == "0.11.29"'
+      - name: Sync locked dependencies
+        run: uv sync --locked --python 3.12
+      - name: Verify project Python version
+        run: uv run --locked python -c 'import sys; assert sys.version_info[:3] == (3, 12, 13); print(sys.version.split()[0])'
+      - name: Verify runner prerequisites
+        run: |
+          command -v bash make docker ss sha256sum
+          bash --version
+          make --version
+          docker --version
+          docker compose version
+          compose_version="$(docker compose version --short)"
+          [[ "$compose_version" == 2.* || "$compose_version" == v2.* ]]
+          docker info --format '{{.ServerVersion}}'
+      - name: Generate ephemeral configuration once
+        id: setup
+        run: |
+          ci_namespace="ci$(printf '%s' "${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}" | sha256sum | cut -c1-18)"
+          [[ "$ci_namespace" =~ ^ci[a-f0-9]{18}$ ]]
+          uv run --locked python scripts/database.py setup --namespace "$ci_namespace" --dev-port 55432 --test-port 55433
+      - name: Verify configuration file metadata
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import stat
+          import subprocess
+
+          for name in (".env.dev.local", ".env.test.local"):
+              metadata = Path(name).lstat()
+              assert stat.S_ISREG(metadata.st_mode), "Configuration must be a regular non-symlink file"
+              assert metadata.st_uid == os.getuid(), "Configuration must be owned by the runner user"
+              assert stat.S_IMODE(metadata.st_mode) == 0o600, "Configuration must have mode 0600"
+              subprocess.run(["git", "check-ignore", "-q", name], check=True)
+          print("Both configuration files are ignored, owner-controlled regular files with mode 0600")
+          PY
+      - name: Preflight Test PostgreSQL
+        run: uv run --locked python scripts/database.py preflight test
+      - name: Start guarded Test PostgreSQL
+        run: uv run --locked python scripts/database.py up test
+      - name: Probe guarded Test PostgreSQL
+        run: uv run --locked python scripts/database.py probe test
+      - name: Run fast and real integration tests
+        run: make test-all
+      - name: Destroy guarded Test resources
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        timeout-minutes: 5
+        run: uv run --locked python scripts/database.py destroy-test

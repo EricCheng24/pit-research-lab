@@ -1,9 +1,10 @@
-"""Offline Desktop mount identity and bounded, stopped-container read regressions."""
+"""Offline fixed-source and direct/Desktop mounted-content safety regressions."""
 
 import copy
 import gzip
 import io
 import json
+import os
 import subprocess
 import sys
 import tarfile
@@ -55,13 +56,14 @@ def test_direct_and_translated_source_identity(monkeypatch, target, source, runn
         ROOT,
         bootstrap_verifier=lambda c: operator.verify_bootstrap_content(c, ROOT, {}),
     )
-    assert reads == ([container["Id"]] if source else [])
+    assert reads == [container["Id"]]
 
 
-def test_translated_prefix_without_content_proof_refuses():
+@pytest.mark.parametrize("source", [str(ROOT / "scripts/init-postgres.sh"), TRANSLATED])
+def test_translated_prefix_without_content_proof_refuses(source):
     config = parse_config(config_values(), "test")
     groups = resources(config)
-    groups[0][0]["Mounts"][1]["Source"] = TRANSLATED
+    groups[0][0]["Mounts"][1]["Source"] = source
     with pytest.raises(PersistenceError, match="unverified"):
         operator.verify_resources(config, *groups, ROOT)
 
@@ -104,14 +106,25 @@ def test_foreign_source_cannot_use_matching_content(source):
         "network",
         "consumer",
         "missing-volume",
+        "missing-network",
+        "stopped-network-consumer",
+        "container-label",
+        "container-name",
+        "network-label",
+        "network-name",
+        "volume-name",
+        "public-port",
+        "extra-mount",
+        "extra-container",
     ],
 )
-def test_translated_source_preserves_all_metadata_checks(fault):
+@pytest.mark.parametrize("source", [str(ROOT / "scripts/init-postgres.sh"), TRANSLATED])
+def test_translated_source_preserves_all_metadata_checks(fault, source):
     config = parse_config(config_values(), "test")
     groups = resources(config)
     container = groups[0][0]
     data, bind = container["Mounts"]
-    bind["Source"] = TRANSLATED
+    bind["Source"] = source
     if fault == "destination":
         bind["Destination"] = "/tmp/init.sh"
     elif fault == "writable":
@@ -132,8 +145,28 @@ def test_translated_source_preserves_all_metadata_checks(fault):
         groups[2][0]["Containers"]["foreign"] = {}
     elif fault == "consumer":
         groups[3].add("foreign-stopped")
-    else:
+    elif fault == "missing-volume":
         groups[1].clear()
+    elif fault == "missing-network":
+        groups[2].clear()
+    elif fault == "stopped-network-consumer":
+        groups[2][0]["Consumers"] = {"foreign-stopped"}
+    elif fault == "container-label":
+        container["Labels"]["com.docker.compose.service"] = "foreign"
+    elif fault == "container-name":
+        container["Name"] = "/foreign"
+    elif fault == "network-label":
+        groups[2][0]["Labels"]["io.pitlab.instance"] = "foreign"
+    elif fault == "network-name":
+        groups[2][0]["Name"] = "foreign"
+    elif fault == "volume-name":
+        groups[1][0]["Name"] = "foreign"
+    elif fault == "public-port":
+        container["Ports"]["5432/tcp"][0]["HostIp"] = "0.0.0.0"
+    elif fault == "extra-mount":
+        container["Mounts"].append(copy.deepcopy(bind))
+    else:
+        groups[0].append(copy.deepcopy(container))
     with pytest.raises(PersistenceError):
         operator.verify_resources(
             config,
@@ -151,6 +184,7 @@ def test_translated_source_preserves_all_metadata_checks(fault):
         archive_bytes(kind=tarfile.SYMTYPE),
         archive_bytes(kind=tarfile.LNKTYPE),
         archive_bytes(kind=tarfile.DIRTYPE),
+        archive_bytes(kind=tarfile.GNUTYPE_SPARSE),
         archive_bytes(extra=True),
         archive_bytes(b"x" * (operator.BOOTSTRAP_MAX_BYTES + 1)),
         gzip.compress(archive_bytes()),
@@ -163,6 +197,7 @@ def test_translated_source_preserves_all_metadata_checks(fault):
         "symlink",
         "hardlink",
         "directory",
+        "sparse",
         "extra",
         "large",
         "compressed",
@@ -193,6 +228,138 @@ def test_local_bootstrap_reference_must_be_bounded_regular_file(monkeypatch, tmp
     )
     with pytest.raises(PersistenceError):
         operator.verify_bootstrap_content({"Id": "c" * 64}, tmp_path, {})
+
+
+@pytest.mark.parametrize("size", [1, operator.BOOTSTRAP_MAX_BYTES])
+def test_fixed_local_reference_accepts_bounded_regular_file(tmp_path, size):
+    path = tmp_path / "scripts/init-postgres.sh"
+    path.parent.mkdir()
+    content = b"x" * size
+    path.write_bytes(content)
+    assert operator.read_bootstrap(tmp_path) == content
+
+
+def test_scripts_symlink_refuses_but_parents_above_resolved_root_are_allowed(tmp_path):
+    checkout = tmp_path / "checkout"
+    (checkout / "scripts").mkdir(parents=True)
+    (checkout / "scripts/init-postgres.sh").write_bytes(BOOTSTRAP)
+    alias = tmp_path / "alias"
+    alias.symlink_to(checkout, target_is_directory=True)
+    assert operator.read_bootstrap(alias.resolve()) == BOOTSTRAP
+    redirected = tmp_path / "redirected"
+    redirected.mkdir()
+    (redirected / "scripts").symlink_to(checkout / "scripts", target_is_directory=True)
+    with pytest.raises(PersistenceError, match="Local bootstrap"):
+        operator.read_bootstrap(redirected)
+
+
+@pytest.mark.parametrize("fault", ["unreadable", "substitution", "ancestor-substitution"])
+def test_local_open_refuses_unreadable_or_substituted_reference(monkeypatch, tmp_path, fault):
+    path = tmp_path / "scripts/init-postgres.sh"
+    path.parent.mkdir()
+    path.write_bytes(BOOTSTRAP)
+    original = os.open
+    opens = []
+
+    def changed(name, flags, **kwargs):
+        opens.append(name)
+        if name == "init-postgres.sh":
+            if fault == "unreadable":
+                raise PermissionError("synthetic-private-detail")
+            if fault == "substitution":
+                path.rename(path.with_name("original"))
+                path.write_bytes(BOOTSTRAP)
+            else:
+                path.parent.rename(tmp_path / "old-scripts")
+                path.parent.mkdir()
+                path.write_bytes(BOOTSTRAP)
+        return original(name, flags, **kwargs)
+
+    monkeypatch.setattr(operator.os, "open", changed)
+    with pytest.raises(PersistenceError, match="Local bootstrap") as error:
+        operator.read_bootstrap(tmp_path)
+    assert str(error.value) == (
+        "Local bootstrap proof unavailable/invalid; retain resources and verify the checkout file privately."
+    )
+    assert len(opens) == 2  # One attempt, no permission repair or alternate-path retry.
+
+
+def test_empty_owned_inventory_needs_local_proof_without_archive_reads(monkeypatch, tmp_path):
+    path = tmp_path / "scripts/init-postgres.sh"
+    path.parent.mkdir()
+    path.write_bytes(BOOTSTRAP)
+    config, state, calls, reads = fake_lifecycle(monkeypatch, "test", root=tmp_path)
+    state[:] = [[], [], []]
+    operator.lifecycle("preflight", config, tmp_path)
+    assert reads == [] and calls
+    path.unlink()
+    calls.clear()
+    with pytest.raises(PersistenceError, match="Local bootstrap"):
+        operator.lifecycle("preflight", config, tmp_path)
+    assert reads == calls == []
+
+
+@pytest.mark.parametrize("action", ["up", "down", "destroy-test"])
+@pytest.mark.parametrize("fault", ["missing", "empty", "directory", "symlink"])
+def test_invalid_source_blocks_previously_owned_resources(monkeypatch, tmp_path, action, fault):
+    path = tmp_path / "scripts/init-postgres.sh"
+    path.parent.mkdir()
+    path.write_bytes(BOOTSTRAP)
+    config, state, calls, reads = fake_lifecycle(monkeypatch, "test", root=tmp_path)
+    operator.inventory(config, tmp_path, {})  # Synthetic owned inventory/content verified first.
+    before = copy.deepcopy(state)
+    path.unlink()
+    if fault == "empty":
+        path.touch()
+    elif fault == "directory":
+        path.mkdir()
+    elif fault == "symlink":
+        path.symlink_to(ROOT / "scripts/init-postgres.sh")
+    calls.clear()
+    reads.clear()
+    with pytest.raises(PersistenceError, match="Local bootstrap"):
+        operator.lifecycle(action, config, tmp_path)
+    assert state == before
+    assert calls == reads == []  # No Docker access, repair, startup or deletion.
+    assert path.exists() == (fault != "missing")
+
+
+def test_source_rechecked_at_startup_edge(monkeypatch, tmp_path):
+    path = tmp_path / "scripts/init-postgres.sh"
+    path.parent.mkdir()
+    path.write_bytes(BOOTSTRAP)
+    config, state, calls, reads = fake_lifecycle(monkeypatch, "test", root=tmp_path)
+    state[:] = [[], [], []]
+    monkeypatch.setattr(operator, "check_ports", lambda *a: path.unlink())
+    with pytest.raises(PersistenceError, match="Local bootstrap"):
+        operator.lifecycle("up", config, tmp_path)
+    assert not any("up" in call or "down" in call for call in calls)
+    assert state == [[], [], []] and reads == []
+
+
+@pytest.mark.parametrize("action", ["down", "destroy-test"])
+def test_source_rechecked_immediately_before_shutdown(monkeypatch, tmp_path, action):
+    path = tmp_path / "scripts/init-postgres.sh"
+    path.parent.mkdir()
+    path.write_bytes(BOOTSTRAP)
+    config, state, calls, reads = fake_lifecycle(monkeypatch, "test", root=tmp_path)
+    before = copy.deepcopy(state)
+    inventory = operator.inventory
+    inventories = []
+
+    def changed(*args, **kwargs):
+        result = inventory(*args, **kwargs)
+        inventories.append(result)
+        if len(inventories) == 2:
+            path.unlink()
+        return result
+
+    monkeypatch.setattr(operator, "inventory", changed)
+    with pytest.raises(PersistenceError, match="Local bootstrap"):
+        operator.lifecycle(action, config, tmp_path)
+    assert len(reads) == len(inventories) == 2
+    assert state == before
+    assert not any("down" in call for call in calls)
 
 
 @pytest.mark.parametrize("fault", [None, "large", "timeout", "exit", "stderr"])
@@ -251,11 +418,11 @@ def test_copy_requires_exact_container_id(monkeypatch):
         operator.bootstrap_archive("container-name", {})
 
 
-def fake_lifecycle(monkeypatch, target):
+def fake_lifecycle(monkeypatch, target, *, root=ROOT, source=TRANSLATED):
     """Exercise real inventory/preflight with a deterministic Docker CLI transcript."""
     config = parse_config(config_values(target), target)
     state = list(resources(config)[:3])
-    state[0][0]["Mounts"][1]["Source"] = TRANSLATED
+    state[0][0]["Mounts"][1]["Source"] = source or str(root / "scripts/init-postgres.sh")
     state[0][0]["Running"] = False
     planned = copy.deepcopy(state)
     calls, reads = [], []
@@ -270,13 +437,15 @@ def fake_lifecycle(monkeypatch, target):
             return "test-version"
         if args[1] == "compose":
             if "config" in args:
-                return json.dumps(operator.expected_model(config, ROOT))
+                return json.dumps(operator.expected_model(config, root))
             if "up" in args:
                 # Recreation produces a new container ID and opaque source, never a new volume.
                 if not state[0]:
                     state[:] = copy.deepcopy(planned)
                 state[0][0]["Id"] = "d" * 64
-                state[0][0]["Mounts"][1]["Source"] = PREFIX + "b" * 64
+                state[0][0]["Mounts"][1]["Source"] = (
+                    PREFIX + "b" * 64 if source else str(root / "scripts/init-postgres.sh")
+                )
                 state[2][0]["Containers"] = {state[0][0]["Id"]: {}}
             elif "down" in args:
                 state[0], state[2] = [], []
@@ -337,15 +506,44 @@ def test_lifecycle_accepts_fresh_proof_and_changed_opaque_path(monkeypatch, targ
 
 
 @pytest.mark.parametrize("action", ["preflight", "up", "down", "destroy-test"])
-@pytest.mark.parametrize("fault", ["content", "unavailable"])
-def test_unverified_translated_mount_blocks_lifecycle_mutation(monkeypatch, action, fault):
-    config, state, calls, _ = fake_lifecycle(monkeypatch, "test")
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "content",
+        "unavailable",
+        "name",
+        "symlink",
+        "hardlink",
+        "directory",
+        "sparse",
+        "extra",
+        "large",
+        "compressed",
+        "bad",
+        "short",
+    ],
+)
+@pytest.mark.parametrize("source", [None, TRANSLATED], ids=["direct", "translated"])
+def test_unverified_translated_mount_blocks_lifecycle_mutation(monkeypatch, action, fault, source):
+    config, state, calls, _ = fake_lifecycle(monkeypatch, "test", source=source)
     before = copy.deepcopy(state)
 
     def unverified(*a):
-        if fault == "content":
-            return archive_bytes(b"foreign content")
-        raise PersistenceError("Bootstrap read unavailable")
+        if fault == "unavailable":
+            raise PersistenceError("Bootstrap read unavailable")
+        return {
+            "content": archive_bytes(b"foreign content"),
+            "name": archive_bytes(name="foreign.sh"),
+            "symlink": archive_bytes(kind=tarfile.SYMTYPE),
+            "hardlink": archive_bytes(kind=tarfile.LNKTYPE),
+            "directory": archive_bytes(kind=tarfile.DIRTYPE),
+            "sparse": archive_bytes(kind=tarfile.GNUTYPE_SPARSE),
+            "extra": archive_bytes(extra=True),
+            "large": archive_bytes(b"x" * (operator.BOOTSTRAP_MAX_BYTES + 1)),
+            "compressed": gzip.compress(archive_bytes()),
+            "bad": b"not an archive",
+            "short": archive_bytes()[:512],
+        }[fault]
 
     monkeypatch.setattr(operator, "bootstrap_archive", unverified)
     with pytest.raises(PersistenceError, match="Bootstrap"):
@@ -370,8 +568,11 @@ def test_same_container_with_changed_opaque_source_gets_fresh_proof(monkeypatch)
     assert reads == [("c" * 64, TRANSLATED), ("c" * 64, PREFIX + "b" * 64)]
 
 
-def test_translated_stopped_test_requires_new_proof_immediately_before_deletion(monkeypatch):
-    config, state, calls, _ = fake_lifecycle(monkeypatch, "test")
+@pytest.mark.parametrize("source", [None, TRANSLATED], ids=["direct", "translated"])
+def test_translated_stopped_test_requires_new_proof_immediately_before_deletion(
+    monkeypatch, source
+):
+    config, state, calls, _ = fake_lifecycle(monkeypatch, "test", source=source)
     before = copy.deepcopy(state)
     reads = []
 

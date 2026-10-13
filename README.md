@@ -14,6 +14,9 @@ There are no research contracts, domain features,
 production trading functions, provider credentials, research outcomes, or real
 PIT guarantees at this stage. It has no execution dependency on Survivor OS.
 
+For a small feature branch or PR, start with the
+[contributor guide](docs/development/contributing.md).
+
 ## Local setup and verification
 
 Use Python **3.12** and `uv` on Windows 11 with WSL2 Ubuntu or native macOS
@@ -129,15 +132,18 @@ boundary between generic research infrastructure, finance/quantamental logic,
 and TWSE adapters. None of those layers is implemented yet.
 
 The CAP-F1-0, CAP-F1-1, and CAP-F1-2 requirements are maintained separately by the
-Technical Lead. The following milestones define the planned work:
+Technical Lead. The following milestones record current status and planned work:
 
-| Stage | Deferred work |
+| Stage | Status / next work |
 | --- | --- |
-| F1-3 | PostgreSQL foundation implemented; real DB acceptance and contract review pending |
-| F1-4 | GitHub Actions, PR policies, branch rules |
+| F1-3 | PostgreSQL foundation accepted |
+| F1-4 | F1-4A hosted CI accepted; F1-4B collaboration docs in feature PR; F1-4C enforcement/merge pending |
 | F1-5 / F1-6 | Onboarding/doctor, teammate proof, integrated acceptance |
 | F2 / F3 | PIT research foundation / hypothesis laboratory |
 | F4+ / F5 / F6 | Finance and TWSE / sequential policies / frontend |
 
-No GitHub CI has been configured or verified. The Technical Lead owns review,
+F1-4A's GitHub-hosted **Quality** and real **PostgreSQL Integration** checks have
+passed, including controlled failure/recovery verification. F1-4C branch
+enforcement, protected merge and push-to-main proof remain pending.
+The Technical Lead owns review,
 commits, remote configuration, GitHub visibility, and publication.
