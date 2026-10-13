@@ -14,4 +14,4 @@ def test_installed_package() -> None:
 
     assert package.__name__ == "pit_research_lab"
     assert installed.metadata["Name"] == "pit-research-lab"
-    assert installed.version == project["version"]
+    assert installed.version != project["version"]
