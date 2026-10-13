@@ -19,6 +19,12 @@ For a small feature branch or PR, start with the
 
 ## Local setup and verification
 
+Before dependency synchronization, diagnose prerequisites with
+`sh scripts/doctor.sh --profile core` (Python 3.12, standard library only).
+Core needs no Docker or Make. See the [Environment Doctor reference](docs/development/environment-doctor.md)
+for missing-tool guidance and the separate `test` prerequisite profile; Doctor
+never queries PostgreSQL or runs the DB helper, including `preflight`.
+
 Use Python **3.12** and `uv` on Windows 11 with WSL2 Ubuntu or native macOS
 ARM64. If uv is missing, follow its [installation instructions](https://docs.astral.sh/uv/getting-started/installation/)
 for your platform. Run these commands in a Unix shell from the repository root;
