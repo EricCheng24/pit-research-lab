@@ -53,17 +53,22 @@ Integration** to both finish **completed/success on the latest commit**. Failed,
 canceled, skipped or neutral results are not accepted. Push fixes to the same
 branch; inspect fresh results each time.
 
-The template is guidance, not branch protection. F1-4C handles enforcement;
-current `main` is not claimed protected or technically blocked by red checks.
+The template is guidance, not branch protection. CAP-F1-4 is
+**COMPLETE / ACCEPTED / FROZEN**; PR #4 is historically merged.
+P1-C3-01 remains an **ACCEPTED HISTORICAL PROCESS EXCEPTION**, not retroactive
+proof of the historical exact-SHA final approval. A prior read-only inspection
+observed the active `main-required-ci` Ruleset; that time-scoped evidence does not
+certify future settings. Current settings and new-PR template UI behavior are
+**NOT CHECKED** here; the required latest CI checks above remain the merge policy.
 Merge only when separately permitted; prefer approved squash merge if available
-(one contribution commit). PR #4 stays Draft/unmerged during F1-4B. Template UI
-pickup remains unverified until it reaches default `main` through an authorized
-merge and a new-PR UI check follows.
+(one contribution commit).
 
 ## Local checks first
 
-Use Python **3.12** and `uv sync --locked --python 3.12`, then `make check` with
-GNU Make. This Docker-free gate checks lock/lint/format/types and fast tests;
+Use Python **3.12** and `uv sync --locked --python 3.12`, then `make check` if Make
+is available. The Makefile declares `.POSIX:`; GNU Make is not mandatory and this
+does not claim every Make implementation was natively tested.
+This Docker-free gate checks lock/lint/format/types and fast tests;
 real DB tests are excluded. Without Make, run these equivalents in order:
 
 ```bash
@@ -138,7 +143,8 @@ refusal; report actual results, commit/push/open PR, request lead scope review
 and inspect both hosted jobs before a later authorized merge. Both examples
 are paper scenarios, not executed runs.
 
-Low-RAM machines should run Docker-free checks first. Complete installation,
-Windows WSL2/native macOS ARM64 hands-on verification, teammate checkout bootstrap
-and Environment Doctor belong to **CAP-F1-5**; four-teammate onboarding has not
-been demonstrated.
+Low-RAM machines should run Docker-free checks first. CAP-F1-5A Environment Doctor
+is **COMPLETE / ACCEPTED**. Contributor adoption (Layer B) and Windows WSL2/native
+macOS ARM64/8 GB observations (Layer C) remain **NON-BLOCKING / CONTINUOUS**, including
+F1-5C/F1-6; no contributor completion quorum is required. Missing native evidence
+is not a mandatory engineering failure; real safety/Core defects still need review.
