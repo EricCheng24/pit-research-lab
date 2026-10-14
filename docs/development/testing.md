@@ -22,6 +22,8 @@ metadata, CLI help/version, and unknown-option rejection. All four tests are
 unit tests, and retain all four original assertions. Additional offline tests
 cover configuration, automatic physical-connection verification, lifecycle
 ownership, explicit migration routing and mandatory integration selection.
+Accepted CAP-F1-5A Doctor tests add deterministic prerequisite/safety coverage;
+mocked platform classifiers are **SIMULATED_TEST**, not native-device evidence.
 
 The registered `integration` marker means a test requires PostgreSQL/containers,
 external resources, or cross-component persistence. Every real DB module in
@@ -30,7 +32,11 @@ Fixtures connect only when a test executes, never during imports/collection.
 Self-contained tests must not receive the marker arbitrarily. Strict marker
 enforcement rejects misspellings and unregistered markers. Pure collection tests
 check the DB taxonomy, empty integration exit 5 and mandatory Make failure propagation.
-No hosted CI evidence is supplied; F1-4 owns that foundation.
+Accepted historical Ubuntu-hosted **Quality** and real guarded **PostgreSQL
+Integration** passed at `9e31d8fe9989a0c13478f50082ca2dfc87d430d4`,
+[run 38401011335](https://github.com/EricCheng24/pit-research-lab/actions/runs/38401011335).
+This is **HOSTED_LINUX — HISTORICAL** evidence, not a fresh documentation-task
+test run or native WSL2/macOS/hardware certification.
 
 `make test-all` runs the fast suite, then a separate mandatory `-m integration`
 pass. Either failure propagates; empty integration selection is a failure.
@@ -89,4 +95,5 @@ CAP-F3 should exercise real hypothesis, protocol, and evidence execution paths.
 Choose statistical or numerical tolerances based on the methods being tested.
 Do not add speculative business fixtures, arbitrary thresholds, or test plugins
 before their owning implementation needs them. Native macOS ARM64 execution and
-teammate onboarding evidence remain deferred to F1-5.
+contributor adoption remain optional, non-blocking Layer C/B evidence, including
+F1-5C/F1-6; no native PASS or contributor completion quorum is required.
