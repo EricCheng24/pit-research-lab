@@ -1,0 +1,275 @@
+{
+  "schema_version": "wu00-contexts-v1",
+  "t0": "2025-07-07T00:00:00+08:00",
+  "t1": "2025-07-14T00:00:00+08:00",
+  "timezone": "Asia/Taipei",
+  "precision": "SECOND",
+  "cutoff_bound": "OPEN",
+  "decision_wall_times": [
+    "2025-07-07T08:00:00+08:00",
+    "2025-07-14T08:00:00+08:00"
+  ],
+  "calendar": {
+    "calendar_id": "CAL-1",
+    "first_week_trading_dates": [
+      "2025-07-07",
+      "2025-07-14"
+    ]
+  },
+  "universe": {
+    "universe_id": "UNI-1",
+    "issuers": [
+      "SYN-A",
+      "SYN-B"
+    ]
+  },
+  "grid": [
+    [
+      "2025-07-07T00:00:00+08:00",
+      "SYN-A"
+    ],
+    [
+      "2025-07-07T00:00:00+08:00",
+      "SYN-B"
+    ],
+    [
+      "2025-07-14T00:00:00+08:00",
+      "SYN-A"
+    ],
+    [
+      "2025-07-14T00:00:00+08:00",
+      "SYN-B"
+    ]
+  ],
+  "numeric_contract": {
+    "id": "NUM-1",
+    "type": "signed_int64",
+    "minimum": -9223372036854775808,
+    "maximum": 9223372036854775807,
+    "unit": "NTD_thousands",
+    "allow_float": false,
+    "allow_bool": false
+  },
+  "policy_refs": [
+    "P-SEL-1",
+    "P-OBS-1",
+    "P-FIT-1"
+  ],
+  "feature_specs": {
+    "SPEC-FS-Q2-1-BASE": {
+      "body_schema_version": "feature-spec-input-v1",
+      "logical_feature_id": "FS-Q2-1",
+      "physical_spec_id": "SPEC-FS-Q2-1-BASE",
+      "months": [
+        "APR",
+        "MAY",
+        "JUN"
+      ],
+      "require_unique_months": true,
+      "numeric_contract_ref": "NUM-1",
+      "basis_ref": "BASIS-CONSOLIDATED-V1",
+      "fit_state_refs": []
+    }
+  },
+  "feature_rule": "STRICT_Q2_SUM_V1",
+  "fallback_policy": "NO_FALLBACK",
+  "frames": {
+    "FRAME-E0": {
+      "evidence_set_ref": "E0",
+      "contract_refs": [
+        "CAL-1",
+        "UNI-1",
+        "FS-Q2-1",
+        "NUM-1",
+        "BASIS-CONSOLIDATED-V1"
+      ],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    },
+    "FRAME-E1": {
+      "evidence_set_ref": "E1",
+      "contract_refs": [
+        "CAL-1",
+        "UNI-1",
+        "FS-Q2-1",
+        "NUM-1",
+        "BASIS-CONSOLIDATED-V1"
+      ],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    },
+    "FRAME-E2-A05-C05": {
+      "evidence_set_ref": "E2-A05-C05",
+      "contract_refs": [
+        "CAL-1",
+        "UNI-1",
+        "FS-Q2-1",
+        "NUM-1",
+        "BASIS-CONSOLIDATED-V1"
+      ],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    },
+    "FRAME-A12-C08-APPEND": {
+      "evidence_set_ref": "A12-C08-APPEND",
+      "contract_refs": [
+        "CAL-1",
+        "UNI-1",
+        "FS-Q2-1",
+        "NUM-1",
+        "BASIS-CONSOLIDATED-V1"
+      ],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    }
+  },
+  "evidence_sets": {
+    "E0": {
+      "chain_keys": [
+        "APR",
+        "MAY",
+        "JUN1",
+        "ORD1"
+      ],
+      "receipt_refs": [
+        "RCPT-E0",
+        "RCPT-MAY-E0",
+        "RCPT-B-APR-COMPLETE-EMPTY"
+      ]
+    },
+    "E1": {
+      "chain_keys": [
+        "APR",
+        "MAY",
+        "JUN1",
+        "ORD1",
+        "JUN2",
+        "ORD2",
+        "REL1"
+      ],
+      "receipt_refs": [
+        "RCPT-E1",
+        "RCPT-B-APR-COMPLETE-EMPTY-E1"
+      ]
+    },
+    "E2": {
+      "chain_keys": [
+        "APR",
+        "MAY",
+        "JUN1",
+        "ORD1",
+        "EARLY",
+        "EREL"
+      ],
+      "receipt_refs": [
+        "RCPT-E2-A05-C05",
+        "RCPT-MAY-E0",
+        "RCPT-B-APR-COMPLETE-EMPTY"
+      ]
+    }
+  },
+  "contexts": {
+    "B0": {
+      "context_id": "B0",
+      "evidence_set_ref": "E0",
+      "decision_cutoff": "2025-07-07T00:00:00+08:00",
+      "mode": "public",
+      "target_ref": "ATTRIBUTED_ASSERTION",
+      "logical_context_designation": null,
+      "spec_ref": "SPEC-FS-Q2-1-BASE",
+      "fit_state_refs": [],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    },
+    "B1": {
+      "context_id": "B1",
+      "evidence_set_ref": "E1",
+      "decision_cutoff": "2025-07-14T00:00:00+08:00",
+      "mode": "public",
+      "target_ref": "ATTRIBUTED_ASSERTION",
+      "logical_context_designation": "M1",
+      "spec_ref": "SPEC-FS-Q2-1-BASE",
+      "fit_state_refs": [],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    },
+    "B2": {
+      "context_id": "B2",
+      "evidence_set_ref": "E0",
+      "decision_cutoff": "2025-07-07T00:00:00+08:00",
+      "mode": "sealed_replay",
+      "target_ref": "ATTRIBUTED_ASSERTION",
+      "logical_context_designation": "M0",
+      "spec_ref": "SPEC-FS-Q2-1-BASE",
+      "fit_state_refs": [],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    },
+    "B3": {
+      "context_id": "B3",
+      "evidence_set_ref": "E1",
+      "decision_cutoff": "2025-07-07T00:00:00+08:00",
+      "mode": "public",
+      "target_ref": "ATTRIBUTED_ASSERTION",
+      "logical_context_designation": "M2",
+      "spec_ref": "SPEC-FS-Q2-1-BASE",
+      "fit_state_refs": [],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    },
+    "B0/OBS": {
+      "context_id": "B0/OBS",
+      "evidence_set_ref": "E0",
+      "decision_cutoff": "2025-07-07T00:00:00+08:00",
+      "mode": "prospective_observed",
+      "target_ref": "ATTRIBUTED_ASSERTION",
+      "logical_context_designation": null,
+      "spec_ref": "SPEC-FS-Q2-1-BASE",
+      "fit_state_refs": [],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    },
+    "B0/VAL": {
+      "context_id": "B0/VAL",
+      "evidence_set_ref": "E0",
+      "decision_cutoff": "2025-07-07T00:00:00+08:00",
+      "mode": "public",
+      "target_ref": "CONTENT_VALUE",
+      "logical_context_designation": null,
+      "spec_ref": "SPEC-FS-Q2-1-BASE",
+      "fit_state_refs": [],
+      "policy_refs": [
+        "P-SEL-1",
+        "P-OBS-1",
+        "P-FIT-1"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1316 @@
+[
+  {
+    "case_id": "A01-C01",
+    "delta_id": "D-A01-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R06 replaces active April representation; own assertion/support/time; scale 1/1000; RCPT-E0-A01-C01/P06",
+    "baseline_relationship": "R01 sealed; no loader conversion result; INV-D05",
+    "golden_line": 157,
+    "inventory_line": 738,
+    "operations": [
+      {
+        "kind": "add_chain",
+        "chain_key": "NTD"
+      },
+      {
+        "kind": "remove_chain",
+        "chain_key": "APR"
+      },
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A01-C01",
+          "RCPT-MAY-E0",
+          "RCPT-B-APR-COMPLETE-EMPTY"
+        ]
+      }
+    ],
+    "request": {
+      "unit_mapping": {
+        "mapping_id": "MAP-UNIT-A01-C01",
+        "from_unit": "NTD",
+        "to_unit": "NTD_thousands",
+        "numerator": 1,
+        "denominator": 1000
+      }
+    }
+  },
+  {
+    "case_id": "A01-C02",
+    "delta_id": "D-A01-C02",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R07 and H1/Q2 source-comparison subjects/assertions in auxiliary pair",
+    "baseline_relationship": "No baseline Q2 assertion added; input 600 is frozen counterexample; no E0 receipt change",
+    "golden_line": 158,
+    "inventory_line": 739,
+    "operations": [
+      {
+        "kind": "auxiliary_chains",
+        "chain_keys": [
+          "H1",
+          "Q2"
+        ]
+      }
+    ],
+    "request": {
+      "comparison_pair": [
+        "A-H1-A01-C02",
+        "A-Q2-REPORTED-A01-C02"
+      ]
+    }
+  },
+  {
+    "case_id": "A01-C03",
+    "delta_id": "D-A01-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R08/A-JUN-PEER/independent context/evidence in identity comparison pair",
+    "baseline_relationship": "Original A-JUN-01 remains separate; auxiliary view INV-D04",
+    "golden_line": 159,
+    "inventory_line": 740,
+    "operations": [
+      {
+        "kind": "auxiliary_chains",
+        "chain_keys": [
+          "PEER"
+        ]
+      }
+    ],
+    "request": {
+      "comparison_pair": [
+        "A-JUN-01",
+        "A-JUN-PEER"
+      ]
+    }
+  },
+  {
+    "case_id": "A01-C04",
+    "delta_id": "D-A01-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R09 second candidate; reporting_scope absent, opaque unmapped basis",
+    "baseline_relationship": "No default/consolidating map; semantic-negative valid JSON; INV-D07",
+    "golden_line": 160,
+    "inventory_line": 741,
+    "operations": [
+      {
+        "kind": "auxiliary_chains",
+        "chain_keys": [
+          "UNKNOWN"
+        ]
+      }
+    ],
+    "request": {
+      "comparison_pair": [
+        "A-JUN-01",
+        "A-JUN-SCOPE-A01-C04"
+      ]
+    }
+  },
+  {
+    "case_id": "A02-C01",
+    "delta_id": "D-A02-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Fact no-op; request exact R03↔SUP-JUN1-PUB↔A-JUN-01 binding",
+    "baseline_relationship": "Unique no-op delta; original time proof retained",
+    "golden_line": 167,
+    "inventory_line": 742,
+    "operations": [],
+    "request": {
+      "target_assertion_ref": "A-JUN-01",
+      "supplied_support_ref": "SUP-JUN1-PUB"
+    }
+  },
+  {
+    "case_id": "A02-C02",
+    "delta_id": "D-A02-C02",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Comparison body R04 at same June locator but attaches only old SUP-JUN1-PUB",
+    "baseline_relationship": "No SUP-JUN2-PUB in comparison path; no E1 promotion; deliberately wrong binding",
+    "golden_line": 168,
+    "inventory_line": 743,
+    "operations": [
+      {
+        "kind": "auxiliary_body",
+        "raw_alias": "R04",
+        "target_assertion_ref": "A-JUN-02",
+        "supplied_support_ref": "SUP-JUN1-PUB"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A02-C03",
+    "delta_id": "D-A02-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Add OBS-JUN1-REPEAT at 07/16 12:00, same R03 hash",
+    "baseline_relationship": "No new issuer publication or content; no receipt membership change",
+    "golden_line": 169,
+    "inventory_line": 744,
+    "operations": [
+      {
+        "kind": "observation",
+        "source_observation": "OBS-JUN1-LATE",
+        "observation_id": "OBS-JUN1-REPEAT",
+        "completed_at": "2025-07-16T12:00:00+08:00",
+        "replace": false
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A02-C04",
+    "delta_id": "D-A02-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R10/P-X capture and OBS-P-X-A02-C04",
+    "baseline_relationship": "No synthetic issuer PUB/assertion; provider outside E0 issuer query",
+    "golden_line": 170,
+    "inventory_line": 745,
+    "operations": [
+      {
+        "kind": "provider_capture",
+        "raw_alias": "R10",
+        "observation_ref": "OBS-P-X-A02-C04"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A03-C01",
+    "delta_id": "D-A03-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Replace active revenue time proof by CLOSED upper bound 07/06 23:59:59",
+    "baseline_relationship": "R03 unchanged, original exact June proof path absent; INV-D02",
+    "golden_line": 177,
+    "inventory_line": 746,
+    "operations": [
+      {
+        "kind": "replace_june_proof",
+        "payload": {
+          "timestamp": null,
+          "upper_bound": "2025-07-06T23:59:59+08:00",
+          "bound": "CLOSED",
+          "source_date": null,
+          "unparsed_source_text": null,
+          "timezone": "Asia/Taipei",
+          "offset": "+08:00",
+          "proof_kind": "upper_bound",
+          "precision": "SECOND"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A03-C02",
+    "delta_id": "D-A03-C02",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Replace revenue time proof by (t0,OPEN)",
+    "baseline_relationship": "No extra earlier proof; page membership unchanged",
+    "golden_line": 178,
+    "inventory_line": 747,
+    "operations": [
+      {
+        "kind": "replace_june_proof",
+        "payload": {
+          "timestamp": null,
+          "upper_bound": "2025-07-07T00:00:00+08:00",
+          "bound": "OPEN",
+          "source_date": null,
+          "unparsed_source_text": null,
+          "timezone": "Asia/Taipei",
+          "offset": "+08:00",
+          "proof_kind": "upper_bound",
+          "precision": "SECOND"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A03-C03",
+    "delta_id": "D-A03-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Sole revenue time proof (t0,CLOSED)",
+    "baseline_relationship": "Preserve bound type; no silent exact/early claim",
+    "golden_line": 179,
+    "inventory_line": 748,
+    "operations": [
+      {
+        "kind": "replace_june_proof",
+        "payload": {
+          "timestamp": null,
+          "upper_bound": "2025-07-07T00:00:00+08:00",
+          "bound": "CLOSED",
+          "source_date": null,
+          "unparsed_source_text": null,
+          "timezone": "Asia/Taipei",
+          "offset": "+08:00",
+          "proof_kind": "upper_bound",
+          "precision": "SECOND"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A03-C04",
+    "delta_id": "D-A03-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Exact revenue publication timestamp=t0",
+    "baseline_relationship": "Exact event proof distinct from upper bound; same raw notice",
+    "golden_line": 180,
+    "inventory_line": 749,
+    "operations": [
+      {
+        "kind": "replace_june_proof",
+        "payload": {
+          "timestamp": "2025-07-07T00:00:00+08:00",
+          "upper_bound": null,
+          "bound": null,
+          "source_date": null,
+          "unparsed_source_text": null,
+          "timezone": "Asia/Taipei",
+          "offset": "+08:00",
+          "proof_kind": "exact",
+          "precision": "SECOND"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A03-C05",
+    "delta_id": "D-A03-C05",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Date-only 07/06 + Asia/Taipei, next-midnight OPEN bound",
+    "baseline_relationship": "No source-day midnight default; DAY precision retained",
+    "golden_line": 181,
+    "inventory_line": 750,
+    "operations": [
+      {
+        "kind": "replace_june_proof",
+        "payload": {
+          "timestamp": null,
+          "upper_bound": "2025-07-07T00:00:00+08:00",
+          "bound": "OPEN",
+          "source_date": "2025-07-06",
+          "unparsed_source_text": null,
+          "timezone": "Asia/Taipei",
+          "offset": "+08:00",
+          "proof_kind": "date_with_upper_bound",
+          "precision": "DAY"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A03-C06",
+    "delta_id": "D-A03-C06",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Ambiguous 07/07 00:30 with timezone/offset omitted",
+    "baseline_relationship": "Preserve missing fields as semantic-negative data; no context-zone repair",
+    "golden_line": 182,
+    "inventory_line": 751,
+    "operations": [
+      {
+        "kind": "replace_june_proof",
+        "payload": {
+          "timestamp": null,
+          "upper_bound": null,
+          "bound": null,
+          "source_date": null,
+          "unparsed_source_text": "2025-07-07 00:30",
+          "timezone": null,
+          "offset": null,
+          "proof_kind": "unparsed_source_time",
+          "precision": "SECOND"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A03-C07",
+    "delta_id": "D-A03-C07",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R04 changed body/same locator, old-only time evidence in comparison",
+    "baseline_relationship": "Wrong content/time binding; no new valid support; INV-D04",
+    "golden_line": 183,
+    "inventory_line": 752,
+    "operations": [
+      {
+        "kind": "auxiliary_body",
+        "raw_alias": "R04",
+        "target_assertion_ref": "A-JUN-02",
+        "supplied_support_ref": "SUP-JUN1-PUB"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A04-C01",
+    "delta_id": "D-A04-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0 public",
+    "stimulus_description": "Replace June comparison observation by OBS-JUN1-2026-A04-C01, completion 2026-01-01T12:00:00+08:00 (12:00 proposed)",
+    "baseline_relationship": "Issuer proof unchanged; later observation not historical capture",
+    "golden_line": 190,
+    "inventory_line": 753,
+    "operations": [
+      {
+        "kind": "observation",
+        "source_observation": "OBS-JUN1-LATE",
+        "observation_id": "OBS-JUN1-2026-A04-C01",
+        "completed_at": "2026-01-01T12:00:00+08:00",
+        "replace": true
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A04-C02",
+    "delta_id": "D-A04-C02",
+    "context_ref": "B0/OBS",
+    "inherited_base": "B0/OBS/E0/t0",
+    "stimulus_description": "Fact no-op; request observed reconstruction with only existing late capture",
+    "baseline_relationship": "Mode differs; no earlier observation invented",
+    "golden_line": 191,
+    "inventory_line": 754,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A04-C03",
+    "delta_id": "D-A04-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R11/new report proof exact 07/07 07:00; decision 08:00",
+    "baseline_relationship": "Report auxiliary to temporal request; cutoff stays 00:00; no receipt reinterpretation",
+    "golden_line": 192,
+    "inventory_line": 755,
+    "operations": [
+      {
+        "kind": "auxiliary_chains",
+        "chain_keys": [
+          "REPORT"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A04-C04",
+    "delta_id": "D-A04-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Fact no-op; declarative computation attempt time 07/07 07:30",
+    "baseline_relationship": "No new source, no fixture-computed Q2 or presumed 08:00 availability",
+    "golden_line": 193,
+    "inventory_line": 756,
+    "operations": [],
+    "request": {
+      "computation_attempt_time": "2025-07-07T07:30:00+08:00"
+    }
+  },
+  {
+    "case_id": "A05-C01",
+    "delta_id": "D-A05-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Fact no-op, original E0 request",
+    "baseline_relationship": "R04/R05 excluded from active E0",
+    "golden_line": 200,
+    "inventory_line": 762,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A05-C02",
+    "delta_id": "D-A05-C02",
+    "context_ref": "B1",
+    "inherited_base": "B1/E1/t1",
+    "stimulus_description": "Fact no-op, E1 request with independently supported REL-JUN-01",
+    "baseline_relationship": "No fixture-selected claim; R04/R05 explicit closure",
+    "golden_line": 201,
+    "inventory_line": 763,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A05-C03",
+    "delta_id": "D-A05-C03",
+    "context_ref": "B3",
+    "inherited_base": "B3/E1/t0",
+    "stimulus_description": "Fact no-op, E1 at earlier cutoff",
+    "baseline_relationship": "Keep later event facts at actual time, no backdating",
+    "golden_line": 202,
+    "inventory_line": 764,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A05-C04",
+    "delta_id": "D-A05-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0, case-isolated E1 view/t0",
+    "stimulus_description": "Use E1 facts but remove active SUP-JUN1-PUB/prior revenue time proof; retain R05/EVID-JUN-REL/SUP-JUN-REV",
+    "baseline_relationship": "No exact-time shortcut in R03; correction independent; INV-D02",
+    "golden_line": 203,
+    "inventory_line": 765,
+    "operations": [
+      {
+        "kind": "evidence_set",
+        "ref": "E1"
+      },
+      {
+        "kind": "remove_june_proof"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A05-C05",
+    "delta_id": "D-A05-C05",
+    "context_ref": "B0",
+    "inherited_base": "B0→case E2/t0, new M3 request",
+    "stimulus_description": "R12/R13, A-JUN-EARLY-CORR/REL-EARLY-A05-C05/own proofs; RCPT-E2-A05-C05/P07",
+    "baseline_relationship": "No M0/BASE edit; proposed discovered capture 07/16; normalized/raw pins separate",
+    "golden_line": 204,
+    "inventory_line": 766,
+    "operations": [
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E2-A05-C05",
+          "RCPT-MAY-E0",
+          "RCPT-B-APR-COMPLETE-EMPTY"
+        ]
+      },
+      {
+        "kind": "evidence_set",
+        "ref": "E2"
+      }
+    ],
+    "request": {
+      "logical_context_designation": "M3"
+    }
+  },
+  {
+    "case_id": "A06-C01",
+    "delta_id": "D-A06-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Active receipt becomes new RCPT-E0-A06-C01 NOT_PERFORMED, no pages/terminal",
+    "baseline_relationship": "Original RCPT-E0 sealed but not substituted; no false empty",
+    "golden_line": 211,
+    "inventory_line": 767,
+    "operations": [
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A06-C01"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A06-C02",
+    "delta_id": "D-A06-C02",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Fact no-op; target SUB-B-APR with RCPT-B-APR-COMPLETE-EMPTY/P03",
+    "baseline_relationship": "Bounded scope only, no global absence",
+    "golden_line": 212,
+    "inventory_line": 768,
+    "operations": [
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-B-APR-COMPLETE-EMPTY"
+        ]
+      }
+    ],
+    "request": {
+      "requested_subject_ref": "SUB-B-APR"
+    }
+  },
+  {
+    "case_id": "A06-C03",
+    "delta_id": "D-A06-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "L-ALT lead; RCPT-E0-A06-C03/P08 includes lead",
+    "baseline_relationship": "No content/time/amount fabricated; frozen credible pre-t0 possibility",
+    "golden_line": 213,
+    "inventory_line": 769,
+    "operations": [
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A06-C03"
+        ]
+      },
+      {
+        "kind": "lead",
+        "lead_ref": "L-ALT"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A06-C04",
+    "delta_id": "D-A06-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R14/A-JUN-CONFLICT315/own 07/03 15:00 proof; RCPT-E0-A06-C04/P09",
+    "baseline_relationship": "Original 300 remains; no precedence relation/timestamp winner encoded",
+    "golden_line": 214,
+    "inventory_line": 770,
+    "operations": [
+      {
+        "kind": "add_chain",
+        "chain_key": "CONFLICT"
+      },
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A06-C04"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A06-C05",
+    "delta_id": "D-A06-C05",
+    "context_ref": "B0/VAL",
+    "inherited_base": "B0/VAL/E0/t0",
+    "stimulus_description": "R08 peer300 plus complete RCPT-E0-A06-C05/P10; two target requests VALUE/ATTRIBUTED",
+    "baseline_relationship": "Both origins remain; no assertion merge or double case ID",
+    "golden_line": 215,
+    "inventory_line": 771,
+    "operations": [
+      {
+        "kind": "add_chain",
+        "chain_key": "PEER"
+      },
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A06-C05"
+        ]
+      }
+    ],
+    "request": {
+      "target_requests": [
+        "CONTENT_VALUE",
+        "ATTRIBUTED_ASSERTION"
+      ]
+    }
+  },
+  {
+    "case_id": "A06-C06",
+    "delta_id": "D-A06-C06",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "FAULT-A06-C06: required discovery read throws before completion",
+    "baseline_relationship": "No completed replacement receipt or fake issuer error; later controlled path only",
+    "golden_line": 216,
+    "inventory_line": 772,
+    "operations": [
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "ATTEMPT-DISCOVERY-A06-C06"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A07-C01",
+    "delta_id": "D-A07-C01",
+    "context_ref": "B1",
+    "inherited_base": "B1/E1/t1",
+    "stimulus_description": "Fact no-op; request REL-JUN-01 applicability scoped to revenue",
+    "baseline_relationship": "R03/R04 orders untouched; no invented edge",
+    "golden_line": 223,
+    "inventory_line": 773,
+    "operations": [],
+    "request": {
+      "requested_subject_ref": "SUB-A-JUN"
+    }
+  },
+  {
+    "case_id": "A07-C02",
+    "delta_id": "D-A07-C02",
+    "context_ref": "B1",
+    "inherited_base": "B1/E1/t1",
+    "stimulus_description": "Fact no-op; inspect/assert absence of order-correction relation as request",
+    "baseline_relationship": "No actual orders edge inserted just to remove it",
+    "golden_line": 224,
+    "inventory_line": 774,
+    "operations": [],
+    "request": {
+      "requested_subject_ref": "SUB-A-JUN-ORDERS"
+    }
+  },
+  {
+    "case_id": "A07-C03",
+    "delta_id": "D-A07-C03",
+    "context_ref": "B1",
+    "inherited_base": "B1/E1/t1",
+    "stimulus_description": "Fact no-op; compare A-ORD-01/A-ORD-02 identities and their publications",
+    "baseline_relationship": "Two issuer assertions, equal source values; same/new raw versions distinct",
+    "golden_line": 225,
+    "inventory_line": 775,
+    "operations": [],
+    "request": {
+      "requested_subject_ref": "SUB-A-JUN-ORDERS"
+    }
+  },
+  {
+    "case_id": "A07-C04",
+    "delta_id": "D-A07-C04",
+    "context_ref": "B1",
+    "inherited_base": "B1/E1/t1",
+    "stimulus_description": "R15/REL-WITHDRAWAL-A07-C04/own 07/11 proposed12:00 proof; RCPT-E1-A07-C04/P11",
+    "baseline_relationship": "No restoration record or default rollback; original facts sealed",
+    "golden_line": 226,
+    "inventory_line": 776,
+    "operations": [
+      {
+        "kind": "add_chain",
+        "chain_key": "WITHDRAWAL"
+      },
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E1-A07-C04"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A08-C01",
+    "delta_id": "D-A08-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Fact no-op; feature request FS-Q2-1 over facts/policy",
+    "baseline_relationship": "No preselected months/derived answer from loader",
+    "golden_line": 233,
+    "inventory_line": 782,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A08-C02",
+    "delta_id": "D-A08-C02",
+    "context_ref": "B1",
+    "inherited_base": "B1/E1/t1",
+    "stimulus_description": "Fact no-op; same feature request with E1",
+    "baseline_relationship": "Selector later decides applicable claim, not fixture",
+    "golden_line": 234,
+    "inventory_line": 783,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A08-C03",
+    "delta_id": "D-A08-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Remove active May claim; aggregate P12 and May-empty P13/new receipts",
+    "baseline_relationship": "No zero-fill or hidden archived May; original R02 sealed",
+    "golden_line": 235,
+    "inventory_line": 784,
+    "operations": [
+      {
+        "kind": "remove_chain",
+        "chain_key": "MAY"
+      },
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A08-C03",
+          "RCPT-MAY-A08-C03"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A08-C04",
+    "delta_id": "D-A08-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "L-ALT with distinct RCPT-E0-A08-C04/P14",
+    "baseline_relationship": "Same credible-lead recipe as A06-C03, unique delta/receipt state",
+    "golden_line": 236,
+    "inventory_line": 785,
+    "operations": [
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A08-C04"
+        ]
+      },
+      {
+        "kind": "lead",
+        "lead_ref": "L-ALT"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A08-C05",
+    "delta_id": "D-A08-C05",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Replace active May by R16/own subject/support; pages P15/P16",
+    "baseline_relationship": "Individual basis declared as input, no fixture-computed incompatibility verdict",
+    "golden_line": 237,
+    "inventory_line": 786,
+    "operations": [
+      {
+        "kind": "add_chain",
+        "chain_key": "MAYIND"
+      },
+      {
+        "kind": "remove_chain",
+        "chain_key": "MAY"
+      },
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A08-C05",
+          "RCPT-MAY-A08-C05"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A08-C06",
+    "delta_id": "D-A08-C06",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "FS-Q2-1 isolated spec body [APR,MAY,JUN,JUN], unique-month requirement retained",
+    "baseline_relationship": "Deliberately bad spec body preserved; no deduplication; original version bytes sealed",
+    "golden_line": 238,
+    "inventory_line": 787,
+    "operations": [
+      {
+        "kind": "feature_spec",
+        "body": {
+          "body_schema_version": "feature-spec-input-v1",
+          "logical_feature_id": "FS-Q2-1",
+          "physical_spec_id": "SPEC-FS-Q2-1-A08-C06",
+          "months": [
+            "APR",
+            "MAY",
+            "JUN",
+            "JUN"
+          ],
+          "require_unique_months": true,
+          "numeric_contract_ref": "NUM-1",
+          "basis_ref": "BASIS-CONSOLIDATED-V1",
+          "fit_state_refs": []
+        }
+      }
+    ],
+    "request": {
+      "spec_ref": "SPEC-FS-Q2-1-A08-C06"
+    }
+  },
+  {
+    "case_id": "A09-C01",
+    "delta_id": "D-A09-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Fact no-op; explicit θ=∅ and no fit dependencies",
+    "baseline_relationship": "No artificial fitted-state or precomputed feature",
+    "golden_line": 245,
+    "inventory_line": 788,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A09-C02",
+    "delta_id": "D-A09-C02",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "FIT-0 cutoff t0/PRE-T0 depends on A-JUN-02 with actual 07/10 proof supplied as dependency-only extension",
+    "baseline_relationship": "Does not promote future source into E0 discovery; no eligibility flag",
+    "golden_line": 246,
+    "inventory_line": 789,
+    "operations": [
+      {
+        "kind": "dependency_chains",
+        "chain_keys": [
+          "JUN2"
+        ]
+      }
+    ],
+    "request": {
+      "fit_state": {
+        "fit_id": "FIT-0",
+        "cutoff": "2025-07-07T00:00:00+08:00",
+        "training_view_ref": "PRE-T0",
+        "dependency_refs": [
+          "A-JUN-02"
+        ]
+      }
+    }
+  },
+  {
+    "case_id": "A09-C03",
+    "delta_id": "D-A09-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "FIT-0 depends on L-0 maturity 07/12 00:00",
+    "baseline_relationship": "Keep fit/decision/maturity times separate; no fixture adjudication",
+    "golden_line": 247,
+    "inventory_line": 790,
+    "operations": [],
+    "request": {
+      "fit_state": {
+        "fit_id": "FIT-0",
+        "cutoff": "2025-07-07T00:00:00+08:00",
+        "dependency_refs": [
+          "L-0"
+        ]
+      },
+      "label": {
+        "label_id": "L-0",
+        "maturity_time": "2025-07-12T00:00:00+08:00"
+      }
+    }
+  },
+  {
+    "case_id": "A09-C04",
+    "delta_id": "D-A09-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "F-CYCLE→THETA-CYCLE→F-CYCLE dependency graph",
+    "baseline_relationship": "Valid JSON carrying invalid contract; do not evaluate/break cycle",
+    "golden_line": 248,
+    "inventory_line": 791,
+    "operations": [],
+    "request": {
+      "dependency_edges": [
+        [
+          "F-CYCLE",
+          "THETA-CYCLE"
+        ],
+        [
+          "THETA-CYCLE",
+          "F-CYCLE"
+        ]
+      ]
+    }
+  },
+  {
+    "case_id": "A09-C05",
+    "delta_id": "D-A09-C05",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "TE-OWN/R1 own label1 dependency, no OOF/LOO isolation; proposed maturity 07/06",
+    "baseline_relationship": "Prohibited construction is input description, no encoder implementation; INV-D07",
+    "golden_line": 249,
+    "inventory_line": 792,
+    "operations": [],
+    "request": {
+      "target_encoder": {
+        "encoder_id": "TE-OWN",
+        "row_id": "R1",
+        "own_binary_label": 1,
+        "maturity_time": "2025-07-06T00:00:00+08:00",
+        "dependency_refs": [
+          "R1-own-label"
+        ],
+        "isolation_contract": null
+      }
+    }
+  },
+  {
+    "case_id": "A10-C01",
+    "delta_id": "D-A10-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Audit-only FUTURE_RESTATEMENT_NOTE=\"revised July10\"",
+    "baseline_relationship": "Qualified source/policy facts unchanged; no payload produced",
+    "golden_line": 256,
+    "inventory_line": 798,
+    "operations": [
+      {
+        "kind": "audit_annotation",
+        "body": {
+          "FUTURE_RESTATEMENT_NOTE": "revised July10"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A10-C02",
+    "delta_id": "D-A10-C02",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Audit-only confidence/reason text changes to \"synthetic explanatory edit\"",
+    "baseline_relationship": "Normative receipt/policy decision inputs unchanged; no mask result stored",
+    "golden_line": 257,
+    "inventory_line": 799,
+    "operations": [
+      {
+        "kind": "audit_annotation",
+        "body": {
+          "coverage_confidence_reason": "synthetic explanatory edit"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A10-C03",
+    "delta_id": "D-A10-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Audit-only future_revision_flag false→true",
+    "baseline_relationship": "NO_FALLBACK spec unchanged; no fallback implementation",
+    "golden_line": 258,
+    "inventory_line": 800,
+    "operations": [
+      {
+        "kind": "audit_annotation",
+        "body": {
+          "future_revision_flag": true
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A10-C04",
+    "delta_id": "D-A10-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Audit-only later SYN-B label/reward record, proposed value -1 and outcome date 07/21",
+    "baseline_relationship": "Explicitly future annotation; U/grid unchanged; value/date physical proposals",
+    "golden_line": 259,
+    "inventory_line": 801,
+    "operations": [
+      {
+        "kind": "audit_annotation",
+        "body": {
+          "issuer_id": "SYN-B",
+          "reward": -1,
+          "outcome_date": "2025-07-21"
+        }
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A10-C05",
+    "delta_id": "D-A10-C05",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Invalid requested survivor subset {SYN-A} at consumer seam while pin remains UNI-1",
+    "baseline_relationship": "Do not edit UNI-1 or remove actual grid cells",
+    "golden_line": 260,
+    "inventory_line": 802,
+    "operations": [],
+    "request": {
+      "requested_universe_subset": [
+        "SYN-A"
+      ]
+    }
+  },
+  {
+    "case_id": "A11-C01",
+    "delta_id": "D-A11-C01",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "R17/own zero April support replaces active April; RCPT-E0-A11-C01/P17",
+    "baseline_relationship": "Zero literal source fact, not missing; original APR raw sealed",
+    "golden_line": 267,
+    "inventory_line": 803,
+    "operations": [
+      {
+        "kind": "add_chain",
+        "chain_key": "ZERO"
+      },
+      {
+        "kind": "remove_chain",
+        "chain_key": "APR"
+      },
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A11-C01"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A11-C02",
+    "delta_id": "D-A11-C02",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Remove active May; separate aggregate P18/May-empty P19; approved neutral-missing policy request",
+    "baseline_relationship": "No null output in fixture; no conflation with A08-C03 identity",
+    "golden_line": 268,
+    "inventory_line": 804,
+    "operations": [
+      {
+        "kind": "remove_chain",
+        "chain_key": "MAY"
+      },
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A11-C02",
+          "RCPT-MAY-A11-C02"
+        ]
+      }
+    ],
+    "request": {
+      "neutral_missing_policy_ref": "P-OBS-1"
+    }
+  },
+  {
+    "case_id": "A11-C03",
+    "delta_id": "D-A11-C03",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "L-ALT; RCPT-E0-A11-C03/P20; strict core-feature policy unchanged",
+    "baseline_relationship": "No ordinary neutral missing preselected; grid unchanged",
+    "golden_line": 269,
+    "inventory_line": 805,
+    "operations": [
+      {
+        "kind": "receipt_refs",
+        "refs": [
+          "RCPT-E0-A11-C03"
+        ]
+      },
+      {
+        "kind": "lead",
+        "lead_ref": "L-ALT"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A11-C04",
+    "delta_id": "D-A11-C04",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "Required feature reference FS-UNKNOWN, with no definition added",
+    "baseline_relationship": "Missing reference preserved, no generated placeholder spec",
+    "golden_line": 270,
+    "inventory_line": 806,
+    "operations": [],
+    "request": {
+      "spec_ref": "FS-UNKNOWN"
+    }
+  },
+  {
+    "case_id": "A11-C05",
+    "delta_id": "D-A11-C05",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "FAULT-A11-C05: required persisted-input read fails after freeze begins",
+    "baseline_relationship": "Declarative persisted operation, not failed source search/empty receipt",
+    "golden_line": 271,
+    "inventory_line": 807,
+    "operations": [
+      {
+        "kind": "fault_schedule",
+        "fault_id": "FAULT-A11-C05",
+        "phase": "required_persisted_input_read_after_freeze_begins",
+        "execution_owner": "WU-05/WU-07"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A11-C06",
+    "delta_id": "D-A11-C06",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "FAULT-A11-C06: failure after manifest/result writes before finalization commit/completion authorization",
+    "baseline_relationship": "No provisional rows or DB operations created at WU-00",
+    "golden_line": 272,
+    "inventory_line": 808,
+    "operations": [
+      {
+        "kind": "fault_schedule",
+        "fault_id": "FAULT-A11-C06",
+        "phase": "after_manifest_result_writes_before_finalization_commit",
+        "execution_owner": "WU-06/WU-07"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A12-C01",
+    "delta_id": "D-A12-C01",
+    "context_ref": "B2",
+    "inherited_base": "B2/M0/E0/t0",
+    "stimulus_description": "Fact no-op; sealed replay request, no discovery",
+    "baseline_relationship": "No manufactured stored manifest/result or precomputed 600",
+    "golden_line": 279,
+    "inventory_line": 809,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A12-C02",
+    "delta_id": "D-A12-C02",
+    "context_ref": "B2",
+    "inherited_base": "B2/M0/E0/t0",
+    "stimulus_description": "Schedule append existing E1 extension R04/R05 after M0 seal, then replay M0",
+    "baseline_relationship": "Writer extension separate from original reader input; no actual DB insert",
+    "golden_line": 280,
+    "inventory_line": 810,
+    "operations": [
+      {
+        "kind": "pending_append",
+        "chain_keys": [
+          "JUN2",
+          "ORD2",
+          "REL1"
+        ],
+        "phase": "after_M0_seal"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A12-C03",
+    "delta_id": "D-A12-C03",
+    "context_ref": "B1",
+    "inherited_base": "B1/E1/t1",
+    "stimulus_description": "Fact no-op; new M1 reconstruction request",
+    "baseline_relationship": "No write to M0 or fixture manifest hash",
+    "golden_line": 281,
+    "inventory_line": 811,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A12-C04",
+    "delta_id": "D-A12-C04",
+    "context_ref": "B3",
+    "inherited_base": "B3/E1/t0",
+    "stimulus_description": "Fact no-op; new M2 reconstruction request",
+    "baseline_relationship": "Distinct request context, no inferred equality of manifests",
+    "golden_line": 282,
+    "inventory_line": 812,
+    "operations": [],
+    "request": {}
+  },
+  {
+    "case_id": "A12-C05",
+    "delta_id": "D-A12-C05",
+    "context_ref": "B2",
+    "inherited_base": "B2/M0/E0/t0",
+    "stimulus_description": "FAULT-A12-C05 substitutes exact V2 bytes at designated V1 normalized binding; pin/version unchanged",
+    "baseline_relationship": "OPEN INV-D06; no claim R03=118 bytes; corruption isolated",
+    "golden_line": 283,
+    "inventory_line": 813,
+    "operations": [
+      {
+        "kind": "integrity_fault",
+        "target_representation_ref": "REP-NORM-CV-JUN-01-REV-V1",
+        "actual_payload_ref": "PAYLOAD-INVALID-NORM-JUN1-V2",
+        "phase": "required_normalized_input_read",
+        "preserve_verified_pin": true
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A12-C06",
+    "delta_id": "D-A12-C06",
+    "context_ref": "B2",
+    "inherited_base": "B2/M0/E0/t0",
+    "stimulus_description": "Reader establishes first snapshot/read; writer appends version/edge between required reads; max two connections",
+    "baseline_relationship": "Schedule only, no snapshot/isolation/DB proof",
+    "golden_line": 284,
+    "inventory_line": 814,
+    "operations": [
+      {
+        "kind": "fault_schedule",
+        "fault_id": "FAULT-A12-C06",
+        "phase": "reader_first_snapshot_then_writer_commit_then_reader_second_read",
+        "execution_owner": "WU-05/WU-07",
+        "max_connections": 2,
+        "writer_chain_keys": [
+          "JUN2",
+          "ORD2",
+          "REL1"
+        ]
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A12-C07",
+    "delta_id": "D-A12-C07",
+    "context_ref": "B0",
+    "inherited_base": "B0/E0/t0",
+    "stimulus_description": "FAULT-A12-C07 aborts finalization after first dependent write before completion commit",
+    "baseline_relationship": "Distinct from A11-C06 and freeze-read faults; no DB state synthesized",
+    "golden_line": 285,
+    "inventory_line": 815,
+    "operations": [
+      {
+        "kind": "fault_schedule",
+        "fault_id": "FAULT-A12-C07",
+        "phase": "after_first_dependent_write_before_completion_commit",
+        "execution_owner": "WU-06/WU-07"
+      }
+    ],
+    "request": {}
+  },
+  {
+    "case_id": "A12-C08",
+    "delta_id": "D-A12-C08",
+    "context_ref": "B2",
+    "inherited_base": "B2/M0/E0/t0",
+    "stimulus_description": "Reverse row enumeration as schedule; append RCPT-UNRELATED-SYN-B-MAR-A12-C08/P21 outside M0",
+    "baseline_relationship": "Unrelated source scope; event-array order not silently sorted; no M0 mutation",
+    "golden_line": 286,
+    "inventory_line": 816,
+    "operations": [
+      {
+        "kind": "pending_receipt_append",
+        "receipt_ref": "RCPT-UNRELATED-SYN-B-MAR-A12-C08"
+      }
+    ],
+    "request": {
+      "enumeration_schedule": "reverse_pinned_set_enumeration"
+    }
+  }
+]
