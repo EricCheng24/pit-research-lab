@@ -1,0 +1,3666 @@
+[
+  {
+    "case_id": "A01-C01",
+    "delta_ref": "D-A01-C01",
+    "base_context": "B0",
+    "owner": "S1",
+    "source": {
+      "alias": "G",
+      "line": 157,
+      "section": "5 A01",
+      "row": "| `A01-C01` / `D-A01-C01` | `B0` | Change April representation to 100,000 NTD with exact ×1/1000 conversion and same entity/period/basis | SameSubject=SAME; canonical amount=100 NTD thousands | `NONE` | SUB-A-APR; mapping BASIS-CONSOLIDATED-V1 | Treat unit label as a different economic subject | `S` | `S1` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 42,
+      "row": "| `A01-C01` · G:157 | `B0` / `D-A01-C01` | `S` | Change April representation to 100,000 NTD with exact ×1/1000 conversion and same entity/period/basis | SameSubject=SAME; canonical amount=100 NTD thousands | `NONE` | SUB-A-APR; mapping BASIS-CONSOLIDATED-V1 | Treat unit label as a different economic subject |"
+    },
+    "normative_fields": {
+      "case_delta": "`A01-C01` / `D-A01-C01`",
+      "base": "`B0`",
+      "delta": "Change April representation to 100,000 NTD with exact ×1/1000 conversion and same entity/period/basis",
+      "expected": "SameSubject=SAME; canonical amount=100 NTD thousands",
+      "reason": "`NONE`",
+      "lineage_exclusions": "SUB-A-APR; mapping BASIS-CONSOLIDATED-V1",
+      "forbidden": "Treat unit label as a different economic subject",
+      "tiers": "`S`",
+      "owner": "`S1`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A01-C02",
+    "delta_ref": "D-A01-C02",
+    "base_context": "B0",
+    "owner": "S1",
+    "source": {
+      "alias": "G",
+      "line": 158,
+      "section": "5 A01",
+      "row": "| `A01-C02` / `D-A01-C02` | `B0` | Add H1 duration 2025-01-01..06-30 claim with numeric value 600 and Q2 reported value 600 | SameSubject(Q2,H1)=DIFFERENT | `SUBJECT_MISMATCH` | Q2 period and H1 period | Merge identical numeric values into one subject | `S` | `S1` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 43,
+      "row": "| `A01-C02` · G:158 | `B0` / `D-A01-C02` | `S` | Add H1 duration 2025-01-01..06-30 claim with numeric value 600 and Q2 reported value 600 | SameSubject(Q2,H1)=DIFFERENT | `SUBJECT_MISMATCH` | Q2 period and H1 period | Merge identical numeric values into one subject |"
+    },
+    "normative_fields": {
+      "case_delta": "`A01-C02` / `D-A01-C02`",
+      "base": "`B0`",
+      "delta": "Add H1 duration 2025-01-01..06-30 claim with numeric value 600 and Q2 reported value 600",
+      "expected": "SameSubject(Q2,H1)=DIFFERENT",
+      "reason": "`SUBJECT_MISMATCH`",
+      "lineage_exclusions": "Q2 period and H1 period",
+      "forbidden": "Merge identical numeric values into one subject",
+      "tiers": "`S`",
+      "owner": "`S1`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A01-C03",
+    "delta_ref": "D-A01-C03",
+    "base_context": "B0",
+    "owner": "S1",
+    "source": {
+      "alias": "G",
+      "line": 159,
+      "section": "5 A01",
+      "row": "| `A01-C03` / `D-A01-C03` | `B0` | Add independently published same-subject June claim value 300, new assertion A-JUN-PEER, issuer context/identity distinct | SameSubject=SAME; assertion IDs remain distinct | `NONE` | A-JUN-01 and A-JUN-PEER | Merge issuer assertions by equal value | `S` | `S1` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 44,
+      "row": "| `A01-C03` · G:159 | `B0` / `D-A01-C03` | `S` | Add independently published same-subject June claim value 300, new assertion A-JUN-PEER, issuer context/identity distinct | SameSubject=SAME; assertion IDs remain distinct | `NONE` | A-JUN-01 and A-JUN-PEER | Merge issuer assertions by equal value |"
+    },
+    "normative_fields": {
+      "case_delta": "`A01-C03` / `D-A01-C03`",
+      "base": "`B0`",
+      "delta": "Add independently published same-subject June claim value 300, new assertion A-JUN-PEER, issuer context/identity distinct",
+      "expected": "SameSubject=SAME; assertion IDs remain distinct",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-JUN-01 and A-JUN-PEER",
+      "forbidden": "Merge issuer assertions by equal value",
+      "tiers": "`S`",
+      "owner": "`S1`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A01-C04",
+    "delta_ref": "D-A01-C04",
+    "base_context": "B0",
+    "owner": "S1",
+    "source": {
+      "alias": "G",
+      "line": 160,
+      "section": "5 A01",
+      "row": "| `A01-C04` / `D-A01-C04` | `B0` | Remove reporting_scope from second June candidate; no mapping evidence for consolidated vs individual | SameSubject=UNRESOLVED | `BASIS_UNRESOLVED` | second candidate; unresolved mapping | Default unknown scope to consolidated | `S` | `S1` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 45,
+      "row": "| `A01-C04` · G:160 | `B0` / `D-A01-C04` | `S` | Remove reporting_scope from second June candidate; no mapping evidence for consolidated vs individual | SameSubject=UNRESOLVED | `BASIS_UNRESOLVED` | second candidate; unresolved mapping | Default unknown scope to consolidated |"
+    },
+    "normative_fields": {
+      "case_delta": "`A01-C04` / `D-A01-C04`",
+      "base": "`B0`",
+      "delta": "Remove reporting_scope from second June candidate; no mapping evidence for consolidated vs individual",
+      "expected": "SameSubject=UNRESOLVED",
+      "reason": "`BASIS_UNRESOLVED`",
+      "lineage_exclusions": "second candidate; unresolved mapping",
+      "forbidden": "Default unknown scope to consolidated",
+      "tiers": "`S`",
+      "owner": "`S1`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A02-C01",
+    "delta_ref": "D-A02-C01",
+    "base_context": "B0",
+    "owner": "S1",
+    "source": {
+      "alias": "G",
+      "line": 167,
+      "section": "5 A02",
+      "row": "| `A02-C01` / `D-A02-C01` | `B0` | Use CV-JUN-01 and SUP-JUN1-PUB with body 300 and exact 07/03 issuance support | June v1 content and issuance attributable | `NONE` | CV-JUN-01 → SUP-JUN1-PUB → A-JUN-01 | Use unrelated support as publication proof | `S/X` | `S1` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 53,
+      "row": "| `A02-C01` · G:167 | `B0` / `D-A02-C01` | `S/X` | Use CV-JUN-01 and SUP-JUN1-PUB with body 300 and exact 07/03 issuance support | June v1 content and issuance attributable | `NONE` | CV-JUN-01 → SUP-JUN1-PUB → A-JUN-01 | Use unrelated support as publication proof |"
+    },
+    "normative_fields": {
+      "case_delta": "`A02-C01` / `D-A02-C01`",
+      "base": "`B0`",
+      "delta": "Use CV-JUN-01 and SUP-JUN1-PUB with body 300 and exact 07/03 issuance support",
+      "expected": "June v1 content and issuance attributable",
+      "reason": "`NONE`",
+      "lineage_exclusions": "CV-JUN-01 → SUP-JUN1-PUB → A-JUN-01",
+      "forbidden": "Use unrelated support as publication proof",
+      "tiers": "`S/X`",
+      "owner": "`S1`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A02-C02",
+    "delta_ref": "D-A02-C02",
+    "base_context": "B0",
+    "owner": "S1",
+    "source": {
+      "alias": "G",
+      "line": 168,
+      "section": "5 A02",
+      "row": "| `A02-C02` / `D-A02-C02` | `B0` | At same source_locator substitute CV-JUN-02 value 310 while attaching only SUP-JUN1-PUB (300/07-03) | 310 lacks inherited 07/03 content-time support | `CONTENT_BINDING_INSUFFICIENT` | Exclude SUP-JUN1-PUB as support for CV-JUN-02 | Carry URL timestamp to changed body | `S` | `S1` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 54,
+      "row": "| `A02-C02` · G:168 | `B0` / `D-A02-C02` | `S` | At same source_locator substitute CV-JUN-02 value 310 while attaching only SUP-JUN1-PUB (300/07-03) | 310 lacks inherited 07/03 content-time support | `CONTENT_BINDING_INSUFFICIENT` | Exclude SUP-JUN1-PUB as support for CV-JUN-02 | Carry URL timestamp to changed body |"
+    },
+    "normative_fields": {
+      "case_delta": "`A02-C02` / `D-A02-C02`",
+      "base": "`B0`",
+      "delta": "At same source_locator substitute CV-JUN-02 value 310 while attaching only SUP-JUN1-PUB (300/07-03)",
+      "expected": "310 lacks inherited 07/03 content-time support",
+      "reason": "`CONTENT_BINDING_INSUFFICIENT`",
+      "lineage_exclusions": "Exclude SUP-JUN1-PUB as support for CV-JUN-02",
+      "forbidden": "Carry URL timestamp to changed body",
+      "tiers": "`S`",
+      "owner": "`S1`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A02-C03",
+    "delta_ref": "D-A02-C03",
+    "base_context": "B0",
+    "owner": "S1",
+    "source": {
+      "alias": "G",
+      "line": 169,
+      "section": "5 A02",
+      "row": "| `A02-C03` / `D-A02-C03` | `B0` | Add second capture OBS-JUN1-REPEAT 2025-07-16 12:00+08 of identical CV-JUN-01 bytes | Two captures; exactly one issuer publication event | `NONE` | CV-JUN-01; OBS-JUN1-LATE; OBS-JUN1-REPEAT | Invent another publication from reobservation | `S` | `S1` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 55,
+      "row": "| `A02-C03` · G:169 | `B0` / `D-A02-C03` | `S` | Add second capture OBS-JUN1-REPEAT 2025-07-16 12:00+08 of identical CV-JUN-01 bytes | Two captures; exactly one issuer publication event | `NONE` | CV-JUN-01; OBS-JUN1-LATE; OBS-JUN1-REPEAT | Invent another publication from reobservation |"
+    },
+    "normative_fields": {
+      "case_delta": "`A02-C03` / `D-A02-C03`",
+      "base": "`B0`",
+      "delta": "Add second capture OBS-JUN1-REPEAT 2025-07-16 12:00+08 of identical CV-JUN-01 bytes",
+      "expected": "Two captures; exactly one issuer publication event",
+      "reason": "`NONE`",
+      "lineage_exclusions": "CV-JUN-01; OBS-JUN1-LATE; OBS-JUN1-REPEAT",
+      "forbidden": "Invent another publication from reobservation",
+      "tiers": "`S`",
+      "owner": "`S1`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A02-C04",
+    "delta_ref": "D-A02-C04",
+    "base_context": "B0",
+    "owner": "S1",
+    "source": {
+      "alias": "G",
+      "line": 170,
+      "section": "5 A02",
+      "row": "| `A02-C04` / `D-A02-C04` | `B0` | Add downstream provider P-X capture showing 300 on 07/16, no independent issuer notice evidence | Provider observation only; not second issuer assertion | `ATTRIBUTION_UNRESOLVED` | P-X capture; issuer attribution unresolved | Fabricate issuer event for forwarded value | `S` | `S1` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 56,
+      "row": "| `A02-C04` · G:170 | `B0` / `D-A02-C04` | `S` | Add downstream provider P-X capture showing 300 on 07/16, no independent issuer notice evidence | Provider observation only; not second issuer assertion | `ATTRIBUTION_UNRESOLVED` | P-X capture; issuer attribution unresolved | Fabricate issuer event for forwarded value |"
+    },
+    "normative_fields": {
+      "case_delta": "`A02-C04` / `D-A02-C04`",
+      "base": "`B0`",
+      "delta": "Add downstream provider P-X capture showing 300 on 07/16, no independent issuer notice evidence",
+      "expected": "Provider observation only; not second issuer assertion",
+      "reason": "`ATTRIBUTION_UNRESOLVED`",
+      "lineage_exclusions": "P-X capture; issuer attribution unresolved",
+      "forbidden": "Fabricate issuer event for forwarded value",
+      "tiers": "`S`",
+      "owner": "`S1`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A03-C01",
+    "delta_ref": "D-A03-C01",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 177,
+      "section": "5 A03",
+      "row": "| `A03-C01` / `D-A03-C01` | `B0` | Replace June pub proof by content-bound upper bound 2025-07-06T23:59:59+08:00 CLOSED | SUPPORTED at t0 | `NONE` | bound; CV-JUN-01 | Reject a strictly pre-cutoff bound | `S/M` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 64,
+      "row": "| `A03-C01` · G:177 | `B0` / `D-A03-C01` | `S/M` | Replace June pub proof by content-bound upper bound 2025-07-06T23:59:59+08:00 CLOSED | SUPPORTED at t0 | `NONE` | bound; CV-JUN-01 | Reject a strictly pre-cutoff bound |"
+    },
+    "normative_fields": {
+      "case_delta": "`A03-C01` / `D-A03-C01`",
+      "base": "`B0`",
+      "delta": "Replace June pub proof by content-bound upper bound 2025-07-06T23:59:59+08:00 CLOSED",
+      "expected": "SUPPORTED at t0",
+      "reason": "`NONE`",
+      "lineage_exclusions": "bound; CV-JUN-01",
+      "forbidden": "Reject a strictly pre-cutoff bound",
+      "tiers": "`S/M`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "S",
+      "M"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A03-C02",
+    "delta_ref": "D-A03-C02",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 178,
+      "section": "5 A03",
+      "row": "| `A03-C02` / `D-A03-C02` | `B0` | Set supported upper bound u=t0 with OPEN semantics | SUPPORTED at t0 | `NONE` | (t0,OPEN); CV-JUN-01 | Treat OPEN equality as late | `S/M` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 65,
+      "row": "| `A03-C02` · G:178 | `B0` / `D-A03-C02` | `S/M` | Set supported upper bound u=t0 with OPEN semantics | SUPPORTED at t0 | `NONE` | (t0,OPEN); CV-JUN-01 | Treat OPEN equality as late |"
+    },
+    "normative_fields": {
+      "case_delta": "`A03-C02` / `D-A03-C02`",
+      "base": "`B0`",
+      "delta": "Set supported upper bound u=t0 with OPEN semantics",
+      "expected": "SUPPORTED at t0",
+      "reason": "`NONE`",
+      "lineage_exclusions": "(t0,OPEN); CV-JUN-01",
+      "forbidden": "Treat OPEN equality as late",
+      "tiers": "`S/M`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "S",
+      "M"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A03-C03",
+    "delta_ref": "D-A03-C03",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 179,
+      "section": "5 A03",
+      "row": "| `A03-C03` / `D-A03-C03` | `B0` | Set sole supported upper bound u=t0 with CLOSED semantics | UNRESOLVED at t0 | `TEMPORAL_BOUND_INSUFFICIENT` | (t0,CLOSED); no independent earlier proof | Declare known late or early without evidence | `S/M` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 66,
+      "row": "| `A03-C03` · G:179 | `B0` / `D-A03-C03` | `S/M` | Set sole supported upper bound u=t0 with CLOSED semantics | UNRESOLVED at t0 | `TEMPORAL_BOUND_INSUFFICIENT` | (t0,CLOSED); no independent earlier proof | Declare known late or early without evidence |"
+    },
+    "normative_fields": {
+      "case_delta": "`A03-C03` / `D-A03-C03`",
+      "base": "`B0`",
+      "delta": "Set sole supported upper bound u=t0 with CLOSED semantics",
+      "expected": "UNRESOLVED at t0",
+      "reason": "`TEMPORAL_BOUND_INSUFFICIENT`",
+      "lineage_exclusions": "(t0,CLOSED); no independent earlier proof",
+      "forbidden": "Declare known late or early without evidence",
+      "tiers": "`S/M`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "S",
+      "M"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A03-C04",
+    "delta_ref": "D-A03-C04",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 180,
+      "section": "5 A03",
+      "row": "| `A03-C04` / `D-A03-C04` | `B0` | Prove precise June publication timestamp equals exactly t0 | NOT_ADMISSIBLE for this publication path | `PUBLICATION_NOT_PRE_CUTOFF` | exact timestamp; publication path | Treat equality as strictly-before | `S/M` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 67,
+      "row": "| `A03-C04` · G:180 | `B0` / `D-A03-C04` | `S/M` | Prove precise June publication timestamp equals exactly t0 | NOT_ADMISSIBLE for this publication path | `PUBLICATION_NOT_PRE_CUTOFF` | exact timestamp; publication path | Treat equality as strictly-before |"
+    },
+    "normative_fields": {
+      "case_delta": "`A03-C04` / `D-A03-C04`",
+      "base": "`B0`",
+      "delta": "Prove precise June publication timestamp equals exactly t0",
+      "expected": "NOT_ADMISSIBLE for this publication path",
+      "reason": "`PUBLICATION_NOT_PRE_CUTOFF`",
+      "lineage_exclusions": "exact timestamp; publication path",
+      "forbidden": "Treat equality as strictly-before",
+      "tiers": "`S/M`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "S",
+      "M"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A03-C05",
+    "delta_ref": "D-A03-C05",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 181,
+      "section": "5 A03",
+      "row": "| `A03-C05` / `D-A03-C05` | `B0` | Use independently authenticated date-only publication 2025-07-06 Asia/Taipei; OPEN upper bound next local midnight | SUPPORTED at t0 | `NONE` | (2025-07-07T00:00:00+08:00,OPEN) | Default date-only to 00:00 on release day | `S/M` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 68,
+      "row": "| `A03-C05` · G:181 | `B0` / `D-A03-C05` | `S/M` | Use independently authenticated date-only publication 2025-07-06 Asia/Taipei; OPEN upper bound next local midnight | SUPPORTED at t0 | `NONE` | (2025-07-07T00:00:00+08:00,OPEN) | Default date-only to 00:00 on release day |"
+    },
+    "normative_fields": {
+      "case_delta": "`A03-C05` / `D-A03-C05`",
+      "base": "`B0`",
+      "delta": "Use independently authenticated date-only publication 2025-07-06 Asia/Taipei; OPEN upper bound next local midnight",
+      "expected": "SUPPORTED at t0",
+      "reason": "`NONE`",
+      "lineage_exclusions": "(2025-07-07T00:00:00+08:00,OPEN)",
+      "forbidden": "Default date-only to 00:00 on release day",
+      "tiers": "`S/M`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "S",
+      "M"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A03-C06",
+    "delta_ref": "D-A03-C06",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 182,
+      "section": "5 A03",
+      "row": "| `A03-C06` / `D-A03-C06` | `B0` | Remove time zone for ambiguous 2025-07-07 00:30 publication with plausibly crossing-zone interpretation | UNRESOLVED | `TIMEZONE_UNRESOLVED` | ambiguous timestamp; no default zone | Assume Asia/Taipei or UTC by convenience | `S` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 69,
+      "row": "| `A03-C06` · G:182 | `B0` / `D-A03-C06` | `S` | Remove time zone for ambiguous 2025-07-07 00:30 publication with plausibly crossing-zone interpretation | UNRESOLVED | `TIMEZONE_UNRESOLVED` | ambiguous timestamp; no default zone | Assume Asia/Taipei or UTC by convenience |"
+    },
+    "normative_fields": {
+      "case_delta": "`A03-C06` / `D-A03-C06`",
+      "base": "`B0`",
+      "delta": "Remove time zone for ambiguous 2025-07-07 00:30 publication with plausibly crossing-zone interpretation",
+      "expected": "UNRESOLVED",
+      "reason": "`TIMEZONE_UNRESOLVED`",
+      "lineage_exclusions": "ambiguous timestamp; no default zone",
+      "forbidden": "Assume Asia/Taipei or UTC by convenience",
+      "tiers": "`S`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A03-C07",
+    "delta_ref": "D-A03-C07",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 183,
+      "section": "5 A03",
+      "row": "| `A03-C07` / `D-A03-C07` | `B0` | Substitute notice body 310 at same locator, retaining 300 version timestamp only | New body lacks qualifying prior timestamp | `CONTENT_BINDING_INSUFFICIENT` | CV-JUN-02 cannot use SUP-JUN1-PUB | Inherit timing by URL | `S/X` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 70,
+      "row": "| `A03-C07` · G:183 | `B0` / `D-A03-C07` | `S/X` | Substitute notice body 310 at same locator, retaining 300 version timestamp only | New body lacks qualifying prior timestamp | `CONTENT_BINDING_INSUFFICIENT` | CV-JUN-02 cannot use SUP-JUN1-PUB | Inherit timing by URL |"
+    },
+    "normative_fields": {
+      "case_delta": "`A03-C07` / `D-A03-C07`",
+      "base": "`B0`",
+      "delta": "Substitute notice body 310 at same locator, retaining 300 version timestamp only",
+      "expected": "New body lacks qualifying prior timestamp",
+      "reason": "`CONTENT_BINDING_INSUFFICIENT`",
+      "lineage_exclusions": "CV-JUN-02 cannot use SUP-JUN1-PUB",
+      "forbidden": "Inherit timing by URL",
+      "tiers": "`S/X`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A04-C01",
+    "delta_ref": "D-A04-C01",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 190,
+      "section": "5 A04",
+      "row": "| `A04-C01` / `D-A04-C01` | `B0` | Place issuer 07/03 content and valid publication support in later research observation 2026-01-01, public mode | Public mode temporal SUPPORT may hold; no historic lab capture | `NONE` | CV-JUN-01; issuer release proof; 2026 observation | Claim lab observed 2025 from later verification | `X` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 78,
+      "row": "| `A04-C01` · G:190 | `B0` / `D-A04-C01` | `X` | Place issuer 07/03 content and valid publication support in later research observation 2026-01-01, public mode | Public mode temporal SUPPORT may hold; no historic lab capture | `NONE` | CV-JUN-01; issuer release proof; 2026 observation | Claim lab observed 2025 from later verification |"
+    },
+    "normative_fields": {
+      "case_delta": "`A04-C01` / `D-A04-C01`",
+      "base": "`B0`",
+      "delta": "Place issuer 07/03 content and valid publication support in later research observation 2026-01-01, public mode",
+      "expected": "Public mode temporal SUPPORT may hold; no historic lab capture",
+      "reason": "`NONE`",
+      "lineage_exclusions": "CV-JUN-01; issuer release proof; 2026 observation",
+      "forbidden": "Claim lab observed 2025 from later verification",
+      "tiers": "`X`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A04-C02",
+    "delta_ref": "D-A04-C02",
+    "base_context": "B0/OBS",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 191,
+      "section": "5 A04",
+      "row": "| `A04-C02` / `D-A04-C02` | `B0/OBS` | Use only OBS-JUN1-LATE completion 07/15, ask for observed reconstruction t0 | Not observed-eligible at t0 | `OBSERVATION_AFTER_CUTOFF` | OBS-JUN1-LATE; exclude earlier capture | Substitute issuer time for lab completion | `S/X` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 79,
+      "row": "| `A04-C02` · G:191 | `B0/OBS` / `D-A04-C02` | `S/X` | Use only OBS-JUN1-LATE completion 07/15, ask for observed reconstruction t0 | Not observed-eligible at t0 | `OBSERVATION_AFTER_CUTOFF` | OBS-JUN1-LATE; exclude earlier capture | Substitute issuer time for lab completion |"
+    },
+    "normative_fields": {
+      "case_delta": "`A04-C02` / `D-A04-C02`",
+      "base": "`B0/OBS`",
+      "delta": "Use only OBS-JUN1-LATE completion 07/15, ask for observed reconstruction t0",
+      "expected": "Not observed-eligible at t0",
+      "reason": "`OBSERVATION_AFTER_CUTOFF`",
+      "lineage_exclusions": "OBS-JUN1-LATE; exclude earlier capture",
+      "forbidden": "Substitute issuer time for lab completion",
+      "tiers": "`S/X`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A04-C03",
+    "delta_ref": "D-A04-C03",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 192,
+      "section": "5 A04",
+      "row": "| `A04-C03` / `D-A04-C03` | `B0` | Add new report first published 2025-07-07 07:00, decision at 08:00, info cutoff t0=00:00 | Report NOT_ADMISSIBLE at t0 | `PUBLICATION_NOT_PRE_CUTOFF` | 07:00 release; t0 | Use 08:00 wall-clock as info cutoff | `X` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 80,
+      "row": "| `A04-C03` · G:192 | `B0` / `D-A04-C03` | `X` | Add new report first published 2025-07-07 07:00, decision at 08:00, info cutoff t0=00:00 | Report NOT_ADMISSIBLE at t0 | `PUBLICATION_NOT_PRE_CUTOFF` | 07:00 release; t0 | Use 08:00 wall-clock as info cutoff |"
+    },
+    "normative_fields": {
+      "case_delta": "`A04-C03` / `D-A04-C03`",
+      "base": "`B0`",
+      "delta": "Add new report first published 2025-07-07 07:00, decision at 08:00, info cutoff t0=00:00",
+      "expected": "Report NOT_ADMISSIBLE at t0",
+      "reason": "`PUBLICATION_NOT_PRE_CUTOFF`",
+      "lineage_exclusions": "07:00 release; t0",
+      "forbidden": "Use 08:00 wall-clock as info cutoff",
+      "tiers": "`X`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A04-C04",
+    "delta_ref": "D-A04-C04",
+    "base_context": "B0",
+    "owner": "S2",
+    "source": {
+      "alias": "G",
+      "line": 193,
+      "section": "5 A04",
+      "row": "| `A04-C04` / `D-A04-C04` | `B0` | Execute frozen qualified Q2 computation at 2025-07-07 07:30, no new input | VALUE_AVAILABLE(600); operational availability by 08:00 not presumed | `NONE` | A-APR-01,A-MAY-01,A-JUN-01 | Invalidate qualified info solely for late compute | `X` | `S2` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 81,
+      "row": "| `A04-C04` · G:193 | `B0` / `D-A04-C04` | `X` | Execute frozen qualified Q2 computation at 2025-07-07 07:30, no new input | VALUE_AVAILABLE(600); operational availability by 08:00 not presumed | `NONE` | A-APR-01,A-MAY-01,A-JUN-01 | Invalidate qualified info solely for late compute |"
+    },
+    "normative_fields": {
+      "case_delta": "`A04-C04` / `D-A04-C04`",
+      "base": "`B0`",
+      "delta": "Execute frozen qualified Q2 computation at 2025-07-07 07:30, no new input",
+      "expected": "VALUE_AVAILABLE(600); operational availability by 08:00 not presumed",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-APR-01,A-MAY-01,A-JUN-01",
+      "forbidden": "Invalidate qualified info solely for late compute",
+      "tiers": "`X`",
+      "owner": "`S2`"
+    },
+    "required_tiers": [
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A05-C01",
+    "delta_ref": "D-A05-C01",
+    "base_context": "B0",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 200,
+      "section": "5 A05",
+      "row": "| `A05-C01` / `D-A05-C01` | `B0` | No eligible 07/10 correction in E0 | SELECTED(A-JUN-01,300) | `NONE` | A-JUN-01; SUP-JUN1-PUB; RCPT-E0 | Select future 310 | `X` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 89,
+      "row": "| `A05-C01` · G:200 | `B0` / `D-A05-C01` | `X` | No eligible 07/10 correction in E0 | SELECTED(A-JUN-01,300) | `NONE` | A-JUN-01; SUP-JUN1-PUB; RCPT-E0 | Select future 310 |"
+    },
+    "normative_fields": {
+      "case_delta": "`A05-C01` / `D-A05-C01`",
+      "base": "`B0`",
+      "delta": "No eligible 07/10 correction in E0",
+      "expected": "SELECTED(A-JUN-01,300)",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-JUN-01; SUP-JUN1-PUB; RCPT-E0",
+      "forbidden": "Select future 310",
+      "tiers": "`X`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A05-C02",
+    "delta_ref": "D-A05-C02",
+    "base_context": "B1",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 201,
+      "section": "5 A05",
+      "row": "| `A05-C02` / `D-A05-C02` | `B1` | Use qualified REL-JUN-01 and CV-JUN-02 in E1 | SELECTED(A-JUN-02,310) | `NONE` | A-JUN-02; SUP-JUN2-PUB; SUP-JUN-REV; RCPT-E1 | Keep obsolete version without policy cause | `X` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 90,
+      "row": "| `A05-C02` · G:201 | `B1` / `D-A05-C02` | `X` | Use qualified REL-JUN-01 and CV-JUN-02 in E1 | SELECTED(A-JUN-02,310) | `NONE` | A-JUN-02; SUP-JUN2-PUB; SUP-JUN-REV; RCPT-E1 | Keep obsolete version without policy cause |"
+    },
+    "normative_fields": {
+      "case_delta": "`A05-C02` / `D-A05-C02`",
+      "base": "`B1`",
+      "delta": "Use qualified REL-JUN-01 and CV-JUN-02 in E1",
+      "expected": "SELECTED(A-JUN-02,310)",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-JUN-02; SUP-JUN2-PUB; SUP-JUN-REV; RCPT-E1",
+      "forbidden": "Keep obsolete version without policy cause",
+      "tiers": "`X`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A05-C03",
+    "delta_ref": "D-A05-C03",
+    "base_context": "B3",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 202,
+      "section": "5 A05",
+      "row": "| `A05-C03` / `D-A05-C03` | `B3` | Use E1 at earlier t0; 07/10 publication after t0 | SELECTED(A-JUN-01,300) | `NONE` | A-JUN-01; exclude A-JUN-02 at t0 | Backdate correction to t0 | `X` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 91,
+      "row": "| `A05-C03` · G:202 | `B3` / `D-A05-C03` | `X` | Use E1 at earlier t0; 07/10 publication after t0 | SELECTED(A-JUN-01,300) | `NONE` | A-JUN-01; exclude A-JUN-02 at t0 | Backdate correction to t0 |"
+    },
+    "normative_fields": {
+      "case_delta": "`A05-C03` / `D-A05-C03`",
+      "base": "`B3`",
+      "delta": "Use E1 at earlier t0; 07/10 publication after t0",
+      "expected": "SELECTED(A-JUN-01,300)",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-JUN-01; exclude A-JUN-02 at t0",
+      "forbidden": "Backdate correction to t0",
+      "tiers": "`X`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A05-C04",
+    "delta_ref": "D-A05-C04",
+    "base_context": "B0",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 203,
+      "section": "5 A05",
+      "row": "| `A05-C04` / `D-A05-C04` | `B0` | Replace E0 with isolated E1 view containing independently supported 07/10 REL-JUN-01; remove SUP-JUN1-PUB prior publication proof of old 300 | Old early target UNRESOLVED; relation independently supported at its actual time | `TEMPORAL_BOUND_INSUFFICIENT` | REL-JUN-01 independently; A-JUN-01 early unsupported | Infer old first publication from later correction | `S/X` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 92,
+      "row": "| `A05-C04` · G:203 | `B0` / `D-A05-C04` | `S/X` | Replace E0 with isolated E1 view containing independently supported 07/10 REL-JUN-01; remove SUP-JUN1-PUB prior publication proof of old 300 | Old early target UNRESOLVED; relation independently supported at its actual time | `TEMPORAL_BOUND_INSUFFICIENT` | REL-JUN-01 independently; A-JUN-01 early unsupported | Infer old first publication from later correction |"
+    },
+    "normative_fields": {
+      "case_delta": "`A05-C04` / `D-A05-C04`",
+      "base": "`B0`",
+      "delta": "Replace E0 with isolated E1 view containing independently supported 07/10 REL-JUN-01; remove SUP-JUN1-PUB prior publication proof of old 300",
+      "expected": "Old early target UNRESOLVED; relation independently supported at its actual time",
+      "reason": "`TEMPORAL_BOUND_INSUFFICIENT`",
+      "lineage_exclusions": "REL-JUN-01 independently; A-JUN-01 early unsupported",
+      "forbidden": "Infer old first publication from later correction",
+      "tiers": "`S/X`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A05-C05",
+    "delta_ref": "D-A05-C05",
+    "base_context": "B0",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 204,
+      "section": "5 A05",
+      "row": "| `A05-C05` / `D-A05-C05` | `B0` | Create separate E2 research snapshot: newly discovered issuer correction A-JUN-EARLY-CORR=305 published 07/05 12:00+08, with own content-time proof and explicit relation A-JUN-01→A-JUN-EARLY-CORR; complete bounded receipt; evaluate new M3 at t0 | New M3 SELECTED(305), derived Q2=605; original M0 stays 600 | `NONE` | M3 includes A-JUN-EARLY-CORR and qualified relation; M0 pinned to A-JUN-01 | Mutate original M0 or treat late discovery as late publication | `X/P` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 93,
+      "row": "| `A05-C05` · G:204 | `B0` / `D-A05-C05` | `X/P` | Create separate E2 research snapshot: newly discovered issuer correction A-JUN-EARLY-CORR=305 published 07/05 12:00+08, with own content-time proof and explicit relation A-JUN-01→A-JUN-EARLY-CORR; complete bounded receipt; evaluate new M3 at t0 | New M3 SELECTED(305), derived Q2=605; original M0 stays 600 | `NONE` | M3 includes A-JUN-EARLY-CORR and qualified relation; M0 pinned to A-JUN-01 | Mutate original M0 or treat late discovery as late publication |"
+    },
+    "normative_fields": {
+      "case_delta": "`A05-C05` / `D-A05-C05`",
+      "base": "`B0`",
+      "delta": "Create separate E2 research snapshot: newly discovered issuer correction A-JUN-EARLY-CORR=305 published 07/05 12:00+08, with own content-time proof and explicit relation A-JUN-01→A-JUN-EARLY-CORR; complete bounded receipt; evaluate new M3 at t0",
+      "expected": "New M3 SELECTED(305), derived Q2=605; original M0 stays 600",
+      "reason": "`NONE`",
+      "lineage_exclusions": "M3 includes A-JUN-EARLY-CORR and qualified relation; M0 pinned to A-JUN-01",
+      "forbidden": "Mutate original M0 or treat late discovery as late publication",
+      "tiers": "`X/P`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "X",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A06-C01",
+    "delta_ref": "D-A06-C01",
+    "base_context": "B0",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 211,
+      "section": "5 A06",
+      "row": "| `A06-C01` / `D-A06-C01` | `B0` | Change required RCPT-E0 search state COMPLETED to NOT_PERFORMED | UNRESOLVED | `COVERAGE_INSUFFICIENT` | RCPT-E0 incomplete | Treat absent search as empty universe | `S` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 101,
+      "row": "| `A06-C01` · G:211 | `B0` / `D-A06-C01` | `S` | Change required RCPT-E0 search state COMPLETED to NOT_PERFORMED | UNRESOLVED | `COVERAGE_INSUFFICIENT` | RCPT-E0 incomplete | Treat absent search as empty universe |"
+    },
+    "normative_fields": {
+      "case_delta": "`A06-C01` / `D-A06-C01`",
+      "base": "`B0`",
+      "delta": "Change required RCPT-E0 search state COMPLETED to NOT_PERFORMED",
+      "expected": "UNRESOLVED",
+      "reason": "`COVERAGE_INSUFFICIENT`",
+      "lineage_exclusions": "RCPT-E0 incomplete",
+      "forbidden": "Treat absent search as empty universe",
+      "tiers": "`S`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A06-C02",
+    "delta_ref": "D-A06-C02",
+    "base_context": "B0",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 212,
+      "section": "5 A06",
+      "row": "| `A06-C02` / `D-A06-C02` | `B0` | Select SUB-B-APR target; certified complete empty source scope and no material leads | NO_QUALIFIED_CLAIM | `NO_QUALIFIED_WITHIN_SCOPE` | RCPT-B-APR-COMPLETE-EMPTY | Generalize bounded absence to whole world | `S` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 102,
+      "row": "| `A06-C02` · G:212 | `B0` / `D-A06-C02` | `S` | Select SUB-B-APR target; certified complete empty source scope and no material leads | NO_QUALIFIED_CLAIM | `NO_QUALIFIED_WITHIN_SCOPE` | RCPT-B-APR-COMPLETE-EMPTY | Generalize bounded absence to whole world |"
+    },
+    "normative_fields": {
+      "case_delta": "`A06-C02` / `D-A06-C02`",
+      "base": "`B0`",
+      "delta": "Select SUB-B-APR target; certified complete empty source scope and no material leads",
+      "expected": "NO_QUALIFIED_CLAIM",
+      "reason": "`NO_QUALIFIED_WITHIN_SCOPE`",
+      "lineage_exclusions": "RCPT-B-APR-COMPLETE-EMPTY",
+      "forbidden": "Generalize bounded absence to whole world",
+      "tiers": "`S`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A06-C03",
+    "delta_ref": "D-A06-C03",
+    "base_context": "B0",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 213,
+      "section": "5 A06",
+      "row": "| `A06-C03` / `D-A06-C03` | `B0` | Add candidate lead L-ALT for same June subject plausibly public before t0 with missing content/time; receipt records material lead | UNRESOLVED | `MATERIAL_CANDIDATE_UNRESOLVED` | L-ALT; materiality rule and receipt | Ignore concrete material unknown | `S` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 103,
+      "row": "| `A06-C03` · G:213 | `B0` / `D-A06-C03` | `S` | Add candidate lead L-ALT for same June subject plausibly public before t0 with missing content/time; receipt records material lead | UNRESOLVED | `MATERIAL_CANDIDATE_UNRESOLVED` | L-ALT; materiality rule and receipt | Ignore concrete material unknown |"
+    },
+    "normative_fields": {
+      "case_delta": "`A06-C03` / `D-A06-C03`",
+      "base": "`B0`",
+      "delta": "Add candidate lead L-ALT for same June subject plausibly public before t0 with missing content/time; receipt records material lead",
+      "expected": "UNRESOLVED",
+      "reason": "`MATERIAL_CANDIDATE_UNRESOLVED`",
+      "lineage_exclusions": "L-ALT; materiality rule and receipt",
+      "forbidden": "Ignore concrete material unknown",
+      "tiers": "`S`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A06-C04",
+    "delta_ref": "D-A06-C04",
+    "base_context": "B0",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 214,
+      "section": "5 A06",
+      "row": "| `A06-C04` / `D-A06-C04` | `B0` | Add A-JUN-CONFLICT value 315 at 07/03 15:00, independent issuer pub proof; update complete receipt to include it; no revision relation and peer authority | UNRESOLVED | `MATERIAL_CANDIDATE_UNRESOLVED` | A-JUN-01,A-JUN-CONFLICT; no qualifying precedence | Break tie by latest timestamp/ID | `S/M` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 104,
+      "row": "| `A06-C04` · G:214 | `B0` / `D-A06-C04` | `S/M` | Add A-JUN-CONFLICT value 315 at 07/03 15:00, independent issuer pub proof; update complete receipt to include it; no revision relation and peer authority | UNRESOLVED | `MATERIAL_CANDIDATE_UNRESOLVED` | A-JUN-01,A-JUN-CONFLICT; no qualifying precedence | Break tie by latest timestamp/ID |"
+    },
+    "normative_fields": {
+      "case_delta": "`A06-C04` / `D-A06-C04`",
+      "base": "`B0`",
+      "delta": "Add A-JUN-CONFLICT value 315 at 07/03 15:00, independent issuer pub proof; update complete receipt to include it; no revision relation and peer authority",
+      "expected": "UNRESOLVED",
+      "reason": "`MATERIAL_CANDIDATE_UNRESOLVED`",
+      "lineage_exclusions": "A-JUN-01,A-JUN-CONFLICT; no qualifying precedence",
+      "forbidden": "Break tie by latest timestamp/ID",
+      "tiers": "`S/M`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S",
+      "M"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A06-C05",
+    "delta_ref": "D-A06-C05",
+    "base_context": "B0/VAL",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 215,
+      "section": "5 A06",
+      "row": "| `A06-C05` / `D-A06-C05` | `B0/VAL` | Add independently published issuer A-JUN-PEER value 300 and update completed receipt; select CONTENT_VALUE target; also evaluate same fixture ATTRIBUTED_ASSERTION target | CONTENT_VALUE SELECTED(300) with both origins; ATTRIBUTED_ASSERTION UNRESOLVED if nonunique | `ATTRIBUTION_UNRESOLVED for attributed target` | A-JUN-01,A-JUN-PEER both retained | Merge assertion identities when values coincide | `S` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 105,
+      "row": "| `A06-C05` · G:215 | `B0/VAL` / `D-A06-C05` | `S` | Add independently published issuer A-JUN-PEER value 300 and update completed receipt; select CONTENT_VALUE target; also evaluate same fixture ATTRIBUTED_ASSERTION target | CONTENT_VALUE SELECTED(300) with both origins; ATTRIBUTED_ASSERTION UNRESOLVED if nonunique | `ATTRIBUTION_UNRESOLVED for attributed target` | A-JUN-01,A-JUN-PEER both retained | Merge assertion identities when values coincide |"
+    },
+    "normative_fields": {
+      "case_delta": "`A06-C05` / `D-A06-C05`",
+      "base": "`B0/VAL`",
+      "delta": "Add independently published issuer A-JUN-PEER value 300 and update completed receipt; select CONTENT_VALUE target; also evaluate same fixture ATTRIBUTED_ASSERTION target",
+      "expected": "CONTENT_VALUE SELECTED(300) with both origins; ATTRIBUTED_ASSERTION UNRESOLVED if nonunique",
+      "reason": "`ATTRIBUTION_UNRESOLVED for attributed target`",
+      "lineage_exclusions": "A-JUN-01,A-JUN-PEER both retained",
+      "forbidden": "Merge assertion identities when values coincide",
+      "tiers": "`S`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A06-C06",
+    "delta_ref": "D-A06-C06",
+    "base_context": "B0",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 216,
+      "section": "5 A06",
+      "row": "| `A06-C06` / `D-A06-C06` | `B0` | Required receipt/provider query raises injected read error before completing discovery | OPERATIONAL_ERROR; no normal S3 outcome | `REQUIRED_OPERATION_FAILED` | failed operation receipt and affected scope | Classify failed search as no claim | `S/P` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 106,
+      "row": "| `A06-C06` · G:216 | `B0` / `D-A06-C06` | `S/P` | Required receipt/provider query raises injected read error before completing discovery | OPERATIONAL_ERROR; no normal S3 outcome | `REQUIRED_OPERATION_FAILED` | failed operation receipt and affected scope | Classify failed search as no claim |"
+    },
+    "normative_fields": {
+      "case_delta": "`A06-C06` / `D-A06-C06`",
+      "base": "`B0`",
+      "delta": "Required receipt/provider query raises injected read error before completing discovery",
+      "expected": "OPERATIONAL_ERROR; no normal S3 outcome",
+      "reason": "`REQUIRED_OPERATION_FAILED`",
+      "lineage_exclusions": "failed operation receipt and affected scope",
+      "forbidden": "Classify failed search as no claim",
+      "tiers": "`S/P`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A07-C01",
+    "delta_ref": "D-A07-C01",
+    "base_context": "B1",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 223,
+      "section": "5 A07",
+      "row": "| `A07-C01` / `D-A07-C01` | `B1` | REL-JUN-01 scope exactly SUB-A-JUN; order-count independent subject | Only monthly revenue v1→v2 applicability changed | `NONE` | REL-JUN-01→SUB-A-JUN | Extend relation to all fields in notice | `S/X` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 114,
+      "row": "| `A07-C01` · G:223 | `B1` / `D-A07-C01` | `S/X` | REL-JUN-01 scope exactly SUB-A-JUN; order-count independent subject | Only monthly revenue v1→v2 applicability changed | `NONE` | REL-JUN-01→SUB-A-JUN | Extend relation to all fields in notice |"
+    },
+    "normative_fields": {
+      "case_delta": "`A07-C01` / `D-A07-C01`",
+      "base": "`B1`",
+      "delta": "REL-JUN-01 scope exactly SUB-A-JUN; order-count independent subject",
+      "expected": "Only monthly revenue v1→v2 applicability changed",
+      "reason": "`NONE`",
+      "lineage_exclusions": "REL-JUN-01→SUB-A-JUN",
+      "forbidden": "Extend relation to all fields in notice",
+      "tiers": "`S/X`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A07-C02",
+    "delta_ref": "D-A07-C02",
+    "base_context": "B1",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 224,
+      "section": "5 A07",
+      "row": "| `A07-C02` / `D-A07-C02` | `B1` | With unchanged orders 7 in CV-JUN-01 and CV-JUN-02, no order-correction evidence | No revision edge for SUB-A-JUN-ORDERS | `RELATION_SCOPE_MISMATCH if asserted` | A-ORD-01,A-ORD-02; exclude order revision edge | Fabricate order revision by document version | `S` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 115,
+      "row": "| `A07-C02` · G:224 | `B1` / `D-A07-C02` | `S` | With unchanged orders 7 in CV-JUN-01 and CV-JUN-02, no order-correction evidence | No revision edge for SUB-A-JUN-ORDERS | `RELATION_SCOPE_MISMATCH if asserted` | A-ORD-01,A-ORD-02; exclude order revision edge | Fabricate order revision by document version |"
+    },
+    "normative_fields": {
+      "case_delta": "`A07-C02` / `D-A07-C02`",
+      "base": "`B1`",
+      "delta": "With unchanged orders 7 in CV-JUN-01 and CV-JUN-02, no order-correction evidence",
+      "expected": "No revision edge for SUB-A-JUN-ORDERS",
+      "reason": "`RELATION_SCOPE_MISMATCH if asserted`",
+      "lineage_exclusions": "A-ORD-01,A-ORD-02; exclude order revision edge",
+      "forbidden": "Fabricate order revision by document version",
+      "tiers": "`S`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A07-C03",
+    "delta_ref": "D-A07-C03",
+    "base_context": "B1",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 225,
+      "section": "5 A07",
+      "row": "| `A07-C03` / `D-A07-C03` | `B1` | Use new independently attributable A-ORD-02=7 from 07/10 alongside A-ORD-01=7 | Distinct assertion/publication identities | `NONE` | A-ORD-01 and A-ORD-02 | Collapse equal content into same publication | `S` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 116,
+      "row": "| `A07-C03` · G:225 | `B1` / `D-A07-C03` | `S` | Use new independently attributable A-ORD-02=7 from 07/10 alongside A-ORD-01=7 | Distinct assertion/publication identities | `NONE` | A-ORD-01 and A-ORD-02 | Collapse equal content into same publication |"
+    },
+    "normative_fields": {
+      "case_delta": "`A07-C03` / `D-A07-C03`",
+      "base": "`B1`",
+      "delta": "Use new independently attributable A-ORD-02=7 from 07/10 alongside A-ORD-01=7",
+      "expected": "Distinct assertion/publication identities",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-ORD-01 and A-ORD-02",
+      "forbidden": "Collapse equal content into same publication",
+      "tiers": "`S`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A07-C04",
+    "delta_ref": "D-A07-C04",
+    "base_context": "B1",
+    "owner": "S3",
+    "source": {
+      "alias": "G",
+      "line": 226,
+      "section": "5 A07",
+      "row": "| `A07-C04` / `D-A07-C04` | `B1` | Add supported withdrawal of A-JUN-02 at 07/11, without restoration of A-JUN-01, no alternative qualified claim | UNRESOLVED under withdrawal applicability policy | `RELATION_UNQUALIFIED for presumed rollback` | withdrawal event; A-JUN-01 not restored | Automatically restore old 300 | `S` | `S3` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 117,
+      "row": "| `A07-C04` · G:226 | `B1` / `D-A07-C04` | `S` | Add supported withdrawal of A-JUN-02 at 07/11, without restoration of A-JUN-01, no alternative qualified claim | UNRESOLVED under withdrawal applicability policy | `RELATION_UNQUALIFIED for presumed rollback` | withdrawal event; A-JUN-01 not restored | Automatically restore old 300 |"
+    },
+    "normative_fields": {
+      "case_delta": "`A07-C04` / `D-A07-C04`",
+      "base": "`B1`",
+      "delta": "Add supported withdrawal of A-JUN-02 at 07/11, without restoration of A-JUN-01, no alternative qualified claim",
+      "expected": "UNRESOLVED under withdrawal applicability policy",
+      "reason": "`RELATION_UNQUALIFIED for presumed rollback`",
+      "lineage_exclusions": "withdrawal event; A-JUN-01 not restored",
+      "forbidden": "Automatically restore old 300",
+      "tiers": "`S`",
+      "owner": "`S3`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A08-C01",
+    "delta_ref": "D-A08-C01",
+    "base_context": "B0",
+    "owner": "S4-A/B",
+    "source": {
+      "alias": "G",
+      "line": 233,
+      "section": "5 A08",
+      "row": "| `A08-C01` / `D-A08-C01` | `B0` | Use three selected compatible months 100,200,300, exact integer rule FS-Q2-1 | VALUE_AVAILABLE(600) | `NONE` | A-APR-01,A-MAY-01,A-JUN-01 | Pass solely by coincidental sum using latest input | `S/X` | `S4-A/B` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 125,
+      "row": "| `A08-C01` · G:233 | `B0` / `D-A08-C01` | `S/X` | Use three selected compatible months 100,200,300, exact integer rule FS-Q2-1 | VALUE_AVAILABLE(600) | `NONE` | A-APR-01,A-MAY-01,A-JUN-01 | Pass solely by coincidental sum using latest input |"
+    },
+    "normative_fields": {
+      "case_delta": "`A08-C01` / `D-A08-C01`",
+      "base": "`B0`",
+      "delta": "Use three selected compatible months 100,200,300, exact integer rule FS-Q2-1",
+      "expected": "VALUE_AVAILABLE(600)",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-APR-01,A-MAY-01,A-JUN-01",
+      "forbidden": "Pass solely by coincidental sum using latest input",
+      "tiers": "`S/X`",
+      "owner": "`S4-A/B`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A08-C02",
+    "delta_ref": "D-A08-C02",
+    "base_context": "B1",
+    "owner": "S4-A/B",
+    "source": {
+      "alias": "G",
+      "line": 234,
+      "section": "5 A08",
+      "row": "| `A08-C02` / `D-A08-C02` | `B1` | Use qualified correction, months 100,200,310 | VALUE_AVAILABLE(610) | `NONE` | A-APR-01,A-MAY-01,A-JUN-02 | Keep old June assertion in late derived lineage | `S/X` | `S4-A/B` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 126,
+      "row": "| `A08-C02` · G:234 | `B1` / `D-A08-C02` | `S/X` | Use qualified correction, months 100,200,310 | VALUE_AVAILABLE(610) | `NONE` | A-APR-01,A-MAY-01,A-JUN-02 | Keep old June assertion in late derived lineage |"
+    },
+    "normative_fields": {
+      "case_delta": "`A08-C02` / `D-A08-C02`",
+      "base": "`B1`",
+      "delta": "Use qualified correction, months 100,200,310",
+      "expected": "VALUE_AVAILABLE(610)",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-APR-01,A-MAY-01,A-JUN-02",
+      "forbidden": "Keep old June assertion in late derived lineage",
+      "tiers": "`S/X`",
+      "owner": "`S4-A/B`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A08-C03",
+    "delta_ref": "D-A08-C03",
+    "base_context": "B0",
+    "owner": "S4-A/B",
+    "source": {
+      "alias": "G",
+      "line": 235,
+      "section": "5 A08",
+      "row": "| `A08-C03` / `D-A08-C03` | `B0` | Delete May claim and change complete May search receipt to empty, no material unknown | NOT_COMPUTABLE; no numeric Q2 | `DEPENDENCY_NOT_COMPUTABLE` | May NO_QUALIFIED_CLAIM; Apr/June selected | Implicitly insert zero or skip month | `S` | `S4-A/B` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 127,
+      "row": "| `A08-C03` · G:235 | `B0` / `D-A08-C03` | `S` | Delete May claim and change complete May search receipt to empty, no material unknown | NOT_COMPUTABLE; no numeric Q2 | `DEPENDENCY_NOT_COMPUTABLE` | May NO_QUALIFIED_CLAIM; Apr/June selected | Implicitly insert zero or skip month |"
+    },
+    "normative_fields": {
+      "case_delta": "`A08-C03` / `D-A08-C03`",
+      "base": "`B0`",
+      "delta": "Delete May claim and change complete May search receipt to empty, no material unknown",
+      "expected": "NOT_COMPUTABLE; no numeric Q2",
+      "reason": "`DEPENDENCY_NOT_COMPUTABLE`",
+      "lineage_exclusions": "May NO_QUALIFIED_CLAIM; Apr/June selected",
+      "forbidden": "Implicitly insert zero or skip month",
+      "tiers": "`S`",
+      "owner": "`S4-A/B`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A08-C04",
+    "delta_ref": "D-A08-C04",
+    "base_context": "B0",
+    "owner": "S4-A/B",
+    "source": {
+      "alias": "G",
+      "line": 236,
+      "section": "5 A08",
+      "row": "| `A08-C04` / `D-A08-C04` | `B0` | Add material unresolved June competitor with bounded lead as A06-C03 | UNRESOLVED; no numeric Q2 | `DEPENDENCY_UNRESOLVED` | June UNRESOLVED lead; no selected substitute | Use 300 just to finish sum | `S/X` | `S4-A/B` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 128,
+      "row": "| `A08-C04` · G:236 | `B0` / `D-A08-C04` | `S/X` | Add material unresolved June competitor with bounded lead as A06-C03 | UNRESOLVED; no numeric Q2 | `DEPENDENCY_UNRESOLVED` | June UNRESOLVED lead; no selected substitute | Use 300 just to finish sum |"
+    },
+    "normative_fields": {
+      "case_delta": "`A08-C04` / `D-A08-C04`",
+      "base": "`B0`",
+      "delta": "Add material unresolved June competitor with bounded lead as A06-C03",
+      "expected": "UNRESOLVED; no numeric Q2",
+      "reason": "`DEPENDENCY_UNRESOLVED`",
+      "lineage_exclusions": "June UNRESOLVED lead; no selected substitute",
+      "forbidden": "Use 300 just to finish sum",
+      "tiers": "`S/X`",
+      "owner": "`S4-A/B`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A08-C05",
+    "delta_ref": "D-A08-C05",
+    "base_context": "B0",
+    "owner": "S4-A/B",
+    "source": {
+      "alias": "G",
+      "line": 237,
+      "section": "5 A08",
+      "row": "| `A08-C05` / `D-A08-C05` | `B0` | Change May selected claim reporting_scope to individual, not consolidated; mapping verifies DIFFERENT | NOT_COMPUTABLE under FS-Q2-1 | `ACCOUNTING_BASIS_INCOMPATIBLE` | May incompatible; Apr/June compatible | Mix consolidation bases for Q2 | `S` | `S4-A/B` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 129,
+      "row": "| `A08-C05` · G:237 | `B0` / `D-A08-C05` | `S` | Change May selected claim reporting_scope to individual, not consolidated; mapping verifies DIFFERENT | NOT_COMPUTABLE under FS-Q2-1 | `ACCOUNTING_BASIS_INCOMPATIBLE` | May incompatible; Apr/June compatible | Mix consolidation bases for Q2 |"
+    },
+    "normative_fields": {
+      "case_delta": "`A08-C05` / `D-A08-C05`",
+      "base": "`B0`",
+      "delta": "Change May selected claim reporting_scope to individual, not consolidated; mapping verifies DIFFERENT",
+      "expected": "NOT_COMPUTABLE under FS-Q2-1",
+      "reason": "`ACCOUNTING_BASIS_INCOMPATIBLE`",
+      "lineage_exclusions": "May incompatible; Apr/June compatible",
+      "forbidden": "Mix consolidation bases for Q2",
+      "tiers": "`S`",
+      "owner": "`S4-A/B`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A08-C06",
+    "delta_ref": "D-A08-C06",
+    "base_context": "B0",
+    "owner": "S4-A/B",
+    "source": {
+      "alias": "G",
+      "line": 238,
+      "section": "5 A08",
+      "row": "| `A08-C06` / `D-A08-C06` | `B0` | Replace FS-Q2-1 month list [APR,MAY,JUN] by [APR,MAY,JUN,JUN] with unique-month contract unchanged | CONTRACT_VIOLATION | `INVALID_FEATURE_SPEC` | duplicate June in spec | Double-count June and call it quarter | `S` | `S4-A/B` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 130,
+      "row": "| `A08-C06` · G:238 | `B0` / `D-A08-C06` | `S` | Replace FS-Q2-1 month list [APR,MAY,JUN] by [APR,MAY,JUN,JUN] with unique-month contract unchanged | CONTRACT_VIOLATION | `INVALID_FEATURE_SPEC` | duplicate June in spec | Double-count June and call it quarter |"
+    },
+    "normative_fields": {
+      "case_delta": "`A08-C06` / `D-A08-C06`",
+      "base": "`B0`",
+      "delta": "Replace FS-Q2-1 month list [APR,MAY,JUN] by [APR,MAY,JUN,JUN] with unique-month contract unchanged",
+      "expected": "CONTRACT_VIOLATION",
+      "reason": "`INVALID_FEATURE_SPEC`",
+      "lineage_exclusions": "duplicate June in spec",
+      "forbidden": "Double-count June and call it quarter",
+      "tiers": "`S`",
+      "owner": "`S4-A/B`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A09-C01",
+    "delta_ref": "D-A09-C01",
+    "base_context": "B0",
+    "owner": "S4-C",
+    "source": {
+      "alias": "G",
+      "line": 245,
+      "section": "5 A09",
+      "row": "| `A09-C01` / `D-A09-C01` | `B0` | Compute FS-Q2-1 with θ=∅, no fit dependencies | VALUE_AVAILABLE(600); fitting NOT_APPLICABLE | `NONE` | three source months; no synthetic model state | Invent artificial fitted-state proof | `S` | `S4-C` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 138,
+      "row": "| `A09-C01` · G:245 | `B0` / `D-A09-C01` | `S` | Compute FS-Q2-1 with θ=∅, no fit dependencies | VALUE_AVAILABLE(600); fitting NOT_APPLICABLE | `NONE` | three source months; no synthetic model state | Invent artificial fitted-state proof |"
+    },
+    "normative_fields": {
+      "case_delta": "`A09-C01` / `D-A09-C01`",
+      "base": "`B0`",
+      "delta": "Compute FS-Q2-1 with θ=∅, no fit dependencies",
+      "expected": "VALUE_AVAILABLE(600); fitting NOT_APPLICABLE",
+      "reason": "`NONE`",
+      "lineage_exclusions": "three source months; no synthetic model state",
+      "forbidden": "Invent artificial fitted-state proof",
+      "tiers": "`S`",
+      "owner": "`S4-C`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A09-C02",
+    "delta_ref": "D-A09-C02",
+    "base_context": "B0",
+    "owner": "S4-C",
+    "source": {
+      "alias": "G",
+      "line": 246,
+      "section": "5 A09",
+      "row": "| `A09-C02` / `D-A09-C02` | `B0` | Set FIT-0 cutoff t0, training view PRE-T0, dependency on A-JUN-02 first public 07/10 18:30 | Fitted state inadmissible; block affected derived feature | `FUTURE_DEPENDENCY` | FIT-0→A-JUN-02; after fit cutoff | Admit fitted state from future claim | `S/X` | `S4-C` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 139,
+      "row": "| `A09-C02` · G:246 | `B0` / `D-A09-C02` | `S/X` | Set FIT-0 cutoff t0, training view PRE-T0, dependency on A-JUN-02 first public 07/10 18:30 | Fitted state inadmissible; block affected derived feature | `FUTURE_DEPENDENCY` | FIT-0→A-JUN-02; after fit cutoff | Admit fitted state from future claim |"
+    },
+    "normative_fields": {
+      "case_delta": "`A09-C02` / `D-A09-C02`",
+      "base": "`B0`",
+      "delta": "Set FIT-0 cutoff t0, training view PRE-T0, dependency on A-JUN-02 first public 07/10 18:30",
+      "expected": "Fitted state inadmissible; block affected derived feature",
+      "reason": "`FUTURE_DEPENDENCY`",
+      "lineage_exclusions": "FIT-0→A-JUN-02; after fit cutoff",
+      "forbidden": "Admit fitted state from future claim",
+      "tiers": "`S/X`",
+      "owner": "`S4-C`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A09-C03",
+    "delta_ref": "D-A09-C03",
+    "base_context": "B0",
+    "owner": "S4-C",
+    "source": {
+      "alias": "G",
+      "line": 247,
+      "section": "5 A09",
+      "row": "| `A09-C03` / `D-A09-C03` | `B0` | Set FIT-0 cutoff t0, dependent label L-0 with explicitly declared maturity 07/12 00:00 | Fitted state inadmissible | `IMMATURE_LABEL` | FIT-0→L-0 maturity after t0 | Use immature target in fit | `S` | `S4-C` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 140,
+      "row": "| `A09-C03` · G:247 | `B0` / `D-A09-C03` | `S` | Set FIT-0 cutoff t0, dependent label L-0 with explicitly declared maturity 07/12 00:00 | Fitted state inadmissible | `IMMATURE_LABEL` | FIT-0→L-0 maturity after t0 | Use immature target in fit |"
+    },
+    "normative_fields": {
+      "case_delta": "`A09-C03` / `D-A09-C03`",
+      "base": "`B0`",
+      "delta": "Set FIT-0 cutoff t0, dependent label L-0 with explicitly declared maturity 07/12 00:00",
+      "expected": "Fitted state inadmissible",
+      "reason": "`IMMATURE_LABEL`",
+      "lineage_exclusions": "FIT-0→L-0 maturity after t0",
+      "forbidden": "Use immature target in fit",
+      "tiers": "`S`",
+      "owner": "`S4-C`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A09-C04",
+    "delta_ref": "D-A09-C04",
+    "base_context": "B0",
+    "owner": "S4-C",
+    "source": {
+      "alias": "G",
+      "line": 248,
+      "section": "5 A09",
+      "row": "| `A09-C04` / `D-A09-C04` | `B0` | Specify feature F-CYCLE requires state THETA-CYCLE and THETA-CYCLE requires F-CYCLE | CONTRACT_VIOLATION | `DEPENDENCY_CYCLE` | F-CYCLE↔THETA-CYCLE | Evaluate cyclic information dependency | `S` | `S4-C` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 141,
+      "row": "| `A09-C04` · G:248 | `B0` / `D-A09-C04` | `S` | Specify feature F-CYCLE requires state THETA-CYCLE and THETA-CYCLE requires F-CYCLE | CONTRACT_VIOLATION | `DEPENDENCY_CYCLE` | F-CYCLE↔THETA-CYCLE | Evaluate cyclic information dependency |"
+    },
+    "normative_fields": {
+      "case_delta": "`A09-C04` / `D-A09-C04`",
+      "base": "`B0`",
+      "delta": "Specify feature F-CYCLE requires state THETA-CYCLE and THETA-CYCLE requires F-CYCLE",
+      "expected": "CONTRACT_VIOLATION",
+      "reason": "`DEPENDENCY_CYCLE`",
+      "lineage_exclusions": "F-CYCLE↔THETA-CYCLE",
+      "forbidden": "Evaluate cyclic information dependency",
+      "tiers": "`S`",
+      "owner": "`S4-C`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A09-C05",
+    "delta_ref": "D-A09-C05",
+    "base_context": "B0",
+    "owner": "S4-C",
+    "source": {
+      "alias": "G",
+      "line": 249,
+      "section": "5 A09",
+      "row": "| `A09-C05` / `D-A09-C05` | `B0` | Target encoder TE-OWN for training-row R1 with own mature binary label=1 returns encoded feature=1 directly from R1 label; no out-of-fold/leave-one-out isolation contract | Cannot certify leakage-safe training feature; deny approval | `WITHIN_SAMPLE_TARGET_LEAKAGE` | TE-OWN→row-own-label | Treat maturity alone as sample isolation | `S` | `S4-C` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 142,
+      "row": "| `A09-C05` · G:249 | `B0` / `D-A09-C05` | `S` | Target encoder TE-OWN for training-row R1 with own mature binary label=1 returns encoded feature=1 directly from R1 label; no out-of-fold/leave-one-out isolation contract | Cannot certify leakage-safe training feature; deny approval | `WITHIN_SAMPLE_TARGET_LEAKAGE` | TE-OWN→row-own-label | Treat maturity alone as sample isolation |"
+    },
+    "normative_fields": {
+      "case_delta": "`A09-C05` / `D-A09-C05`",
+      "base": "`B0`",
+      "delta": "Target encoder TE-OWN for training-row R1 with own mature binary label=1 returns encoded feature=1 directly from R1 label; no out-of-fold/leave-one-out isolation contract",
+      "expected": "Cannot certify leakage-safe training feature; deny approval",
+      "reason": "`WITHIN_SAMPLE_TARGET_LEAKAGE`",
+      "lineage_exclusions": "TE-OWN→row-own-label",
+      "forbidden": "Treat maturity alone as sample isolation",
+      "tiers": "`S`",
+      "owner": "`S4-C`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A10-C01",
+    "delta_ref": "D-A10-C01",
+    "base_context": "B0",
+    "owner": "S4-D",
+    "source": {
+      "alias": "G",
+      "line": 256,
+      "section": "5 A10",
+      "row": "| `A10-C01` / `D-A10-C01` | `B0` | Append audit-only FUTURE_RESTATEMENT_NOTE=\"revised July10\"; keep Q,context,policy fixed | Agent serialized bytes unchanged | `NONE` | same projection from Q and U; future note audit only | Leak future note into payload | `M/X` | `S4-D` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 150,
+      "row": "| `A10-C01` · G:256 | `B0` / `D-A10-C01` | `M/X` | Append audit-only FUTURE_RESTATEMENT_NOTE=\"revised July10\"; keep Q,context,policy fixed | Agent serialized bytes unchanged | `NONE` | same projection from Q and U; future note audit only | Leak future note into payload |"
+    },
+    "normative_fields": {
+      "case_delta": "`A10-C01` / `D-A10-C01`",
+      "base": "`B0`",
+      "delta": "Append audit-only FUTURE_RESTATEMENT_NOTE=\"revised July10\"; keep Q,context,policy fixed",
+      "expected": "Agent serialized bytes unchanged",
+      "reason": "`NONE`",
+      "lineage_exclusions": "same projection from Q and U; future note audit only",
+      "forbidden": "Leak future note into payload",
+      "tiers": "`M/X`",
+      "owner": "`S4-D`"
+    },
+    "required_tiers": [
+      "M",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A10-C02",
+    "delta_ref": "D-A10-C02",
+    "base_context": "B0",
+    "owner": "S4-D",
+    "source": {
+      "alias": "G",
+      "line": 257,
+      "section": "5 A10",
+      "row": "| `A10-C02` / `D-A10-C02` | `B0` | Edit ONLY explanatory audit coverage-confidence/reason wording without changing normative coverage decision | Allowed missing mask unchanged | `NONE` | same S3 qualified result/branch; audit text excluded | Use retrospective confidence as missingness flag | `M` | `S4-D` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 151,
+      "row": "| `A10-C02` · G:257 | `B0` / `D-A10-C02` | `M` | Edit ONLY explanatory audit coverage-confidence/reason wording without changing normative coverage decision | Allowed missing mask unchanged | `NONE` | same S3 qualified result/branch; audit text excluded | Use retrospective confidence as missingness flag |"
+    },
+    "normative_fields": {
+      "case_delta": "`A10-C02` / `D-A10-C02`",
+      "base": "`B0`",
+      "delta": "Edit ONLY explanatory audit coverage-confidence/reason wording without changing normative coverage decision",
+      "expected": "Allowed missing mask unchanged",
+      "reason": "`NONE`",
+      "lineage_exclusions": "same S3 qualified result/branch; audit text excluded",
+      "forbidden": "Use retrospective confidence as missingness flag",
+      "tiers": "`M`",
+      "owner": "`S4-D`"
+    },
+    "required_tiers": [
+      "M"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A10-C03",
+    "delta_ref": "D-A10-C03",
+    "base_context": "B0",
+    "owner": "S4-D",
+    "source": {
+      "alias": "G",
+      "line": 258,
+      "section": "5 A10",
+      "row": "| `A10-C03` / `D-A10-C03` | `B0` | Toggle audit-only future revision flag with no eligible S3 input change; FS-Q2-1 baseline specifies NO_FALLBACK | Fallback branch remains NO_FALLBACK | `NONE` | same permitted branch predicate | Choose proxy using future flag | `M` | `S4-D` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 152,
+      "row": "| `A10-C03` · G:258 | `B0` / `D-A10-C03` | `M` | Toggle audit-only future revision flag with no eligible S3 input change; FS-Q2-1 baseline specifies NO_FALLBACK | Fallback branch remains NO_FALLBACK | `NONE` | same permitted branch predicate | Choose proxy using future flag |"
+    },
+    "normative_fields": {
+      "case_delta": "`A10-C03` / `D-A10-C03`",
+      "base": "`B0`",
+      "delta": "Toggle audit-only future revision flag with no eligible S3 input change; FS-Q2-1 baseline specifies NO_FALLBACK",
+      "expected": "Fallback branch remains NO_FALLBACK",
+      "reason": "`NONE`",
+      "lineage_exclusions": "same permitted branch predicate",
+      "forbidden": "Choose proxy using future flag",
+      "tiers": "`M`",
+      "owner": "`S4-D`"
+    },
+    "required_tiers": [
+      "M"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A10-C04",
+    "delta_ref": "D-A10-C04",
+    "base_context": "B0",
+    "owner": "S4-D",
+    "source": {
+      "alias": "G",
+      "line": 259,
+      "section": "5 A10",
+      "row": "| `A10-C04` / `D-A10-C04` | `B0` | Attach later reward/return label to Audit for SYN-B; U0 and grid unchanged | G and sample policy decision unchanged | `NONE` | U0={A,B}; all four grid rows | Delete losing firm or adjust sample | `M/X` | `S4-D` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 153,
+      "row": "| `A10-C04` · G:259 | `B0` / `D-A10-C04` | `M/X` | Attach later reward/return label to Audit for SYN-B; U0 and grid unchanged | G and sample policy decision unchanged | `NONE` | U0={A,B}; all four grid rows | Delete losing firm or adjust sample |"
+    },
+    "normative_fields": {
+      "case_delta": "`A10-C04` / `D-A10-C04`",
+      "base": "`B0`",
+      "delta": "Attach later reward/return label to Audit for SYN-B; U0 and grid unchanged",
+      "expected": "G and sample policy decision unchanged",
+      "reason": "`NONE`",
+      "lineage_exclusions": "U0={A,B}; all four grid rows",
+      "forbidden": "Delete losing firm or adjust sample",
+      "tiers": "`M/X`",
+      "owner": "`S4-D`"
+    },
+    "required_tiers": [
+      "M",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A10-C05",
+    "delta_ref": "D-A10-C05",
+    "base_context": "B0",
+    "owner": "S4-D",
+    "source": {
+      "alias": "G",
+      "line": 260,
+      "section": "5 A10",
+      "row": "| `A10-C05` / `D-A10-C05` | `B0` | Attempt to replace U0 with current survivor subset {SYN-A} in rank/projector while declared Universe pin still UNI-1 | CONTRACT_VIOLATION; reject unpinned Universe substitution | `INVALID_UNIVERSE_POLICY` | UNI-1; excluded survivor list | Silently omit SYN-B | `S/X` | `S4-D` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 154,
+      "row": "| `A10-C05` · G:260 | `B0` / `D-A10-C05` | `S/X` | Attempt to replace U0 with current survivor subset {SYN-A} in rank/projector while declared Universe pin still UNI-1 | CONTRACT_VIOLATION; reject unpinned Universe substitution | `INVALID_UNIVERSE_POLICY` | UNI-1; excluded survivor list | Silently omit SYN-B |"
+    },
+    "normative_fields": {
+      "case_delta": "`A10-C05` / `D-A10-C05`",
+      "base": "`B0`",
+      "delta": "Attempt to replace U0 with current survivor subset {SYN-A} in rank/projector while declared Universe pin still UNI-1",
+      "expected": "CONTRACT_VIOLATION; reject unpinned Universe substitution",
+      "reason": "`INVALID_UNIVERSE_POLICY`",
+      "lineage_exclusions": "UNI-1; excluded survivor list",
+      "forbidden": "Silently omit SYN-B",
+      "tiers": "`S/X`",
+      "owner": "`S4-D`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A11-C01",
+    "delta_ref": "D-A11-C01",
+    "base_context": "B0",
+    "owner": "S4-D / Shared",
+    "source": {
+      "alias": "G",
+      "line": 267,
+      "section": "5 A11",
+      "row": "| `A11-C01` / `D-A11-C01` | `B0` | Replace April claim by valid pre-t0 0 with own content/support and maintain complete receipt | VALUE_AVAILABLE(0) at source; Q2=500, not missing | `NONE` | qualified zero April; May200; June300 | Interpret numerical 0 as unknown | `S/X` | `S4-D / Shared` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 162,
+      "row": "| `A11-C01` · G:267 | `B0` / `D-A11-C01` | `S/X` | Replace April claim by valid pre-t0 0 with own content/support and maintain complete receipt | VALUE_AVAILABLE(0) at source; Q2=500, not missing | `NONE` | qualified zero April; May200; June300 | Interpret numerical 0 as unknown |"
+    },
+    "normative_fields": {
+      "case_delta": "`A11-C01` / `D-A11-C01`",
+      "base": "`B0`",
+      "delta": "Replace April claim by valid pre-t0 0 with own content/support and maintain complete receipt",
+      "expected": "VALUE_AVAILABLE(0) at source; Q2=500, not missing",
+      "reason": "`NONE`",
+      "lineage_exclusions": "qualified zero April; May200; June300",
+      "forbidden": "Interpret numerical 0 as unknown",
+      "tiers": "`S/X`",
+      "owner": "`S4-D / Shared`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A11-C02",
+    "delta_ref": "D-A11-C02",
+    "base_context": "B0",
+    "owner": "S4-D / Shared",
+    "source": {
+      "alias": "G",
+      "line": 268,
+      "section": "5 A11",
+      "row": "| `A11-C02` / `D-A11-C02` | `B0` | Delete May claim, update fully completed May receipt to empty; P-OBS-1 expressly allows neutral missing for this case | NOT_COMPUTABLE; publication PUBLISHED_WITH_ALLOWED_MISSING | `DEPENDENCY_NOT_COMPUTABLE` | missing token only; May NO_QUALIFIED_CLAIM in audit | Auto-zero or leak detailed reason in agent payload | `S/X` | `S4-D / Shared` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 163,
+      "row": "| `A11-C02` · G:268 | `B0` / `D-A11-C02` | `S/X` | Delete May claim, update fully completed May receipt to empty; P-OBS-1 expressly allows neutral missing for this case | NOT_COMPUTABLE; publication PUBLISHED_WITH_ALLOWED_MISSING | `DEPENDENCY_NOT_COMPUTABLE` | missing token only; May NO_QUALIFIED_CLAIM in audit | Auto-zero or leak detailed reason in agent payload |"
+    },
+    "normative_fields": {
+      "case_delta": "`A11-C02` / `D-A11-C02`",
+      "base": "`B0`",
+      "delta": "Delete May claim, update fully completed May receipt to empty; P-OBS-1 expressly allows neutral missing for this case",
+      "expected": "NOT_COMPUTABLE; publication PUBLISHED_WITH_ALLOWED_MISSING",
+      "reason": "`DEPENDENCY_NOT_COMPUTABLE`",
+      "lineage_exclusions": "missing token only; May NO_QUALIFIED_CLAIM in audit",
+      "forbidden": "Auto-zero or leak detailed reason in agent payload",
+      "tiers": "`S/X`",
+      "owner": "`S4-D / Shared`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A11-C03",
+    "delta_ref": "D-A11-C03",
+    "base_context": "B0",
+    "owner": "S4-D / Shared",
+    "source": {
+      "alias": "G",
+      "line": 269,
+      "section": "5 A11",
+      "row": "| `A11-C03` / `D-A11-C03` | `B0` | Add evidence-grounded material June unknown as A06-C03; strict core feature policy | UNRESOLVED; research COMPLETED; agent WITHHELD | `DEPENDENCY_UNRESOLVED` | June lead and unresolved reason in audit only; grid row kept | Emit ordinary neutral missing or delete grid row | `S/X` | `S4-D / Shared` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 164,
+      "row": "| `A11-C03` · G:269 | `B0` / `D-A11-C03` | `S/X` | Add evidence-grounded material June unknown as A06-C03; strict core feature policy | UNRESOLVED; research COMPLETED; agent WITHHELD | `DEPENDENCY_UNRESOLVED` | June lead and unresolved reason in audit only; grid row kept | Emit ordinary neutral missing or delete grid row |"
+    },
+    "normative_fields": {
+      "case_delta": "`A11-C03` / `D-A11-C03`",
+      "base": "`B0`",
+      "delta": "Add evidence-grounded material June unknown as A06-C03; strict core feature policy",
+      "expected": "UNRESOLVED; research COMPLETED; agent WITHHELD",
+      "reason": "`DEPENDENCY_UNRESOLVED`",
+      "lineage_exclusions": "June lead and unresolved reason in audit only; grid row kept",
+      "forbidden": "Emit ordinary neutral missing or delete grid row",
+      "tiers": "`S/X`",
+      "owner": "`S4-D / Shared`"
+    },
+    "required_tiers": [
+      "S",
+      "X"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A11-C04",
+    "delta_ref": "D-A11-C04",
+    "base_context": "B0",
+    "owner": "S4-D / Shared",
+    "source": {
+      "alias": "G",
+      "line": 270,
+      "section": "5 A11",
+      "row": "| `A11-C04` / `D-A11-C04` | `B0` | Select nonexistent required feature spec FS-UNKNOWN with no registered definition | CONTRACT_VIOLATION; run FAILED | `INVALID_FEATURE_SPEC` | invalid spec ref in engineering/audit | Publish None as normal missing | `S/P` | `S4-D / Shared` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 165,
+      "row": "| `A11-C04` · G:270 | `B0` / `D-A11-C04` | `S/P` | Select nonexistent required feature spec FS-UNKNOWN with no registered definition | CONTRACT_VIOLATION; run FAILED | `INVALID_FEATURE_SPEC` | invalid spec ref in engineering/audit | Publish None as normal missing |"
+    },
+    "normative_fields": {
+      "case_delta": "`A11-C04` / `D-A11-C04`",
+      "base": "`B0`",
+      "delta": "Select nonexistent required feature spec FS-UNKNOWN with no registered definition",
+      "expected": "CONTRACT_VIOLATION; run FAILED",
+      "reason": "`INVALID_FEATURE_SPEC`",
+      "lineage_exclusions": "invalid spec ref in engineering/audit",
+      "forbidden": "Publish None as normal missing",
+      "tiers": "`S/P`",
+      "owner": "`S4-D / Shared`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A11-C05",
+    "delta_ref": "D-A11-C05",
+    "base_context": "B0",
+    "owner": "S4-D / Shared",
+    "source": {
+      "alias": "G",
+      "line": 271,
+      "section": "5 A11",
+      "row": "| `A11-C05` / `D-A11-C05` | `B0` | Inject read failure for a required persisted input after freeze begins | OPERATIONAL_ERROR; run FAILED | `REQUIRED_OPERATION_FAILED` | failed input read and safe diagnostic ref | Return zero/missing/NO_QUALIFIED_CLAIM | `P` | `S4-D / Shared` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 166,
+      "row": "| `A11-C05` · G:271 | `B0` / `D-A11-C05` | `P` | Inject read failure for a required persisted input after freeze begins | OPERATIONAL_ERROR; run FAILED | `REQUIRED_OPERATION_FAILED` | failed input read and safe diagnostic ref | Return zero/missing/NO_QUALIFIED_CLAIM |"
+    },
+    "normative_fields": {
+      "case_delta": "`A11-C05` / `D-A11-C05`",
+      "base": "`B0`",
+      "delta": "Inject read failure for a required persisted input after freeze begins",
+      "expected": "OPERATIONAL_ERROR; run FAILED",
+      "reason": "`REQUIRED_OPERATION_FAILED`",
+      "lineage_exclusions": "failed input read and safe diagnostic ref",
+      "forbidden": "Return zero/missing/NO_QUALIFIED_CLAIM",
+      "tiers": "`P`",
+      "owner": "`S4-D / Shared`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A11-C06",
+    "delta_ref": "D-A11-C06",
+    "base_context": "B0",
+    "owner": "S4-D / Shared",
+    "source": {
+      "alias": "G",
+      "line": 272,
+      "section": "5 A11",
+      "row": "| `A11-C06` / `D-A11-C06` | `B0` | Inject failure before finalization COMMIT after manifest/result and before completion/observation authorized | No COMPLETED and no visible agent payload | `REQUIRED_OPERATION_FAILED` | transaction rollback; incomplete attempt recorded safely | Expose partial success | `P` | `S4-D / Shared` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 167,
+      "row": "| `A11-C06` · G:272 | `B0` / `D-A11-C06` | `P` | Inject failure before finalization COMMIT after manifest/result and before completion/observation authorized | No COMPLETED and no visible agent payload | `REQUIRED_OPERATION_FAILED` | transaction rollback; incomplete attempt recorded safely | Expose partial success |"
+    },
+    "normative_fields": {
+      "case_delta": "`A11-C06` / `D-A11-C06`",
+      "base": "`B0`",
+      "delta": "Inject failure before finalization COMMIT after manifest/result and before completion/observation authorized",
+      "expected": "No COMPLETED and no visible agent payload",
+      "reason": "`REQUIRED_OPERATION_FAILED`",
+      "lineage_exclusions": "transaction rollback; incomplete attempt recorded safely",
+      "forbidden": "Expose partial success",
+      "tiers": "`P`",
+      "owner": "`S4-D / Shared`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A12-C01",
+    "delta_ref": "D-A12-C01",
+    "base_context": "B2",
+    "owner": "Shared Manifest",
+    "source": {
+      "alias": "G",
+      "line": 279,
+      "section": "5 A12",
+      "row": "| `A12-C01` / `D-A12-C01` | `B2` | Replay same sealed M0 without source rediscovery; identical versions, numeric and serializer | 600; exact canonical value/lineage/payload equivalence | `NONE` | M0; A-APR-01,A-MAY-01,A-JUN-01 | Use a fresh latest-source query | `X/P` | `Shared Manifest` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 175,
+      "row": "| `A12-C01` · G:279 | `B2` / `D-A12-C01` | `X/P` | Replay same sealed M0 without source rediscovery; identical versions, numeric and serializer | 600; exact canonical value/lineage/payload equivalence | `NONE` | M0; A-APR-01,A-MAY-01,A-JUN-01 | Use a fresh latest-source query |"
+    },
+    "normative_fields": {
+      "case_delta": "`A12-C01` / `D-A12-C01`",
+      "base": "`B2`",
+      "delta": "Replay same sealed M0 without source rediscovery; identical versions, numeric and serializer",
+      "expected": "600; exact canonical value/lineage/payload equivalence",
+      "reason": "`NONE`",
+      "lineage_exclusions": "M0; A-APR-01,A-MAY-01,A-JUN-01",
+      "forbidden": "Use a fresh latest-source query",
+      "tiers": "`X/P`",
+      "owner": "`Shared Manifest`"
+    },
+    "required_tiers": [
+      "X",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A12-C02",
+    "delta_ref": "D-A12-C02",
+    "base_context": "B2",
+    "owner": "Shared Manifest",
+    "source": {
+      "alias": "G",
+      "line": 280,
+      "section": "5 A12",
+      "row": "| `A12-C02` / `D-A12-C02` | `B2` | Append CV-JUN-02 and REL-JUN-01 to database after original M0 committed, then replay M0 | 600 and original M0 lineage unchanged | `NONE` | E0 pinned; exclude new E1 artifacts | Substitute 310 during replay | `P` | `Shared Manifest` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 176,
+      "row": "| `A12-C02` · G:280 | `B2` / `D-A12-C02` | `P` | Append CV-JUN-02 and REL-JUN-01 to database after original M0 committed, then replay M0 | 600 and original M0 lineage unchanged | `NONE` | E0 pinned; exclude new E1 artifacts | Substitute 310 during replay |"
+    },
+    "normative_fields": {
+      "case_delta": "`A12-C02` / `D-A12-C02`",
+      "base": "`B2`",
+      "delta": "Append CV-JUN-02 and REL-JUN-01 to database after original M0 committed, then replay M0",
+      "expected": "600 and original M0 lineage unchanged",
+      "reason": "`NONE`",
+      "lineage_exclusions": "E0 pinned; exclude new E1 artifacts",
+      "forbidden": "Substitute 310 during replay",
+      "tiers": "`P`",
+      "owner": "`Shared Manifest`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A12-C03",
+    "delta_ref": "D-A12-C03",
+    "base_context": "B1",
+    "owner": "Shared Manifest",
+    "source": {
+      "alias": "G",
+      "line": 281,
+      "section": "5 A12",
+      "row": "| `A12-C03` / `D-A12-C03` | `B1` | Evaluate new M1 based on E1 with late cutoff t1 | 610 with new manifest identity | `NONE` | A-JUN-02 and qualified REL-JUN-01 | Write 610 into M0 record | `X/P` | `Shared Manifest` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 177,
+      "row": "| `A12-C03` · G:281 | `B1` / `D-A12-C03` | `X/P` | Evaluate new M1 based on E1 with late cutoff t1 | 610 with new manifest identity | `NONE` | A-JUN-02 and qualified REL-JUN-01 | Write 610 into M0 record |"
+    },
+    "normative_fields": {
+      "case_delta": "`A12-C03` / `D-A12-C03`",
+      "base": "`B1`",
+      "delta": "Evaluate new M1 based on E1 with late cutoff t1",
+      "expected": "610 with new manifest identity",
+      "reason": "`NONE`",
+      "lineage_exclusions": "A-JUN-02 and qualified REL-JUN-01",
+      "forbidden": "Write 610 into M0 record",
+      "tiers": "`X/P`",
+      "owner": "`Shared Manifest`"
+    },
+    "required_tiers": [
+      "X",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A12-C04",
+    "delta_ref": "D-A12-C04",
+    "base_context": "B3",
+    "owner": "Shared Manifest",
+    "source": {
+      "alias": "G",
+      "line": 282,
+      "section": "5 A12",
+      "row": "| `A12-C04` / `D-A12-C04` | `B3` | Evaluate t0 anew with E1, supported 07/10 event strictly after t0 | 600 under different M2 identity | `NONE` | M2 != M0; June old at t0 | Equate new context with old manifest | `X/P` | `Shared Manifest` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 178,
+      "row": "| `A12-C04` · G:282 | `B3` / `D-A12-C04` | `X/P` | Evaluate t0 anew with E1, supported 07/10 event strictly after t0 | 600 under different M2 identity | `NONE` | M2 != M0; June old at t0 | Equate new context with old manifest |"
+    },
+    "normative_fields": {
+      "case_delta": "`A12-C04` / `D-A12-C04`",
+      "base": "`B3`",
+      "delta": "Evaluate t0 anew with E1, supported 07/10 event strictly after t0",
+      "expected": "600 under different M2 identity",
+      "reason": "`NONE`",
+      "lineage_exclusions": "M2 != M0; June old at t0",
+      "forbidden": "Equate new context with old manifest",
+      "tiers": "`X/P`",
+      "owner": "`Shared Manifest`"
+    },
+    "required_tiers": [
+      "X",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A12-C05",
+    "delta_ref": "D-A12-C05",
+    "base_context": "B2",
+    "owner": "Shared Manifest",
+    "source": {
+      "alias": "G",
+      "line": 283,
+      "section": "5 A12",
+      "row": "| `A12-C05` / `D-A12-C05` | `B2` | Replace stored CV-JUN-01 V1 300 bytes with V2 310 bytes while keeping CV-JUN-01 ID/digest reference | Replay BLOCKED: PINNED_INPUT_INVALID | `PINNED_INPUT_INVALID` | M0→CV-JUN-01 V1 fingerprint | Recalculate and accept corrupted bytes | `S/P` | `Shared Manifest` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 179,
+      "row": "| `A12-C05` · G:283 | `B2` / `D-A12-C05` | `S/P` | Replace stored CV-JUN-01 V1 300 bytes with V2 310 bytes while keeping CV-JUN-01 ID/digest reference | Replay BLOCKED: PINNED_INPUT_INVALID | `PINNED_INPUT_INVALID` | M0→CV-JUN-01 V1 fingerprint | Recalculate and accept corrupted bytes |"
+    },
+    "normative_fields": {
+      "case_delta": "`A12-C05` / `D-A12-C05`",
+      "base": "`B2`",
+      "delta": "Replace stored CV-JUN-01 V1 300 bytes with V2 310 bytes while keeping CV-JUN-01 ID/digest reference",
+      "expected": "Replay BLOCKED: PINNED_INPUT_INVALID",
+      "reason": "`PINNED_INPUT_INVALID`",
+      "lineage_exclusions": "M0→CV-JUN-01 V1 fingerprint",
+      "forbidden": "Recalculate and accept corrupted bytes",
+      "tiers": "`S/P`",
+      "owner": "`Shared Manifest`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A12-C06",
+    "delta_ref": "D-A12-C06",
+    "base_context": "B2",
+    "owner": "Shared Manifest",
+    "source": {
+      "alias": "G",
+      "line": 284,
+      "section": "5 A12",
+      "row": "| `A12-C06` / `D-A12-C06` | `B2` | Use two PostgreSQL connections: reader freezes first membership; writer commits new version/edge between necessary reads | Coherent E0 snapshot; no hybrid input set | `NONE` | one pinned committed read view | Mix pre/post writer state | `P` | `Shared Manifest` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 180,
+      "row": "| `A12-C06` · G:284 | `B2` / `D-A12-C06` | `P` | Use two PostgreSQL connections: reader freezes first membership; writer commits new version/edge between necessary reads | Coherent E0 snapshot; no hybrid input set | `NONE` | one pinned committed read view | Mix pre/post writer state |"
+    },
+    "normative_fields": {
+      "case_delta": "`A12-C06` / `D-A12-C06`",
+      "base": "`B2`",
+      "delta": "Use two PostgreSQL connections: reader freezes first membership; writer commits new version/edge between necessary reads",
+      "expected": "Coherent E0 snapshot; no hybrid input set",
+      "reason": "`NONE`",
+      "lineage_exclusions": "one pinned committed read view",
+      "forbidden": "Mix pre/post writer state",
+      "tiers": "`P`",
+      "owner": "`Shared Manifest`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A12-C07",
+    "delta_ref": "D-A12-C07",
+    "base_context": "B0",
+    "owner": "Shared Manifest",
+    "source": {
+      "alias": "G",
+      "line": 285,
+      "section": "5 A12",
+      "row": "| `A12-C07` / `D-A12-C07` | `B0` | Inject failure in atomic finalization before commit after one dependent write | No externally COMPLETED manifest/result/agent publication | `REQUIRED_OPERATION_FAILED` | rolled-back transaction / hidden provisional write | Show partial canonical result | `P` | `Shared Manifest` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 181,
+      "row": "| `A12-C07` · G:285 | `B0` / `D-A12-C07` | `P` | Inject failure in atomic finalization before commit after one dependent write | No externally COMPLETED manifest/result/agent publication | `REQUIRED_OPERATION_FAILED` | rolled-back transaction / hidden provisional write | Show partial canonical result |"
+    },
+    "normative_fields": {
+      "case_delta": "`A12-C07` / `D-A12-C07`",
+      "base": "`B0`",
+      "delta": "Inject failure in atomic finalization before commit after one dependent write",
+      "expected": "No externally COMPLETED manifest/result/agent publication",
+      "reason": "`REQUIRED_OPERATION_FAILED`",
+      "lineage_exclusions": "rolled-back transaction / hidden provisional write",
+      "forbidden": "Show partial canonical result",
+      "tiers": "`P`",
+      "owner": "`Shared Manifest`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "A12-C08",
+    "delta_ref": "D-A12-C08",
+    "base_context": "B2",
+    "owner": "Shared Manifest",
+    "source": {
+      "alias": "G",
+      "line": 286,
+      "section": "5 A12",
+      "row": "| `A12-C08` / `D-A12-C08` | `B2` | Change DB row enumeration and append unrelated receipt for non-target issuer with M0 fixed | Same status, value, pinned lineage and canonical agent bytes | `NONE` | M0 ordering policy; unrelated append excluded | Use arrival order as winner/tie-break | `M/P` | `Shared Manifest` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 182,
+      "row": "| `A12-C08` · G:286 | `B2` / `D-A12-C08` | `M/P` | Change DB row enumeration and append unrelated receipt for non-target issuer with M0 fixed | Same status, value, pinned lineage and canonical agent bytes | `NONE` | M0 ordering policy; unrelated append excluded | Use arrival order as winner/tie-break |"
+    },
+    "normative_fields": {
+      "case_delta": "`A12-C08` / `D-A12-C08`",
+      "base": "`B2`",
+      "delta": "Change DB row enumeration and append unrelated receipt for non-target issuer with M0 fixed",
+      "expected": "Same status, value, pinned lineage and canonical agent bytes",
+      "reason": "`NONE`",
+      "lineage_exclusions": "M0 ordering policy; unrelated append excluded",
+      "forbidden": "Use arrival order as winner/tie-break",
+      "tiers": "`M/P`",
+      "owner": "`Shared Manifest`"
+    },
+    "required_tiers": [
+      "M",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP01-T01",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-00 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 358,
+      "section": "7.4 RP01",
+      "row": "| `RP01-T01` | Bind CV-JUN-01 to V1 then attempt to rebind to V2 | Reject same-content-version identity collision; no published content mutation | `S/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 195,
+      "row": "| `RP01-T01` · G:358 | `S/P` | Bind CV-JUN-01 to V1 then attempt to rebind to V2 | Reject same-content-version identity collision; no published content mutation |"
+    },
+    "normative_fields": {
+      "case_id": "`RP01-T01`",
+      "fault_interleaving": "Bind CV-JUN-01 to V1 then attempt to rebind to V2",
+      "oracle_forbidden_shortcut": "Reject same-content-version identity collision; no published content mutation",
+      "tiers": "`S/P`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP01-T02",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-00 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 359,
+      "section": "7.4 RP01",
+      "row": "| `RP01-T02` | Tamper V1 value bytes while retaining original V1 digest | PINNED_INPUT_INVALID/integrity failure | `S/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 196,
+      "row": "| `RP01-T02` · G:359 | `S/P` | Tamper V1 value bytes while retaining original V1 digest | PINNED_INPUT_INVALID/integrity failure |"
+    },
+    "normative_fields": {
+      "case_id": "`RP01-T02`",
+      "fault_interleaving": "Tamper V1 value bytes while retaining original V1 digest",
+      "oracle_forbidden_shortcut": "PINNED_INPUT_INVALID/integrity failure",
+      "tiers": "`S/P`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP01-T03",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-00 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 360,
+      "section": "7.4 RP01",
+      "row": "| `RP01-T03` | Shuffle only object key input ordering | Canonically identical 118 bytes and V1 digest | `S` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 197,
+      "row": "| `RP01-T03` · G:360 | `S` | Shuffle only object key input ordering | Canonically identical 118 bytes and V1 digest |"
+    },
+    "normative_fields": {
+      "case_id": "`RP01-T03`",
+      "fault_interleaving": "Shuffle only object key input ordering",
+      "oracle_forbidden_shortcut": "Canonically identical 118 bytes and V1 digest",
+      "tiers": "`S`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP01-T04",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-00 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 361,
+      "section": "7.4 RP01",
+      "row": "| `RP01-T04` | Reorder a schema-tagged ordered events array | New canonical meaning/identity, not silently identical | `S` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 198,
+      "row": "| `RP01-T04` · G:361 | `S` | Reorder a schema-tagged ordered events array | New canonical meaning/identity, not silently identical |"
+    },
+    "normative_fields": {
+      "case_id": "`RP01-T04`",
+      "fault_interleaving": "Reorder a schema-tagged ordered events array",
+      "oracle_forbidden_shortcut": "New canonical meaning/identity, not silently identical",
+      "tiers": "`S`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP01-T05",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-00 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 362,
+      "section": "7.4 RP01",
+      "row": "| `RP01-T05` | Omit required named timezone or content_version_id | CONTRACT_VIOLATION; do not default | `S` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 199,
+      "row": "| `RP01-T05` · G:362 | `S` | Omit required named timezone or content_version_id | CONTRACT_VIOLATION; do not default |"
+    },
+    "normative_fields": {
+      "case_id": "`RP01-T05`",
+      "fault_interleaving": "Omit required named timezone or content_version_id",
+      "oracle_forbidden_shortcut": "CONTRACT_VIOLATION; do not default",
+      "tiers": "`S`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP01-T06",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-00 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 363,
+      "section": "7.4 RP01",
+      "row": "| `RP01-T06` | Attempt evaluator read of Expected Oracle fixture | Boundary violation; fail harness inspection | `S` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 200,
+      "row": "| `RP01-T06` · G:363 | `S` | Attempt evaluator read of Expected Oracle fixture | Boundary violation; fail harness inspection |"
+    },
+    "normative_fields": {
+      "case_id": "`RP01-T06`",
+      "fault_interleaving": "Attempt evaluator read of Expected Oracle fixture",
+      "oracle_forbidden_shortcut": "Boundary violation; fail harness inspection",
+      "tiers": "`S`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP02-T01",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 369,
+      "section": "7.4 RP02",
+      "row": "| `RP02-T01` | Load same complete sealed M0 twice | Same manifest identity/membership and approved oracle | `S/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 208,
+      "row": "| `RP02-T01` · G:369 | `S/P` | Load same complete sealed M0 twice | Same manifest identity/membership and approved oracle |"
+    },
+    "normative_fields": {
+      "case_id": "`RP02-T01`",
+      "fault_interleaving": "Load same complete sealed M0 twice",
+      "oracle_forbidden_shortcut": "Same manifest identity/membership and approved oracle",
+      "tiers": "`S/P`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP02-T02",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 370,
+      "section": "7.4 RP02",
+      "row": "| `RP02-T02` | Append June v2 after M0 finalization | M0 membership/digest immutable | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 209,
+      "row": "| `RP02-T02` · G:370 | `P` | Append June v2 after M0 finalization | M0 membership/digest immutable |"
+    },
+    "normative_fields": {
+      "case_id": "`RP02-T02`",
+      "fault_interleaving": "Append June v2 after M0 finalization",
+      "oracle_forbidden_shortcut": "M0 membership/digest immutable",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP02-T03",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 371,
+      "section": "7.4 RP02",
+      "row": "| `RP02-T03` | Create M2 at t0 from E1 | M2 differs from M0 even if value both 600 | `S/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 210,
+      "row": "| `RP02-T03` · G:371 | `S/P` | Create M2 at t0 from E1 | M2 differs from M0 even if value both 600 |"
+    },
+    "normative_fields": {
+      "case_id": "`RP02-T03`",
+      "fault_interleaving": "Create M2 at t0 from E1",
+      "oracle_forbidden_shortcut": "M2 differs from M0 even if value both 600",
+      "tiers": "`S/P`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP02-T04",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 372,
+      "section": "7.4 RP02",
+      "row": "| `RP02-T04` | Omit evaluator_version or π revision from manifest | Reject incomplete replay manifest | `S` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 211,
+      "row": "| `RP02-T04` · G:372 | `S` | Omit evaluator_version or π revision from manifest | Reject incomplete replay manifest |"
+    },
+    "normative_fields": {
+      "case_id": "`RP02-T04`",
+      "fault_interleaving": "Omit evaluator_version or π revision from manifest",
+      "oracle_forbidden_shortcut": "Reject incomplete replay manifest",
+      "tiers": "`S`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP02-T05",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 373,
+      "section": "7.4 RP02",
+      "row": "| `RP02-T05` | Change feature spec or projector version in new manifest | Different identity; original untouched | `S` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 212,
+      "row": "| `RP02-T05` · G:373 | `S` | Change feature spec or projector version in new manifest | Different identity; original untouched |"
+    },
+    "normative_fields": {
+      "case_id": "`RP02-T05`",
+      "fault_interleaving": "Change feature spec or projector version in new manifest",
+      "oracle_forbidden_shortcut": "Different identity; original untouched",
+      "tiers": "`S`"
+    },
+    "required_tiers": [
+      "S"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP02-T06",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 374,
+      "section": "7.4 RP02",
+      "row": "| `RP02-T06` | Delete required immutable artifact reference | PINNED_INPUT_INVALID; no latest fallback | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 213,
+      "row": "| `RP02-T06` · G:374 | `P` | Delete required immutable artifact reference | PINNED_INPUT_INVALID; no latest fallback |"
+    },
+    "normative_fields": {
+      "case_id": "`RP02-T06`",
+      "fault_interleaving": "Delete required immutable artifact reference",
+      "oracle_forbidden_shortcut": "PINNED_INPUT_INVALID; no latest fallback",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP02-T07",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 375,
+      "section": "7.4 RP02",
+      "row": "| `RP02-T07` | Retain SUP-JUN-REV ID but discard its referenced content version | Manifest transitive-completeness failure | `S/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 214,
+      "row": "| `RP02-T07` · G:375 | `S/P` | Retain SUP-JUN-REV ID but discard its referenced content version | Manifest transitive-completeness failure |"
+    },
+    "normative_fields": {
+      "case_id": "`RP02-T07`",
+      "fault_interleaving": "Retain SUP-JUN-REV ID but discard its referenced content version",
+      "oracle_forbidden_shortcut": "Manifest transitive-completeness failure",
+      "tiers": "`S/P`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP03-T01",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 381,
+      "section": "7.4 RP03",
+      "row": "| `RP03-T01` | Reader first SELECT starts RR snapshot; writer commits June v2 before reader second SELECT | Reader consistent E0 membership; no hybrid | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 222,
+      "row": "| `RP03-T01` · G:381 | `P` | Reader first SELECT starts RR snapshot; writer commits June v2 before reader second SELECT | Reader consistent E0 membership; no hybrid |"
+    },
+    "normative_fields": {
+      "case_id": "`RP03-T01`",
+      "fault_interleaving": "Reader first SELECT starts RR snapshot; writer commits June v2 before reader second SELECT",
+      "oracle_forbidden_shortcut": "Reader consistent E0 membership; no hybrid",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP03-T02",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 382,
+      "section": "7.4 RP03",
+      "row": "| `RP03-T02` | Writer commits June v2 before reader establishes snapshot | Reader may see complete E1 but time selector still controls t0/t1 | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 223,
+      "row": "| `RP03-T02` · G:382 | `P` | Writer commits June v2 before reader establishes snapshot | Reader may see complete E1 but time selector still controls t0/t1 |"
+    },
+    "normative_fields": {
+      "case_id": "`RP03-T02`",
+      "fault_interleaving": "Writer commits June v2 before reader establishes snapshot",
+      "oracle_forbidden_shortcut": "Reader may see complete E1 but time selector still controls t0/t1",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP03-T03",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 383,
+      "section": "7.4 RP03",
+      "row": "| `RP03-T03` | Add evidence after freeze completion | Previously pinned membership immutable | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 224,
+      "row": "| `RP03-T03` · G:383 | `P` | Add evidence after freeze completion | Previously pinned membership immutable |"
+    },
+    "normative_fields": {
+      "case_id": "`RP03-T03`",
+      "fault_interleaving": "Add evidence after freeze completion",
+      "oracle_forbidden_shortcut": "Previously pinned membership immutable",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP03-T04",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 384,
+      "section": "7.4 RP03",
+      "row": "| `RP03-T04` | Writer appends independent unrelated artifact | No change to M0 result or pinned lineage | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 225,
+      "row": "| `RP03-T04` · G:384 | `P` | Writer appends independent unrelated artifact | No change to M0 result or pinned lineage |"
+    },
+    "normative_fields": {
+      "case_id": "`RP03-T04`",
+      "fault_interleaving": "Writer appends independent unrelated artifact",
+      "oracle_forbidden_shortcut": "No change to M0 result or pinned lineage",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP03-T05",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 385,
+      "section": "7.4 RP03",
+      "row": "| `RP03-T05` | Inject DB query failure between necessary reads | No complete frozen manifest published | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 226,
+      "row": "| `RP03-T05` · G:385 | `P` | Inject DB query failure between necessary reads | No complete frozen manifest published |"
+    },
+    "normative_fields": {
+      "case_id": "`RP03-T05`",
+      "fault_interleaving": "Inject DB query failure between necessary reads",
+      "oracle_forbidden_shortcut": "No complete frozen manifest published",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP03-T06",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 386,
+      "section": "7.4 RP03",
+      "row": "| `RP03-T06` | Writer inserts uncommitted relation when reader queries | Reader never treats uncommitted relation as admitted | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 227,
+      "row": "| `RP03-T06` · G:386 | `P` | Writer inserts uncommitted relation when reader queries | Reader never treats uncommitted relation as admitted |"
+    },
+    "normative_fields": {
+      "case_id": "`RP03-T06`",
+      "fault_interleaving": "Writer inserts uncommitted relation when reader queries",
+      "oracle_forbidden_shortcut": "Reader never treats uncommitted relation as admitted",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP04-T01",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 392,
+      "section": "7.4 RP04",
+      "row": "| `RP04-T01` | Manifest insert fails inside finish transaction | No completed result/observation | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 235,
+      "row": "| `RP04-T01` · G:392 | `P` | Manifest insert fails inside finish transaction | No completed result/observation |"
+    },
+    "normative_fields": {
+      "case_id": "`RP04-T01`",
+      "fault_interleaving": "Manifest insert fails inside finish transaction",
+      "oracle_forbidden_shortcut": "No completed result/observation",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP04-T02",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 393,
+      "section": "7.4 RP04",
+      "row": "| `RP04-T02` | Result insert fails after provisional manifest insert | No completed result/observation | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 236,
+      "row": "| `RP04-T02` · G:393 | `P` | Result insert fails after provisional manifest insert | No completed result/observation |"
+    },
+    "normative_fields": {
+      "case_id": "`RP04-T02`",
+      "fault_interleaving": "Result insert fails after provisional manifest insert",
+      "oracle_forbidden_shortcut": "No completed result/observation",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP04-T03",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 394,
+      "section": "7.4 RP04",
+      "row": "| `RP04-T03` | Single allowlisted serializer fails before commit | No invalid/partial agent payload publication | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 237,
+      "row": "| `RP04-T03` · G:394 | `P` | Single allowlisted serializer fails before commit | No invalid/partial agent payload publication |"
+    },
+    "normative_fields": {
+      "case_id": "`RP04-T03`",
+      "fault_interleaving": "Single allowlisted serializer fails before commit",
+      "oracle_forbidden_shortcut": "No invalid/partial agent payload publication",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP04-T04",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 395,
+      "section": "7.4 RP04",
+      "row": "| `RP04-T04` | Audit association insert fails before commit | No completed result | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 238,
+      "row": "| `RP04-T04` · G:395 | `P` | Audit association insert fails before commit | No completed result |"
+    },
+    "normative_fields": {
+      "case_id": "`RP04-T04`",
+      "fault_interleaving": "Audit association insert fails before commit",
+      "oracle_forbidden_shortcut": "No completed result",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP04-T05",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 396,
+      "section": "7.4 RP04",
+      "row": "| `RP04-T05` | Completion marker insert/update fails | No visible completed publication | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 239,
+      "row": "| `RP04-T05` · G:396 | `P` | Completion marker insert/update fails | No visible completed publication |"
+    },
+    "normative_fields": {
+      "case_id": "`RP04-T05`",
+      "fault_interleaving": "Completion marker insert/update fails",
+      "oracle_forbidden_shortcut": "No visible completed publication",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP04-T06",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 397,
+      "section": "7.4 RP04",
+      "row": "| `RP04-T06` | Force transaction abort before commit | All provisional formal writes roll back | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 240,
+      "row": "| `RP04-T06` · G:397 | `P` | Force transaction abort before commit | All provisional formal writes roll back |"
+    },
+    "normative_fields": {
+      "case_id": "`RP04-T06`",
+      "fault_interleaving": "Force transaction abort before commit",
+      "oracle_forbidden_shortcut": "All provisional formal writes roll back",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP04-T07",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 398,
+      "section": "7.4 RP04",
+      "row": "| `RP04-T07` | Commit succeeds but client acknowledgment lost | Query publication key; exactly one matching completed publication | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 241,
+      "row": "| `RP04-T07` · G:398 | `P` | Commit succeeds but client acknowledgment lost | Query publication key; exactly one matching completed publication |"
+    },
+    "normative_fields": {
+      "case_id": "`RP04-T07`",
+      "fault_interleaving": "Commit succeeds but client acknowledgment lost",
+      "oracle_forbidden_shortcut": "Query publication key; exactly one matching completed publication",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP04-T08",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 399,
+      "section": "7.4 RP04",
+      "row": "| `RP04-T08` | Two workers concurrently finalize same stable publication key | Unique coherent outcome; no conflicting completed duplicate | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 242,
+      "row": "| `RP04-T08` · G:399 | `P` | Two workers concurrently finalize same stable publication key | Unique coherent outcome; no conflicting completed duplicate |"
+    },
+    "normative_fields": {
+      "case_id": "`RP04-T08`",
+      "fault_interleaving": "Two workers concurrently finalize same stable publication key",
+      "oracle_forbidden_shortcut": "Unique coherent outcome; no conflicting completed duplicate",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP05-T01",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-03 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 405,
+      "section": "7.4 RP05",
+      "row": "| `RP05-T01` | Insert future-revision explanatory audit note only | No changes in canonical agent bytes/mask/branch | `M/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 250,
+      "row": "| `RP05-T01` · G:405 | `M/P` | Insert future-revision explanatory audit note only | No changes in canonical agent bytes/mask/branch |"
+    },
+    "normative_fields": {
+      "case_id": "`RP05-T01`",
+      "fault_interleaving": "Insert future-revision explanatory audit note only",
+      "oracle_forbidden_shortcut": "No changes in canonical agent bytes/mask/branch",
+      "tiers": "`M/P`"
+    },
+    "required_tiers": [
+      "M",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP05-T02",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-03 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 406,
+      "section": "7.4 RP05",
+      "row": "| `RP05-T02` | Toggle post-hoc reward for SYN-B only | No change in U0/grid/sample decision | `M/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 251,
+      "row": "| `RP05-T02` · G:406 | `M/P` | Toggle post-hoc reward for SYN-B only | No change in U0/grid/sample decision |"
+    },
+    "normative_fields": {
+      "case_id": "`RP05-T02`",
+      "fault_interleaving": "Toggle post-hoc reward for SYN-B only",
+      "oracle_forbidden_shortcut": "No change in U0/grid/sample decision",
+      "tiers": "`M/P`"
+    },
+    "required_tiers": [
+      "M",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP05-T03",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-03 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 407,
+      "section": "7.4 RP05",
+      "row": "| `RP05-T03` | Attempt agent request to raw issuer/support/audit/engine error fields | Access refused; only allowlisted payload exposed | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 252,
+      "row": "| `RP05-T03` · G:407 | `P` | Attempt agent request to raw issuer/support/audit/engine error fields | Access refused; only allowlisted payload exposed |"
+    },
+    "normative_fields": {
+      "case_id": "`RP05-T03`",
+      "fault_interleaving": "Attempt agent request to raw issuer/support/audit/engine error fields",
+      "oracle_forbidden_shortcut": "Access refused; only allowlisted payload exposed",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP05-T04",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-03 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 408,
+      "section": "7.4 RP05",
+      "row": "| `RP05-T04` | Attempt ordinary runtime UPDATE/DELETE of finalized version/manifest | Refused by protected DB privileges/constraints | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 253,
+      "row": "| `RP05-T04` · G:408 | `P` | Attempt ordinary runtime UPDATE/DELETE of finalized version/manifest | Refused by protected DB privileges/constraints |"
+    },
+    "normative_fields": {
+      "case_id": "`RP05-T04`",
+      "fault_interleaving": "Attempt ordinary runtime UPDATE/DELETE of finalized version/manifest",
+      "oracle_forbidden_shortcut": "Refused by protected DB privileges/constraints",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP05-T05",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-03 / WU-04 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 409,
+      "section": "7.4 RP05",
+      "row": "| `RP05-T05` | Attempt publish WITHHELD unresolved core feature as neutral missing | Fail projection policy; grid row remains recorded | `X/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 254,
+      "row": "| `RP05-T05` · G:409 | `X/P` | Attempt publish WITHHELD unresolved core feature as neutral missing | Fail projection policy; grid row remains recorded |"
+    },
+    "normative_fields": {
+      "case_id": "`RP05-T05`",
+      "fault_interleaving": "Attempt publish WITHHELD unresolved core feature as neutral missing",
+      "oracle_forbidden_shortcut": "Fail projection policy; grid row remains recorded",
+      "tiers": "`X/P`"
+    },
+    "required_tiers": [
+      "X",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T01",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 415,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T01` | Replay M0 from pinned content | 600, exact approved lineage and canonical payload | `X/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 262,
+      "row": "| `RP06-T01` · G:415 | `X/P` | Replay M0 from pinned content | 600, exact approved lineage and canonical payload |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T01`",
+      "fault_interleaving": "Replay M0 from pinned content",
+      "oracle_forbidden_shortcut": "600, exact approved lineage and canonical payload",
+      "tiers": "`X/P`"
+    },
+    "required_tiers": [
+      "X",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T02",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 416,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T02` | Append correction then replay unchanged M0 | 600, no new-version substitution | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 263,
+      "row": "| `RP06-T02` · G:416 | `P` | Append correction then replay unchanged M0 | 600, no new-version substitution |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T02`",
+      "fault_interleaving": "Append correction then replay unchanged M0",
+      "oracle_forbidden_shortcut": "600, no new-version substitution",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T03",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 417,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T03` | Evaluate new M1 at t1/E1 | 610 and distinct M1 identity | `X/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 264,
+      "row": "| `RP06-T03` · G:417 | `X/P` | Evaluate new M1 at t1/E1 | 610 and distinct M1 identity |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T03`",
+      "fault_interleaving": "Evaluate new M1 at t1/E1",
+      "oracle_forbidden_shortcut": "610 and distinct M1 identity",
+      "tiers": "`X/P`"
+    },
+    "required_tiers": [
+      "X",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T04",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 418,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T04` | Evaluate new M2 at t0/E1 | 600 under this controlled corpus, M2≠M0 | `X/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 265,
+      "row": "| `RP06-T04` · G:418 | `X/P` | Evaluate new M2 at t0/E1 | 600 under this controlled corpus, M2≠M0 |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T04`",
+      "fault_interleaving": "Evaluate new M2 at t0/E1",
+      "oracle_forbidden_shortcut": "600 under this controlled corpus, M2≠M0",
+      "tiers": "`X/P`"
+    },
+    "required_tiers": [
+      "X",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T05",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 419,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T05` | Substitute V2 altered bytes for CV-JUN-01 pinned by M0 | BLOCK PINNED_INPUT_INVALID | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 266,
+      "row": "| `RP06-T05` · G:419 | `P` | Substitute V2 altered bytes for CV-JUN-01 pinned by M0 | BLOCK PINNED_INPUT_INVALID |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T05`",
+      "fault_interleaving": "Substitute V2 altered bytes for CV-JUN-01 pinned by M0",
+      "oracle_forbidden_shortcut": "BLOCK PINNED_INPUT_INVALID",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T06",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 420,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T06` | Remove required support referenced by M0 | BLOCK PINNED_INPUT_INVALID | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 267,
+      "row": "| `RP06-T06` · G:420 | `P` | Remove required support referenced by M0 | BLOCK PINNED_INPUT_INVALID |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T06`",
+      "fault_interleaving": "Remove required support referenced by M0",
+      "oracle_forbidden_shortcut": "BLOCK PINNED_INPUT_INVALID",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T07",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 421,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T07` | Replace pinned selector policy by currently latest version | Block version mismatch, no silent upgrade | `S/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 268,
+      "row": "| `RP06-T07` · G:421 | `S/P` | Replace pinned selector policy by currently latest version | Block version mismatch, no silent upgrade |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T07`",
+      "fault_interleaving": "Replace pinned selector policy by currently latest version",
+      "oracle_forbidden_shortcut": "Block version mismatch, no silent upgrade",
+      "tiers": "`S/P`"
+    },
+    "required_tiers": [
+      "S",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T08",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 422,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T08` | Append unrelated receipt | Same M0 output | `M/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 269,
+      "row": "| `RP06-T08` · G:422 | `M/P` | Append unrelated receipt | Same M0 output |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T08`",
+      "fault_interleaving": "Append unrelated receipt",
+      "oracle_forbidden_shortcut": "Same M0 output",
+      "tiers": "`M/P`"
+    },
+    "required_tiers": [
+      "M",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T09",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 423,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T09` | Permute DB row enumeration while respecting pinned set | Identical canonical selection/lineage/output | `M/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 270,
+      "row": "| `RP06-T09` · G:423 | `M/P` | Permute DB row enumeration while respecting pinned set | Identical canonical selection/lineage/output |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T09`",
+      "fault_interleaving": "Permute DB row enumeration while respecting pinned set",
+      "oracle_forbidden_shortcut": "Identical canonical selection/lineage/output",
+      "tiers": "`M/P`"
+    },
+    "required_tiers": [
+      "M",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T10",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 424,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T10` | Change only future audit note and retrospective confidence wording | Agent bytes/masks/fallback/population unchanged | `M/P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 271,
+      "row": "| `RP06-T10` · G:424 | `M/P` | Change only future audit note and retrospective confidence wording | Agent bytes/masks/fallback/population unchanged |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T10`",
+      "fault_interleaving": "Change only future audit note and retrospective confidence wording",
+      "oracle_forbidden_shortcut": "Agent bytes/masks/fallback/population unchanged",
+      "tiers": "`M/P`"
+    },
+    "required_tiers": [
+      "M",
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T11",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 425,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T11` | Interleave writer commit between reader reads | One consistent frozen membership | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 272,
+      "row": "| `RP06-T11` · G:425 | `P` | Interleave writer commit between reader reads | One consistent frozen membership |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T11`",
+      "fault_interleaving": "Interleave writer commit between reader reads",
+      "oracle_forbidden_shortcut": "One consistent frozen membership",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T12",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 426,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T12` | Abort before atomic completion | No partial completed data/agent payload | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 273,
+      "row": "| `RP06-T12` · G:426 | `P` | Abort before atomic completion | No partial completed data/agent payload |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T12`",
+      "fault_interleaving": "Abort before atomic completion",
+      "oracle_forbidden_shortcut": "No partial completed data/agent payload",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T13",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 427,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T13` | Lose commit acknowledgment and recover under same publication key | No duplicate or contradiction | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 274,
+      "row": "| `RP06-T13` · G:427 | `P` | Lose commit acknowledgment and recover under same publication key | No duplicate or contradiction |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T13`",
+      "fault_interleaving": "Lose commit acknowledgment and recover under same publication key",
+      "oracle_forbidden_shortcut": "No duplicate or contradiction",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  },
+  {
+    "case_id": "RP06-T14",
+    "delta_ref": null,
+    "base_context": null,
+    "owner": "Candidate Work Unit trace: `WU-05 / WU-06 / WU-07`; unit-local evidence is partial until all required tiers and WU-07 integration are independently accepted.",
+    "source": {
+      "alias": "G",
+      "line": 428,
+      "section": "7.4 RP06",
+      "row": "| `RP06-T14` | Required pinned content loader throws | Blocking operational error; no latest fallback | `P` |"
+    },
+    "ledger": {
+      "alias": "L",
+      "line": 275,
+      "row": "| `RP06-T14` · G:428 | `P` | Required pinned content loader throws | Blocking operational error; no latest fallback |"
+    },
+    "normative_fields": {
+      "case_id": "`RP06-T14`",
+      "fault_interleaving": "Required pinned content loader throws",
+      "oracle_forbidden_shortcut": "Blocking operational error; no latest fallback",
+      "tiers": "`P`"
+    },
+    "required_tiers": [
+      "P"
+    ],
+    "semantic_comparison": {
+      "status": "UNSTRUCTURED_REQUIRES_REVIEW",
+      "reason": "Full narrative, conditional and negative predicates require independently reviewed later-WU actual-result bindings. No source prose is treated as executable predicates."
+    }
+  }
+]

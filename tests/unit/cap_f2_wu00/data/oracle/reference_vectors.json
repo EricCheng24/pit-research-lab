@@ -1,0 +1,77 @@
+[
+  {
+    "vector_id": "content_v1",
+    "encoding": "hex",
+    "payload_hex": "7b22636f6e74656e745f76657273696f6e5f6964223a2243562d4a554e2d3031222c227075626c69636174696f6e5f74696d65223a22323032352d30372d30335431343a30303a30302b30383a3030222c227375626a6563745f6964223a225355422d412d4a554e222c2276616c7565223a3330307d",
+    "byte_length": 118,
+    "sha256": "0675f2ae3d0c95e9efd9ffdac697945e141b6d53570beac2273fae6f0c087886",
+    "profile": "golden-json-c14n-v1",
+    "schema_version": "normalized-revenue-content-v1",
+    "source": {
+      "alias": "G",
+      "line": 125
+    },
+    "timezone": "Asia/Taipei",
+    "precision": "SECOND"
+  },
+  {
+    "vector_id": "invalid_content_v2",
+    "encoding": "hex",
+    "payload_hex": "7b22636f6e74656e745f76657273696f6e5f6964223a2243562d4a554e2d3031222c227075626c69636174696f6e5f74696d65223a22323032352d30372d30335431343a30303a30302b30383a3030222c227375626a6563745f6964223a225355422d412d4a554e222c2276616c7565223a3331307d",
+    "byte_length": 118,
+    "sha256": "ef3b3f21d450635765b6367393d95cf1ca58bde42e380b437e8c4c4f94edb1aa",
+    "profile": "golden-json-c14n-v1",
+    "schema_version": "normalized-revenue-content-v1",
+    "source": {
+      "alias": "G",
+      "line": 134
+    },
+    "timezone": "Asia/Taipei",
+    "precision": "SECOND"
+  },
+  {
+    "vector_id": "agent_early",
+    "encoding": "hex",
+    "payload_hex": "7b226465636973696f6e5f6375746f6666223a22323032352d30372d30375430303a30303a30302b30383a3030222c22646572697665645f71325f726576656e7565223a3630302c22656e746974795f6964223a2253594e2d41222c226f62736572766174696f6e5f736368656d615f76657273696f6e223a226167656e742d6f62732d7631227d",
+    "byte_length": 136,
+    "sha256": "35eae53179a9912740635da733a41e0ddb31d62759b60e06adfe1f98441dbafa",
+    "profile": "golden-json-c14n-v1",
+    "schema_version": "agent-obs-v1",
+    "source": {
+      "alias": "G",
+      "line": 440
+    },
+    "timezone": "Asia/Taipei",
+    "precision": "SECOND"
+  },
+  {
+    "vector_id": "agent_late",
+    "encoding": "hex",
+    "payload_hex": "7b226465636973696f6e5f6375746f6666223a22323032352d30372d31345430303a30303a30302b30383a3030222c22646572697665645f71325f726576656e7565223a3631302c22656e746974795f6964223a2253594e2d41222c226f62736572766174696f6e5f736368656d615f76657273696f6e223a226167656e742d6f62732d7631227d",
+    "byte_length": 136,
+    "sha256": "bf25ac7667200b840d5d35c86c22617079ac9cb14f917e512b1cf15952cdbdd9",
+    "profile": "golden-json-c14n-v1",
+    "schema_version": "agent-obs-v1",
+    "source": {
+      "alias": "G",
+      "line": 442
+    },
+    "timezone": "Asia/Taipei",
+    "precision": "SECOND"
+  },
+  {
+    "vector_id": "agent_missing",
+    "encoding": "hex",
+    "payload_hex": "7b226465636973696f6e5f6375746f6666223a22323032352d30372d30375430303a30303a30302b30383a3030222c22646572697665645f71325f726576656e7565223a6e756c6c2c22656e746974795f6964223a2253594e2d42222c226f62736572766174696f6e5f736368656d615f76657273696f6e223a226167656e742d6f62732d7631227d",
+    "byte_length": 137,
+    "sha256": "af668b4116853c4512a53bf2f299eea4d69f3ab2dc749f36cfbea1f491db3b3b",
+    "profile": "golden-json-c14n-v1",
+    "schema_version": "agent-obs-v1",
+    "source": {
+      "alias": "G",
+      "line": 444
+    },
+    "timezone": "Asia/Taipei",
+    "precision": "SECOND"
+  }
+]
