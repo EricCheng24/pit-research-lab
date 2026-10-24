@@ -67,10 +67,45 @@ def test_t01_t28_exact_accepted_baseline(rs2_fixture):
         ),
     )
     candidates = (*rs2_fixture.CANDIDATE_PINS, *extra)
+    assert len(rs2_fixture.CANDIDATE_PINS) == 46
     assert len(candidates) == 51 and len(rs2_fixture.TRACKED_PINS) == 63
+    assert len({name for name, _, _ in candidates}) == 51
     assert len(rs2_fixture.WU00_PINS) == 15
+    ic1_path = "tests/unit/cap_f2_v1_a06_ic1/test_market_source_slice.py"
+    rs2_path = "tests/unit/cap_f2_v1_a06_ic3_rs2/test_issuer_html_extraction.py"
+    # Historical tuples stay frozen; current exceptions cover only these reviewed edits.
+    historical_versions = {
+        ic1_path: (
+            23778,
+            "cedcd2ecd13edb87934fb5a99023eac2ffae01cbc52583b75aa8a22dd355b288",
+        ),
+        rs2_path: (
+            31873,
+            "e82368ea37f4d2d577c1b1e9fb6168cc5d0b260f2c9f0f1cbe697dfbb093c5e6",
+        ),
+    }
+    current_versions = {
+        ic1_path: (
+            23817,
+            "b8357c4323445363cab4cec1fb960ccc02cc883ffa774c9a096d54339cbce1cf",
+        ),
+        rs2_path: (
+            32611,
+            "0305a5a53c33abdc15dee485edcf90f5ce9c76da6434e3a3aa5d72144e2923d8",
+        ),
+    }
+    assert len(current_versions) == 2 and set(current_versions) == set(historical_versions)
+    assert set(current_versions).isdisjoint(
+        name for name, _, _ in (*rs2_fixture.TRACKED_PINS, *rs2_fixture.WU00_PINS)
+    )
+    for path, historical_pin in historical_versions.items():
+        assert tuple(pin for pin in candidates if pin[0] == path) == ((path, *historical_pin),)
     for name, length, digest in (*candidates, *rs2_fixture.TRACKED_PINS, *rs2_fixture.WU00_PINS):
-        body = (REPOSITORY / name).read_bytes()
+        if name in current_versions:
+            length, digest = current_versions[name]
+        source = REPOSITORY / name
+        assert REPOSITORY in source.parents and source.resolve() == source and source.is_file()
+        body = source.read_bytes()
         assert len(body) == length and sha256(body).hexdigest() == digest
 
 

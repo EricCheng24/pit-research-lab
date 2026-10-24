@@ -53,8 +53,25 @@ def test_rs2_t01_accepted_candidate_bytes():
 
     root = Path(__file__).resolve().parents[3]
     assert len(CANDIDATE_PINS) == 46
+    assert len({path for path, _, _ in CANDIDATE_PINS}) == 46
+    ic1_path = "tests/unit/cap_f2_v1_a06_ic1/test_market_source_slice.py"
+    # Keep the accepted RS2 record; only this reviewed CI test transition is current.
+    assert tuple(pin for pin in CANDIDATE_PINS if pin[0] == ic1_path) == (
+        (
+            ic1_path,
+            23778,
+            "cedcd2ecd13edb87934fb5a99023eac2ffae01cbc52583b75aa8a22dd355b288",
+        ),
+    )
     for path, length, digest in CANDIDATE_PINS:
-        body = (root / path).read_bytes()
+        if path == ic1_path:
+            length, digest = (
+                23817,
+                "b8357c4323445363cab4cec1fb960ccc02cc883ffa774c9a096d54339cbce1cf",
+            )
+        source = root / path
+        assert root in source.parents and source.resolve() == source and source.is_file()
+        body = source.read_bytes()
         assert len(body) == length and sha256(body).hexdigest() == digest
 
 

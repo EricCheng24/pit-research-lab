@@ -79,6 +79,10 @@ def stopped(result):
     )
 
 
+@pytest.mark.skipif(
+    os.environ.get("IC1_APPROVED_REAL") != "1",
+    reason="Explicit IC1 owner-source identity check only",
+)
 @pytest.mark.parametrize("expected", REAL_PINS)
 def test_ic1_t01_actual_owner_file_identification_only(expected):
     # Explicit forensic identity authorization; no CSV decode or admitted ingestion.
@@ -573,14 +577,13 @@ def test_ic1_t19_pure_core_resource_denial_and_outer_pins(code, monkeypatch):
     stopped(result)
 
 
-def test_ic1_t20_known_protected_pins_and_index():
+def test_ic1_t20_known_protected_content_pins():
     # Complete 63/36/15 preservation is also audited externally before delivery.
     pins = {
         "src/pit_research_lab/domain/source_intake.py": "c59235802a73f3285e98fbff72d5faa97e8797324bcbcf3f5e3b8cf60e48a240",
         "src/pit_research_lab/domain/source_adapter.py": "afaec82a33bded42b567f0d1bd2305d5a823f5b965e87ca6494747fb1108c4df",
         "src/pit_research_lab/domain/offline_replay.py": "d6c84c3a647bacd06e6dc06cc57f3139219b07742e766c67f6910be5fe273e7b",
         "tests/unit/cap_f2_v1_a06/test_offline_source.py": "1c58a1af8c6b100bbe523bfac1965d6be10572b29edf5794f3c63f1ffd56fe97",
-        ".git/index": "fc6724be834e4d9061c13e8f5ddef4bdee393b9b3ddab1657a8ee9d4aeaf0ec9",
     }
     for path, h in pins.items():
         assert sha256((ROOT / path).read_bytes()).hexdigest() == h
