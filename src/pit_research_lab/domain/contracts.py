@@ -231,6 +231,16 @@ class NumericContract(Record):
 
 
 @dataclass(frozen=True)
+class TemporalPolicy(Record):
+    """Only the bounded public/observed evidence bases; no proxy policy."""
+
+    policy_ref: str = "P-OBS-1"
+    public_basis: str = "EVIDENCE_BOUND"
+    observed_basis: str = "OBSERVED_ONLY"
+    evaluator_ref: str = "s2-b01-bound-input-v0.1-CANDIDATE"
+
+
+@dataclass(frozen=True)
 class SemanticContext(Record):
     context_ref: Id
     information_cutoff: AwareInstant
@@ -245,7 +255,7 @@ class SemanticContext(Record):
     computation_attempt_time: Fact[str]
     opaque_spec_ref: Id
     opaque_fit_refs: tuple[Id, ...]
-    temporal_rule: NotEvaluated
+    temporal_rule: TemporalPolicy | NotEvaluated
     origin: FieldOrigin
 
     def __post_init__(self) -> None:
@@ -295,6 +305,7 @@ class ContentPin(Record):
 class S1Scope(Record):
     input_members: tuple[RoleRef, ...]
     raw_pins: tuple[ContentPin, ...]
+    source_records: "SourceRecords | NotEvaluated" = NotEvaluated("S1", "SOURCE_RECORDS_ABSENT")
 
     def __post_init__(self) -> None:
         super().__post_init__()
@@ -680,6 +691,35 @@ class ContentInventoryRequest(Record):
 
 
 @dataclass(frozen=True)
+class SourceRecords(Record):
+    """Immutable input-side projection, built before challenged request DTOs.
+
+    The bounded adapter resolves actual evidence records into support tuples.
+    These retained tuples and content pins are integrity references, not external
+    authentication or protection against replacement of the entire input corpus.
+    """
+
+    input_members: tuple[RoleRef, ...]
+    raw_pins: tuple[ContentPin, ...]
+    supports: tuple[SupportBinding, ...]
+    captures: tuple[CaptureFacts, ...]
+    events: tuple[PublicationEventFacts, ...]
+    capture_edges: tuple[CaptureEdge, ...]
+    descriptor_ref: str = data_field(default="b01-source-records-v1", init=False)
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        for values, role in (
+            (self.supports, "support_ref"),
+            (self.captures, "observation_ref"),
+            (self.events, "event_ref"),
+            (self.capture_edges, "edge_ref"),
+        ):
+            keys = [(v.origin.visibility, getattr(v, role)) for v in values]
+            require(len(keys) == len(set(keys)), "DUPLICATE_SOURCE_RECORD")
+
+
+@dataclass(frozen=True)
 class ScopedPath(Record):
     target: RequestedTuple
     evidence_ref: str | NotApplicable
@@ -754,6 +794,7 @@ class EvidenceOutcome(Record):
     publication_event_facts: tuple[PublicationEventFacts, ...]
     capture_edges: tuple[CaptureEdge, ...]
     provenance: CompleteScopedProvenance
+    qualification_context: SemanticContext = data_field(kw_only=True)
 
     def __post_init__(self) -> None:
         super().__post_init__()

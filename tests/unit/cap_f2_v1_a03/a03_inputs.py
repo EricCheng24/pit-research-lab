@@ -25,6 +25,7 @@ from pit_research_lab.domain.contracts import (
     RequestedTuple,
     RoleRef,
     S1Scope,
+    SourceRecords,
     SupportBinding,
     TimeProof,
     Unknown,
@@ -234,6 +235,17 @@ def source(
         )
     )
     scope = S1Scope(members, (ContentPin(cv, rep, len(raw), digest),))
+    scope = replace(
+        scope,
+        source_records=SourceRecords(
+            members,
+            scope.raw_pins,
+            () if unbound else (binding,),
+            (capture,),
+            (event,),
+            (),
+        ),
+    )
     request = IssuerBindingRequest(
         requested,
         content,
@@ -357,6 +369,8 @@ def provider(code, tag="PROVIDER", value=999):
             key=lambda m: m.key,
         )
     )
+    pins = (ContentPin(cv, rep, len(raw), digest),)
+    scope = S1Scope(members, pins, SourceRecords(members, pins, (), (capture,), (), (edge,)))
     request = replace(
         r,
         requested=replace(
@@ -368,7 +382,7 @@ def provider(code, tag="PROVIDER", value=999):
         subject_reference=Known("SUB-A-JUN", o),
         displayed_value=Known(value, o),
         source_unit=Known("NTD_thousands", o),
-        scope=S1Scope(members, (ContentPin(cv, rep, len(raw), digest),)),
+        scope=scope,
     )
     return CandidateSource(NA, request, NO_LEAD)
 

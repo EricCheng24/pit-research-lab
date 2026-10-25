@@ -7,7 +7,14 @@ from datetime import date
 import pytest
 from test_pit_slice import assert_isolated, exact_request, inputs
 from test_pit_slice import code as code
-from wu01_inputs import NA, AdaptedS1Input, InvocationSelector, materialize_input
+from wu01_inputs import (
+    NA,
+    AdaptedS1Input,
+    InvocationSelector,
+    materialize_input,
+    synthetic_proof,
+    synthetic_scope,
+)
 
 from pit_research_lab.domain import temporal
 from pit_research_lab.domain.contracts import (
@@ -122,11 +129,7 @@ def unknown_time(request, zone_known=False):
 
 
 def with_proof(request, proof):
-    attempt = request.attempts[0]
-    return replace(
-        request,
-        attempts=(replace(attempt, supplied=replace(attempt.supplied, proof_candidate=proof)),),
-    )
+    return synthetic_proof(request, proof)
 
 
 def cutoff(context, text, zone="Asia/Taipei"):
@@ -346,7 +349,7 @@ def test_instant_defect_rejected_at_s2_boundary(code, location, fault):
             else x
             for x in r.captures
         )
-        r = replace(r, captures=captures)
+        r = replace(r, captures=captures, scope=synthetic_scope(r.scope, captures=captures))
         c = replace(c, mode="prospective_observed")
     else:
         p = (
@@ -475,7 +478,7 @@ def test_multiple_proofs_are_not_selected_for_favorable_time(code):
         replace(s1, assessments=s1.assessments * 2),
     )
     assert outcome.state == "UNRESOLVED"
-    assert outcome.diagnostics == ("ABSENT_OR_MULTIPLE_PUBLICATION_PATHS",)
+    assert outcome.diagnostics == ("S1_OUTCOME_MISMATCH",)
 
 
 @pytest.mark.parametrize("kind", ["upper", "date", "unknown"])
@@ -487,7 +490,11 @@ def test_union_structural_transport_for_identity_and_inventory(code, kind):
     supports = tuple(
         replace(s, proof_candidate=p) if s.support_ref == "SUP-JUN1-PUB" else s for s in r.supports
     )
-    result = evaluate_slice(inventory.context, replace(r, supports=supports), code)
+    result = evaluate_slice(
+        inventory.context,
+        replace(r, supports=supports, scope=synthetic_scope(r.scope, supports=supports)),
+        code,
+    )
     assert isinstance(result.s1, EvidenceOutcome) and result.s1.state == "BOUND"
     assert result.s2.state == ("UNRESOLVED" if kind == "unknown" else "SUPPORTED")
     selector = InvocationSelector(
@@ -502,7 +509,14 @@ def test_union_structural_transport_for_identity_and_inventory(code, kind):
     left = replace(
         req.left, supports=tuple(replace(s, proof_candidate=p) for s in req.left.supports)
     )
-    actual = compare_subjects(identity_input.context, replace(req, left=left))
+    reference = tuple(
+        replace(s, proof_candidate=p) if s.support_ref == "SUP-JUN1-PUB" else s
+        for s in req.scope.source_records.supports
+    )
+    actual = compare_subjects(
+        identity_input.context,
+        replace(req, left=left, scope=synthetic_scope(req.scope, supports=reference)),
+    )
     assert actual.state == "SAME"  # S1 computes no temporal eligibility.
     assert_isolated(result)
 

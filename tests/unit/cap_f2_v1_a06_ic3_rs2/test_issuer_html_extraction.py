@@ -49,6 +49,7 @@ def refused(result, reason=None):
 
 
 def test_rs2_t01_accepted_candidate_bytes():
+    from b01_preservation import verify_preserved
     from rs2_inputs import CANDIDATE_PINS
 
     root = Path(__file__).resolve().parents[3]
@@ -69,10 +70,7 @@ def test_rs2_t01_accepted_candidate_bytes():
                 23817,
                 "b8357c4323445363cab4cec1fb960ccc02cc883ffa774c9a096d54339cbce1cf",
             )
-        source = root / path
-        assert root in source.parents and source.resolve() == source and source.is_file()
-        body = source.read_bytes()
-        assert len(body) == length and sha256(body).hexdigest() == digest
+        verify_preserved(root, path, length, digest)
 
 
 def test_rs2_t02_exact_new_file_budget():
@@ -82,7 +80,68 @@ def test_rs2_t02_exact_new_file_budget():
         "conftest.py",
         "rs2_inputs.py",
         "test_issuer_html_extraction.py",
+        "b01_preservation.py",
     }
+
+
+def test_b01_preservation_checks_current_and_historical_bytes(tmp_path, monkeypatch):
+    import subprocess
+
+    import b01_preservation as preservation
+
+    live, historical = b"current fixture\n", b"historical fixture\n"
+    path = tmp_path / "fixture.py"
+    path.write_bytes(live)
+    monkeypatch.setattr(
+        preservation,
+        "CURRENT_PINS",
+        {
+            "fixture.py": (len(live), sha256(live).hexdigest()),
+        },
+    )
+    monkeypatch.setattr(
+        preservation.subprocess,
+        "run",
+        lambda *a, **k: subprocess.CompletedProcess(a, 0, historical),
+    )
+    expected = (len(historical), sha256(historical).hexdigest())
+    preservation.verify_preserved(tmp_path, "fixture.py", *expected)
+    path.write_bytes(b"tampered fixture\n")
+    with pytest.raises(AssertionError, match="B01_CURRENT_PIN_MISMATCH"):
+        preservation.verify_preserved(tmp_path, "fixture.py", *expected)
+    path.write_bytes(live)
+    with pytest.raises(AssertionError, match="PHASE_A_PIN_MISMATCH"):
+        preservation.verify_preserved(tmp_path, "fixture.py", len(historical), "0" * 64)
+
+
+def test_b01_absent_git_object_is_a_failure(monkeypatch):
+    import b01_preservation as preservation
+    from rs2_inputs import CANDIDATE_PINS
+
+    monkeypatch.setattr(preservation, "FROZEN", "0" * 40)
+    root = Path(__file__).resolve().parents[3]
+    pin = next(p for p in CANDIDATE_PINS if p[0] == "src/pit_research_lab/domain/contracts.py")
+    with pytest.raises(AssertionError, match="FROZEN_HISTORY_UNAVAILABLE"):
+        preservation.verify_preserved(root, *pin)
+
+
+def test_b01_both_ci_jobs_supply_historical_objects():
+    root = Path(__file__).resolve().parents[3]
+    workflow = (root / ".github/workflows/ci.yml").read_text()
+    assert workflow.count("fetch-depth: 0") == 2
+    assert workflow.count("persist-credentials: false") == 2
+    assert "IC1_APPROVED_REAL" not in workflow and "RS3F_APPROVED_REAL" not in workflow
+
+
+def test_b01_explicit_current_change_manifest():
+    from b01_preservation import CURRENT_PINS
+
+    root = Path(__file__).resolve().parents[3]
+    assert len(CURRENT_PINS) == 16
+    assert not any(path.startswith("tests/unit/cap_f2_wu00/") for path in CURRENT_PINS)
+    for path, expected in CURRENT_PINS.items():
+        body = (root / path).read_bytes()
+        assert (len(body), sha256(body).hexdigest()) == expected
 
 
 def test_rs2_t03_sec_invented_happy_path(html_code):
@@ -878,10 +937,10 @@ def test_rs2_t31_pure_syntax_and_outer_code_observation(html_code):
 
 
 def test_rs2_t32_all_protected_tracked_and_wu00_pins():
+    from b01_preservation import verify_preserved
     from rs2_inputs import TRACKED_PINS, WU00_PINS
 
     root = Path(__file__).resolve().parents[3]
     assert len(TRACKED_PINS) == 63 and len(WU00_PINS) == 15
     for path, length, digest in (*TRACKED_PINS, *WU00_PINS):
-        body = (root / path).read_bytes()
-        assert len(body) == length and sha256(body).hexdigest() == digest
+        verify_preserved(root, path, length, digest)

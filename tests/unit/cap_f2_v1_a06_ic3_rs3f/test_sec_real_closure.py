@@ -39,6 +39,12 @@ def refused(result, *, before_body=True):
 
 
 def test_t01_t28_exact_accepted_baseline(rs2_fixture):
+    import importlib.util
+
+    helper = REPOSITORY / "tests/unit/cap_f2_v1_a06_ic3_rs2/b01_preservation.py"
+    spec = importlib.util.spec_from_file_location("b01_preservation", helper)
+    preservation = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(preservation)
     extra = (
         (
             "src/pit_research_lab/domain/issuer_html_extraction.py",
@@ -103,10 +109,7 @@ def test_t01_t28_exact_accepted_baseline(rs2_fixture):
     for name, length, digest in (*candidates, *rs2_fixture.TRACKED_PINS, *rs2_fixture.WU00_PINS):
         if name in current_versions:
             length, digest = current_versions[name]
-        source = REPOSITORY / name
-        assert REPOSITORY in source.parents and source.resolve() == source and source.is_file()
-        body = source.read_bytes()
-        assert len(body) == length and sha256(body).hexdigest() == digest
+        preservation.verify_preserved(REPOSITORY, name, length, digest)
 
 
 @pytest.mark.parametrize(
@@ -149,7 +152,7 @@ def test_t05_caller_receipts_are_not_authority(monkeypatch, fake):
 
 @pytest.mark.parametrize("index", range(9))
 @pytest.mark.parametrize("failure", ["missing", "corrupt"])
-def test_t03_t04_t07_document_failure_zero_sec_opens(monkeypatch, index, failure):
+def test_t03_t04_t07_document_failure_zero_sec_opens(monkeypatch, index, failure, historical_code):
     reads = []
 
     def fake_read(root, p):
@@ -162,6 +165,7 @@ def test_t03_t04_t07_document_failure_zero_sec_opens(monkeypatch, index, failure
         return b"SYNTHETIC_TEST_ONLY mocked earlier documentary read"
 
     monkeypatch.setattr(controller, "_read_pinned", fake_read)
+    monkeypatch.setattr(controller, "_disk_code", lambda: historical_code)
     refused(controller.run_sec_diagnostic())
     assert len(reads) == index + 1
 
@@ -254,7 +258,7 @@ def decision_fixture():
         ("source_capture", {}),
     ],
 )
-def test_t04_t06_parsed_scope_rejected_before_source(monkeypatch, key, value):
+def test_t04_t06_parsed_scope_rejected_before_source(monkeypatch, key, value, historical_code):
     data = decision_fixture()
     data["actual_approved_scope"][key] = value
     reads = []
@@ -265,6 +269,7 @@ def test_t04_t06_parsed_scope_rejected_before_source(monkeypatch, key, value):
         return json.dumps(data).encode()
 
     monkeypatch.setattr(controller, "_read_pinned", fake_read)
+    monkeypatch.setattr(controller, "_disk_code", lambda: historical_code)
     refused(controller.run_sec_diagnostic())
     assert len(reads) == 9
 
@@ -294,6 +299,38 @@ def test_t04_synthetic_scope_schema_only_never_runtime_authority():
 
     with pytest.raises(ContractError, match="SOURCE_PIN_MISMATCH"):
         check_pin(body, DOCUMENTS[4].pin)
+
+
+@pytest.fixture
+def historical_code():
+    """Historical-code TEST DOUBLE for already mocked downstream failure stages.
+
+    Check the real frozen blobs, never claim current code matches the real-source
+    profile. No source/approval document is read and no profile is repinned.
+    """
+    import subprocess
+
+    for pin in PINNED_CODE:
+        body = subprocess.check_output(
+            [
+                "git",
+                "--no-optional-locks",
+                "-C",
+                str(REPOSITORY),
+                "show",
+                "6edf54d4b81b7047c632937112aa4d764aa806b6:" + pin.path,
+            ]
+        )
+        assert sha256(body).hexdigest() == pin.sha256
+    return PINNED_CODE
+
+
+def test_b01_live_real_profile_stays_closed(monkeypatch):
+    monkeypatch.setattr(controller, "_read_pinned", lambda *a: pytest.fail("No source I/O"))
+    result = controller.run_sec_diagnostic()
+    refused(result)
+    assert result.reason == "CODE_PROFILE_PIN_MISMATCH"
+    assert result.body_read_attempts == ()
 
 
 def test_t06_changed_code_profile_zero_body(monkeypatch):
@@ -389,7 +426,7 @@ def test_t09_traversal_rejected(path):
 
 
 @pytest.mark.parametrize("reason", ["SOURCE_PIN_MISMATCH", "SOURCE_ROOT_CHANGED_DURING_READ"])
-def test_t10_post_open_failure_emits_no_view(monkeypatch, reason):
+def test_t10_post_open_failure_emits_no_view(monkeypatch, reason, historical_code):
     # All earlier I/O replaced with invented bytes; financial read itself fails.
     data = json.dumps(decision_fixture()).encode()
     from pit_research_lab.domain.source_intake import decode_manifest
@@ -408,6 +445,7 @@ def test_t10_post_open_failure_emits_no_view(monkeypatch, reason):
     import pit_research_lab.domain.source_intake as intake
 
     monkeypatch.setattr(controller, "_read_pinned", fake_read)
+    monkeypatch.setattr(controller, "_disk_code", lambda: historical_code)
     monkeypatch.setattr(intake, "decode_manifest", lambda b: FakeManifest())
     monkeypatch.setattr(
         market,

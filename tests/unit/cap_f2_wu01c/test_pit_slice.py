@@ -12,7 +12,15 @@ from hashlib import sha256
 from pathlib import Path
 
 import pytest
-from wu01_inputs import CALLER, NA, AdaptedS1Input, InvocationSelector, materialize_input
+from wu01_inputs import (
+    CALLER,
+    NA,
+    AdaptedS1Input,
+    InvocationSelector,
+    materialize_input,
+    synthetic_proof,
+    synthetic_scope,
+)
 
 from pit_research_lab.domain.contracts import (
     SCHEMA,
@@ -68,8 +76,7 @@ def exact_request(request, text, zone="Asia/Taipei"):
     raw = dict(proof.raw_descriptor)
     raw.update(timestamp=text, offset=text[-6:], timezone=zone)
     proof = replace(proof, timestamp=stamp, raw_descriptor=tuple(sorted(raw.items())))
-    binding = replace(binding, proof_candidate=proof)
-    return replace(request, attempts=(replace(request.attempts[0], supplied=binding),))
+    return synthetic_proof(request, proof)
 
 
 def assert_isolated(result):
@@ -131,9 +138,7 @@ def test_unsupported_variants_are_unevaluated_even_at_cutoff(code, kind, closure
     raw = dict(proof.raw_descriptor)
     raw.update(proof_kind=kind, bound=closure)
     proof = replace(proof, proof_kind=kind, raw_descriptor=tuple(sorted(raw.items())))
-    r = replace(
-        r, attempts=(replace(r.attempts[0], supplied=replace(binding, proof_candidate=proof)),)
-    )
+    r = synthetic_proof(r, proof)
     result = evaluate_slice(b.context, r, code)
     assert result.s2.state == "UNRESOLVED"
     assert result.s2.reason == "TEMPORAL_BOUND_INSUFFICIENT"
@@ -154,7 +159,9 @@ def test_foreign_proof_not_borrowed(code, mutation):
         ),
     )
     result = evaluate_slice(b.context, request, code)
-    assert result.s1.state == result.s2.state == "UNRESOLVED"
+    assert isinstance(result.s1, BlockingFailure)
+    assert result.s1.code == "SOURCE_BINDING_MISMATCH"
+    assert result.s2.state == "UNRESOLVED"
     assert isinstance(result.s2.evaluated_evidence, NotEvaluated)
     assert_isolated(result)
 
@@ -186,7 +193,11 @@ def test_provider_capture_mode_separation_and_diagnostic_only(code, mode, text, 
     stamp = replace(capture.completion.value, source_text=text)
     capture = replace(capture, completion=Known(stamp, capture.completion.origin))
     result = evaluate_slice(
-        replace(b.context, mode=mode), replace(b.request, capture=capture), code
+        replace(b.context, mode=mode),
+        replace(
+            b.request, capture=capture, scope=synthetic_scope(b.request.scope, captures=(capture,))
+        ),
+        code,
     )
     assert result.s1.state == "UNRESOLVED" and result.s1.reason == "ATTRIBUTION_UNRESOLVED"
     assert result.s2.state == (state if mode == "prospective_observed" else "UNRESOLVED")
@@ -242,8 +253,9 @@ def test_sc01_apparent_bound_stays_untrusted(code):
     )
     r = replace(b.request, attempts=(replace(b.request.attempts[0], supplied=binding),))
     result = evaluate_slice(b.context, r, code)
-    assert result.s1.state == "BOUND"  # Known SC-01 remains OPEN, not repaired here.
-    assert result.s2.state == "SUPPORTED"  # Conditional time calculation, no authentication.
+    assert isinstance(result.s1, BlockingFailure)
+    assert result.s1.code == "SOURCE_BINDING_MISMATCH"
+    assert result.s2.state == "UNRESOLVED"
     assert result.s2.source_authentication == "NOT_ESTABLISHED"
     assert_isolated(result)
 
@@ -264,12 +276,7 @@ def test_contradictory_time_facts_block(code, fault):
         raw = dict(proof.raw_descriptor)
         raw["timestamp" if fault == "descriptor" else "upper_bound"] = "2099-01-01T00:00:00+08:00"
         proof = replace(proof, raw_descriptor=tuple(sorted(raw.items())))
-    r = replace(
-        b.request,
-        attempts=(
-            replace(b.request.attempts[0], supplied=replace(binding, proof_candidate=proof)),
-        ),
-    )
+    r = synthetic_proof(b.request, proof)
     result = evaluate_slice(b.context, r, code)
     assert isinstance(result.s2, BlockingFailure)
     assert result.s2.category == "CONTRACT_VIOLATION"

@@ -5,7 +5,7 @@ source time stay distinct. This owner authenticates no source or final PIT claim
 """
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import UTC, date, datetime, time, timedelta
 from typing import Literal
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -29,6 +29,7 @@ from pit_research_lab.domain.contracts import (
     RequestedTuple,
     SemanticContext,
     SupportBinding,
+    TemporalPolicy,
     TemporalProof,
     TimeProof,
     Unknown,
@@ -36,8 +37,9 @@ from pit_research_lab.domain.contracts import (
     Visibility,
     require,
 )
+from pit_research_lab.domain.information import assess_evidence, inventory_content
 
-EVALUATOR_REF = "s2-a02-temporal-profiles-v0.1-CANDIDATE"
+EVALUATOR_REF = "s2-b01-bound-input-v0.1-CANDIDATE"
 type EvidenceRequest = IssuerBindingRequest | ContentInventoryRequest | ProviderCaptureRequest
 type TemporalState = Literal["SUPPORTED", "NOT_ADMISSIBLE", "UNRESOLVED"]
 
@@ -324,6 +326,29 @@ def qualify_temporal(
         return unresolved("CONTENT_BINDING_INSUFFICIENT", "S1_BLOCKED:" + s1.code)
     if s1.context_ref != context.context_ref or s1.requested_tuple != request.requested:
         return unresolved("CONTENT_BINDING_INSUFFICIENT", "INVOCATION_MISMATCH")
+    # Reuse the one S1 owner; a caller-created success DTO is not its evidence.
+    # Administrative wall clocks are retained diagnostics, not qualification inputs.
+    prior = replace(
+        s1.qualification_context,
+        decision_wall_times=context.decision_wall_times,
+        computation_attempt_time=context.computation_attempt_time,
+    )
+    if prior != context:
+        return unresolved("CONTENT_BINDING_INSUFFICIENT", "QUALIFICATION_CONTEXT_MISMATCH")
+    rule = context.temporal_rule
+    if (
+        not isinstance(rule, TemporalPolicy)
+        or rule != TemporalPolicy()
+        or rule.policy_ref not in context.policy_refs
+    ):
+        return unresolved("TEMPORAL_BOUND_INSUFFICIENT", "UNSUPPORTED_TEMPORAL_POLICY")
+    expected = (
+        inventory_content(context, request)
+        if isinstance(request, ContentInventoryRequest)
+        else assess_evidence(context, request)
+    )
+    if replace(s1, qualification_context=context) != expected:
+        return unresolved("CONTENT_BINDING_INSUFFICIENT", "S1_OUTCOME_MISMATCH")
     provider_observation = isinstance(request, ProviderCaptureRequest) and path == "OBSERVATION"
     if s1.state != "BOUND" and not provider_observation:
         return unresolved("CONTENT_BINDING_INSUFFICIENT", "S1_UNRESOLVED:" + s1.reason)

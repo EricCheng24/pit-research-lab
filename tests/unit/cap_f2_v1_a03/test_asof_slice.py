@@ -10,7 +10,13 @@ from pathlib import Path
 
 import pytest
 from a03_inputs import invocation, provider, revision, seed, source
-from wu01_inputs import AdaptedS1Input, InvocationSelector, materialize_input
+from wu01_inputs import (
+    AdaptedS1Input,
+    InvocationSelector,
+    materialize_input,
+    synthetic_proof,
+    synthetic_scope,
+)
 
 from pit_research_lab.domain.asof_slice import evaluate_asof, observe_asof_code
 from pit_research_lab.domain.contracts import (
@@ -363,9 +369,9 @@ def test_a03_t17_sc01_remains_open_and_untrusted(code):
         NotApplicable("S3", "NO_HISTORICAL_CLUE"),
     )
     result = run(code, (c,))
-    assert result.inputs.candidates[0].actual.s1.state == "BOUND"
-    assert result.inputs.candidates[0].actual.s2.state == "SUPPORTED"
-    assert result.selection.state == "SELECTED"
+    assert isinstance(result.inputs.candidates[0].actual.s1, BlockingFailure)
+    assert result.inputs.candidates[0].actual.s2.state == "UNRESOLVED"
+    assert isinstance(result.selection, BlockingFailure)
     isolated(result)
 
 
@@ -639,7 +645,10 @@ def test_conflicting_immutable_proof_identity_is_structural(code):
     request = replace(
         new.request,
         attempts=(replace(attempt, supplied=replace(attempt.supplied, proof_candidate=proof)),),
-        scope=replace(new.request.scope, input_members=members),
+        scope=synthetic_scope(
+            replace(new.request.scope, input_members=members),
+            supports=(replace(attempt.supplied, proof_candidate=proof),),
+        ),
     )
     new = replace(new, request=request)
     result = run(code, (old, new), cutoff="2025-07-14T00:00:00+08:00")
@@ -689,10 +698,7 @@ def test_blocking_failures_are_preserved_separately_from_no_claim(code, layer):
         raw = dict(proof.raw_descriptor)
         raw["timestamp"] = stamp.source_text
         proof = replace(proof, timestamp=stamp, raw_descriptor=tuple(sorted(raw.items())))
-        request = replace(
-            request,
-            attempts=(replace(attempt, supplied=replace(attempt.supplied, proof_candidate=proof)),),
-        )
+        request = synthetic_proof(request, proof)
     result = run(code, (replace(candidate, request=request),))
     actual = result.inputs.candidates[0].actual
     expected = actual.s1 if layer == "S1" else actual.s2
