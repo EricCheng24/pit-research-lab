@@ -4,6 +4,7 @@ from collections import Counter
 from dataclasses import dataclass
 
 from pit_research_lab.domain.contracts import (
+    TEMPORAL_PROOF_TYPES,
     AssertionFacts,
     BlockingFailure,
     CaptureFacts,
@@ -14,6 +15,7 @@ from pit_research_lab.domain.contracts import (
     IdentityOutcome,
     IssuerBindingRequest,
     NotApplicable,
+    NotEvaluated,
     OriginKnownValue,
     ProviderCaptureRequest,
     PublicationEventFacts,
@@ -23,7 +25,6 @@ from pit_research_lab.domain.contracts import (
     S1Request,
     ScopedPath,
     SubjectComparisonRequest,
-    TimeProof,
     Visibility,
     require,
 )
@@ -206,7 +207,7 @@ def project(actual, association, probes):
                     (binding.event, "publication_events"),
                     (binding.proof_candidate, "time_proofs"),
                 ):
-                    if isinstance(value, (PublicationEventFacts, TimeProof)):
+                    if isinstance(value, (PublicationEventFacts, *TEMPORAL_PROOF_TYPES)):
                         ref = (
                             value.event_ref
                             if isinstance(value, PublicationEventFacts)
@@ -234,7 +235,7 @@ def project(actual, association, probes):
                         if isinstance(binding.event, PublicationEventFacts)
                         else binding.event,
                         binding.proof_candidate.proof_ref
-                        if isinstance(binding.proof_candidate, TimeProof)
+                        if isinstance(binding.proof_candidate, TEMPORAL_PROOF_TYPES)
                         else binding.proof_candidate,
                     ),
                     "ACCEPTED_SOURCE_LINEAGE_MISMATCH",
@@ -268,7 +269,7 @@ def project(actual, association, probes):
                     if isinstance(binding.event, PublicationEventFacts)
                     else binding.event,
                     binding.proof_candidate.proof_ref
-                    if isinstance(binding.proof_candidate, TimeProof)
+                    if isinstance(binding.proof_candidate, TEMPORAL_PROOF_TYPES)
                     else binding.proof_candidate,
                     binding.origin.visibility,
                     "IDENTITY_CONTENT",
@@ -365,6 +366,44 @@ def project(actual, association, probes):
                 "INCOMPLETE_ACCEPTED_ACCOUNTING",
             )
             content = association.input_request.content
+            request = association.input_request
+            require(actual.content_refs == (content.content_version_ref,), "SOURCE_CONTENT_CHANGED")
+            amount = (
+                request.assertion.source_amount
+                if isinstance(request, IssuerBindingRequest)
+                else request.displayed_value
+                if isinstance(request, ProviderCaptureRequest)
+                else NotEvaluated("S1", "INVENTORY_ONLY")
+            )
+            require(actual.source_amount == amount, "SOURCE_AMOUNT_CHANGED")
+            require(
+                actual.capture_edges
+                == (request.capture_edges if isinstance(request, ProviderCaptureRequest) else ()),
+                "SOURCE_CAPTURE_EDGES_CHANGED",
+            )
+            if not isinstance(request, ProviderCaptureRequest):
+                expected_paths = Counter(
+                    ScopedPath(
+                        a.supplied.target,
+                        a.supplied.evidence_ref,
+                        a.supplied.support_ref,
+                        a.supplied.event.event_ref
+                        if isinstance(a.supplied.event, PublicationEventFacts)
+                        else a.supplied.event,
+                        a.supplied.proof_candidate.proof_ref
+                        if isinstance(a.supplied.proof_candidate, TEMPORAL_PROOF_TYPES)
+                        else a.supplied.proof_candidate,
+                        a.supplied.origin.visibility,
+                        "ISSUER_BINDING",
+                        a.supplied.origin,
+                    )
+                    for a in actual.assessments
+                    if a.disposition == "ACCEPTED"
+                )
+                require(
+                    Counter(provenance.accepted_paths) == expected_paths,
+                    "EXACT_ACCEPTED_PATH_MISMATCH",
+                )
             require(
                 (
                     actual.source_attribution.issuer,

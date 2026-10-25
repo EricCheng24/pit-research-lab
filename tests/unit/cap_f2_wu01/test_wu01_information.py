@@ -16,6 +16,7 @@ from wu01_inputs import (
     adapt,
     materialize,
     materialize_input,
+    synthetic_scope,
 )
 
 from pit_research_lab.domain.contracts import (
@@ -307,8 +308,8 @@ def test_sensitivity_amount_changes_do_not_change_economic_subject():
     r = bundle.request
     old = r.left.contents[0]
     body = json.loads(old.raw_bytes)
-    body["content_version_id"] = "CV-ENGINEERING-SCALE"
-    body["statements"][0].update(assertion_id="A-ENGINEERING-SCALE", value=200000)
+    # A new independently constructed synthetic corpus, with the same subject.
+    body["statements"][0].update(value=200000)
     raw = json.dumps(body, separators=(",", ":")).encode()
     raw_digest = hashlib.sha256(raw).hexdigest()
     o = replace(
@@ -319,16 +320,16 @@ def test_sensitivity_amount_changes_do_not_change_economic_subject():
     content = replace(
         old,
         content_version_ref=body["content_version_id"],
-        representation_ref="REP-ENGINEERING-SCALE",
+        representation_ref=old.representation_ref,
         raw_bytes=raw,
         raw_length=len(raw),
         raw_sha256=raw_digest,
         origin=o,
-        statement_members=("A-ENGINEERING-SCALE",),
+        statement_members=old.statement_members,
     )
     assertion = replace(
         r.left.assertion,
-        assertion_ref="A-ENGINEERING-SCALE",
+        assertion_ref=r.left.assertion.assertion_ref,
         content_version_ref=content.content_version_ref,
         source_amount=Known(200000, o),
         origin=o,
@@ -343,10 +344,8 @@ def test_sensitivity_amount_changes_do_not_change_economic_subject():
     )
     changed = replace(
         r,
-        left=replace(
-            r.left, assertion=assertion, contents=(content,), supports=(), events=(), captures=()
-        ),
-        scope=scope,
+        left=replace(r.left, assertion=assertion, contents=(content,)),
+        scope=synthetic_scope(scope),
     )
     actual = compare_subjects(bundle.context, changed)
     assert (actual.state, actual.reason, actual.canonical_amount.value) == ("SAME", "NONE", 200)
@@ -370,8 +369,8 @@ def test_sensitivity_foreign_tuple_components_are_rejected(field, value):
     )
     changed = replace(r, attempts=(replace(r.attempts[0], supplied=supplied),))
     actual = assess_evidence(bundle.context, changed)
-    assert (actual.state, actual.reason) == ("UNRESOLVED", "CONTENT_BINDING_INSUFFICIENT")
-    assert actual.provenance.rejected_attempts and actual.provenance.accepted_paths == ()
+    assert isinstance(actual, BlockingFailure)
+    assert actual.code == "SOURCE_BINDING_MISMATCH"
 
 
 def test_sensitivity_orders_support_cannot_replace_revenue_support():
@@ -915,7 +914,10 @@ def _r3_synthetic_provider_bytes(bundle, raw):
             r,
             content=content,
             capture=replace(r.capture, captured_sha256=digest),
-            scope=replace(r.scope, raw_pins=pins),
+            scope=synthetic_scope(
+                replace(r.scope, raw_pins=pins),
+                captures=(replace(r.capture, captured_sha256=digest),),
+            ),
         ),
     )
 
@@ -1072,7 +1074,12 @@ def test_r3_inventory_preserves_explicitly_supplied_auxiliary_capture_membership
         )
     )
     result = inventory_content(
-        bundle.context, replace(r, captures=captures, scope=replace(r.scope, input_members=members))
+        bundle.context,
+        replace(
+            r,
+            captures=captures,
+            scope=synthetic_scope(replace(r.scope, input_members=members), captures=captures),
+        ),
     )
     assert isinstance(result, EvidenceOutcome), result
     assert (result.state, result.reason) == ("BOUND", "NONE")
@@ -1132,9 +1139,8 @@ def test_sensitivity_event_and_proof_cannot_substitute_for_content_binding(field
         assert isinstance(result, BlockingFailure), result
         assert (result.category, result.code) == ("CONTRACT_VIOLATION", "UNDECLARED_PATH_MEMBER")
         return
-    assert (result.state, result.reason) == ("UNRESOLVED", "CONTENT_BINDING_INSUFFICIENT")
-    assert result.assessments[0].disposition == "REJECTED"
-    assert result.provenance.accepted_paths == ()
+    assert isinstance(result, BlockingFailure)
+    assert result.code == "SOURCE_BINDING_MISMATCH"
 
 
 def test_sensitivity_conflicting_issuer_identity_and_projected_lineage_are_detected():

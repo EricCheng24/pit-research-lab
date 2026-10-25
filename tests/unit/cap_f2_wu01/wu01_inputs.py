@@ -24,7 +24,6 @@ from pit_research_lab.domain.contracts import (
     IssuerBindingRequest,
     Known,
     NotApplicable,
-    NotEvaluated,
     NumericContract,
     OriginKnownValue,
     OriginUnknownValue,
@@ -37,10 +36,12 @@ from pit_research_lab.domain.contracts import (
     S1Request,
     S1Scope,
     SemanticContext,
+    SourceRecords,
     SubjectComparisonRequest,
     SubjectFacts,
     SubjectOperand,
     SupportBinding,
+    TemporalPolicy,
     TimeProof,
     Unknown,
     UnknownCause,
@@ -111,6 +112,41 @@ def origin(visibility, pointer, object_id=None, schema=None, raw_digest=None):
 
 
 CALLER = origin(Visibility.CALLER, "/invocation")
+
+
+def synthetic_scope(scope, *, supports=None, captures=None, events=None, capture_edges=None):
+    """Construct a NEW synthetic reference before a test's challenged invocation.
+
+    Explicit fixture-construction only: adversarial mutations must keep this
+    reference fixed. No domain code calls this helper or derives its own witness.
+    """
+    source = scope.source_records
+    return replace(
+        scope,
+        source_records=SourceRecords(
+            scope.input_members,
+            scope.raw_pins,
+            source.supports if supports is None else tuple(supports),
+            source.captures if captures is None else tuple(captures),
+            source.events if events is None else tuple(events),
+            source.capture_edges if capture_edges is None else tuple(capture_edges),
+        ),
+    )
+
+
+def synthetic_proof(request, proof):
+    """A deliberate new source-time fixture, distinct from a forged binding."""
+    attempt = request.attempts[0]
+    binding = replace(attempt.supplied, proof_candidate=proof)
+    supports = tuple(
+        binding if s.support_ref == binding.support_ref else s
+        for s in request.scope.source_records.supports
+    )
+    return replace(
+        request,
+        attempts=(replace(attempt, supplied=binding),),
+        scope=synthetic_scope(request.scope, supports=supports),
+    )
 
 
 @dataclass(frozen=True)
@@ -623,6 +659,18 @@ def adapt(envelope, selector, profile):
         scope = S1Scope(
             tuple(sorted(members, key=lambda m: m.key)), tuple(pins[k] for k in sorted(pins))
         )
+        # Resolve source-side records before selecting/challenging request bindings.
+        scope = replace(
+            scope,
+            source_records=SourceRecords(
+                scope.input_members,
+                scope.raw_pins,
+                tuple(supports.values()),
+                tuple(captures),
+                tuple(events),
+                provider[3] if provider is not None else (),
+            ),
+        )
         request = envelope["request"]
         o = origin(Visibility.ACTIVE, "/request", request["context_id"])
         require(
@@ -656,7 +704,7 @@ def adapt(envelope, selector, profile):
             _fact(request, "computation_attempt_time", o),
             request["spec_ref"],
             tuple(request["fit_state_refs"]),
-            NotEvaluated("S2", "TEMPORAL_RULE_NOT_IN_SCOPE"),
+            TemporalPolicy(),
             o,
         )
 

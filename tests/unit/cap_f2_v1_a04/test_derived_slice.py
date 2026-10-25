@@ -13,6 +13,7 @@ from pathlib import Path
 import pytest
 from a03_inputs import revision
 from a04_inputs import family, month_source, request, rewrite
+from wu01_inputs import synthetic_proof
 
 from pit_research_lab.domain.asof_slice import evaluate_asof
 from pit_research_lab.domain.contracts import BlockingFailure, NotEvaluated, OriginKnownValue
@@ -135,10 +136,7 @@ def test_owner_blocking_fault_not_fabricated_missing(code, owner):
         descriptor = dict(proof.raw_descriptor)
         descriptor["timestamp"] = stamp.source_text
         proof = replace(proof, timestamp=stamp, raw_descriptor=tuple(sorted(descriptor.items())))
-        r = replace(
-            r,
-            attempts=(replace(attempt, supplied=replace(attempt.supplied, proof_candidate=proof)),),
-        )
+        r = synthetic_proof(r, proof)
     s = replace(s, request=r)
     req = request(code, s, (s,))
     result = evaluate_derived(spec, replace_slot(slots, 2, req), code)
@@ -472,10 +470,10 @@ def test_sc01_apparent_binding_support_and_selection_stay_untrusted(code):
         spec, replace_slot(slots, 2, request(code, candidate, (candidate,))), code
     )
     actual = result.dependencies[2].actual.inputs.candidates[0].actual
-    assert actual.s1.state == "BOUND" and actual.s2.state == "SUPPORTED"
-    assert result.dependencies[2].actual.selection.state == "SELECTED"
-    assert result.outcome.state == "VALUE_AVAILABLE"
-    isolated(result)  # Known SC-01 remains OPEN; this is not authentication.
+    assert isinstance(actual.s1, BlockingFailure) and actual.s2.state == "UNRESOLVED"
+    assert isinstance(result.dependencies[2].actual.selection, BlockingFailure)
+    assert result.outcome.state == "CONTRACT_VIOLATION"
+    isolated(result)
 
 
 def test_failure_priority_retains_all_exact_upstream_results(code):

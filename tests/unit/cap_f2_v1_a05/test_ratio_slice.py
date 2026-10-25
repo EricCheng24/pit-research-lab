@@ -15,7 +15,12 @@ from a03_inputs import revision
 from a04_inputs import month_source, request, rewrite
 from a05_inputs import inputs
 
-from pit_research_lab.domain.contracts import ContractError, NotEvaluated, OriginKnownValue
+from pit_research_lab.domain.contracts import (
+    BlockingFailure,
+    ContractError,
+    NotEvaluated,
+    OriginKnownValue,
+)
 from pit_research_lab.domain.derived_slice import evaluate_derived, observe_derived_code
 from pit_research_lab.domain.ratio import (
     RATIO_CODE_PATHS,
@@ -498,9 +503,10 @@ def test_t15_sc01_apparent_success_never_grants_ratio_trust(code):
         spec, sum_spec, swapped(slots, 2, request(code.upstream_a04, source, (source,))), code
     )
     actual = result.upstream_a04.dependencies[2].actual
-    assert actual.inputs.candidates[0].actual.s1.state == "BOUND"
-    assert actual.inputs.candidates[0].actual.s2.state == "SUPPORTED"
-    assert actual.selection.state == "SELECTED" and result.outcome.state == "VALUE_AVAILABLE"
+    assert isinstance(actual.inputs.candidates[0].actual.s1, BlockingFailure)
+    assert actual.inputs.candidates[0].actual.s2.state == "UNRESOLVED"
+    assert isinstance(actual.selection, BlockingFailure)
+    assert result.outcome.state == "CONTRACT_VIOLATION"
     isolated(result)
 
 

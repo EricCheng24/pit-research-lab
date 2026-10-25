@@ -1,6 +1,7 @@
 """Pure S1 operations. BOUND describes content attribution, never temporal support."""
 
 import json
+from collections import Counter
 from dataclasses import replace
 from datetime import date
 from hashlib import sha256
@@ -37,6 +38,7 @@ from pit_research_lab.domain.contracts import (
     ScopedPath,
     SemanticContext,
     SourceAttribution,
+    SourceRecords,
     SubjectComparisonRequest,
     SubjectFacts,
     SubjectOperand,
@@ -50,6 +52,39 @@ from pit_research_lab.domain.contracts import (
 )
 
 NA = NotApplicable("S1", "NO_SOURCE_REFERENCE")
+
+
+def _source_records(scope: S1Scope) -> SourceRecords:
+    source = scope.source_records
+    require(isinstance(source, SourceRecords), "SOURCE_RECORDS_ABSENT")
+    assert isinstance(source, SourceRecords)
+    return source
+
+
+def _source_binding(binding: SupportBinding, scope: S1Scope) -> None:
+    matches = tuple(
+        s
+        for s in _source_records(scope).supports
+        if (s.origin.visibility, s.support_ref) == (binding.origin.visibility, binding.support_ref)
+    )
+    require(matches == (binding,), "SOURCE_BINDING_MISMATCH")
+
+
+def _source_content(content: ContentFacts, scope: S1Scope) -> None:
+    source = _source_records(scope)
+    require(
+        any(
+            (p.content_version_ref, p.representation_ref, p.raw_length, p.raw_sha256)
+            == (
+                content.content_version_ref,
+                content.representation_ref,
+                content.raw_length,
+                content.raw_sha256,
+            )
+            for p in source.raw_pins
+        ),
+        "SOURCE_CONTENT_MISMATCH",
+    )
 
 
 def _failure(operation: str, scope: S1Scope, origin: FieldOrigin, code: str) -> BlockingFailure:
@@ -277,6 +312,15 @@ def _member(scope: S1Scope, visibility: Visibility, role: str, ref: str) -> None
         (visibility.value, role, ref) in {m.key for m in scope.input_members},
         "UNDECLARED_PATH_MEMBER",
     )
+    require(
+        tuple(m for m in scope.input_members if m.key == (visibility.value, role, ref))
+        == tuple(
+            m
+            for m in _source_records(scope).input_members
+            if m.key == (visibility.value, role, ref)
+        ),
+        "SOURCE_MEMBER_MISMATCH",
+    )
 
 
 def _binding_origins(binding: SupportBinding, scope: S1Scope) -> None:
@@ -455,6 +499,20 @@ def _operand(operand: SubjectOperand, scope: S1Scope) -> _Statement | None:
             )
         source_target = _assertion_content_tuple(content, source)
         require(source_target[2] == (assertion.subject_ref,), "ASSERTION_SUBJECT_MISMATCH")
+        reference = _source_records(scope)
+        own = tuple(
+            s
+            for s in reference.supports
+            if s.origin.visibility == content.origin.visibility
+            and _tuple_values(s.target) == source_target
+        )
+        for role, ref in (
+            ("assertions", assertion.assertion_ref),
+            ("subjects", assertion.subject_ref),
+            ("content_versions", content.content_version_ref),
+            ("raw_assets", content.representation_ref),
+        ):
+            _member(scope, content.origin.visibility, role, ref)
         for binding in operand.supports:
             _binding_origins(binding, scope)
             require(
@@ -492,6 +550,9 @@ def _operand(operand: SubjectOperand, scope: S1Scope) -> _Statement | None:
                     and proof.origin.visibility == binding.origin.visibility,
                     "IDENTITY_OPERAND_PROOF_MISMATCH",
                 )
+            _source_binding(binding, scope)
+        require(Counter(operand.supports) == Counter(own), "IDENTITY_SOURCE_COVERAGE_MISMATCH")
+        _source_content(content, scope)
         return source
     return None
 
@@ -693,24 +754,32 @@ def _assessment(
             requested.fragment_selector,
         ):
             mismatches.append("proof_target_content_fragment")
+    _source_binding(binding, scope)
     return BindingAssessment(
         "REJECTED" if mismatches else "ACCEPTED", requested, binding, tuple(mismatches)
     )
 
 
 def _captures(
-    content: ContentFacts, captures: tuple[CaptureFacts, ...]
+    content: ContentFacts, captures: tuple[CaptureFacts, ...], scope: S1Scope
 ) -> tuple[CaptureFacts, ...]:
     require(len({c.observation_ref for c in captures}) == len(captures), "DUPLICATE_CAPTURE_ID")
     selected = tuple(c for c in captures if c.representation_ref == content.representation_ref)
     for capture in selected:
         require(capture.captured_sha256 == content.raw_sha256, "CAPTURE_HASH_MISMATCH")
+        require(capture in _source_records(scope).captures, "SOURCE_CAPTURE_MISMATCH")
     return tuple(sorted(selected, key=lambda c: c.observation_ref))
 
 
 def _provider_source(request: ProviderCaptureRequest) -> None:
     """Reconcile the bounded capture payload after its raw pin has been verified."""
     content = request.content
+    require(
+        isinstance(content.source_ref, Unknown)
+        and content.source_ref.cause == UnknownCause.ABSENT_SOURCE_FIELD
+        and content.source_ref.source_text is None,
+        "FABRICATED_PROVIDER_SOURCE",
+    )
     try:
         body = json.loads(
             content.raw_bytes.decode("utf-8"),
@@ -804,6 +873,7 @@ def assess_evidence(
 ) -> EvidenceOutcome | BlockingFailure:
     """Qualify supplied content association; never test timestamps against a cutoff."""
     try:
+        reference = _source_records(request.scope)
         _content(request.content, request.scope)
         require(
             request.requested.content_version_ref == request.content.content_version_ref
@@ -845,7 +915,9 @@ def assess_evidence(
                     and origin.object_id.value == ref,
                     "INVENTORY_ORIGIN_IDENTITY_MISMATCH",
                 )
-            captures = _captures(content, (request.capture,))
+            require(edge in reference.capture_edges, "SOURCE_CAPTURE_EDGE_MISMATCH")
+            captures = _captures(content, (request.capture,), request.scope)
+            _source_content(content, request.scope)
             require(len(captures) == 1, "PROVIDER_CAPTURE_CONTENT_MISMATCH")
             path = ScopedPath(
                 request.requested,
@@ -871,6 +943,7 @@ def assess_evidence(
                 (),
                 request.capture_edges,
                 _provenance(request.scope, (path,)),
+                qualification_context=context,
             )
         require(
             request.assertion.assertion_ref == request.requested.target_ref,
@@ -902,6 +975,7 @@ def assess_evidence(
         require(
             len({e.event_ref for e in request.events}) == len(request.events), "DUPLICATE_EVENT_ID"
         )
+        _source_content(content, request.scope)
         return EvidenceOutcome(
             "BOUND" if accepted else "UNRESOLVED",
             "NONE" if accepted else "CONTENT_BINDING_INSUFFICIENT",
@@ -912,7 +986,7 @@ def assess_evidence(
             (content.content_version_ref,),
             tuple(a.supplied for a in request.attempts),
             assessments,
-            _captures(content, request.captures),
+            _captures(content, request.captures, request.scope),
             events,
             (),
             _provenance(
@@ -920,6 +994,7 @@ def assess_evidence(
                 tuple(_path(a.supplied, "ISSUER_BINDING") for a in accepted),
                 rejected,
             ),
+            qualification_context=context,
         )
     except ContractError as error:
         return _failure("CHECK_BINDING", request.scope, request.content.origin, str(error))
@@ -930,8 +1005,10 @@ def inventory_content(
 ) -> EvidenceOutcome | BlockingFailure:
     """Report actual content-scoped sets, accounting for the complete supplied inventory."""
     try:
+        _source_records(request.scope)
         _content(request.content, request.scope)
         _requested_content(request.requested, request.content)
+        _source_content(request.content, request.scope)
         supplied_supports = tuple(
             (s.origin.visibility.value, "supports", s.support_ref) for s in request.supports
         )
@@ -945,7 +1022,7 @@ def inventory_content(
         require(sorted(supplied_supports) == sorted(visible_supports), "INCOMPLETE_INVENTORY_SCOPE")
         _inventory_members(request.captures, "observations", request.scope)
         _inventory_members(request.events, "publication_events", request.scope)
-        captures = _captures(request.content, request.captures)
+        captures = _captures(request.content, request.captures, request.scope)
         require(
             len({e.event_ref for e in request.events}) == len(request.events), "DUPLICATE_EVENT_ID"
         )
@@ -997,6 +1074,7 @@ def inventory_content(
                 tuple(_path(a.supplied, "ISSUER_BINDING") for a in accepted),
                 rejected,
             ),
+            qualification_context=context,
         )
     except ContractError as error:
         return _failure("INVENTORY_CONTENT", request.scope, request.content.origin, str(error))
