@@ -5,30 +5,26 @@ from hashlib import sha256
 from pathlib import Path
 
 from pit_research_lab.domain.contracts import (
-    BlockingFailure,
     CodePin,
-    IssuerBindingRequest,
-    NotApplicable,
     NotEvaluated,
-    NumericContract,
     Record,
     SemanticContext,
-    SubjectComparisonRequest,
     SubjectFacts,
-    SubjectOperand,
 )
-from pit_research_lab.domain.information import compare_subjects
-from pit_research_lab.domain.pit_slice import CodeObservation, evaluate_slice, observe_code
+from pit_research_lab.domain.pit_slice import CodeObservation, observe_code
 from pit_research_lab.domain.selection import (
     S3_CODE_PATHS,
     AsOfSelectionResult,
     BoundedCoverage,
     CandidateSource,
-    CompletedCandidate,
     CompletedRelation,
+    DiscoveryEvidence,
     RelationSource,
     SelectionBundle,
     SelectionPolicy,
+    canonical_bundle,
+    complete_candidate,
+    reconstruction_ref,
     select_asof,
 )
 
@@ -41,6 +37,7 @@ class AsOfRequest(Record):
     coverage: BoundedCoverage
     candidates: tuple[CandidateSource, ...]
     relations: tuple[RelationSource, ...]
+    discovery: DiscoveryEvidence | NotEvaluated = NotEvaluated("S3", "DISCOVERY_EVIDENCE_ABSENT")
 
 
 def observe_asof_code(repository: Path) -> CodeObservation:
@@ -61,44 +58,14 @@ def observe_asof_code(repository: Path) -> CodeObservation:
 def evaluate_asof(request: AsOfRequest, code: CodeObservation, /) -> AsOfSelectionResult:
     """Compute every claim/notice with the existing S1/S2 owner, then select."""
 
-    def complete(source: CandidateSource, anchor: SubjectFacts) -> CompletedCandidate:
-        evidence = source.request
-        actual = evaluate_slice(request.context, evidence, code)
-        identity = NotApplicable("S1", "PROVIDER_REFERENCE_ONLY")
-        if isinstance(evidence, IssuerBindingRequest):
-            if not isinstance(source.subject, SubjectFacts):
-                return CompletedCandidate(
-                    source,
-                    actual,
-                    BlockingFailure(
-                        "CONTRACT_VIOLATION",
-                        "MISSING_CANDIDATE_SUBJECT",
-                        (),
-                        "MISSING_CANDIDATE_SUBJECT",
-                        request.context.origin,
-                        "COMPARE_SUBJECTS",
-                    ),
-                )
-            na = NotApplicable("S1", "NO_UNIT_MAPPING")
-            comparison = SubjectComparisonRequest(
-                SubjectOperand(anchor, na, (), (), (), ()),
-                SubjectOperand(
-                    source.subject,
-                    evidence.assertion,
-                    (evidence.content,),
-                    tuple(a.supplied for a in evidence.attempts),
-                    evidence.events,
-                    evidence.captures,
-                ),
-                na,
-                NumericContract(),
-                evidence.scope,
-            )
-            return CompletedCandidate(source, actual, compare_subjects(request.context, comparison))
-        return CompletedCandidate(source, actual, identity)
-
     candidates = tuple(
-        sorted((complete(s, request.subject) for s in request.candidates), key=lambda c: c.ref)
+        sorted(
+            (
+                complete_candidate(request.context, s, request.subject, code)
+                for s in request.candidates
+            ),
+            key=lambda c: c.ref,
+        )
     )
     relations = []
     for source in request.relations:
@@ -107,14 +74,23 @@ def evaluate_asof(request: AsOfRequest, code: CodeObservation, /) -> AsOfSelecti
             relations.append(CompletedRelation(source.relation, notice))
         else:
             anchor = notice.subject if isinstance(notice.subject, SubjectFacts) else request.subject
-            relations.append(CompletedRelation(source.relation, complete(notice, anchor)))
-    bundle = SelectionBundle(
-        request.context,
-        request.subject,
-        request.policy,
-        request.coverage,
-        candidates,
-        tuple(sorted(relations, key=lambda r: r.relation.relation_ref)),
-        code,
+            relations.append(
+                CompletedRelation(
+                    source.relation, complete_candidate(request.context, notice, anchor, code)
+                )
+            )
+    bundle = canonical_bundle(
+        SelectionBundle(
+            request.context,
+            request.subject,
+            request.policy,
+            request.coverage,
+            candidates,
+            tuple(sorted(relations, key=lambda r: r.relation.relation_ref)),
+            code,
+            request.discovery,
+        )
     )
-    return AsOfSelectionResult(bundle, select_asof(bundle))
+    return AsOfSelectionResult(
+        bundle, select_asof(bundle), request.policy.evaluator_ref, reconstruction_ref(bundle)
+    )

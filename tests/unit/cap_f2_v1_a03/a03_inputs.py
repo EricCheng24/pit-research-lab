@@ -34,14 +34,21 @@ from pit_research_lab.domain.contracts import (
     Visibility,
 )
 from pit_research_lab.domain.selection import (
+    B02_EVALUATOR_REF,
+    B02_POLICY_VERSION,
     REQUIRED_CHECKS,
     BoundedCoverage,
     CandidateSource,
     CoverageCheck,
     DirectRelation,
+    DiscoveryEvidence,
     HistoricalLead,
+    LeadEvidence,
     RelationSource,
+    RevisionScope,
     SelectionPolicy,
+    discovery_proposition,
+    lead_proposition,
     relation_proposition,
 )
 
@@ -467,3 +474,179 @@ def invocation(
         tuple(checks),
     )
     return AsOfRequest(context, subject, policy, coverage, tuple(candidates), tuple(relations))
+
+
+def scoped_revision(
+    code,
+    old,
+    new=None,
+    *,
+    kind="CORRECTS",
+    scope_kind="FIELD",
+    subjects=None,
+    tag="B02-NOTICE",
+    **overrides,
+):
+    """New B02 source bytes; never relabel a legacy declaration in place."""
+    na = NotApplicable("S3", "NO_SUCCESSOR")
+    scope = RevisionScope(
+        scope_kind,
+        subjects if subjects is not None else (old.subject.subject_ref,),
+        old.request.content.content_version_ref,
+        new.request.content.content_version_ref if new is not None else na,
+        old.subject.metric.origin,
+    )
+    changes = dict(declaration_version="b02-v0.1", scope=scope)
+    if new is None:
+        changes.update(new_assertion_ref=na, new_version_ref=na)
+    changes.update(overrides)
+    item = revision(
+        code, old, new or old, tag=tag, kind=kind, subject_ref=old.subject.subject_ref, **changes
+    )
+    if isinstance(item.relation.scope, RevisionScope):
+        item = replace(
+            item,
+            relation=replace(
+                item.relation, scope=replace(item.relation.scope, origin=item.relation.origin)
+            ),
+        )
+    return item
+
+
+def lead_notice(
+    code,
+    candidate,
+    *,
+    tag="B02-LEAD",
+    published="2025-07-03T12:00:00+08:00",
+    unknown=False,
+    unbound=False,
+):
+    lead = candidate.historical_lead
+    record = LeadEvidence(
+        lead.lead_ref,
+        candidate.request.requested.target_ref,
+        candidate.subject.subject_ref,
+        lead.scope_ref,
+        candidate,
+    )
+    notice = source(
+        code,
+        tag,
+        1,
+        published,
+        metric=lead_proposition(record),
+        unit="historical_lead_declaration",
+        unknown=unknown,
+        unbound=unbound,
+    )
+    return replace(record, notice=notice)
+
+
+def b02_request(request, *, leads=(), exclusions=(), terminated=True, pages=None):
+    """Construct retained reference first. Adversarial callers keep it unchanged.
+
+    Call only for a NEW synthetic snapshot; existing invocation stays legacy v0.1.
+    """
+    old_policy = request.policy
+    policy = replace(
+        old_policy,
+        policy_ref=old_policy.policy_ref + "-B02",
+        version=B02_POLICY_VERSION,
+        evaluator_ref=B02_EVALUATOR_REF,
+    )
+    context = replace(
+        request.context,
+        context_ref=request.context.context_ref + "-B02",
+        policy_refs=tuple(p for p in request.context.policy_refs if p != old_policy.policy_ref)
+        + (policy.policy_ref,),
+    )
+    coverage = replace(
+        request.coverage,
+        context_ref=context.context_ref,
+        policy_ref=policy.policy_ref,
+        policy_version=policy.version,
+        evaluated_candidate_refs=tuple(
+            sorted(c.request.requested.target_ref for c in request.candidates)
+        ),
+        evaluated_relation_refs=tuple(sorted(r.relation.relation_ref for r in request.relations)),
+    )
+    checks = []
+    for check in coverage.checks:
+        descriptor = json.loads(check.evidence_bytes)
+        descriptor.update(
+            context_ref=context.context_ref,
+            policy_ref=policy.policy_ref,
+            policy_version=policy.version,
+            candidate_refs=coverage.evaluated_candidate_refs,
+            relation_refs=coverage.evaluated_relation_refs,
+        )
+        raw = json.dumps(descriptor, sort_keys=True).encode()
+        checks.append(
+            replace(
+                check,
+                evidence_bytes=raw,
+                origin=replace(
+                    check.origin, input_digest=OriginKnownValue(sha256(raw).hexdigest())
+                ),
+            )
+        )
+    coverage = replace(coverage, checks=tuple(checks))
+    members = ["C:" + c.request.requested.target_ref for c in request.candidates]
+    members += ["R:" + r.relation.relation_ref for r in request.relations]
+    members += ["L:" + lead.lead_ref for lead in leads]
+    members += ["X:" + x.source.request.requested.target_ref for x in exclusions]
+    origin = FieldOrigin(
+        Visibility.ACTIVE,
+        "/b02_discovery/DISCOVERY-B02",
+        OriginKnownValue("DISCOVERY-B02"),
+        OriginKnownValue("b02-discovery-v1"),
+        OriginKnownValue("0" * 64),
+    )
+    retained = DiscoveryEvidence(
+        "DISCOVERY-B02",
+        context.context_ref,
+        context.evidence_set_ref,
+        policy,
+        request.subject,
+        context.mode,
+        context.information_cutoff.source_text,
+        request.subject.subject_ref,
+        ("2025-01-01T00:00:00+08:00", context.information_cutoff.source_text),
+        request.candidates,
+        request.relations,
+        tuple(leads),
+        tuple(exclusions),
+        (tuple(sorted(members)),) if pages is None else pages,
+        terminated,
+        coverage.checks,
+        b"",
+        origin,
+    )
+    raw = discovery_proposition(retained)
+    retained = replace(
+        retained,
+        raw_bytes=raw,
+        origin=replace(origin, input_digest=OriginKnownValue(sha256(raw).hexdigest())),
+    )
+    return replace(request, context=context, policy=policy, coverage=coverage, discovery=retained)
+
+
+def b02_invocation(
+    code,
+    candidates=(),
+    relations=(),
+    *,
+    leads=(),
+    exclusions=(),
+    terminated=True,
+    pages=None,
+    **kwargs,
+):
+    return b02_request(
+        invocation(code, candidates, relations, **kwargs),
+        leads=leads,
+        exclusions=exclusions,
+        terminated=terminated,
+        pages=pages,
+    )

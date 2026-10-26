@@ -134,14 +134,34 @@ def test_b01_both_ci_jobs_supply_historical_objects():
 
 
 def test_b01_explicit_current_change_manifest():
-    from b01_preservation import CURRENT_PINS
+    from b01_preservation import B01_PINS, CURRENT_PINS, NEW_FILE_PINS
 
     root = Path(__file__).resolve().parents[3]
-    assert len(CURRENT_PINS) == 16
+    assert len(CURRENT_PINS) == 18
+    assert set(B01_PINS) == {
+        "tests/unit/cap_f2_v1_a03/a03_inputs.py",
+        "tests/unit/cap_f2_v1_a06_ic3_rs2/test_issuer_html_extraction.py",
+    }
+    assert set(NEW_FILE_PINS) == {"tests/unit/cap_f2_v1_a03/test_b02_relations_asof.py"}
+    assert set(CURRENT_PINS).isdisjoint(NEW_FILE_PINS)
     assert not any(path.startswith("tests/unit/cap_f2_wu00/") for path in CURRENT_PINS)
-    for path, expected in CURRENT_PINS.items():
+    for path, expected in (CURRENT_PINS | NEW_FILE_PINS).items():
         body = (root / path).read_bytes()
         assert (len(body), sha256(body).hexdigest()) == expected
+
+
+def test_b02_merged_b01_history_is_not_moved_or_optional(monkeypatch):
+    import b01_preservation as preservation
+    from rs2_inputs import CANDIDATE_PINS
+
+    root = Path(__file__).resolve().parents[3]
+    pin = next(p for p in CANDIDATE_PINS if p[0] == "tests/unit/cap_f2_v1_a03/a03_inputs.py")
+    assert preservation.FROZEN == "6edf54d4b81b7047c632937112aa4d764aa806b6"
+    assert preservation.B01_FROZEN == "a945a33f92181498000a86cbaa66d8b89401d3cc"
+    preservation.verify_preserved(root, *pin)
+    monkeypatch.setattr(preservation, "B01_FROZEN", "0" * 40)
+    with pytest.raises(AssertionError, match="B01_HISTORY_UNAVAILABLE"):
+        preservation.verify_preserved(root, *pin)
 
 
 def test_rs2_t03_sec_invented_happy_path(html_code):

@@ -4,6 +4,25 @@ import subprocess
 from hashlib import sha256
 
 FROZEN = "6edf54d4b81b7047c632937112aa4d764aa806b6"
+B01_FROZEN = "a945a33f92181498000a86cbaa66d8b89401d3cc"
+# Separate B01 merged-byte history for the two previously-current paths B02 edits.
+B01_PINS = {
+    "tests/unit/cap_f2_v1_a03/a03_inputs.py": (
+        14423,
+        "591d718692f7766082263a6374ee2d29b9e6bf0dcb02b5869a154563937eb7d3",
+    ),
+    "tests/unit/cap_f2_v1_a06_ic3_rs2/test_issuer_html_extraction.py": (
+        34877,
+        "9acc55546cefd60188da16d06122a6eb4e956bb4c96b45c31915c684fb476c3d",
+    ),
+}
+# New B02 files have live-only literal records, never fabricated Phase A blobs.
+NEW_FILE_PINS = {
+    "tests/unit/cap_f2_v1_a03/test_b02_relations_asof.py": (
+        64769,
+        "db1a96649718a3d357051201e0ae7d937e0049b2f5aea7f76f844dd8c052fe5d",
+    ),
+}
 # Filled from the settled, authorized changed files; never derived during a test.
 CURRENT_PINS = {
     ".github/workflows/ci.yml": (
@@ -23,8 +42,8 @@ CURRENT_PINS = {
         "09dfd6108c5ba2e117fb61ab4b9ce9254d342d1bf26fcfbf16d221b1d3f25dc7",
     ),
     "tests/unit/cap_f2_v1_a03/a03_inputs.py": (
-        14423,
-        "591d718692f7766082263a6374ee2d29b9e6bf0dcb02b5869a154563937eb7d3",
+        20021,
+        "ae6449e61cfea72bfad3ed1dc94909cd3e902d4305ccbcebc408f3d3ca4d7cf8",
     ),
     "tests/unit/cap_f2_v1_a03/test_asof_slice.py": (
         28336,
@@ -39,8 +58,8 @@ CURRENT_PINS = {
         "0d566f0e154a19fb2d18b93238b74c061de217d6c7545b9bf70f8b14449138ce",
     ),
     "tests/unit/cap_f2_v1_a06_ic3_rs2/test_issuer_html_extraction.py": (
-        34877,
-        "9acc55546cefd60188da16d06122a6eb4e956bb4c96b45c31915c684fb476c3d",
+        35915,
+        "f295d88169ca842a9d7bedceb98c10202419d0472c1146331c6681089dce631f",
     ),
     "tests/unit/cap_f2_v1_a06_ic3_rs3f/test_sec_real_closure.py": (
         20120,
@@ -70,6 +89,14 @@ CURRENT_PINS = {
         21497,
         "5232d6205a514f7b54564f12b845300d70042383358f0b9e983eea9f2b702bcd",
     ),
+    "src/pit_research_lab/domain/selection.py": (
+        63295,
+        "15ab6df10542df799a54a41e716c19fd13f52e3c738fba6e689b649c171f0202",
+    ),
+    "src/pit_research_lab/domain/asof_slice.py": (
+        3055,
+        "5500f53b0526b2e629ec844cef99b9445479900fc3e73ba98c9e48e2d30b2a31",
+    ),
 }
 
 
@@ -87,6 +114,16 @@ def verify_preserved(root, path, length, digest):
             "FROZEN_HISTORY_UNAVAILABLE: checkout requires full history"
         )
         body = historical.stdout
+        if path in B01_PINS:
+            b01 = subprocess.run(
+                ["git", "--no-optional-locks", "-C", str(root), "show", B01_FROZEN + ":" + path],
+                capture_output=True,
+                check=False,
+            )
+            assert b01.returncode == 0, "B01_HISTORY_UNAVAILABLE"
+            assert (len(b01.stdout), sha256(b01.stdout).hexdigest()) == B01_PINS[path], (
+                "B01_HISTORICAL_PIN_MISMATCH"
+            )
         assert (len(live), sha256(live).hexdigest()) == CURRENT_PINS[path], (
             "B01_CURRENT_PIN_MISMATCH"
         )
