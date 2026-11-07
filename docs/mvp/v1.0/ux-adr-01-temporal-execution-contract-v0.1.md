@@ -16,7 +16,7 @@
 
 **Milestones unchanged:** M1 (2026-12-31) genuine F2 synthetic → F3 statistical experiment → evidence; M2 (2027-01-31) genuine UI→backend run; M4 (2027-03-31) **Weekly** Benchmark/A/B comparison; M5 (2027-04-30) feature freeze. Optional frequencies must not displace PIT correctness, actual F3 run, AC-05 or M0 safety gates.
 
-**Scope fallback:** defer Monthly, then Daily, then optional ML/DL/RL and UI polish if time is insufficient. Do not cut eligibility rules, same-information-set invariants, source identity, or evidence. This is a product scope choice to be confirmed in the final PR design adjudication, not a silent M0 rewrite.
+**Scope fallback:** defer Daily first, then Monthly; preserve Weekly, then optional ML/DL/RL and UI polish if time is insufficient. Do not cut eligibility rules, same-information-set invariants, source identity, or evidence. This is a product scope choice to be confirmed in the final PR design adjudication, not a silent M0 rewrite.
 
 ## 2. Five orthogonal temporal concepts
 
