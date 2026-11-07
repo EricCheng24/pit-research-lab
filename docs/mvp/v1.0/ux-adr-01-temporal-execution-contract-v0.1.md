@@ -12,7 +12,7 @@
 
 **Academic MVP minimum:** **WEEKLY** is the **only required executable decision frequency** in Synthetic Mode. Existing M0 AC-05 stays mandatory: Benchmark + two Policies, identical PIT-qualified information, action traces, transaction costs, risk/performance and reproducible evidence. Monthly revenue features and subsequent-period return remain the primary example; weekly decisions do not redefine target horizon.
 
-**Extension order:** (1) Weekly required and accepted; (2) Monthly optional when capacity allows, separately reviewed; (3) Daily optional only after Monthly and separately reviewed. The UI may visibly describe planned Monthly/Daily capabilities but MUST NOT label them EXECUTABLE unless the actual method+mode+frequency is implemented and confirmed by backend. No three-cadence execution claim is required for M4 or M5.
+**Extension order:** (1) Weekly required, implementation and acceptance still pending; (2) Monthly optional when capacity allows and Weekly has passed acceptance, separately reviewed; (3) Daily optional only after Monthly readiness and separate review. **The MVP frequency selector needs only Weekly as an enabled choice**; Monthly/Daily may appear as non-interactive roadmap information but must NOT be labeled EXECUTABLE or offered as runnable choices unless the exact method+mode+frequency is confirmed by an accepted backend. No three-cadence execution claim is required for M4 or M5.
 
 **Milestones unchanged:** M1 (2026-12-31) genuine F2 synthetic → F3 statistical experiment → evidence; M2 (2027-01-31) genuine UI→backend run; M4 (2027-03-31) **Weekly** Benchmark/A/B comparison; M5 (2027-04-30) feature freeze. Optional frequencies must not displace PIT correctness, actual F3 run, AC-05 or M0 safety gates.
 
