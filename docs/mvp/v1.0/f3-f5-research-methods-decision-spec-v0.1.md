@@ -2,15 +2,16 @@
 
 - **Status:** PROPOSED / OWNER AND INDEPENDENT REVIEW REQUIRED / NOT IMPLEMENTATION AUTHORIZATION
 - **Recorded:** 2026-11-07
-- **Purpose:** Backward-design F3 and F5 from the [System UI/User Flow](system-ui-user-flow-spec-v0.1.md) without widening the accepted M0 MVP commitments.
+- **Purpose:** Backward-design F3 and F5 from the [System UI/User Flow](system-ui-user-flow-spec-v0.1.md) without silently widening the accepted M0 MVP commitments.
+- **UX-D01 Owner product direction (2026-11-07):** user-selectable Daily / Weekly / Monthly decision frequency. The three-cadence executable Synthetic MVP requirement is **proposed scope expansion pending Owner/independent change review**; frozen M0 AC-05 remains authoritative until then.
 - **Normative references:** [Academic MVP Rebaseline](academic-mvp-rebaseline-v0.1.md), [Shared Interface Contract](shared-interface-contract-v0.1.md), [F6 Initialization](f6-application-ui-initialization-v0.1.md), [Workstreams](parallel-workstreams-v0.1.md). M0 RBL-01..12, AC-01..08, IF-01..07 remain unchanged.
 - **Source basis:** Owner-supplied October 2026 draft “研究動機與目的 — 初稿”, §§1.1–1.5. Source positions the project as a research-first Financial Research Workbench with historical information evidence, hypothesis/method selection, experiment reproducibility and optional sequential decisions. This document is an engineering proposal, not a verbatim source transcription.
 
 ## 1. Stable mission and module ownership
 
-**F3 — Research Design & Experimentation.** Own a falsifiable research question, hypothesis identity/version, target/feature and horizon definitions, experimental protocol, temporal validation design, statistical inference/diagnostics for the actual supported method, run orchestration and reproducible EvidenceBundle. F3 records limitations and unsupported conclusions.
+**F3 — Research Design & Experimentation.** Own a falsifiable research question, hypothesis identity/version, target/feature and horizon definitions, experimental protocol, **decision-frequency configuration and its consistency with label maturity**, temporal validation design, statistical inference/diagnostics for the actual supported method, run orchestration and reproducible EvidenceBundle. F3 records limitations and unsupported conclusions.
 
-**F5 — Research Methods, Model & Decision Evaluation.** Long-term expandable computational/evaluation family for statistical/ML/DL/RL methods and decision policies. Own method implementation and capability descriptors (where delegated), model fit/predict/evaluate, baseline comparisons, policy construction, action traces, trading-cost assumptions, portfolio/performance/risk metrics and method-specific evidence. F5 must not change F3's hypothesis or F2's PIT authority.
+**F5 — Research Methods, Model & Decision Evaluation.** Long-term expandable computational/evaluation family for statistical/ML/DL/RL methods and decision policies. Own method implementation and capability descriptors (where delegated), **method × decision-frequency support**, model fit/predict/evaluate, baseline comparisons, policy construction over the accepted decision schedule, action traces, trading-cost assumptions, portfolio/performance/risk metrics and method-specific evidence. F5 must not change F3's hypothesis or F2's PIT authority.
 
 **MVP first instantiation:** Financial decision comparison in a small PIT-qualified TWSE-like synthetic research case. The existing Benchmark + two Policies, identical eligible information, action traces, costs/risk/performance remain mandatory under M0 AC-05. A simple supervised ML method is preferred if feasible, but **DL/RL are not mandatory**. F3's genuine statistical method is mandatory under AC-02; mock-only experiments do not qualify.
 
@@ -31,7 +32,7 @@ Temporal protocol must distinguish:
 - train/validation/test split maturity;
 - action timestamp and execution-cost assumptions if converting forecast to decision.
 
-The attached research-draft §1.5 suggests daily data with weekly decisions; the accepted M0 RBL-03 uses monthly revenue and subsequent-month returns. **Do not silently unify these as weekly/monthly rebalance.** Until UX-D01 is adjudicated, a pinned synthetic monthly illustration is allowed for specifications only, not a finalized PolicySpec or validated runtime schedule.
+The attached research-draft §1.5 suggests daily data with weekly decisions; accepted M0 RBL-03 specifies monthly revenue and subsequent-month returns. They refer to **different temporal dimensions**, not two mutually exclusive product boundaries. Under the Owner-directed UX-D01, the interface offers Daily / Weekly / Monthly **decision frequency** independent of actual data observation frequency, target horizon, rebalance frequency and evaluation aggregation. Exact calendar and method implementation rules remain open. No PolicySpec or validated runtime schedule is implied.
 
 ## 3. Proposed M1 and M4 vertical slices
 
@@ -40,7 +41,7 @@ The attached research-draft §1.5 suggests daily data with weekly decisions; the
 | **M1 by 2026-12-31** | F2 pinned synthetic observation + F3 versioned Hypothesis/Protocol + one genuine runnable statistical method + ResearchRun/EvidenceBundle | deterministic positive/negative synthetic examples, actual runner result, errors, reproducible identity after IF-03 review | descriptive UI metrics, hand-entered success, simulated statistical results |
 | **M2 by 2027-01-31** | F6 actual backend submission/status/evidence rendering via separately approved IF-04 bridge | same protocol consumed end-to-end; no optimistic state promotion; browser/contract tests | FixtureResearchClient-only success |
 | **M3 by 2027-02-28** | bounded real TWSE source and quality/availability viewer where independently authorized | source/time/version/rights limitations truthfully shown | current source bytes as Historical PIT proof |
-| **M4 by 2027-03-31** | benchmark + two decision policies on identical qualified information, costs/risk/performance, actions and evidence | reproducible comparison, explicit action/outcome separation, temporal negative tests | predictive metric alone, different data subsets or future-label leakage |
+| **M4 by 2027-03-31** | benchmark + two policies on identical qualified information; **proposed added UX-D01 scope:** executable Daily / Weekly / Monthly synthetic decision schedules | reproducible cost/risk/action evidence and negative cases; for added scope, test all three genuine schedules after acceptance | UI-only cadence selector, future-label leakage or unqualified information |
 | **M5 by 2027-04-30** | stable demo and evidence/replay, negative paths, handoff | clean setup, real actual execution, replay proof as applicable | optional DL/RL or unreviewed extra UI features |
 
 M0 AC-01..08 and formal CAP-F2 engineering gates retain their independent scope.
@@ -48,7 +49,7 @@ M0 AC-01..08 and formal CAP-F2 engineering gates retain their independent scope.
 ## 4. F3 MVP functional contract
 
 1. **HypothesisSpec (conceptual, not new Shared DTO):** ID/version, user-facing question, measurable claims, universe/time/horizon, source qualification requirements and limits.
-2. **ExperimentSpec (existing proposed M0 DTO):** link hypothesis/version to snapshot, method/version, evaluation plan, seed, temporal policy. Explicitly reject incoherent intervals, post-cutoff features and outcomes used before maturity.
+2. **ExperimentSpec (existing proposed M0 DTO):** link hypothesis/version to snapshot, method/version, evaluation plan, seed, temporal policy. The conceptual temporal configuration distinguishes data frequency, decision frequency, prediction horizon, rebalance frequency and evaluation aggregation; exact fields are **not approved without IF-02 review**. Reject incoherent schedules, post-cutoff features and outcomes used before maturity.
 3. **Real statistical method:** propose one defensible simple analysis with stated assumptions, diagnostics and temporal dependence limitations (e.g. an association/linear-regression baseline on a pinned synthetic panel). The exact method and validity checks are **UX-D02 open**, not pre-approved here. Must actually execute; no stub metrics.
 4. **ResearchRun:** NOT_RUN/PENDING/RUNNING/SUCCEEDED/FAILED/BLOCKED are execution lifecycle, independent from PIT and evidence quality. Preserve typed first failure and no fabricated metrics on error.
 5. **EvidenceBundle:** protocol/method/source/code/seed identifiers, diagnostics/metrics with denominator/units, lineage, evidence class, limitations and replay identity. A negative or unsupported hypothesis must be displayable as honestly as a favorable outcome.
@@ -65,21 +66,39 @@ Long-term method families:
 - **DL (stretch):** representation/sequence models only after sufficient sample and separate review;
 - **RL/sequential optimization (future):** state/action/reward, transition assumptions, policy evaluation; no off-policy causal claims without adequate support.
 
-Method selection must be constrained by task type, target maturity, sample sufficiency, input data, compute/resource policy and implementation readiness. A listed future model must not be presented as executable.
+Method selection must be constrained by task type, target maturity, sample sufficiency, input data, **selected decision frequency**, compute/resource policy and implementation readiness. A listed future model or unsupported method–frequency combination must not be presented as executable.
+
+### A1. UX-D01 — Temporal Configuration & Cadence Capability
+
+Frequency is a **user-selectable product feature**, while PIT eligibility at every scheduled decision time is an invariant. The configuration must not collapse these distinct dimensions:
+
+1. **Data/source frequency:** actual observations, publication/version history and freshness; daily market prices do not imply daily fundamental-data releases.
+2. **Decision frequency:** Daily / Weekly / Monthly trading-session decision schedules generated under one versioned market calendar and cutoff convention.
+3. **Prediction horizon:** target interval and when its realized label becomes available; unavailable labels cannot be used as current features/training data.
+4. **Rebalancing frequency:** when trades are allowed, which may differ from how often forecasts/decisions are produced.
+5. **Evaluation frequency:** return/risk aggregation, comparison period and annualization conventions.
+
+**F4** supplies authorized source coverage, true cadence, version/time information and calendar inputs. **F2** qualifies source/version at *each generated cutoff* and provides reasons, unknowns and withholding; a previously released monthly fundamental signal may be reused at a later daily cutoff, but a future release or revision cannot enter earlier decisions. **F3** fixes temporal protocol, generated schedule definition, valid train/test/label maturation rules and method suitability. **F5** implements method capability checks, policy actions and costs/risk/returns on the accepted schedule, with common eligible observations for benchmark/A/B. **F6** only displays selection, support/rejection reasons, evidence and results.
+
+**Before implementation decide:** exchange calendar/version, holiday handling, weekly/monthly anchor and non-trading day roll, time zone and cutoff hour, source release effective-time, revision precedence, feature/label alignment, forecast horizon, execution-price convention, rebalance restrictions, cost assumptions and cross-frequency comparability. Unsupported method × frequency × mode combinations must explicitly be unavailable or blocked, not executed by fallback without user knowledge. Repeated unchanged monthly data used across daily decisions are correlated observations, not additional independent observations.
+
+**Proposed Academic MVP added acceptance:** In synthetic mode, genuinely generate deterministic Daily, Weekly and Monthly decision schedules; for each cadence execute Benchmark + Policy A + Policy B over the same qualified information at each tick and produce reproducible action, risk, cost and performance evidence; test late publications, revisions, missing/withheld data, label immaturity, calendar edges and stale identities. Real-TWSE available frequencies depend on actual F4 coverage and F2 approved evidence; unavailable combinations are visibly blocked. Comparisons *between* cadences require explicit common universe, evaluation window, price/return units, costs, annualization and horizon rules.
+
+**Governance:** This is a **scope-extension proposal beyond accepted M0 AC-05**, not implemented code, a proven runtime, an accepted DTO field, or immediate permission to broaden M4. Obtain Owner/independent acceptance of an ADR or scope amendment before committing three-cadence deliverables. Preserve original M0 AC-05 until then.
 
 ### B. Benchmark and two-policy case
 
 - **Benchmark:** fixed stated default (e.g. an explicitly defined no-signal or eligible-universe reference); exact policy open as UX-D03.
 - **Policy A:** pre-specified rule based only on cutoff-qualified observations.
 - **Policy B:** feature/model-based rule on the same available observation set and trained without future leakage.
-- **Same-information contract:** common universe, eligibility/withholding filtering, cutoff, feature availability, rebalance calendar and evaluation horizon; if not met, comparison is blocked/non-comparable.
+- **Same-information contract:** for each selected cadence, benchmark/A/B share universe, eligibility/withholding rules, **decision schedule and cutoff at each decision tick**, feature availability, rebalance calendar and evaluation horizon; if not met, comparison is blocked/non-comparable. Cross-frequency comparison separately states metric normalization, calendar and friction assumptions.
 - **DecisionTrace:** source observation ref, eligibility status, action, decision time, cost, outcome ref and limitation. Future realized return is evaluation-only; never a contemporaneous observation.
 - **EvaluationResult:** documented gross vs net return and cost rules, turnover, volatility/drawdown, metric horizon/units and missingness, benchmark and uncertainty limitations. Small sample metrics must not be framed as robust financial superiority.
 - **Prediction→Action transformation:** explicit separately versioned mapping, thresholds/selection/rebalance, trade execution convention and friction assumptions. A lower MAE does not imply higher Sharpe or profitability.
 
 ### C. Fairness / negative case obligations
 
-- Same information, outcome maturity and evaluation window across policies;
+- Same decision-time eligible information, outcome maturity, decision schedule and evaluation window across policies within each selected frequency;
 - no post-cutoff labels in training/features/state;
 - temporal train/test isolation; prevent preprocessing fit on test rows;
 - bounded universe and no hidden survival filtering or selectively dropped failed runs;
@@ -87,7 +106,7 @@ Method selection must be constrained by task type, target maturity, sample suffi
 - consistent identity, version, method seed and reproducible traces;
 - preserve ineligible/unresolved/withheld distinctions, and fail closed on unsupported positive claims.
 
-**F5 MVP acceptance:** Benchmark + A + B genuinely run using a pinned and identical eligible synthetic observation set; action traces and comparable costs/risk/performance results are reproducible. Model family extensibility alone does not satisfy AC-05.
+**F5 frozen M0 MVP acceptance:** Benchmark + A + B genuinely run using identical PIT-qualified synthetic information; action traces and costs/risk/performance are reproducible. **Proposed extra UX-D01 acceptance:** repeat genuine synthetic Benchmark + A + B execution at Daily / Weekly / Monthly configured schedules, with deterministic negative tests and truthful unsupported real-mode options. This is pending explicit scope review; UI selector or method extensibility alone is insufficient.
 
 ## 6. Proposed responsibilities of the existing seven M0 application DTOs
 
@@ -109,10 +128,10 @@ Candidate future types such as MethodSpec, MethodCapability, ValidationProtocol,
 |---|---|---|
 | Research question and proper task family | F3 | hypothesis→protocol identity / unsupported-method refusal |
 | PIT qualified snapshot and source reasons | F2/F4, F3 consumer | revision-too-late, missing/conflicting release, withheld preservation |
-| Method suitability | F3/F5 | small sample, wrong target, unsupported DL/RL, invalid temporal split |
+| Method / decision cadence suitability | F3/F5, F2 data boundary | small sample, wrong target, unsupported DL/RL or cadence pairing, invalid trading calendar, immature label, invalid split |
 | Actual run vs mock | F3/F5 and F6 client | mock scenario NOT_RUN vs genuine SUCCEEDED, typed failure |
 | Evidence interprets question | F3 | diagnostics, uncertainty, unknown/negative result, no causal promotion |
-| Benchmark / 2 policies / cost/risk | F5 | identical eligible observations, no future label, deterministic action/metrics |
+| Benchmark / 2 policies / cost/risk | F5 | same eligible observations at each decision tick, no future label, deterministic action/metrics; additional Daily/Weekly/Monthly synthetic cases require scope adoption |
 | Replay / source identity | F2/F3/F5 | seed/version/cutoff/manifest mismatch, IF-03 canonical identity oracle |
 | UI display-only authority | F6 | no UI PIT or P&L calculations; all source refs and limitations retained |
 
@@ -122,7 +141,7 @@ These are **design acceptance cases, NOT_RUN**, and must be transformed into exe
 
 | ID | Needed decision | Gate |
 |---|---|---|
-| UX-D01 | Monthly-revenue feature vs daily-price/weekly-decision grid; exact cutoff, label maturity, rebalance and evaluation horizon | F3/F5 Lead + F2 before policy implementation |
+| UX-D01 | **Product direction accepted for proposal:** selectable Daily / Weekly / Monthly decision cadence; exact calendar, cutoff, source freshness, label maturity, rebalance schedule, metrics normalization and frequency support remain engineering decisions. Three-cadence runnable MVP requirement is a scope extension, not yet an accepted M0 amendment. | Owner/Lead scope ADR and F2/F3/F5 review before code |
 | UX-D02 | Specific genuine F3 statistical method and assumptions/diagnostics | F3-L1 planning and independent review |
 | UX-D03 | Benchmark / Policy A / Policy B algorithms and prediction→action rule | F5-PLAN before M4 code |
 | UX-D04 | Method capability metadata and whether/how to extend current ExperimentSpec / EvidenceBundle | IF-02 design and translator review before DTO code |
