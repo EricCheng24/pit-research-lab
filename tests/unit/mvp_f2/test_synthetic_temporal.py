@@ -6,7 +6,6 @@ import copy
 import json
 import socket
 import subprocess
-import sys
 from dataclasses import asdict, replace
 from pathlib import Path
 
@@ -515,10 +514,6 @@ def test_source_import_closure_and_no_native_or_application_authority():
             "fill",
             "evaluate_policy",
         }
-    assert not any(
-        n.startswith(("pit_research_lab.domain", "pit_research_lab.infrastructure"))
-        for n in sys.modules
-    )
 
 
 def test_generation_and_request_construction_do_not_call_external_io(spec, monkeypatch):

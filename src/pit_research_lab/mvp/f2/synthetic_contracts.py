@@ -213,7 +213,7 @@ def input_bytes(value: object) -> bytes:
         if item is None or type(item) in (str, int, bool):
             return
         if type(item) is list:
-            for child in cast(list[Any], item):
+            for child in item:
                 check(child)
             return
         if type(item) is dict:

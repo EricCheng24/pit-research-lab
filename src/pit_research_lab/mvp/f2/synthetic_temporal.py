@@ -114,13 +114,19 @@ def _generate_prices(
         if state == "UNKNOWN":
             fields.add("unknown_cause")
         keys(row, {"issuer_ref", "session_ref", "kind", "state", "origin_ref"} | fields)
-        key = tuple(text(row[k]) for k in ("issuer_ref", "session_ref", "kind"))
+        override_key: tuple[str, str, str] = (
+            text(row["issuer_ref"]),
+            text(row["session_ref"]),
+            text(row["kind"]),
+        )
         require(
-            key[0] in issuers and key[1] in session_ids and key[2] in {"OPEN", "CLOSE"},
+            override_key[0] in issuers
+            and override_key[1] in session_ids
+            and override_key[2] in {"OPEN", "CLOSE"},
             "PRICE_GRID_REF_MISMATCH",
         )
-        require(key not in overrides, "DUPLICATE_PRICE_OVERRIDE")
-        overrides[key] = row
+        require(override_key not in overrides, "DUPLICATE_PRICE_OVERRIDE")
+        overrides[override_key] = row
     prices = []
     for session in sessions:
         for issuer in issuers:  # Complete roster, including explicit zero/unknown membership.
@@ -146,9 +152,15 @@ def _generate_prices(
                 override = overrides.get((issuer, session["session_id"], kind))
                 if override is not None:
                     del row["coefficient"]
-                    for key in ("state", "coefficient", "reason", "unknown_cause", "origin_ref"):
-                        if key in override:
-                            row[key] = override[key]
+                    for field_name in (
+                        "state",
+                        "coefficient",
+                        "reason",
+                        "unknown_cause",
+                        "origin_ref",
+                    ):
+                        if field_name in override:
+                            row[field_name] = override[field_name]
                 validate_price_record(row)
                 prices.append(row)
     return prices
