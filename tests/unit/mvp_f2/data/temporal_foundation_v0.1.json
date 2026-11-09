@@ -1,0 +1,2152 @@
+{
+  "fixture_schema_version": "mvp-f2-wu01-fixture-v0.1",
+  "default_seed": 17,
+  "input_spec": {
+    "schema_version": "mvp-f2-synthetic-input-v0.1",
+    "pack_id": "SYN-WU01-FOUNDATION",
+    "pack_version": "v0.1",
+    "generator": {
+      "generator_id": "SYN-WU01-FIXED-GRID",
+      "version": "v0.1"
+    },
+    "data_mode": "SYNTHETIC_GOLDEN",
+    "source_spec_ref": "FND-T01..T11/v0.1",
+    "provenance": {
+      "kind": "SYNTHETIC_AUTHORED",
+      "origin_ref": "SYN-WU01-FIXTURE-AUTHOR"
+    },
+    "limitations": [
+      "Synthetic authored inputs only; not real TWSE data or historical source authority.",
+      "No PIT admission, derived features, label/return computation, orders, fills or research execution.",
+      "Fixed tiny price grid and seed metadata are not a market model or powered research sample.",
+      "Publication and observation facts are supplied synthetic declarations, not authentication."
+    ],
+    "calendar_ref": "SYN-CAL-v1",
+    "config_ref": "SYN-WU01-CONFIG-v1",
+    "manifest_ref": "SYN-WU01-MANIFEST-v1",
+    "coverage": {
+      "start": "2027-01-04",
+      "end": "2027-03-31"
+    },
+    "decision_window": {
+      "start": "2027-01-04",
+      "end": "2027-02-07"
+    },
+    "calendar": [
+      {
+        "date": "2027-01-04",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-04",
+        "open": {
+          "source_text": "2027-01-04T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-04-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-04T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-04-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-04"
+      },
+      {
+        "date": "2027-01-05",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-05",
+        "open": {
+          "source_text": "2027-01-05T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-05-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-05T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-05-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-05"
+      },
+      {
+        "date": "2027-01-06",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-06",
+        "open": {
+          "source_text": "2027-01-06T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-06-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-06T12:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-06-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-06"
+      },
+      {
+        "date": "2027-01-07",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-07",
+        "open": {
+          "source_text": "2027-01-07T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-07-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-07T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-07-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-07"
+      },
+      {
+        "date": "2027-01-08",
+        "status": "CLOSED",
+        "reason": "SYNTHETIC_CLOSURE",
+        "origin_ref": "SYN-2027-01-08"
+      },
+      {
+        "date": "2027-01-09",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-01-09"
+      },
+      {
+        "date": "2027-01-10",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-01-10"
+      },
+      {
+        "date": "2027-01-11",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-11",
+        "open": {
+          "source_text": "2027-01-11T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-11-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-11T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-11-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-11"
+      },
+      {
+        "date": "2027-01-12",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-12",
+        "open": {
+          "source_text": "2027-01-12T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-12-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-12T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-12-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-12"
+      },
+      {
+        "date": "2027-01-13",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-13",
+        "open": {
+          "source_text": "2027-01-13T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-13-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-13T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-13-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-13"
+      },
+      {
+        "date": "2027-01-14",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-14",
+        "open": {
+          "source_text": "2027-01-14T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-14-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-14T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-14-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-14"
+      },
+      {
+        "date": "2027-01-15",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-15",
+        "open": {
+          "source_text": "2027-01-15T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-15-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-15T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-15-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-15"
+      },
+      {
+        "date": "2027-01-16",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-01-16"
+      },
+      {
+        "date": "2027-01-17",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-01-17"
+      },
+      {
+        "date": "2027-01-18",
+        "status": "CLOSED",
+        "reason": "SYNTHETIC_CLOSURE",
+        "origin_ref": "SYN-2027-01-18"
+      },
+      {
+        "date": "2027-01-19",
+        "status": "CLOSED",
+        "reason": "SYNTHETIC_CLOSURE",
+        "origin_ref": "SYN-2027-01-19"
+      },
+      {
+        "date": "2027-01-20",
+        "status": "CLOSED",
+        "reason": "SYNTHETIC_CLOSURE",
+        "origin_ref": "SYN-2027-01-20"
+      },
+      {
+        "date": "2027-01-21",
+        "status": "CLOSED",
+        "reason": "SYNTHETIC_CLOSURE",
+        "origin_ref": "SYN-2027-01-21"
+      },
+      {
+        "date": "2027-01-22",
+        "status": "CLOSED",
+        "reason": "SYNTHETIC_CLOSURE",
+        "origin_ref": "SYN-2027-01-22"
+      },
+      {
+        "date": "2027-01-23",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-01-23"
+      },
+      {
+        "date": "2027-01-24",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-01-24"
+      },
+      {
+        "date": "2027-01-25",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-25",
+        "open": {
+          "source_text": "2027-01-25T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-25-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-25T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-25-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-25"
+      },
+      {
+        "date": "2027-01-26",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-26",
+        "open": {
+          "source_text": "2027-01-26T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-26-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-26T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-26-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-26"
+      },
+      {
+        "date": "2027-01-27",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-27",
+        "open": {
+          "source_text": "2027-01-27T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-27-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-27T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-27-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-27"
+      },
+      {
+        "date": "2027-01-28",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-28",
+        "open": {
+          "source_text": "2027-01-28T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-28-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-28T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-28-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-28"
+      },
+      {
+        "date": "2027-01-29",
+        "status": "SESSION",
+        "session_id": "SYN-2027-01-29",
+        "open": {
+          "source_text": "2027-01-29T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-29-OPEN"
+        },
+        "close": {
+          "source_text": "2027-01-29T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-01-29-CLOSE"
+        },
+        "origin_ref": "SYN-2027-01-29"
+      },
+      {
+        "date": "2027-01-30",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-01-30"
+      },
+      {
+        "date": "2027-01-31",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-01-31"
+      },
+      {
+        "date": "2027-02-01",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-01",
+        "open": {
+          "source_text": "2027-02-01T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-01-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-01T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-01-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-01"
+      },
+      {
+        "date": "2027-02-02",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-02",
+        "open": {
+          "source_text": "2027-02-02T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-02-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-02T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-02-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-02"
+      },
+      {
+        "date": "2027-02-03",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-03",
+        "open": {
+          "source_text": "2027-02-03T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-03-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-03T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-03-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-03"
+      },
+      {
+        "date": "2027-02-04",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-04",
+        "open": {
+          "source_text": "2027-02-04T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-04-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-04T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-04-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-04"
+      },
+      {
+        "date": "2027-02-05",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-05",
+        "open": {
+          "source_text": "2027-02-05T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-05-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-05T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-05-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-05"
+      },
+      {
+        "date": "2027-02-06",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-02-06"
+      },
+      {
+        "date": "2027-02-07",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-02-07"
+      },
+      {
+        "date": "2027-02-08",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-08",
+        "open": {
+          "source_text": "2027-02-08T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-08-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-08T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-08-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-08"
+      },
+      {
+        "date": "2027-02-09",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-09",
+        "open": {
+          "source_text": "2027-02-09T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-09-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-09T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-09-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-09"
+      },
+      {
+        "date": "2027-02-10",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-10",
+        "open": {
+          "source_text": "2027-02-10T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-10-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-10T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-10-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-10"
+      },
+      {
+        "date": "2027-02-11",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-11",
+        "open": {
+          "source_text": "2027-02-11T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-11-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-11T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-11-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-11"
+      },
+      {
+        "date": "2027-02-12",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-12",
+        "open": {
+          "source_text": "2027-02-12T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-12-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-12T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-12-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-12"
+      },
+      {
+        "date": "2027-02-13",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-02-13"
+      },
+      {
+        "date": "2027-02-14",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-02-14"
+      },
+      {
+        "date": "2027-02-15",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-15",
+        "open": {
+          "source_text": "2027-02-15T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-15-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-15T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-15-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-15"
+      },
+      {
+        "date": "2027-02-16",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-16",
+        "open": {
+          "source_text": "2027-02-16T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-16-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-16T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-16-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-16"
+      },
+      {
+        "date": "2027-02-17",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-17",
+        "open": {
+          "source_text": "2027-02-17T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-17-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-17T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-17-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-17"
+      },
+      {
+        "date": "2027-02-18",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-18",
+        "open": {
+          "source_text": "2027-02-18T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-18-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-18T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-18-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-18"
+      },
+      {
+        "date": "2027-02-19",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-19",
+        "open": {
+          "source_text": "2027-02-19T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-19-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-19T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-19-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-19"
+      },
+      {
+        "date": "2027-02-20",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-02-20"
+      },
+      {
+        "date": "2027-02-21",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-02-21"
+      },
+      {
+        "date": "2027-02-22",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-22",
+        "open": {
+          "source_text": "2027-02-22T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-22-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-22T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-22-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-22"
+      },
+      {
+        "date": "2027-02-23",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-23",
+        "open": {
+          "source_text": "2027-02-23T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-23-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-23T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-23-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-23"
+      },
+      {
+        "date": "2027-02-24",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-24",
+        "open": {
+          "source_text": "2027-02-24T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-24-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-24T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-24-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-24"
+      },
+      {
+        "date": "2027-02-25",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-25",
+        "open": {
+          "source_text": "2027-02-25T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-25-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-25T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-25-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-25"
+      },
+      {
+        "date": "2027-02-26",
+        "status": "SESSION",
+        "session_id": "SYN-2027-02-26",
+        "open": {
+          "source_text": "2027-02-26T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-26-OPEN"
+        },
+        "close": {
+          "source_text": "2027-02-26T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-02-26-CLOSE"
+        },
+        "origin_ref": "SYN-2027-02-26"
+      },
+      {
+        "date": "2027-02-27",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-02-27"
+      },
+      {
+        "date": "2027-02-28",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-02-28"
+      },
+      {
+        "date": "2027-03-01",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-01",
+        "open": {
+          "source_text": "2027-03-01T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-01-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-01T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-01-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-01"
+      },
+      {
+        "date": "2027-03-02",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-02",
+        "open": {
+          "source_text": "2027-03-02T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-02-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-02T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-02-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-02"
+      },
+      {
+        "date": "2027-03-03",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-03",
+        "open": {
+          "source_text": "2027-03-03T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-03-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-03T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-03-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-03"
+      },
+      {
+        "date": "2027-03-04",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-04",
+        "open": {
+          "source_text": "2027-03-04T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-04-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-04T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-04-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-04"
+      },
+      {
+        "date": "2027-03-05",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-05",
+        "open": {
+          "source_text": "2027-03-05T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-05-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-05T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-05-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-05"
+      },
+      {
+        "date": "2027-03-06",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-03-06"
+      },
+      {
+        "date": "2027-03-07",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-03-07"
+      },
+      {
+        "date": "2027-03-08",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-08",
+        "open": {
+          "source_text": "2027-03-08T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-08-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-08T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-08-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-08"
+      },
+      {
+        "date": "2027-03-09",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-09",
+        "open": {
+          "source_text": "2027-03-09T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-09-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-09T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-09-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-09"
+      },
+      {
+        "date": "2027-03-10",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-10",
+        "open": {
+          "source_text": "2027-03-10T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-10-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-10T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-10-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-10"
+      },
+      {
+        "date": "2027-03-11",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-11",
+        "open": {
+          "source_text": "2027-03-11T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-11-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-11T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-11-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-11"
+      },
+      {
+        "date": "2027-03-12",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-12",
+        "open": {
+          "source_text": "2027-03-12T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-12-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-12T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-12-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-12"
+      },
+      {
+        "date": "2027-03-13",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-03-13"
+      },
+      {
+        "date": "2027-03-14",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-03-14"
+      },
+      {
+        "date": "2027-03-15",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-15",
+        "open": {
+          "source_text": "2027-03-15T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-15-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-15T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-15-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-15"
+      },
+      {
+        "date": "2027-03-16",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-16",
+        "open": {
+          "source_text": "2027-03-16T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-16-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-16T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-16-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-16"
+      },
+      {
+        "date": "2027-03-17",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-17",
+        "open": {
+          "source_text": "2027-03-17T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-17-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-17T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-17-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-17"
+      },
+      {
+        "date": "2027-03-18",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-18",
+        "open": {
+          "source_text": "2027-03-18T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-18-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-18T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-18-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-18"
+      },
+      {
+        "date": "2027-03-19",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-19",
+        "open": {
+          "source_text": "2027-03-19T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-19-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-19T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-19-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-19"
+      },
+      {
+        "date": "2027-03-20",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-03-20"
+      },
+      {
+        "date": "2027-03-21",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-03-21"
+      },
+      {
+        "date": "2027-03-22",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-22",
+        "open": {
+          "source_text": "2027-03-22T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-22-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-22T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-22-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-22"
+      },
+      {
+        "date": "2027-03-23",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-23",
+        "open": {
+          "source_text": "2027-03-23T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-23-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-23T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-23-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-23"
+      },
+      {
+        "date": "2027-03-24",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-24",
+        "open": {
+          "source_text": "2027-03-24T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-24-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-24T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-24-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-24"
+      },
+      {
+        "date": "2027-03-25",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-25",
+        "open": {
+          "source_text": "2027-03-25T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-25-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-25T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-25-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-25"
+      },
+      {
+        "date": "2027-03-26",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-26",
+        "open": {
+          "source_text": "2027-03-26T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-26-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-26T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-26-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-26"
+      },
+      {
+        "date": "2027-03-27",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-03-27"
+      },
+      {
+        "date": "2027-03-28",
+        "status": "CLOSED",
+        "reason": "PINNED_WEEKEND",
+        "origin_ref": "SYN-2027-03-28"
+      },
+      {
+        "date": "2027-03-29",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-29",
+        "open": {
+          "source_text": "2027-03-29T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-29-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-29T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-29-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-29"
+      },
+      {
+        "date": "2027-03-30",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-30",
+        "open": {
+          "source_text": "2027-03-30T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-30-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-30T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-30-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-30"
+      },
+      {
+        "date": "2027-03-31",
+        "status": "SESSION",
+        "session_id": "SYN-2027-03-31",
+        "open": {
+          "source_text": "2027-03-31T09:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-31-OPEN"
+        },
+        "close": {
+          "source_text": "2027-03-31T13:30:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-2027-03-31-CLOSE"
+        },
+        "origin_ref": "SYN-2027-03-31"
+      }
+    ],
+    "roster": [
+      {
+        "issuer_ref": "SYN-A",
+        "membership": {
+          "state": "KNOWN",
+          "value": 1,
+          "origin_ref": "SYN-ROSTER-AUTHOR"
+        },
+        "valid_from": "2027-01-04",
+        "valid_through": "2027-03-31",
+        "publication": {
+          "state": "KNOWN",
+          "instant": {
+            "source_text": "2027-01-04T08:00:00+08:00",
+            "timezone_name": "Asia/Taipei",
+            "offset": "+08:00",
+            "precision": "SECOND",
+            "origin_ref": "SYN-MEMBER-PROOF-SYN-A"
+          },
+          "proof_kind": "EXACT",
+          "proof_ref": "SYN-MEMBER-PROOF-SYN-A",
+          "origin_ref": "SYN-MEMBER-PROOF-SYN-A"
+        },
+        "currency": "NTD",
+        "reporting_scope": "synthetic_only",
+        "source_ref": "SYN-ROSTER-SOURCE",
+        "version_ref": "SYN-ROSTER-v1",
+        "origin_ref": "SYN-ROSTER-AUTHOR"
+      },
+      {
+        "issuer_ref": "SYN-B",
+        "membership": {
+          "state": "KNOWN",
+          "value": 1,
+          "origin_ref": "SYN-ROSTER-AUTHOR"
+        },
+        "valid_from": "2027-01-04",
+        "valid_through": "2027-03-31",
+        "publication": {
+          "state": "KNOWN",
+          "instant": {
+            "source_text": "2027-01-04T08:00:00+08:00",
+            "timezone_name": "Asia/Taipei",
+            "offset": "+08:00",
+            "precision": "SECOND",
+            "origin_ref": "SYN-MEMBER-PROOF-SYN-B"
+          },
+          "proof_kind": "EXACT",
+          "proof_ref": "SYN-MEMBER-PROOF-SYN-B",
+          "origin_ref": "SYN-MEMBER-PROOF-SYN-B"
+        },
+        "currency": "NTD",
+        "reporting_scope": "synthetic_only",
+        "source_ref": "SYN-ROSTER-SOURCE",
+        "version_ref": "SYN-ROSTER-v1",
+        "origin_ref": "SYN-ROSTER-AUTHOR"
+      }
+    ],
+    "revenue_events": [
+      {
+        "event_ref": "SYN-EVENT-SYN-A-DEC-v1",
+        "issuer_ref": "SYN-A",
+        "reference_month": "2026-12",
+        "state": "KNOWN",
+        "amount": 100,
+        "unit": "NTD_thousands",
+        "currency": "NTD",
+        "basis_ref": "SYN-CONSOLIDATED-v1",
+        "reporting_scope": "consolidated",
+        "source_ref": "SYN-REVENUE-SOURCE",
+        "content_ref": "SYN-CONTENT-SYN-A-DEC-v1",
+        "representation_ref": "SYN-REP-SYN-A-DEC-v1",
+        "version_ref": "SYN-A-DEC-v1",
+        "publication": {
+          "state": "KNOWN",
+          "instant": {
+            "source_text": "2027-01-07T17:59:59+08:00",
+            "timezone_name": "Asia/Taipei",
+            "offset": "+08:00",
+            "precision": "SECOND",
+            "origin_ref": "SYN-PROOF-SYN-A-DEC-v1"
+          },
+          "proof_kind": "EXACT",
+          "proof_ref": "SYN-PROOF-SYN-A-DEC-v1",
+          "origin_ref": "SYN-PROOF-SYN-A-DEC-v1"
+        },
+        "effective_time": {
+          "source_text": "2027-01-07T17:59:59+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-EFFECTIVE-SYN-A-DEC-v1"
+        },
+        "observed_at": null,
+        "supersedes_ref": null,
+        "origin_ref": "SYN-REVENUE-AUTHOR"
+      },
+      {
+        "event_ref": "SYN-EVENT-SYN-A-DEC-v2",
+        "issuer_ref": "SYN-A",
+        "reference_month": "2026-12",
+        "state": "KNOWN",
+        "amount": 110,
+        "unit": "NTD_thousands",
+        "currency": "NTD",
+        "basis_ref": "SYN-CONSOLIDATED-v1",
+        "reporting_scope": "consolidated",
+        "source_ref": "SYN-REVENUE-SOURCE",
+        "content_ref": "SYN-CONTENT-SYN-A-DEC-v2",
+        "representation_ref": "SYN-REP-SYN-A-DEC-v2",
+        "version_ref": "SYN-A-DEC-v2",
+        "publication": {
+          "state": "KNOWN",
+          "instant": {
+            "source_text": "2027-01-07T18:00:00+08:00",
+            "timezone_name": "Asia/Taipei",
+            "offset": "+08:00",
+            "precision": "SECOND",
+            "origin_ref": "SYN-PROOF-SYN-A-DEC-v2"
+          },
+          "proof_kind": "EXACT",
+          "proof_ref": "SYN-PROOF-SYN-A-DEC-v2",
+          "origin_ref": "SYN-PROOF-SYN-A-DEC-v2"
+        },
+        "effective_time": {
+          "source_text": "2027-01-07T18:00:00+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-EFFECTIVE-SYN-A-DEC-v2"
+        },
+        "observed_at": null,
+        "supersedes_ref": "SYN-A-DEC-v1",
+        "origin_ref": "SYN-REVENUE-AUTHOR"
+      },
+      {
+        "event_ref": "SYN-EVENT-SYN-B-DEC-v1",
+        "issuer_ref": "SYN-B",
+        "reference_month": "2026-12",
+        "state": "KNOWN",
+        "amount": 200,
+        "unit": "NTD_thousands",
+        "currency": "NTD",
+        "basis_ref": "SYN-CONSOLIDATED-v1",
+        "reporting_scope": "consolidated",
+        "source_ref": "SYN-REVENUE-SOURCE",
+        "content_ref": "SYN-CONTENT-SYN-B-DEC-v1",
+        "representation_ref": "SYN-REP-SYN-B-DEC-v1",
+        "version_ref": "SYN-B-DEC-v1",
+        "publication": {
+          "state": "KNOWN",
+          "instant": {
+            "source_text": "2027-01-07T18:00:01+08:00",
+            "timezone_name": "Asia/Taipei",
+            "offset": "+08:00",
+            "precision": "SECOND",
+            "origin_ref": "SYN-PROOF-SYN-B-DEC-v1"
+          },
+          "proof_kind": "EXACT",
+          "proof_ref": "SYN-PROOF-SYN-B-DEC-v1",
+          "origin_ref": "SYN-PROOF-SYN-B-DEC-v1"
+        },
+        "effective_time": {
+          "source_text": "2027-01-07T18:00:01+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-EFFECTIVE-SYN-B-DEC-v1"
+        },
+        "observed_at": null,
+        "supersedes_ref": null,
+        "origin_ref": "SYN-REVENUE-AUTHOR"
+      },
+      {
+        "event_ref": "SYN-EVENT-SYN-A-DEC-v3",
+        "issuer_ref": "SYN-A",
+        "reference_month": "2026-12",
+        "state": "KNOWN",
+        "amount": 90,
+        "unit": "NTD_thousands",
+        "currency": "NTD",
+        "basis_ref": "SYN-CONSOLIDATED-v1",
+        "reporting_scope": "consolidated",
+        "source_ref": "SYN-REVENUE-SOURCE",
+        "content_ref": "SYN-CONTENT-SYN-A-DEC-v3",
+        "representation_ref": "SYN-REP-SYN-A-DEC-v3",
+        "version_ref": "SYN-A-DEC-v3",
+        "publication": {
+          "state": "KNOWN",
+          "instant": {
+            "source_text": "2027-01-29T18:00:01+08:00",
+            "timezone_name": "Asia/Taipei",
+            "offset": "+08:00",
+            "precision": "SECOND",
+            "origin_ref": "SYN-PROOF-SYN-A-DEC-v3"
+          },
+          "proof_kind": "EXACT",
+          "proof_ref": "SYN-PROOF-SYN-A-DEC-v3",
+          "origin_ref": "SYN-PROOF-SYN-A-DEC-v3"
+        },
+        "effective_time": {
+          "source_text": "2027-01-29T18:00:01+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-EFFECTIVE-SYN-A-DEC-v3"
+        },
+        "observed_at": null,
+        "supersedes_ref": "SYN-A-DEC-v2",
+        "origin_ref": "SYN-REVENUE-AUTHOR"
+      }
+    ],
+    "source_coverage": {
+      "scope_ref": "SYN-WU01-SOURCE-SCOPE",
+      "issuer_refs": [
+        "SYN-A",
+        "SYN-B"
+      ],
+      "event_refs": [
+        "SYN-EVENT-SYN-A-DEC-v1",
+        "SYN-EVENT-SYN-A-DEC-v2",
+        "SYN-EVENT-SYN-B-DEC-v1",
+        "SYN-EVENT-SYN-A-DEC-v3"
+      ],
+      "status": "AUTHOR_DECLARED_COMPLETE_WITHIN_PACK",
+      "origin_ref": "SYN-WU01-FIXTURE-AUTHOR"
+    },
+    "price_template": {
+      "unit": "NTD_price",
+      "currency": "NTD",
+      "scale": 6,
+      "source_ref": "SYN-PRICE-SOURCE",
+      "version_ref": "SYN-PRICE-v1",
+      "available_delay_seconds": 1,
+      "defaults": [
+        {
+          "issuer_ref": "SYN-A",
+          "OPEN": 50000000,
+          "CLOSE": 60000000
+        },
+        {
+          "issuer_ref": "SYN-B",
+          "OPEN": 60000000,
+          "CLOSE": 60000000
+        }
+      ],
+      "overrides": [
+        {
+          "issuer_ref": "SYN-B",
+          "session_ref": "SYN-2027-01-11",
+          "kind": "OPEN",
+          "state": "MISSING",
+          "reason": "SOURCE_QUOTE_ABSENT",
+          "origin_ref": "SYN-PRICE-AUTHOR"
+        },
+        {
+          "issuer_ref": "SYN-A",
+          "session_ref": "SYN-2027-01-25",
+          "kind": "OPEN",
+          "state": "HALT",
+          "reason": "SYNTHETIC_OPEN_HALT",
+          "origin_ref": "SYN-PRICE-AUTHOR"
+        },
+        {
+          "issuer_ref": "SYN-A",
+          "session_ref": "SYN-2027-02-01",
+          "kind": "OPEN",
+          "state": "KNOWN",
+          "coefficient": 55000000,
+          "origin_ref": "SYN-PRICE-AUTHOR"
+        }
+      ]
+    },
+    "endpoint_facts": [
+      {
+        "endpoint_ref": "SYN-ENDPOINT-ENTRY-t1",
+        "price_ref": "SYN-A:SYN-2027-01-11:OPEN",
+        "source_date": "2027-01-11",
+        "state": "KNOWN",
+        "available_at": {
+          "source_text": "2027-01-11T09:00:01+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-ENDPOINT-ENTRY-t1"
+        },
+        "maturity_at": {
+          "source_text": "2027-01-11T09:00:01+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-ENDPOINT-ENTRY-t1"
+        },
+        "origin_ref": "SYN-ENDPOINT-AUTHOR"
+      },
+      {
+        "endpoint_ref": "SYN-ENDPOINT-END-t1",
+        "price_ref": "SYN-A:SYN-2027-02-26:CLOSE",
+        "source_date": "2027-02-26",
+        "state": "KNOWN",
+        "available_at": {
+          "source_text": "2027-02-26T13:30:01+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-ENDPOINT-END-t1"
+        },
+        "maturity_at": {
+          "source_text": "2027-02-26T13:30:01+08:00",
+          "timezone_name": "Asia/Taipei",
+          "offset": "+08:00",
+          "precision": "SECOND",
+          "origin_ref": "SYN-ENDPOINT-END-t1"
+        },
+        "origin_ref": "SYN-ENDPOINT-AUTHOR"
+      }
+    ],
+    "requested_feature_refs": [
+      "SYN-REVENUE-INPUT-REQUEST-v1"
+    ],
+    "decision_frequency": "WEEKLY"
+  },
+  "manual_oracle": {
+    "origin": "HAND_AUTHORED_FROM_REVIEWED_FOUNDATION_PACKET",
+    "source_ref": "MVP-F2-WU-01_Requirements_v0.1/CR-01-F,CR-02-F,CR-06-F",
+    "status": "SPECIFIED_NOT_RUN",
+    "cutoffs": [
+      "2027-01-07T18:00:00+08:00",
+      "2027-01-15T18:00:00+08:00",
+      "2027-01-29T18:00:00+08:00",
+      "2027-02-05T18:00:00+08:00"
+    ],
+    "UTC_cutoffs": [
+      "2027-01-07T10:00:00+00:00",
+      "2027-01-15T10:00:00+00:00",
+      "2027-01-29T10:00:00+00:00",
+      "2027-02-05T10:00:00+00:00"
+    ],
+    "annotations": [
+      {
+        "iso_week": "2027-W03",
+        "annotation": "NO_SESSION_WEEK"
+      }
+    ],
+    "calendar_date_count": 87,
+    "session_count": 57,
+    "price_cell_count": 228,
+    "time_vectors": [
+      {
+        "case_id": "TIME-01",
+        "version_ref": "SYN-A-DEC-v1",
+        "cutoff": "2027-01-07T18:00:00+08:00",
+        "relation": "BEFORE",
+        "native_reference_only": {
+          "state": "SUPPORTED",
+          "reason": "NONE",
+          "execution": "NOT_RUN"
+        }
+      },
+      {
+        "case_id": "TIME-02",
+        "version_ref": "SYN-A-DEC-v2",
+        "cutoff": "2027-01-07T18:00:00+08:00",
+        "relation": "AT",
+        "native_reference_only": {
+          "state": "NOT_ADMISSIBLE",
+          "reason": "PUBLICATION_NOT_PRE_CUTOFF",
+          "execution": "NOT_RUN"
+        }
+      },
+      {
+        "case_id": "TIME-03",
+        "version_ref": "SYN-B-DEC-v1",
+        "cutoff": "2027-01-07T18:00:00+08:00",
+        "relation": "AFTER",
+        "native_reference_only": {
+          "state": "NOT_ADMISSIBLE",
+          "reason": "PUBLICATION_NOT_PRE_CUTOFF",
+          "execution": "NOT_RUN"
+        }
+      }
+    ],
+    "revision_clock_vectors": [
+      {
+        "version_ref": "SYN-A-DEC-v2",
+        "cutoff": "2027-01-15T18:00:00+08:00",
+        "relation": "BEFORE"
+      },
+      {
+        "version_ref": "SYN-A-DEC-v3",
+        "cutoff": "2027-01-29T18:00:00+08:00",
+        "relation": "AFTER"
+      },
+      {
+        "version_ref": "SYN-A-DEC-v3",
+        "cutoff": "2027-02-05T18:00:00+08:00",
+        "relation": "BEFORE"
+      }
+    ],
+    "source_state_vectors": [
+      {
+        "price_ref": "SYN-B:SYN-2027-01-11:OPEN",
+        "state": "MISSING",
+        "action_basis": "NONE",
+        "scope": "WU01_INPUT_ONLY"
+      },
+      {
+        "price_ref": "SYN-A:SYN-2027-01-25:OPEN",
+        "state": "HALT",
+        "action_basis": "NONE",
+        "scope": "WU01_INPUT_ONLY"
+      }
+    ],
+    "price_vectors": [
+      {
+        "price_ref": "SYN-A:SYN-2027-01-11:OPEN",
+        "coefficient": 50000000
+      },
+      {
+        "price_ref": "SYN-A:SYN-2027-02-01:OPEN",
+        "coefficient": 55000000
+      },
+      {
+        "price_ref": "SYN-A:SYN-2027-02-26:CLOSE",
+        "coefficient": 60000000
+      }
+    ],
+    "endpoint_clock_vectors": [
+      {
+        "endpoint_ref": "SYN-ENDPOINT-END-t1",
+        "fit_time": "2027-02-26T13:30:01+08:00",
+        "relation": "AT"
+      },
+      {
+        "endpoint_ref": "SYN-ENDPOINT-END-t1",
+        "fit_time": "2027-02-26T13:30:02+08:00",
+        "relation": "BEFORE"
+      }
+    ],
+    "unreachable_fill_negative": {
+      "scope": "WU01_INPUT_ONLY",
+      "action_basis": "NONE",
+      "expected_result": "NO_FILL_MISSING_PRICE",
+      "expected_error": "PROPOSED_FND_ORACLE_SCOPE_VIOLATION"
+    },
+    "deferred_F5": [
+      {
+        "case_id": "F5-B-MISSING-QUOTE",
+        "status": "ORACLE_INCOMPLETE",
+        "gate": "F5_POLICY_GATE",
+        "required_basis": "Independent lawful predeclared B Action and reachable order under reviewed execution model. No Action/order/fill exists in this input fixture."
+      },
+      {
+        "case_id": "F5-A-HALT",
+        "status": "ORACLE_INCOMPLETE",
+        "gate": "F5_POLICY_GATE",
+        "required_basis": "Independent lawful predeclared A Action and reachable order; HALT source state alone proves no no-fill outcome."
+      }
+    ],
+    "case_registry": [
+      {
+        "case_id": "CAL-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#CAL-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Pinned explicit date/session rows for source coverage2027-01-04..03-31; decision window2027-01-04..02-07 inclusive (complete ISO weeks)",
+        "expected_exact": "VALID local input; ordered tick cutoffs exactly [2027-01-07,01-15,01-29,02-05]T18:00:00+08:00; Jan18\u201324 annotation NO_SESSION_WEEK and no tick",
+        "forbidden": "Inferring exchange sessions from weekdays at schedule runtime, duplicate carry-forward tick",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "CAL-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#CAL-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Jan06 close12:00; Jan08 CLOSED; otherwise reviewed explicit rows",
+        "expected_exact": "Jan06 early-close row preserved; Jan07 cutoff remains18:00, no Jan08 tick",
+        "forbidden": "Move cutoff to early close or closed Friday",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "CAL-03",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#CAL-03",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Duplicate same session_id in otherwise lawful calendar",
+        "expected_exact": "INVALID / PROPOSED_FND_DUPLICATE_SESSION_ID",
+        "forbidden": "Silently deduplicate",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "CAL-04",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#CAL-04",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Same date is declared CLOSED and contains a session",
+        "expected_exact": "INVALID / PROPOSED_FND_CONTRADICTORY_SESSION",
+        "forbidden": "Use arbitrary last record",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "CAL-05",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#CAL-05",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Remove calendar-date row2027-01-20 without explicit closed declaration",
+        "expected_exact": "INVALID / PROPOSED_FND_CALENDAR_COVERAGE_GAP",
+        "forbidden": "Treat absent row as proved holiday",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "CAL-06",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#CAL-06",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Add session outside declared source coverage",
+        "expected_exact": "INVALID / PROPOSED_FND_SESSION_OUT_OF_COVERAGE",
+        "forbidden": "Expand coverage implicitly",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Compare A-v1 2027-01-07T17:59:59+08:00 with t1",
+        "expected_exact": "Local relation BEFORE; native reference only SUPPORTED/NONE conditional on valid bound facts; native_execution=NOT_RUN",
+        "forbidden": "Return Native SUPPORTED or App ELIGIBLE from WU-01",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Compare A-v2 2027-01-07T18:00:00+08:00 with t1",
+        "expected_exact": "Local relation AT; native reference only NOT_ADMISSIBLE/PUBLICATION_NOT_PRE_CUTOFF; native_execution=NOT_RUN",
+        "forbidden": "Inclusive <= publication or auto App INELIGIBLE",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-03",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-03",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Compare B-v1 2027-01-07T18:00:01+08:00 with t1",
+        "expected_exact": "Local relation AFTER; native reference only NOT_ADMISSIBLE/PUBLICATION_NOT_PRE_CUTOFF; native_execution=NOT_RUN",
+        "forbidden": "Invent Jan07 qualified B signal/order",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-04",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-04",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Naive2027-01-07T18:00:00 with no offset",
+        "expected_exact": "INVALID / PROPOSED_FND_AWARE_INSTANT_REQUIRED",
+        "forbidden": "Assume local timezone",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-05",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-05",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Local2027-01-07T18:00:00+00:00 while declared Asia/Taipei/+08:00",
+        "expected_exact": "INVALID / PROPOSED_FND_ZONE_OFFSET_MISMATCH",
+        "forbidden": "Normalize conflicting declaration without error",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-06",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-06",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "2027-01-07T18:00:00.100000+08:00 with SECOND precision",
+        "expected_exact": "INVALID / PROPOSED_FND_SECOND_PRECISION_REQUIRED",
+        "forbidden": "Truncate/round silently",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-07",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-07",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Publication fact UNKNOWN with cause AMBIGUOUS_SOURCE, original text retained",
+        "expected_exact": "Structurally valid UNKNOWN fact; local time relation UNKNOWN / PROPOSED_FND_INSTANT_UNRESOLVED; original cause retained",
+        "forbidden": "Replace with period-end/ingestion or zero",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-08",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-08",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "KNOWN exact publication field but proof_ref absent",
+        "expected_exact": "INVALID / PROPOSED_FND_TIME_PROOF_MISSING",
+        "forbidden": "Synthesize proof from current clock",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "REV-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#REV-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Retain A-v1=100/v2=110/v3=90 and explicit v2\u2192v1,v3\u2192v2 links with dates; request cutoffs t1,t2,t3,t4",
+        "expected_exact": "All original records/timestamps unchanged; local relations v2 ATt1/BEFOREt2; v3 AFTERt3/BEFOREt4. Hand source-candidate expectation t1A-v1,t2A-v2,t3A-v2,t4A-v3 is reference only, not computed Native selection",
+        "forbidden": "Implement as-of selector or rewrite old source records",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "REV-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#REV-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Revision supersedes_ref points to absent version",
+        "expected_exact": "INVALID / PROPOSED_FND_BROKEN_REVISION_LINK",
+        "forbidden": "Invent missing version/edge",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "REV-03",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#REV-03",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Omit required coverage declaration from source input",
+        "expected_exact": "INVALID / PROPOSED_FND_SOURCE_COVERAGE_MISSING",
+        "forbidden": "Equate unsearched/missing scope to no event",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "VALUE-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#VALUE-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "B Jan11OPEN=MISSING; A Jan25OPEN=HALT; independent mutation variants UNKNOWN/WITHHELD and explicit known zero revenue",
+        "expected_exact": "Each original source state/cause retained, non-KNOWN price amount absent; known revenue0 remains integer0; no order or no-fill computed",
+        "forbidden": "Collapse distinct source states into zero/false, pretend attempted order",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "VALUE-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#VALUE-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "KNOWN price coefficient0 at otherwise valid cell",
+        "expected_exact": "INVALID / PROPOSED_FND_NONPOSITIVE_PRICE",
+        "forbidden": "Use zero as missing price",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "VALUE-03",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#VALUE-03",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "KNOWN price uses bool or float/NaN as coefficient (separate subcases fixed to same type violation)",
+        "expected_exact": "INVALID / PROPOSED_FND_EXACT_INTEGER_REQUIRED",
+        "forbidden": "Coerce bool/float/NaN",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "VALUE-04",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#VALUE-04",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Price scale3 instead of declared micro-NTD scale6",
+        "expected_exact": "INVALID / PROPOSED_FND_PRICE_SCALE_MISMATCH",
+        "forbidden": "Silent unit conversion",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "VALUE-05",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#VALUE-05",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Price currencyUSD while record contract NTD",
+        "expected_exact": "INVALID / PROPOSED_FND_CURRENCY_MISMATCH",
+        "forbidden": "Revenue/price/currency conflation",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "VALUE-06",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#VALUE-06",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Revenue amount2^63 (otherwise valid)",
+        "expected_exact": "INVALID / PROPOSED_FND_REVENUE_INT64_RANGE",
+        "forbidden": "Overflow/coercion",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "AVAIL-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#AVAIL-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Jan11A open event09:00:00, available09:00:01; compare each against Jan07 t1",
+        "expected_exact": "Both times retained separately; available time relation AFTERt1; decision request contains no quote/outcome resolver",
+        "forbidden": "Claim policy observed quote/executed at09:00 using later evidence",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "LABEL-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#LABEL-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Future endpoint Feb26CLOSE event13:30:00 available13:30:01; compare available time with illustrative fit13:30:01 and13:30:02",
+        "expected_exact": "Local AT then BEFORE; no computed label/return/fit eligibility; future F3 strict-maturity reference only",
+        "forbidden": "Compute1/5 return or train early in WU-01",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "LABEL-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#LABEL-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Endpoint source ref points2027-04-01 outside source coverage ending03-31",
+        "expected_exact": "INVALID / PROPOSED_FND_ENDPOINT_OUT_OF_COVERAGE",
+        "forbidden": "Fabricated outcome tail/price",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "ACCESS-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#ACCESS-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Add outcome_ref to exact local tick-request serialization input",
+        "expected_exact": "INVALID / PROPOSED_FND_FORBIDDEN_DECISION_FIELD(outcome_ref)",
+        "forbidden": "Generic dataclass/raw-pack serialization",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "ACCESS-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#ACCESS-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Inject future_quote, audit_resolver, label_value or action as individual extra request keys",
+        "expected_exact": "INVALID / PROPOSED_FND_FORBIDDEN_DECISION_FIELD(exact offending key), one independent vector per key",
+        "forbidden": "Leak future access, policy action or fill support",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "PINS-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#PINS-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Mutate one source payload byte/value while retaining old payload_sha256",
+        "expected_exact": "INVALID / PROPOSED_FND_PAYLOAD_PIN_MISMATCH; recomputed input pin differs",
+        "forbidden": "Claim IF-03 App result/replay equivalence",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "PINS-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#PINS-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Repeat identical approved input_spec/seed17; then change seed metadata to18 under same source spec",
+        "expected_exact": "Same seed/input -> same basic source bytes/pin; changed seed -> different input bytes/pin. Oracle edits alone do not alter generator input_spec result",
+        "forbidden": "Generate expected oracle from generator under test",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "SCOPE-01",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#SCOPE-01",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Corrupt INPUT_ONLY oracle metadata to expect B Jan11 NO_FILL_MISSING_PRICE with no lawful Action; action_basis NONE",
+        "expected_exact": "Oracle-scope validation rejects PROPOSED_FND_ORACLE_SCOPE_VIOLATION; no B order or fill is constructed",
+        "forbidden": "Treat unqualified B signal as reachable order or no-fill PASS",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "SCOPE-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#SCOPE-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Request Monthly (then separate Daily vector) in Weekly-only request config",
+        "expected_exact": "INVALID / PROPOSED_FND_UNSUPPORTED_FREQUENCY",
+        "forbidden": "Silent Weekly fallback",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "SCOPE-03",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#SCOPE-03",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Request REAL_TWSE_PILOT in local Synthetic-only schema",
+        "expected_exact": "INVALID / PROPOSED_FND_UNSUPPORTED_DATA_MODE",
+        "forbidden": "Retrieve real source or promote evidence class",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "TIME-09",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#TIME-09",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Malformed offset+0800 (colon absent) in otherwise exact instant",
+        "expected_exact": "INVALID / PROPOSED_FND_OFFSET_FORMAT",
+        "forbidden": "Let permissive ISO parser normalize malformed offset",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "VALUE-07",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#VALUE-07",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Revenue record uses unitNTD_price instead ofNTD_thousands",
+        "expected_exact": "INVALID / PROPOSED_FND_REVENUE_UNIT_MISMATCH",
+        "forbidden": "Treat price unit as revenue unit",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "LABEL-03",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#LABEL-03",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Remove required Feb26A CLOSE record entirely, leaving no explicit source-state cell",
+        "expected_exact": "INVALID / PROPOSED_FND_PRICE_GRID_COVERAGE_GAP",
+        "forbidden": "Fabricate absent future tail quote",
+        "status": "SPECIFIED_NOT_RUN"
+      },
+      {
+        "case_id": "AVAIL-02",
+        "source_ref": "MVP-F2-WU-01_Requirements_v0.1#AVAIL-02",
+        "input_scope": "WU01_INPUT_ONLY",
+        "fixture_construction": "Price available_at08:59:59 preceding event09:00:00",
+        "expected_exact": "INVALID / PROPOSED_FND_AVAILABILITY_PRECEDES_EVENT",
+        "forbidden": "Backdate observation availability",
+        "status": "SPECIFIED_NOT_RUN"
+      }
+    ]
+  }
+}
