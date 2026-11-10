@@ -1168,6 +1168,10 @@ def _observation_reason(
         "src/pit_research_lab/mvp/f2/temporal_qualification.py",
         "tests/unit/mvp_f2/test_temporal_asof.py",
         "tests/unit/mvp_f2/data/temporal_qualification_evidence_v0.1.json",
+        "src/pit_research_lab/mvp/f2/asof_requests.py",
+        "src/pit_research_lab/mvp/f2/asof_qualification.py",
+        "tests/unit/mvp_f2/test_bounded_asof.py",
+        "tests/unit/mvp_f2/data/bounded_asof_evidence_v0.1.json",
     }
     for line in code.worktree_status.splitlines():
         parts = line.strip().split(maxsplit=1)
