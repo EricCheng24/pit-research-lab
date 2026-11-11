@@ -1165,6 +1165,9 @@ def _observation_reason(
         return W02AdapterReason.OBSERVATION_SCOPE_INVALID
     permitted = {
         "src/pit_research_lab/mvp/f2/native_requests.py",
+        "src/pit_research_lab/mvp/f2/derived_observations.py",
+        "tests/unit/mvp_f2/data/derived_observations_v0.1.json",
+        "tests/unit/mvp_f2/test_derived_observations.py",
         "src/pit_research_lab/mvp/f2/temporal_qualification.py",
         "tests/unit/mvp_f2/test_temporal_asof.py",
         "tests/unit/mvp_f2/data/temporal_qualification_evidence_v0.1.json",

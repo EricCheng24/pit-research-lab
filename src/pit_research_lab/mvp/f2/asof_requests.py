@@ -56,7 +56,15 @@ G03_PATHS = (
     "tests/unit/mvp_f2/test_bounded_asof.py",
     "tests/unit/mvp_f2/data/bounded_asof_evidence_v0.1.json",
 )
-_STATUS_PATHS = frozenset((*G03_PATHS, "src/pit_research_lab/mvp/f2/native_requests.py"))
+_STATUS_PATHS = frozenset(
+    (
+        *G03_PATHS,
+        "src/pit_research_lab/mvp/f2/native_requests.py",
+        "src/pit_research_lab/mvp/f2/derived_observations.py",
+        "tests/unit/mvp_f2/data/derived_observations_v0.1.json",
+        "tests/unit/mvp_f2/test_derived_observations.py",
+    )
+)
 _OBSERVED = object()
 _PREPARED = object()
 
