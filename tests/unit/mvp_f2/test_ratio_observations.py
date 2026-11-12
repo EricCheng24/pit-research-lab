@@ -868,6 +868,11 @@ def test_B1_T15_existing_adapter_bytes_only_three_literal_insertions():
         "src/pit_research_lab/mvp/f2/asof_requests.py",
         "src/pit_research_lab/mvp/f2/derived_observations.py",
     }
+    b2_paths = (
+        "src/pit_research_lab/mvp/f2/causal_observations.py",
+        "tests/unit/mvp_f2/test_causal_observations.py",
+        "tests/unit/mvp_f2/data/causal_observations_v0.1.json",
+    )
     for path in expected_paths:
         current = (ROOT / path).read_bytes()
         approved_baseline = "6a77881afd295ddee0d50f7d7ab5b1e01a4168d5"
@@ -882,8 +887,21 @@ def test_B1_T15_existing_adapter_bytes_only_three_literal_insertions():
                 f"{approved_baseline}:{path}",
             ]
         )
-        for new in NEW_PATHS:
+        owner_tree = ast.parse(current)
+        block = next(
+            node
+            for node in ast.walk(owner_tree)
+            if isinstance(node, ast.Assign)
+            and any(
+                isinstance(target, ast.Name)
+                and target.id in {"permitted", "_STATUS_PATHS", "STATUS_PATHS"}
+                for target in node.targets
+            )
+        )
+        block_bytes = b"\n".join(current.split(b"\n")[block.lineno - 1 : block.end_lineno])
+        for new in (*NEW_PATHS, *b2_paths):
             literal = ('        "' + new + '",\n').encode()
             assert current.count(literal) == 1
+            assert block_bytes.count(literal.rstrip(b"\n")) == 1
             current = current.replace(literal, b"", 1)
         assert current == baseline
