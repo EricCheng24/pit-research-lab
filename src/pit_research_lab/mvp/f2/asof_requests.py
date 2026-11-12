@@ -58,6 +58,9 @@ G03_PATHS = (
 )
 _STATUS_PATHS = frozenset(
     (
+        "src/pit_research_lab/mvp/f2/ratio_observations.py",
+        "tests/unit/mvp_f2/test_ratio_observations.py",
+        "tests/unit/mvp_f2/data/ratio_observations_v0.1.json",
         *G03_PATHS,
         "src/pit_research_lab/mvp/f2/native_requests.py",
         "src/pit_research_lab/mvp/f2/derived_observations.py",
