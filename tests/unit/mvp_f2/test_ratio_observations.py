@@ -870,8 +870,17 @@ def test_B1_T15_existing_adapter_bytes_only_three_literal_insertions():
     }
     for path in expected_paths:
         current = (ROOT / path).read_bytes()
+        approved_baseline = "6a77881afd295ddee0d50f7d7ab5b1e01a4168d5"
+
         baseline = subprocess.check_output(
-            ["git", "--no-optional-locks", "-C", str(ROOT), "show", "HEAD:" + path]
+            [
+                "git",
+                "--no-optional-locks",
+                "-C",
+                str(ROOT),
+                "show",
+                f"{approved_baseline}:{path}",
+            ]
         )
         for new in NEW_PATHS:
             literal = ('        "' + new + '",\n').encode()
