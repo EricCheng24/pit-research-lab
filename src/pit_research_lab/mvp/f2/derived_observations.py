@@ -61,6 +61,8 @@ NATIVE_PINS = tuple(
 ADAPTER_PATH = "src/pit_research_lab/mvp/f2/derived_observations.py"
 STATUS_PATHS = frozenset(
     (
+        "src/pit_research_lab/mvp/f2/weekly_sequence.py",
+        "tests/unit/mvp_f2/test_weekly_sequence.py",
         "src/pit_research_lab/mvp/f2/causal_observations.py",
         "tests/unit/mvp_f2/test_causal_observations.py",
         "tests/unit/mvp_f2/data/causal_observations_v0.1.json",

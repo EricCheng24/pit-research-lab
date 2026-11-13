@@ -1164,6 +1164,8 @@ def _observation_reason(
     ):
         return W02AdapterReason.OBSERVATION_SCOPE_INVALID
     permitted = {
+        "src/pit_research_lab/mvp/f2/weekly_sequence.py",
+        "tests/unit/mvp_f2/test_weekly_sequence.py",
         "src/pit_research_lab/mvp/f2/causal_observations.py",
         "tests/unit/mvp_f2/test_causal_observations.py",
         "tests/unit/mvp_f2/data/causal_observations_v0.1.json",

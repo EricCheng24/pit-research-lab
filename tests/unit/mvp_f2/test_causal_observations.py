@@ -876,6 +876,14 @@ def test_b2_four_owner_exact_byte_guard_fixed_b1_baseline():
             )
         )
         block_bytes = b"\n".join(current.split(b"\n")[block.lineno - 1 : block.end_lineno])
+        for new in (
+            "src/pit_research_lab/mvp/f2/weekly_sequence.py",
+            "tests/unit/mvp_f2/test_weekly_sequence.py",
+        ):
+            literal = ('        "' + new + '",\n').encode()
+            assert current.count(literal) == 1
+            assert block_bytes.count(literal.rstrip(b"\n")) == 1
+            current = current.replace(literal, b"", 1)
         for path in b.NEW_PATHS:
             literal = ('        "' + path + '",\n').encode()
             assert current.count(literal) == 1
