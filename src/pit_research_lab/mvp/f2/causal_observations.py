@@ -43,7 +43,14 @@ LOCAL_PATHS = (
     "tests/unit/mvp_f2/test_ratio_observations.py",
     "tests/unit/mvp_f2/test_causal_observations.py",
 )
-STATUS_PATHS = frozenset((*LOCAL_PATHS, FIXTURE_PATH))
+STATUS_PATHS = frozenset(
+    (
+        *LOCAL_PATHS,
+        FIXTURE_PATH,
+        "src/pit_research_lab/mvp/f2/weekly_sequence.py",
+        "tests/unit/mvp_f2/test_weekly_sequence.py",
+    )
+)
 EXTENSION_PINS = (
     (
         "src/pit_research_lab/domain/causal_derivation.py",
