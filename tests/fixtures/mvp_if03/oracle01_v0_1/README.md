@@ -24,6 +24,7 @@
 ```python
 from pathlib import Path
 from zipfile import ZipFile
+
 archive = Path("tests/fixtures/mvp_if03/oracle01_v0_1/IF03_ORACLE01_Review_Evidence.zip")
 with ZipFile(archive) as z:
     print(z.read("vectors/J02/expected.json").decode("utf-8"))
