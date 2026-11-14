@@ -1,0 +1,1442 @@
+{
+  "format": "IF03_ORACLE01_BOUNDED_FREEZE_MANIFEST_v0.1",
+  "freeze_boundary": {
+    "actual_git_integration": "NOT_RUN",
+    "after_review_target_only": "LIMITED_GOLDEN_ORACLE_FROZEN for exact reviewed immutable Git state; not achieved here",
+    "allowed_scope": "BOUNDED_GOLDEN_POSITIVE_AND_COMPONENT_BYTES_ONLY",
+    "codec_conformance": "NOT_RUN",
+    "f3_f5_integration": "NOT_RUN",
+    "formal_cap_f2": "OUT_OF_SCOPE",
+    "if05_eligibility": "NOT_AUTHORIZED",
+    "if07_real_source": "NOT_AUTHORIZED",
+    "materialization": "PREPARED_AWAITING_INDEPENDENT_INTEGRATION_REVIEW",
+    "native_replay": "NOT_RUN",
+    "reference_issuance": "NOT_AUTHORIZED",
+    "status": "FREEZE_CANDIDATE_READY_FOR_REVIEW"
+  },
+  "golden_positives": [
+    {
+      "acceptance": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED",
+      "artifacts": {
+        "canonical_payload.bin": {
+          "byte_length": 187,
+          "file_sha256": "a3f5df22cfd788ed92d3613856eea7ed4c507642976f63228204124d5795a69d",
+          "fixture_path": "positives/B01/canonical_payload.bin",
+          "source_zip_member": "vectors/B01/canonical_payload.bin"
+        },
+        "frame.bin": {
+          "byte_length": 281,
+          "file_sha256": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686",
+          "fixture_path": "positives/B01/frame.bin",
+          "source_zip_member": "vectors/B01/frame.bin"
+        },
+        "raw_body.bin": {
+          "byte_length": 0,
+          "file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "fixture_path": "positives/B01/raw_body.bin",
+          "source_zip_member": "vectors/B01/raw_body.bin"
+        }
+      },
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "class": "VALID_COMPLETE_DOMAIN",
+      "content_only_assertion": [
+        "CONTENT_INTEGRITY_ONLY",
+        "NOT_SOURCE_AUTHENTICATION",
+        "NOT_PIT_ADMISSION"
+      ],
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "expected_frame_digest_sha256": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686",
+      "expected_payload_only_envelope_byte_length": 187,
+      "materialization_verification": "PASS_EXACT_BYTES_AND_FRESH_PREIMAGE_RECONSTRUCTION",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "raw_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reference_expectation_only": true,
+      "source_expected_record": "vectors/B01/expected.json",
+      "vector_id": "B01"
+    },
+    {
+      "acceptance": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED",
+      "artifacts": {
+        "canonical_payload.bin": {
+          "byte_length": 187,
+          "file_sha256": "a7b661617f0c88bb96affb2f2aa24a36abaf1de1c119549b413adfc4377b6edf",
+          "fixture_path": "positives/B02/canonical_payload.bin",
+          "source_zip_member": "vectors/B02/canonical_payload.bin"
+        },
+        "frame.bin": {
+          "byte_length": 281,
+          "file_sha256": "11bb5c86b5c41d57b1fde3e55bb766b529bb4afe2a439a1a3a7fee8875f8cf5f",
+          "fixture_path": "positives/B02/frame.bin",
+          "source_zip_member": "vectors/B02/frame.bin"
+        },
+        "raw_body.bin": {
+          "byte_length": 1,
+          "file_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+          "fixture_path": "positives/B02/raw_body.bin",
+          "source_zip_member": "vectors/B02/raw_body.bin"
+        }
+      },
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "class": "VALID_COMPLETE_DOMAIN",
+      "content_only_assertion": [
+        "CONTENT_INTEGRITY_ONLY",
+        "NOT_SOURCE_AUTHENTICATION",
+        "NOT_PIT_ADMISSION"
+      ],
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "expected_frame_digest_sha256": "11bb5c86b5c41d57b1fde3e55bb766b529bb4afe2a439a1a3a7fee8875f8cf5f",
+      "expected_payload_only_envelope_byte_length": 187,
+      "materialization_verification": "PASS_EXACT_BYTES_AND_FRESH_PREIMAGE_RECONSTRUCTION",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "raw_body_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "reference_expectation_only": true,
+      "source_expected_record": "vectors/B02/expected.json",
+      "vector_id": "B02"
+    },
+    {
+      "acceptance": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED",
+      "artifacts": {
+        "canonical_payload.bin": {
+          "byte_length": 187,
+          "file_sha256": "ae6d00e2053c7ef78e0a56008b65dd3a367246233c833651e55b30b16f12e9cf",
+          "fixture_path": "positives/B03/canonical_payload.bin",
+          "source_zip_member": "vectors/B03/canonical_payload.bin"
+        },
+        "frame.bin": {
+          "byte_length": 281,
+          "file_sha256": "be5b9bbb19b6a656803fc7ba81996f91446d1fd377e451e60767625b98cfac3d",
+          "fixture_path": "positives/B03/frame.bin",
+          "source_zip_member": "vectors/B03/frame.bin"
+        },
+        "raw_body.bin": {
+          "byte_length": 1,
+          "file_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "fixture_path": "positives/B03/raw_body.bin",
+          "source_zip_member": "vectors/B03/raw_body.bin"
+        }
+      },
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "class": "VALID_COMPLETE_DOMAIN",
+      "content_only_assertion": [
+        "CONTENT_INTEGRITY_ONLY",
+        "NOT_SOURCE_AUTHENTICATION",
+        "NOT_PIT_ADMISSION"
+      ],
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "expected_frame_digest_sha256": "be5b9bbb19b6a656803fc7ba81996f91446d1fd377e451e60767625b98cfac3d",
+      "expected_payload_only_envelope_byte_length": 187,
+      "materialization_verification": "PASS_EXACT_BYTES_AND_FRESH_PREIMAGE_RECONSTRUCTION",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "raw_body_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "reference_expectation_only": true,
+      "source_expected_record": "vectors/B03/expected.json",
+      "vector_id": "B03"
+    },
+    {
+      "acceptance": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED",
+      "artifacts": {
+        "canonical_payload.bin": {
+          "byte_length": 187,
+          "file_sha256": "c359c48c7bd02d494e92d82af6e0d8526351940a85f9197163907e2b938725df",
+          "fixture_path": "positives/B04/canonical_payload.bin",
+          "source_zip_member": "vectors/B04/canonical_payload.bin"
+        },
+        "frame.bin": {
+          "byte_length": 281,
+          "file_sha256": "af2c85ddf4d4bc4c271c15e2806f367e07287c1d6a35ae992f3d3e4d3752ed61",
+          "fixture_path": "positives/B04/frame.bin",
+          "source_zip_member": "vectors/B04/frame.bin"
+        },
+        "raw_body.bin": {
+          "byte_length": 2,
+          "file_sha256": "4a99557e4033c3539de2eb65472017cad5f9557f7a0625a09f1c3f6e2ba69c4c",
+          "fixture_path": "positives/B04/raw_body.bin",
+          "source_zip_member": "vectors/B04/raw_body.bin"
+        }
+      },
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "class": "VALID_COMPLETE_DOMAIN",
+      "content_only_assertion": [
+        "CONTENT_INTEGRITY_ONLY",
+        "NOT_SOURCE_AUTHENTICATION",
+        "NOT_PIT_ADMISSION"
+      ],
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "expected_frame_digest_sha256": "af2c85ddf4d4bc4c271c15e2806f367e07287c1d6a35ae992f3d3e4d3752ed61",
+      "expected_payload_only_envelope_byte_length": 187,
+      "materialization_verification": "PASS_EXACT_BYTES_AND_FRESH_PREIMAGE_RECONSTRUCTION",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "raw_body_sha256": "4a99557e4033c3539de2eb65472017cad5f9557f7a0625a09f1c3f6e2ba69c4c",
+      "reference_expectation_only": true,
+      "source_expected_record": "vectors/B04/expected.json",
+      "vector_id": "B04"
+    },
+    {
+      "acceptance": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED",
+      "artifacts": {
+        "canonical_payload.bin": {
+          "byte_length": 187,
+          "file_sha256": "2a063985319809595f53a974a77ef43ec7f38581fa10bc42a97c974e6a0e73f0",
+          "fixture_path": "positives/B05/canonical_payload.bin",
+          "source_zip_member": "vectors/B05/canonical_payload.bin"
+        },
+        "frame.bin": {
+          "byte_length": 281,
+          "file_sha256": "cb8bdd239329aa1d95308a88e36583c2285027c26a7711a89f9dab077886a387",
+          "fixture_path": "positives/B05/frame.bin",
+          "source_zip_member": "vectors/B05/frame.bin"
+        },
+        "raw_body.bin": {
+          "byte_length": 3,
+          "file_sha256": "bf12767b0f2a56b2190075bae8169f656e3ce8d6357d4aff184bc6c7ea48f9f6",
+          "fixture_path": "positives/B05/raw_body.bin",
+          "source_zip_member": "vectors/B05/raw_body.bin"
+        }
+      },
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "class": "VALID_COMPLETE_DOMAIN",
+      "content_only_assertion": [
+        "CONTENT_INTEGRITY_ONLY",
+        "NOT_SOURCE_AUTHENTICATION",
+        "NOT_PIT_ADMISSION"
+      ],
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "expected_frame_digest_sha256": "cb8bdd239329aa1d95308a88e36583c2285027c26a7711a89f9dab077886a387",
+      "expected_payload_only_envelope_byte_length": 187,
+      "materialization_verification": "PASS_EXACT_BYTES_AND_FRESH_PREIMAGE_RECONSTRUCTION",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "raw_body_sha256": "bf12767b0f2a56b2190075bae8169f656e3ce8d6357d4aff184bc6c7ea48f9f6",
+      "reference_expectation_only": true,
+      "source_expected_record": "vectors/B05/expected.json",
+      "vector_id": "B05"
+    },
+    {
+      "acceptance": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED",
+      "artifacts": {
+        "canonical_payload.bin": {
+          "byte_length": 187,
+          "file_sha256": "b6c3051378f916aa2695f469ed5e52654217414b9c882f27e4af9869b3a5915f",
+          "fixture_path": "positives/B06/canonical_payload.bin",
+          "source_zip_member": "vectors/B06/canonical_payload.bin"
+        },
+        "frame.bin": {
+          "byte_length": 281,
+          "file_sha256": "55daae37a193963e214e9a67415fe8c17eecafea0b13e54919b774f05d991970",
+          "fixture_path": "positives/B06/frame.bin",
+          "source_zip_member": "vectors/B06/frame.bin"
+        },
+        "raw_body.bin": {
+          "byte_length": 1,
+          "file_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+          "fixture_path": "positives/B06/raw_body.bin",
+          "source_zip_member": "vectors/B06/raw_body.bin"
+        }
+      },
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "class": "VALID_COMPLETE_DOMAIN",
+      "content_only_assertion": [
+        "CONTENT_INTEGRITY_ONLY",
+        "NOT_SOURCE_AUTHENTICATION",
+        "NOT_PIT_ADMISSION"
+      ],
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "expected_frame_digest_sha256": "55daae37a193963e214e9a67415fe8c17eecafea0b13e54919b774f05d991970",
+      "expected_payload_only_envelope_byte_length": 187,
+      "materialization_verification": "PASS_EXACT_BYTES_AND_FRESH_PREIMAGE_RECONSTRUCTION",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "raw_body_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+      "reference_expectation_only": true,
+      "source_expected_record": "vectors/B06/expected.json",
+      "vector_id": "B06"
+    },
+    {
+      "acceptance": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED",
+      "artifacts": {
+        "canonical_payload.bin": {
+          "byte_length": 187,
+          "file_sha256": "f25cee42f732cb89c94f7193820b9e8336d667f950f1007a32f8e6128af47bab",
+          "fixture_path": "positives/B07/canonical_payload.bin",
+          "source_zip_member": "vectors/B07/canonical_payload.bin"
+        },
+        "frame.bin": {
+          "byte_length": 281,
+          "file_sha256": "7fd81935e350dc4cdb2ce57ab39377f16a1be43314d393f75837945f04e51a12",
+          "fixture_path": "positives/B07/frame.bin",
+          "source_zip_member": "vectors/B07/frame.bin"
+        },
+        "raw_body.bin": {
+          "byte_length": 2,
+          "file_sha256": "06f961b802bc46ee168555f066d28f4f0e9afdf3f88174c1ee6f9de004fc30a0",
+          "fixture_path": "positives/B07/raw_body.bin",
+          "source_zip_member": "vectors/B07/raw_body.bin"
+        }
+      },
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "class": "VALID_COMPLETE_DOMAIN",
+      "content_only_assertion": [
+        "CONTENT_INTEGRITY_ONLY",
+        "NOT_SOURCE_AUTHENTICATION",
+        "NOT_PIT_ADMISSION"
+      ],
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "expected_frame_digest_sha256": "7fd81935e350dc4cdb2ce57ab39377f16a1be43314d393f75837945f04e51a12",
+      "expected_payload_only_envelope_byte_length": 187,
+      "materialization_verification": "PASS_EXACT_BYTES_AND_FRESH_PREIMAGE_RECONSTRUCTION",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "raw_body_sha256": "06f961b802bc46ee168555f066d28f4f0e9afdf3f88174c1ee6f9de004fc30a0",
+      "reference_expectation_only": true,
+      "source_expected_record": "vectors/B07/expected.json",
+      "vector_id": "B07"
+    },
+    {
+      "acceptance": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED",
+      "artifacts": {
+        "canonical_payload.bin": {
+          "byte_length": 187,
+          "file_sha256": "705a0db300955c692abf05dba1aa94bc94d693f5caf127dff95cbfe140e9b620",
+          "fixture_path": "positives/B08/canonical_payload.bin",
+          "source_zip_member": "vectors/B08/canonical_payload.bin"
+        },
+        "frame.bin": {
+          "byte_length": 281,
+          "file_sha256": "a405fcdaeb1277046d4d9038029e05c4bd633692d305afc0b964086443c232a8",
+          "fixture_path": "positives/B08/frame.bin",
+          "source_zip_member": "vectors/B08/frame.bin"
+        },
+        "raw_body.bin": {
+          "byte_length": 1,
+          "file_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+          "fixture_path": "positives/B08/raw_body.bin",
+          "source_zip_member": "vectors/B08/raw_body.bin"
+        }
+      },
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "class": "VALID_COMPLETE_DOMAIN",
+      "content_only_assertion": [
+        "CONTENT_INTEGRITY_ONLY",
+        "NOT_SOURCE_AUTHENTICATION",
+        "NOT_PIT_ADMISSION"
+      ],
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "expected_frame_digest_sha256": "a405fcdaeb1277046d4d9038029e05c4bd633692d305afc0b964086443c232a8",
+      "expected_payload_only_envelope_byte_length": 187,
+      "materialization_verification": "PASS_EXACT_BYTES_AND_FRESH_PREIMAGE_RECONSTRUCTION",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "raw_body_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+      "reference_expectation_only": true,
+      "source_expected_record": "vectors/B08/expected.json",
+      "vector_id": "B08"
+    }
+  ],
+  "known_p2": {
+    "effect": "Blocks claiming full max-depth Codec boundary conformance; does not affect eight SOURCE-BYTES positives",
+    "issue": "Record-depth root-counting convention needs clarification"
+  },
+  "metadata_note": "Repository fixture traceability metadata; ordinary JSON numbers/null allowed. Not CanonicalPayload<D>, not a new registered App domain. No self hash; manifest file hash belongs in external execution evidence/Git blob receipt.",
+  "non_promoted": [
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "下列完整 bytes 僅為 typed scalar fragment；不是完整 CanonicalPayload<D>。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S01/scalar.bin",
+        "vectors/S01/scalar.hex",
+        "vectors/S01/scalar.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S01/expected.json",
+      "vector_id": "S01"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "下列完整 bytes 僅為 typed scalar fragment；不是完整 CanonicalPayload<D>。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S02/scalar.bin",
+        "vectors/S02/scalar.hex",
+        "vectors/S02/scalar.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S02/expected.json",
+      "vector_id": "S02"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "下列完整 bytes 僅為 typed scalar fragment；不是完整 CanonicalPayload<D>。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S03/scalar.bin",
+        "vectors/S03/scalar.hex",
+        "vectors/S03/scalar.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S03/expected.json",
+      "vector_id": "S03"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "下列完整 bytes 僅為 typed scalar fragment；不是完整 CanonicalPayload<D>。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S04/scalar.bin",
+        "vectors/S04/scalar.hex",
+        "vectors/S04/scalar.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S04/expected.json",
+      "vector_id": "S04"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "下列完整 bytes 僅為 typed scalar fragment；不是完整 CanonicalPayload<D>。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S05/scalar.bin",
+        "vectors/S05/scalar.hex",
+        "vectors/S05/scalar.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S05/expected.json",
+      "vector_id": "S05"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "下列完整 bytes 僅為 typed scalar fragment；不是完整 CanonicalPayload<D>。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S06/scalar.bin",
+        "vectors/S06/scalar.hex",
+        "vectors/S06/scalar.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S06/expected.json",
+      "vector_id": "S06"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "true/false 是 Boolean token；兩欄不能單獨宣稱完整 ScopeFlags 或 domain。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S07/admission_eligible_false.bin",
+        "vectors/S07/admission_eligible_false.hex",
+        "vectors/S07/admission_eligible_false.utf8.txt",
+        "vectors/S07/diagnostic_only_true.bin",
+        "vectors/S07/diagnostic_only_true.hex",
+        "vectors/S07/diagnostic_only_true.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S07/expected.json",
+      "vector_id": "S07"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "拒絕範圍溢位；不截斷、不成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S08/above_max.bin",
+        "vectors/S08/above_max.hex",
+        "vectors/S08/above_max.utf8.txt",
+        "vectors/S08/below_min.bin",
+        "vectors/S08/below_min.hex",
+        "vectors/S08/below_min.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S08/expected.json",
+      "vector_id": "S08"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "拒絕 UInt64 範圍／符號；不成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S09/above_max.bin",
+        "vectors/S09/above_max.hex",
+        "vectors/S09/above_max.utf8.txt",
+        "vectors/S09/negative.bin",
+        "vectors/S09/negative.hex",
+        "vectors/S09/negative.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S09/expected.json",
+      "vector_id": "S09"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "前三者拒絕非 canonical decimal spelling；bare token 拒絕未 typed numeric；無成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S10/bare.bin",
+        "vectors/S10/bare.hex",
+        "vectors/S10/bare.utf8.txt",
+        "vectors/S10/negative_zero.bin",
+        "vectors/S10/negative_zero.hex",
+        "vectors/S10/negative_zero.utf8.txt",
+        "vectors/S10/plus.bin",
+        "vectors/S10/plus.hex",
+        "vectors/S10/plus.utf8.txt",
+        "vectors/S10/zero_prefix.bin",
+        "vectors/S10/zero_prefix.hex",
+        "vectors/S10/zero_prefix.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S10/expected.json",
+      "vector_id": "S10"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "Boolean field 的 1/0 與 Int64 value=true 均拒絕；Python True→Int64(1) conversion 也拒絕；無成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S11/bool_as_int.bin",
+        "vectors/S11/bool_as_int.hex",
+        "vectors/S11/bool_as_int.utf8.txt",
+        "vectors/S11/int_as_bool_field.bin",
+        "vectors/S11/int_as_bool_field.hex",
+        "vectors/S11/int_as_bool_field.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S11/expected.json",
+      "vector_id": "S11"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "POSITIVE_OBJECT_BLOCKED",
+      "blocked_prerequisite": "Approved NUMERIC_POLICY raw bytes/schema、ResourceRef semantic owner review 與 enclosing domain prerequisites 未提供。",
+      "class": "BLOCKED_BY_RESOURCE_SCHEMA",
+      "documentary_expectation": "0×10^0 與 0×10^-6 數值相等但 declared scale 不同；不得合併 bytes。完整 Decimal blocked，無 domain digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "BLOCKED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S12/coefficient_zero.bin",
+        "vectors/S12/coefficient_zero.hex",
+        "vectors/S12/coefficient_zero.utf8.txt",
+        "vectors/S12/scale_six.bin",
+        "vectors/S12/scale_six.hex",
+        "vectors/S12/scale_six.utf8.txt",
+        "vectors/S12/scale_zero.bin",
+        "vectors/S12/scale_zero.hex",
+        "vectors/S12/scale_zero.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S12/expected.json",
+      "vector_id": "S12"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "拒絕 exponent spelling、floating coefficient、scale>18、negative UInt64 scale；不 rounding，不成功完整物件或 digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S13/coefficient_exponent.bin",
+        "vectors/S13/coefficient_exponent.hex",
+        "vectors/S13/coefficient_exponent.utf8.txt",
+        "vectors/S13/coefficient_float.bin",
+        "vectors/S13/coefficient_float.hex",
+        "vectors/S13/coefficient_float.utf8.txt",
+        "vectors/S13/scale19.bin",
+        "vectors/S13/scale19.hex",
+        "vectors/S13/scale19.utf8.txt",
+        "vectors/S13/scale_negative.bin",
+        "vectors/S13/scale_negative.hex",
+        "vectors/S13/scale_negative.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S13/expected.json",
+      "vector_id": "S13"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "POSITIVE_OBJECT_BLOCKED",
+      "blocked_prerequisite": "FIXED_SIX_DECIMAL_FRACTION_HALF_EVEN-v0.1 的 approved NUMERIC_POLICY body/schema 與 ResourceRef 尚未提供。",
+      "class": "BLOCKED_BY_RESOURCE_SCHEMA",
+      "documentary_expectation": "agreement: 0.500000 ↔500000/10^6、unit FRACTION、scale6；mismatch500001 或非六位 text、scale≠6、units>1000000 應拒絕。完整正向物件 blocked；不是 A05 attestation。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "BLOCKED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/S14/decimal_text.bin",
+        "vectors/S14/decimal_text.hex",
+        "vectors/S14/decimal_text.utf8.txt",
+        "vectors/S14/scale.bin",
+        "vectors/S14/scale.hex",
+        "vectors/S14/scale.utf8.txt",
+        "vectors/S14/scaled_units.bin",
+        "vectors/S14/scaled_units.hex",
+        "vectors/S14/scaled_units.utf8.txt",
+        "vectors/S14/unit.bin",
+        "vectors/S14/unit.hex",
+        "vectors/S14/unit.utf8.txt"
+      ],
+      "source_expected_record": "vectors/S14/expected.json",
+      "vector_id": "S14"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "原字元 A、雙引號、反斜線、Z；quote→5c22、backslash→5c5c。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J01/original_text.bin",
+        "vectors/J01/original_text.hex",
+        "vectors/J01/original_text.utf8.txt",
+        "vectors/J01/quoted_string.bin",
+        "vectors/J01/quoted_string.hex",
+        "vectors/J01/quoted_string.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J01/expected.json",
+      "vector_id": "J01"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "NFC bytes 22c3a922 與 decomposed 2265cc8122 不同；無 domain digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J02/nfc_quoted.bin",
+        "vectors/J02/nfc_quoted.hex",
+        "vectors/J02/nfc_quoted.utf8.txt",
+        "vectors/J02/nfc_text.bin",
+        "vectors/J02/nfc_text.hex",
+        "vectors/J02/nfc_text.utf8.txt",
+        "vectors/J02/nfd_quoted.bin",
+        "vectors/J02/nfd_quoted.hex",
+        "vectors/J02/nfd_quoted.utf8.txt",
+        "vectors/J02/nfd_text.bin",
+        "vectors/J02/nfd_text.hex",
+        "vectors/J02/nfd_text.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J02/expected.json",
+      "vector_id": "J02"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "字串內容 e4b8ad e69687，共6 bytes；加 quotes 共8 bytes，不用非 ASCII \\u escape。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J03/quoted.bin",
+        "vectors/J03/quoted.hex",
+        "vectors/J03/quoted.utf8.txt",
+        "vectors/J03/text.bin",
+        "vectors/J03/text.hex",
+        "vectors/J03/text.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J03/expected.json",
+      "vector_id": "J03"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "順序0a09001f→字串中 \\u000a\\u0009\\u0000\\u001f；short escape 合法 JSON 但非 canonical bytes claim。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J04/controls.bin",
+        "vectors/J04/controls.hex",
+        "vectors/J04/controls.utf8.txt",
+        "vectors/J04/escaped.bin",
+        "vectors/J04/escaped.hex",
+        "vectors/J04/escaped.utf8.txt",
+        "vectors/J04/noncanonical_short.bin",
+        "vectors/J04/noncanonical_short.hex",
+        "vectors/J04/noncanonical_short.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J04/expected.json",
+      "vector_id": "J04"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "依 unsigned UTF-8 bytes 排序 A、_k、a、a0、z；此 component 沒有 registered enclosing schema，不是 domain。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J05/scrambled.bin",
+        "vectors/J05/scrambled.hex",
+        "vectors/J05/scrambled.utf8.txt",
+        "vectors/J05/sorted.bin",
+        "vectors/J05/sorted.hex",
+        "vectors/J05/sorted.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J05/expected.json",
+      "vector_id": "J05"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "兩者 preserve order 且 bytes 不同；不排序 arrays。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J06/ab.bin",
+        "vectors/J06/ab.hex",
+        "vectors/J06/ab.utf8.txt",
+        "vectors/J06/ba.bin",
+        "vectors/J06/ba.hex",
+        "vectors/J06/ba.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J06/expected.json",
+      "vector_id": "J06"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "拒絕 duplicate key；不得 last-wins 或 first-wins；無成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J07/duplicate.bin",
+        "vectors/J07/duplicate.hex",
+        "vectors/J07/duplicate.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J07/expected.json",
+      "vector_id": "J07"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "拒絕 unknown 或 missing required field；不 strip、填空或成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J08/missing_body_sha.bin",
+        "vectors/J08/missing_body_sha.hex",
+        "vectors/J08/missing_body_sha.utf8.txt",
+        "vectors/J08/unknown.bin",
+        "vectors/J08/unknown.hex",
+        "vectors/J08/unknown.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J08/expected.json",
+      "vector_id": "J08"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "null 拒絕，omitted 缺欄拒絕，NotEvaluated tag 無法代替 Hex64；Unknown/NotApplicable/Withheld 亦不自動 substitution，無 empty default/digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J09/not_evaluated.bin",
+        "vectors/J09/not_evaluated.hex",
+        "vectors/J09/not_evaluated.utf8.txt",
+        "vectors/J09/null.bin",
+        "vectors/J09/null.hex",
+        "vectors/J09/null.utf8.txt",
+        "vectors/J09/omitted.bin",
+        "vectors/J09/omitted.hex",
+        "vectors/J09/omitted.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J09/expected.json",
+      "vector_id": "J09"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "全部無 typed canonical numeric 表示；拒絕，無成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J10/bare.bin",
+        "vectors/J10/bare.hex",
+        "vectors/J10/bare.utf8.txt",
+        "vectors/J10/float.bin",
+        "vectors/J10/float.hex",
+        "vectors/J10/float.utf8.txt",
+        "vectors/J10/infinity.bin",
+        "vectors/J10/infinity.hex",
+        "vectors/J10/infinity.utf8.txt",
+        "vectors/J10/nan.bin",
+        "vectors/J10/nan.hex",
+        "vectors/J10/nan.utf8.txt",
+        "vectors/J10/negative_infinity.bin",
+        "vectors/J10/negative_infinity.hex",
+        "vectors/J10/negative_infinity.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J10/expected.json",
+      "vector_id": "J10"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "BOM 與 malformed UTF-8 拒絕；\\ud800/\\udc00 拒絕；opaque body ff 可在 B06 成功，不能把 body 與 canonical text 混用。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J11/bom_payload.bin",
+        "vectors/J11/bom_payload.hex",
+        "vectors/J11/bom_payload.utf8.txt",
+        "vectors/J11/high_surrogate.bin",
+        "vectors/J11/high_surrogate.hex",
+        "vectors/J11/high_surrogate.utf8.txt",
+        "vectors/J11/invalid_utf8.bin",
+        "vectors/J11/invalid_utf8.hex",
+        "vectors/J11/low_surrogate.bin",
+        "vectors/J11/low_surrogate.hex",
+        "vectors/J11/low_surrogate.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J11/expected.json",
+      "vector_id": "J11"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_FRAGMENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "SCALAR_FRAGMENT_EXACT_BYTES",
+      "documentary_expectation": "é×32768=65536 content bytes，符合 Text component bound；再加 ASCII A=65537 拒絕。JSON quotes/escaping 不計入 Text 的原 UTF-8 content 長度，payload另有 bound。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_FRAGMENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/J12/quoted_unit.bin",
+        "vectors/J12/quoted_unit.hex",
+        "vectors/J12/quoted_unit.utf8.txt",
+        "vectors/J12/unit_e_acute.bin",
+        "vectors/J12/unit_e_acute.hex",
+        "vectors/J12/unit_e_acute.utf8.txt"
+      ],
+      "source_expected_record": "vectors/J12/expected.json",
+      "vector_id": "J12"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_COMPONENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "FRAMING_COMPONENT_EXACT_BYTES",
+      "documentary_expectation": "component only；D/S/P各自有非空約束，此零段不能當合法完整 frame。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_COMPONENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/F01/lp_empty.bin",
+        "vectors/F01/lp_empty.hex",
+        "vectors/F01/lp_empty.utf8.txt",
+        "vectors/F01/segment.bin",
+        "vectors/F01/segment.hex",
+        "vectors/F01/segment.utf8.txt"
+      ],
+      "source_expected_record": "vectors/F01/expected.json",
+      "vector_id": "F01"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_COMPONENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "FRAMING_COMPONENT_EXACT_BYTES",
+      "documentary_expectation": "length1 加41，共9 bytes；無 official domain digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_COMPONENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/F02/lp_A.bin",
+        "vectors/F02/lp_A.hex",
+        "vectors/F02/lp_A.utf8.txt",
+        "vectors/F02/segment.bin",
+        "vectors/F02/segment.hex",
+        "vectors/F02/segment.utf8.txt"
+      ],
+      "source_expected_record": "vectors/F02/expected.json",
+      "vector_id": "F02"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_COMPONENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "FRAMING_COMPONENT_EXACT_BYTES",
+      "documentary_expectation": "prefix=2，非1個 code point。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_COMPONENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/F03/lp_e.bin",
+        "vectors/F03/lp_e.hex",
+        "vectors/F03/lp_e.utf8.txt",
+        "vectors/F03/segment.bin",
+        "vectors/F03/segment.hex",
+        "vectors/F03/segment.utf8.txt"
+      ],
+      "source_expected_record": "vectors/F03/expected.json",
+      "vector_id": "F03"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "CANDIDATE_COMPONENT_BYTES",
+      "blocked_prerequisite": null,
+      "class": "FRAMING_COMPONENT_EXACT_BYTES",
+      "documentary_expectation": "完整 D/S components；自身不是完整 payload/frame/identity。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "EXACT_COMPONENT_REVIEWED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/F04/domain_ascii.bin",
+        "vectors/F04/domain_ascii.hex",
+        "vectors/F04/domain_ascii.utf8.txt",
+        "vectors/F04/schema_ascii.bin",
+        "vectors/F04/schema_ascii.hex",
+        "vectors/F04/schema_ascii.utf8.txt"
+      ],
+      "source_expected_record": "vectors/F04/expected.json",
+      "vector_id": "F04"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "引用 B02 正向 vector：D[8,51)、S[59,86)、P[94,281)；prefix在0/51/86，共281 bytes，無尾資料。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/F05/expected.json",
+      "vector_id": "F05"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "只有 SHA256(B02/frame.bin) 是 B02 candidate domain digest；raw_body/payload hash 是不同 preimage，不能替換。觀察本 sample 三值各異，不泛稱無 collision。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/F06/expected.json",
+      "vector_id": "F06"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "無合法 registry tuple 就拒絕；即使 frame bytes變了也不發新 identity。D/S 與 {} toy只可教學，不成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/F07/swapped_D_S_frame.bin",
+        "vectors/F07/swapped_D_S_frame.hex",
+        "vectors/F07/unsupported_toy.bin",
+        "vectors/F07/unsupported_toy.hex",
+        "vectors/F07/unsupported_toy.utf8.txt"
+      ],
+      "source_expected_record": "vectors/F07/expected.json",
+      "vector_id": "F07"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "即使 asserted digest 相同也拒絕缺/錯 profile；不從 envelope 補 P。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/F08/profile_altered.bin",
+        "vectors/F08/profile_altered.hex",
+        "vectors/F08/profile_altered.utf8.txt",
+        "vectors/F08/profile_omitted.bin",
+        "vectors/F08/profile_omitted.hex",
+        "vectors/F08/profile_omitted.utf8.txt"
+      ],
+      "source_expected_record": "vectors/F08/expected.json",
+      "vector_id": "F08"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "B02 expected envelope canonical_payload_byte_length=typed UInt64(\"187\")；若填281必須拒絕；envelope不進入自己的P。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/F09/expected.json",
+      "vector_id": "F09"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "三種均拒絕 malformed framing；不讀過尾或忽略多餘bytes；無成功 digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/F10/trailing.bin",
+        "vectors/F10/trailing.hex",
+        "vectors/F10/truncated.bin",
+        "vectors/F10/truncated.hex",
+        "vectors/F10/wrong_domain_length.bin",
+        "vectors/F10/wrong_domain_length.hex"
+      ],
+      "source_expected_record": "vectors/F10/expected.json",
+      "vector_id": "F10"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "own envelope / digest inclusion 依 AD01-08 為 documented REF_CYCLE；locator extra field 同時違反 exact schema。無循環 hash 或成功 reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/F11/own_digest.bin",
+        "vectors/F11/own_digest.hex",
+        "vectors/F11/own_digest.utf8.txt",
+        "vectors/F11/own_envelope.bin",
+        "vectors/F11/own_envelope.hex",
+        "vectors/F11/own_envelope.utf8.txt",
+        "vectors/F11/own_locator.bin",
+        "vectors/F11/own_locator.hex",
+        "vectors/F11/own_locator.utf8.txt"
+      ],
+      "source_expected_record": "vectors/F11/expected.json",
+      "vector_id": "F11"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "64 lowercase digest 格式、SHA-256 literal 與精確 registry版本皆必需；wrong values拒絕，不 downgrade或成功 reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/F12/expected.json",
+      "vector_id": "F12"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "strict published_at < cutoff；AT 不等於 BEFORE，D2 不可進 t1；原 declaration SECOND / Asia/Taipei / +08:00 保留，不做完整 TimeRecord hash。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/T01/expected.json",
+      "vector_id": "T01"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "2027-01-29T18:00:01+08:00 > cutoff18:00:00；D3 不可進 t3；time rules absent 時不建立完整 TimeRecord。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/T02/expected.json",
+      "vector_id": "T02"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "t2 2027-01-15 與 t3 2027-01-29 cutoff/context 不同；D2/150/0.733333 是既有 committed assertions；新 QUAL/OBS identity 要依新 domain parents/resources，不能複用或發 present digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/T03/expected.json",
+      "vector_id": "T03"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "四個日期01-07/01-15/01-29/02-05；annotation order/內容屬 schedule evidence，不能補一個 no-session Tick；無 sequence digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/T04/expected.json",
+      "vector_id": "T04"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": "Approved TIMEZONE_RULES body/schema、origin ResourceRef 與 domain parents 未提供；contradiction 為規格預期，未執行 timezone 驗證。",
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "naive、fractional seconds、Asia/Taipei 宣告卻offset+09:00等矛盾必須拒絕；named-zone語義須 pinned rules，缺少時拒絕 unavailable rules，不查 host tzdb；無成功 TimeRecord/domain digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/T05/expected.json",
+      "vector_id": "T05"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "POSITIVE_OBJECT_BLOCKED",
+      "blocked_prerequisite": "Pinned reviewed TIMEZONE_RULES/schema、ORIGIN resources 與 broader valid declaration profile 未提供。",
+      "class": "BLOCKED_BY_RESOURCE_SCHEMA",
+      "documentary_expectation": "可比較 SAME_INSTANT；原 zone/text/origin 仍是 evidence，不可 normalize丟棄；不同 valid zone 要 future broadened profile，不能當目前合法正向。無完整 TimeRecord 或 QUAL digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "BLOCKED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/T06/expected.json",
+      "vector_id": "T06"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "raw body固定，外部 publisher/time/version/rights assertion變動不改 body payload；可以 invalidate qualification/access；hash不產生 publisher、歷史PIT或來源 authentication。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/I01/expected.json",
+      "vector_id": "I01"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "不能由既有 hashes 或1,813-byte detached read 推定等於新 App identity。這是 preimage/claim boundary，不宣稱跨hash永無collision；本輪不執行既有 modules。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/I02/expected.json",
+      "vector_id": "I02"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "POSITIVE_OBJECT_BLOCKED",
+      "blocked_prerequisite": "Owner reviewed approved raw resource bytes/schema、qualified source parents、rules/code/Native trace/rights 未提供。",
+      "class": "BLOCKED_BY_RESOURCE_SCHEMA",
+      "documentary_expectation": "阻擋完整 positive object；不能用 placeholder refs補 MANIFEST/CALENDAR/COVERAGE/TIMEZONE_RULES/SEMANTIC_TRACE、code/Native state/source history；無成功digest/reference。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "BLOCKED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/I03/expected.json",
+      "vector_id": "I03"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "POSITIVE_OBJECT_BLOCKED",
+      "blocked_prerequisite": "Accepted F2-QUALIFICATION parents、PROJECTION_POLICY、OBSERVATION_RELEASE_POLICY、TEMPORAL_CONFIGURATION、DECISION_SCHEDULE、CALENDAR 與 SEMANTIC_TRACE exact schemas/bytes。",
+      "class": "BLOCKED_BY_RESOURCE_SCHEMA",
+      "documentary_expectation": "缺 qualified parents、projection/release/config/schedule/policies時 blocked，不能成功空集合；partial sequence/duplicate/swapped/dropped/foreign Tick拒絕 fixed WU04 release。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "BLOCKED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/I04/expected.json",
+      "vector_id": "I04"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "FUTURE_DOMAIN_NOT_AUTHORED",
+      "blocked_prerequisite": "F3/F5 owner protocols、method、maturity、metric、policy/outcome、actual attempt receipts、semantic evidence 與 rights review 未提供。",
+      "class": "DEFERRED_TO_FUTURE_DOMAIN_ORACLE",
+      "documentary_expectation": "defer domain oracle；不以空metrics、fake outputs或placeholder Parents製造成功digest。SOURCE-BYTES expected envelope也不提供 resource semantic approval。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DEFERRED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/I05/expected.json",
+      "vector_id": "I05"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "本輪所有 runtime/conformance/Native replay NOT_RUN；IF-05/IF-07與Codec/F3/F5 execution NOT_AUTHORIZED。RUN / VALUE_AVAILABLE / SUPPORTED / SELECTED 不授予 ELIGIBLE，四項diagnostic scope旗標與disposition保留。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/I06/expected.json",
+      "vector_id": "I06"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "16777217-byte requested P 拒絕 allocation之前；0-byte P也拒絕。界內大小只是 length predicate，不保證 schema/type有效。無16MiB fixture/digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [
+        "vectors/L01/over_limit_prefix.bin",
+        "vectors/L01/over_limit_prefix.hex",
+        "vectors/L01/over_limit_prefix.utf8.txt"
+      ],
+      "source_expected_record": "vectors/L01/expected.json",
+      "vector_id": "L01"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "65個巢狀 records（root亦為record）超過 bound；不 truncation，不成功digest。root depth起算慣例尚需 future codec邊界決策，本例刻意用66層以在0/1起算均超限。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/L02/expected.json",
+      "vector_id": "L02"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "4097 items 拒絕；4096只滿足 collection bound，仍須 domain schema、membership/rights。無大fixture/digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/L03/expected.json",
+      "vector_id": "L03"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "ASCII role ID/version129 bytes拒絕；D/S length0/129拒絕。exact registry tuple仍另外必須匹配；無成功digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/L04/expected.json",
+      "vector_id": "L04"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_REFUSAL_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "CONTRACT_REFUSAL_ONLY",
+      "documentary_expectation": "parent typed domain mismatch、stale/dangling/reordered chain、subject→own EVIDENCE cycle拒絕；unknown/unreviewed Resource schema拒絕 documented REF_UNAPPROVED_RESOURCE_SCHEMA。僅 specification，不捏造 accepted graph/digest。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/L05/expected.json",
+      "vector_id": "L05"
+    },
+    {
+      "archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+      "archived_status": "DOCUMENTARY_RELATION_NOT_EXECUTED",
+      "blocked_prerequisite": null,
+      "class": "RELATIONAL_ASSERTION_ONLY",
+      "documentary_expectation": "相關 Native code drift按M24使依賴qualification改變或block replay；無 relevant closure不可假設無關。M27/M28 fresh actual attempt/clock不改固定 deterministic RESULT，但新attempt receipt不同。此輪無實際reissue/result hash。",
+      "no_domain_digest_reason": "不是完整 reviewed registered-domain payload，或 Resource/schema/parents尚缺；fragment/spec/relation不可發identity。",
+      "review_overlay_disposition": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "runtime_execution": "NOT_RUN",
+      "source_artifact_paths": [],
+      "source_expected_record": "vectors/L06/expected.json",
+      "vector_id": "L06"
+    }
+  ],
+  "normative_contract_commit": "9ade777ac03052231088a91ef9849c5a506da184",
+  "normative_contract_pins": [
+    {
+      "byte_length": 140871,
+      "commit": "9ade777ac03052231088a91ef9849c5a506da184",
+      "git_blob_sha1": "d028005f6ac854fc3cde965b562dba4e449159cf",
+      "raw_sha256": "66bef5b0bb8240214ec8ea14c3c94c8748e2944270883c56de3ae7f27355428b",
+      "repo_path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+      "source_snapshot_equal": true
+    },
+    {
+      "byte_length": 23544,
+      "commit": "9ade777ac03052231088a91ef9849c5a506da184",
+      "git_blob_sha1": "96d463c40a49d94e0b206be3851e26063fc6c581",
+      "raw_sha256": "abb04bba20ce8640c38b2406aa662ae86ff3d6df892343b2e6d780c3073c01db",
+      "repo_path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+      "source_snapshot_equal": true
+    }
+  ],
+  "original_evidence": {
+    "byte_length": 383476,
+    "historical_internal_freeze_status": "PENDING_INDEPENDENT_REVIEW",
+    "internal_manifest_path": "MANIFEST.json",
+    "manifest_accounted_entries": 408,
+    "original_archived_review_state": "PENDING_INDEPENDENT_REVIEW",
+    "path": "IF03_ORACLE01_Review_Evidence.zip",
+    "preservation": "BYTE_FOR_BYTE_UNCHANGED",
+    "sha256": "b3b74b713dbd43b6ef70f32c6c666c0caf8e5ac08c27d96a2d025cda038bdd34",
+    "zip_members": 409
+  },
+  "owner_authorization": {
+    "authorizes": "Gates A–D exact preservation/materialization and review handoff",
+    "integration_review": "PENDING",
+    "source": "CURRENT_OWNER_FREEZE01_CHAT_PROMPT",
+    "stage_commit_push_pr_merge": "NOT_AUTHORIZED_THIS_RUN"
+  },
+  "review_authority": {
+    "attribution": "Owner-supplied independent review outcome in current FREEZE-01 chat prompt",
+    "limitation": "No exported reviewer report, independent signing identity, certificate or signing timestamp supplied; none invented",
+    "scope": "408/408 integrity; 8/8 independently rederived SOURCE-BYTES; narrower fragments/components; documentary cases nonexecuted",
+    "source": "CHAT_REVIEW_UNEXPORTED",
+    "verdict": "ORACLE_AUTHORING_ACCEPTED — LIMITED_GOLDEN_FREEZE_ELIGIBLE"
+  },
+  "revision_policy": "After integration acceptance, frozen originals/positive bytes are append-only versioned. Never mutate B bytes/digests in place to make Codec pass. Corrections need explicit review, new version/pins, and retention of prior bytes.",
+  "scope": {
+    "class_counts": {
+      "BLOCKED_BY_RESOURCE_SCHEMA": 5,
+      "CONTRACT_REFUSAL_ONLY": 21,
+      "DEFERRED_TO_FUTURE_DOMAIN_ORACLE": 1,
+      "FRAMING_COMPONENT_EXACT_BYTES": 4,
+      "RELATIONAL_ASSERTION_ONLY": 11,
+      "SCALAR_FRAGMENT_EXACT_BYTES": 14,
+      "VALID_COMPLETE_DOMAIN": 8
+    },
+    "class_review_overlay_dispositions": {
+      "BLOCKED_BY_RESOURCE_SCHEMA": "BLOCKED",
+      "CONTRACT_REFUSAL_ONLY": "DOCUMENTARY_REFUSAL_REVIEWED_NOT_EXECUTED",
+      "DEFERRED_TO_FUTURE_DOMAIN_ORACLE": "DEFERRED",
+      "FRAMING_COMPONENT_EXACT_BYTES": "EXACT_COMPONENT_REVIEWED",
+      "RELATIONAL_ASSERTION_ONLY": "RELATIONAL_SPEC_REVIEWED_NOT_RUNTIME_PROVEN",
+      "SCALAR_FRAGMENT_EXACT_BYTES": "EXACT_FRAGMENT_REVIEWED",
+      "VALID_COMPLETE_DOMAIN": "POSITIVE_BYTES_INDEPENDENTLY_REVIEWED"
+    },
+    "classification": "BOUNDED_SOURCE_BYTES_POSITIVE_GOLDEN + SCALAR_FRAMING_COMPONENTS + DOCUMENTARY_NEGATIVE_SPECS",
+    "other_case_storage": "Unmodified original ZIP; no full extraction",
+    "other_domain_issuance": "NONE",
+    "positive_fixture_paths": [
+      "positives/B01/raw_body.bin",
+      "positives/B01/canonical_payload.bin",
+      "positives/B01/frame.bin",
+      "positives/B02/raw_body.bin",
+      "positives/B02/canonical_payload.bin",
+      "positives/B02/frame.bin",
+      "positives/B03/raw_body.bin",
+      "positives/B03/canonical_payload.bin",
+      "positives/B03/frame.bin",
+      "positives/B04/raw_body.bin",
+      "positives/B04/canonical_payload.bin",
+      "positives/B04/frame.bin",
+      "positives/B05/raw_body.bin",
+      "positives/B05/canonical_payload.bin",
+      "positives/B05/frame.bin",
+      "positives/B06/raw_body.bin",
+      "positives/B06/canonical_payload.bin",
+      "positives/B06/frame.bin",
+      "positives/B07/raw_body.bin",
+      "positives/B07/canonical_payload.bin",
+      "positives/B07/frame.bin",
+      "positives/B08/raw_body.bin",
+      "positives/B08/canonical_payload.bin",
+      "positives/B08/frame.bin"
+    ],
+    "positive_ids": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08"
+    ],
+    "total_cases": 64
+  },
+  "source_task_id": "MVP-IF-03-ORACLE-01",
+  "task_id": "MVP-IF-03-ORACLE-01-FREEZE-01"
+}
