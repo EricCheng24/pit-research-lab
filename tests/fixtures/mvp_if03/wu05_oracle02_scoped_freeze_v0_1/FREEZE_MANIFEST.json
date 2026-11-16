@@ -1,0 +1,3943 @@
+{
+  "format": "WU05_ORACLE02_SCOPED_FREEZE_MANIFEST_v0.1",
+  "work_unit": "MVP-F2-WU05-ORACLE02-SF-01",
+  "baseline": {
+    "commit": "c2d66cf880d2e34d9f95f9351cbb616e3d5a7783",
+    "authoring_branch": "mvp/f2-wu05-oracle01",
+    "origin": "https://github.com/EricCheng24/pit-research-lab.git"
+  },
+  "status": "MATERIALIZED_CANDIDATE_PENDING_INDEPENDENT_INTEGRATION_REVIEW",
+  "metadata_record_integrity": {
+    "algorithm": "SHA-256",
+    "serialization": "Python json.dumps(record, sort_keys=True, separators=(\",\", \":\"), ensure_ascii=False, allow_nan=False).encode(\"utf-8\"); no trailing newline; preserve array order and Unicode scalar sequences.",
+    "scope": "Ordinary repository metadata records only; NOT IF-03 App CanonicalPayload/Codec/domain digest; excluded-record hashes are metadata pins, not positive identities."
+  },
+  "counts": {
+    "authoring_total": 110,
+    "included_complete_positives": 8,
+    "included_narrow_refusals": 80,
+    "included_executed_relations": 6,
+    "included_total": 94,
+    "excluded_documentary": 5,
+    "excluded_blocked": 10,
+    "excluded_deferred": 1,
+    "excluded_total": 16
+  },
+  "ratified_contracts": [
+    {
+      "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+      "byte_length": 140871,
+      "sha256": "66bef5b0bb8240214ec8ea14c3c94c8748e2944270883c56de3ae7f27355428b",
+      "git_blob_sha1": "d028005f6ac854fc3cde965b562dba4e449159cf"
+    },
+    {
+      "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+      "byte_length": 23544,
+      "sha256": "abb04bba20ce8640c38b2406aa662ae86ff3d6df892343b2e6d780c3073c01db",
+      "git_blob_sha1": "96d463c40a49d94e0b206be3851e26063fc6c581"
+    }
+  ],
+  "baseline_sources": [
+    {
+      "path": "Makefile",
+      "byte_length": 1239,
+      "sha256": "bb1da79acec7db3c185255e4c5264506a5ee038928446caf9943a28d20c6eb5d",
+      "git_blob_sha1": "a0f42fc2decf9542a298dba94a002a69f44d9778"
+    },
+    {
+      "path": "docs/mvp/v1.0/if03-oracle01-limited-golden-freeze-v0.1.md",
+      "byte_length": 4327,
+      "sha256": "aca5b4b61f5937f5f87e5a98e28abb7dd722d74bb1d36241eff8c30183f2e071",
+      "git_blob_sha1": "447f3619b1eb0e14f1db88766d2aac97421ab491"
+    },
+    {
+      "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+      "byte_length": 140871,
+      "sha256": "66bef5b0bb8240214ec8ea14c3c94c8748e2944270883c56de3ae7f27355428b",
+      "git_blob_sha1": "d028005f6ac854fc3cde965b562dba4e449159cf"
+    },
+    {
+      "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+      "byte_length": 23544,
+      "sha256": "abb04bba20ce8640c38b2406aa662ae86ff3d6df892343b2e6d780c3073c01db",
+      "git_blob_sha1": "96d463c40a49d94e0b206be3851e26063fc6c581"
+    },
+    {
+      "path": "pyproject.toml",
+      "byte_length": 936,
+      "sha256": "9b8d98b71f96c1b33663ae76fe8889439d74cf54181f3084333540cf83e1c819",
+      "git_blob_sha1": "e00be622c9312cc6f4c7d5765864cc6b57382104"
+    },
+    {
+      "path": "src/pit_research_lab/mvp/f2/resource_access.py",
+      "byte_length": 4108,
+      "sha256": "994260e95afb03c519461f0249ad8b530850e7df9614fa852b1e9f3be531e49e",
+      "git_blob_sha1": "b4be5a3b2aaa3c30a01b9bae3cc11b6e5ea8c222"
+    },
+    {
+      "path": "src/pit_research_lab/mvp/f2/resource_binding.py",
+      "byte_length": 21098,
+      "sha256": "e7efe7054e87e736ae988111903fabbd4bd17344cf006fb5c504b8e426b78110",
+      "git_blob_sha1": "9e6e75d01236e25721b3183713fbffb871f14508"
+    },
+    {
+      "path": "src/pit_research_lab/mvp/f2/resource_bodies.py",
+      "byte_length": 20470,
+      "sha256": "d53f8021b826864906f4acfba69327e4fdcb12712ec2f1c87c22b0704e0f40ea",
+      "git_blob_sha1": "190329d898bfc20cf655d76c5c25f1bb829b9b1e"
+    },
+    {
+      "path": "src/pit_research_lab/mvp/f2/resource_contracts.py",
+      "byte_length": 13024,
+      "sha256": "580f9afd0be0719aa63bfc70af309fe7b04e5619c07816dd9716d47510b724d9",
+      "git_blob_sha1": "b201aae33c28ce432a34c3450858da1122309014"
+    },
+    {
+      "path": "src/pit_research_lab/mvp/f2/synthetic_contracts.py",
+      "byte_length": 20802,
+      "sha256": "599b6005bd323aad64b3b541f0a0b84c7dd1982b31ade6f432645b1964f6ba56",
+      "git_blob_sha1": "e7663d159c5bbd58a47ac2653daf5d2fbd2d42d9"
+    },
+    {
+      "path": "src/pit_research_lab/mvp/f2/synthetic_temporal.py",
+      "byte_length": 13041,
+      "sha256": "129b01a261fa17d94e2c1338ebb462d9b6679512335cb79c82fe685ad71317b0",
+      "git_blob_sha1": "056331490189343e2542ee12f7550bbb6e65bb48"
+    },
+    {
+      "path": "src/pit_research_lab/mvp/f2/weekly_sequence.py",
+      "byte_length": 20140,
+      "sha256": "367153643a98b29161d5b07502db0bbd3cce823a8867af3165177593f3a18fc2",
+      "git_blob_sha1": "03a4fdcbcc7a653bcb06c3b3d38128cdd8bf3091"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/FREEZE_MANIFEST.json",
+      "byte_length": 73955,
+      "sha256": "a5a05e8f4beb2dacd286c02254c021492424461924f312a3e6e1521a9da6ee19",
+      "git_blob_sha1": "3212f90b63e69d3508bfda03353bd867cd653297"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/IF03_ORACLE01_Review_Evidence.zip",
+      "byte_length": 383476,
+      "sha256": "b3b74b713dbd43b6ef70f32c6c666c0caf8e5ac08c27d96a2d025cda038bdd34",
+      "git_blob_sha1": "a1c5623fb6f1fdb795e68654c8ff430a5ff3cc24"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/README.md",
+      "byte_length": 4033,
+      "sha256": "826db37c06bf4ec00ccfa3074fe218d7b8c0eb6bfb2eb79a6da45461a8d542bb",
+      "git_blob_sha1": "8bcaf1a0357f07b2b5c64ba50606ac95a2f25019"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/canonical_payload.bin",
+      "byte_length": 187,
+      "sha256": "a3f5df22cfd788ed92d3613856eea7ed4c507642976f63228204124d5795a69d",
+      "git_blob_sha1": "45d26d99144806cbedc67fe72685f361bacad75d"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/frame.bin",
+      "byte_length": 281,
+      "sha256": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686",
+      "git_blob_sha1": "d8674c0314de2417f0399daf0a644d14631bedeb"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/raw_body.bin",
+      "byte_length": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/canonical_payload.bin",
+      "byte_length": 187,
+      "sha256": "a7b661617f0c88bb96affb2f2aa24a36abaf1de1c119549b413adfc4377b6edf",
+      "git_blob_sha1": "5c0740208254d2bb0d69fed1c4a01f7c44800185"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/frame.bin",
+      "byte_length": 281,
+      "sha256": "11bb5c86b5c41d57b1fde3e55bb766b529bb4afe2a439a1a3a7fee8875f8cf5f",
+      "git_blob_sha1": "e854f6190a19bfbb1c05c6c90725dd4c95ca55ef"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/raw_body.bin",
+      "byte_length": 1,
+      "sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "git_blob_sha1": "8c7e5a667f1b771847fe88c01c3de34413a1b220"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/canonical_payload.bin",
+      "byte_length": 187,
+      "sha256": "ae6d00e2053c7ef78e0a56008b65dd3a367246233c833651e55b30b16f12e9cf",
+      "git_blob_sha1": "98b8aaecded36123f6474a87f74d833d1cc12059"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/frame.bin",
+      "byte_length": 281,
+      "sha256": "be5b9bbb19b6a656803fc7ba81996f91446d1fd377e451e60767625b98cfac3d",
+      "git_blob_sha1": "355c4ab399902914d5fbcdc19a727fb140daf875"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/raw_body.bin",
+      "byte_length": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "git_blob_sha1": "f76dd238ade08917e6712764a16a22005a50573d"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/canonical_payload.bin",
+      "byte_length": 187,
+      "sha256": "c359c48c7bd02d494e92d82af6e0d8526351940a85f9197163907e2b938725df",
+      "git_blob_sha1": "4e25d0bea0f0dcf7cf6d8ae1b1c9343d531e918f"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/frame.bin",
+      "byte_length": 281,
+      "sha256": "af2c85ddf4d4bc4c271c15e2806f367e07287c1d6a35ae992f3d3e4d3752ed61",
+      "git_blob_sha1": "260d6788e8809a3ce0d595cd7f50c5675f0f997e"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/raw_body.bin",
+      "byte_length": 2,
+      "sha256": "4a99557e4033c3539de2eb65472017cad5f9557f7a0625a09f1c3f6e2ba69c4c",
+      "git_blob_sha1": "4b04fff51468d8ab5201ab02b725dc477bc7cb45"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/canonical_payload.bin",
+      "byte_length": 187,
+      "sha256": "2a063985319809595f53a974a77ef43ec7f38581fa10bc42a97c974e6a0e73f0",
+      "git_blob_sha1": "a21cd26741ed21a918a4e440eb5aee298f5a31c5"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/frame.bin",
+      "byte_length": 281,
+      "sha256": "cb8bdd239329aa1d95308a88e36583c2285027c26a7711a89f9dab077886a387",
+      "git_blob_sha1": "af8238cd8d3a0c3fa7fa11a9d71c642863744b09"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/raw_body.bin",
+      "byte_length": 3,
+      "sha256": "bf12767b0f2a56b2190075bae8169f656e3ce8d6357d4aff184bc6c7ea48f9f6",
+      "git_blob_sha1": "1f45813cd0ebc79dc1c9d58307ed2685a8f7a962"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/canonical_payload.bin",
+      "byte_length": 187,
+      "sha256": "b6c3051378f916aa2695f469ed5e52654217414b9c882f27e4af9869b3a5915f",
+      "git_blob_sha1": "848e9735cecacbc9fb13e136795e8e1d1efce0e0"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/frame.bin",
+      "byte_length": 281,
+      "sha256": "55daae37a193963e214e9a67415fe8c17eecafea0b13e54919b774f05d991970",
+      "git_blob_sha1": "727444880d6f5808be0bb852c4d53550da4646c1"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/raw_body.bin",
+      "byte_length": 1,
+      "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+      "git_blob_sha1": "ce542efaa5124a0437f0c4db329d7ec4b7ba70a7"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/canonical_payload.bin",
+      "byte_length": 187,
+      "sha256": "f25cee42f732cb89c94f7193820b9e8336d667f950f1007a32f8e6128af47bab",
+      "git_blob_sha1": "89cbc96d3456119f7eac5d91e595cec134a938a4"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/frame.bin",
+      "byte_length": 281,
+      "sha256": "7fd81935e350dc4cdb2ce57ab39377f16a1be43314d393f75837945f04e51a12",
+      "git_blob_sha1": "1beed267b1e812b10237cf9fbd1938ef1e29d944"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/raw_body.bin",
+      "byte_length": 2,
+      "sha256": "06f961b802bc46ee168555f066d28f4f0e9afdf3f88174c1ee6f9de004fc30a0",
+      "git_blob_sha1": "f70f10e4db19068f79bc43844b49f3eece45c4e8"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/canonical_payload.bin",
+      "byte_length": 187,
+      "sha256": "705a0db300955c692abf05dba1aa94bc94d693f5caf127dff95cbfe140e9b620",
+      "git_blob_sha1": "54331596f9de35ecadc54c39159980831e417a29"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/frame.bin",
+      "byte_length": 281,
+      "sha256": "a405fcdaeb1277046d4d9038029e05c4bd633692d305afc0b964086443c232a8",
+      "git_blob_sha1": "a0f238ed96c1dd7f4de674ab89e25c3b43819ba4"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/raw_body.bin",
+      "byte_length": 1,
+      "sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+      "git_blob_sha1": "7371f47a6f8bd23a8fa1a8b2a9479cdd76380e54"
+    },
+    {
+      "path": "tests/unit/mvp_f2/data/bounded_asof_evidence_v0.1.json",
+      "byte_length": 1064666,
+      "sha256": "37e7c10b74d1eab7ff45cc42f571f933a1be769f812d6872402f952704c37524",
+      "git_blob_sha1": "4988e54fff784feb6edb8dbd8534d6e1796a6787"
+    },
+    {
+      "path": "tests/unit/mvp_f2/data/causal_observations_v0.1.json",
+      "byte_length": 138008,
+      "sha256": "3823c5a2e20740a93573c3553ef3613958e3ea4b39a928f01f4f01ccf114cff7",
+      "git_blob_sha1": "b43fa7f73a7f1bba4d883c2fbdadbdd874259610"
+    },
+    {
+      "path": "tests/unit/mvp_f2/data/derived_observations_v0.1.json",
+      "byte_length": 5440756,
+      "sha256": "b9e1babbcc86b0e70ed5589972259fcbe6b666a38d2e7eff77d108f448e4dc0e",
+      "git_blob_sha1": "d5db7d9e68b44a990d438db217b0cd7602cca8c3"
+    },
+    {
+      "path": "tests/unit/mvp_f2/data/ratio_observations_v0.1.json",
+      "byte_length": 344748,
+      "sha256": "138fbc025ee2c99afda14105f150d9367845ec5eec9f7b2ced009d2813004b29",
+      "git_blob_sha1": "c20da9eefa478865a03ce01488d13648f9d9e85f"
+    },
+    {
+      "path": "tests/unit/mvp_f2/data/temporal_foundation_v0.1.json",
+      "byte_length": 72800,
+      "sha256": "3b81aae8e3242468c3076911861a13b6f1646f42d068be67b316af9caef1c373",
+      "git_blob_sha1": "058123905a746d50e8148ee49b1f9e155250b862"
+    },
+    {
+      "path": "tests/unit/mvp_f2/data/temporal_qualification_evidence_v0.1.json",
+      "byte_length": 8803308,
+      "sha256": "a876570e6bcc92ffe6977aea3d2ca06b4d19f3262f33abe95ff7607db8d46fa8",
+      "git_blob_sha1": "cb2269ad4604c92f1ae293d05a1f31c00952ccbb"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_bounded_asof.py",
+      "byte_length": 22601,
+      "sha256": "5b4918ae99e598d576919ece28c99aa0d43f2e0a69425e75c1b8f94d69330fb4",
+      "git_blob_sha1": "9cbe08e9cf6a0eec1691101a6b32e59819eb004a"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_causal_observations.py",
+      "byte_length": 38976,
+      "sha256": "aa4d2afd44086589d433c53a8d06f8daf5eb16c56943bf8c4cd894c7aeb9d5f9",
+      "git_blob_sha1": "2ab9ba746b108a5561eb2570206751860230160f"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_derived_observations.py",
+      "byte_length": 33912,
+      "sha256": "2e2c0776197d071293b25d80d90ff6d07bea2aa62d2da5f39b1bd46ce316d3f1",
+      "git_blob_sha1": "87dbd68f5087e631dea51de11b5f99951b7e5550"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_ratio_observations.py",
+      "byte_length": 37736,
+      "sha256": "423e5ce56e11de547d1f8d141c0e6b910055e5eb1407014d94776a5af767b91b",
+      "git_blob_sha1": "60a492fdf37f1b7d17c146b8a45dd78a32aad49b"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_resource_bodies.py",
+      "byte_length": 65099,
+      "sha256": "f17bfe48be9b0936606c63628f877c581fef303e5f14a142a904c8adad138343",
+      "git_blob_sha1": "93e71f6fe6f3f0cae37d364ea22c6d7112c1a4e0"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_synthetic_temporal.py",
+      "byte_length": 28470,
+      "sha256": "b952bcb631dd61758e46508d188c28f8c9f7f0ffb793c0b2a13f862f947c7e8a",
+      "git_blob_sha1": "fcaff853844d4f8873176b696c0322d956ef2b16"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_temporal_asof.py",
+      "byte_length": 39099,
+      "sha256": "b0eae80eeb736b6bd2d43015546ec29d8ac144c7d373f9caa5a325ef0c045983",
+      "git_blob_sha1": "7f3f3d86051e1625b554823812a706cdcec00b46"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_weekly_sequence.py",
+      "byte_length": 35485,
+      "sha256": "8baac7d655a29d6698957b1339a4d1af66b373c6e86dfa025ef19dfce2518369",
+      "git_blob_sha1": "7e24dd09bbf21709cff8d9f8a82c2391735e4d3f"
+    }
+  ],
+  "authoring_sources": [
+    {
+      "path": "docs/mvp/v1.0/wu05-oracle01-authoring-summary-v0.1.md",
+      "byte_length": 14454,
+      "sha256": "a3e1aa40347ed93a67e22abfb80f991fcdffc7381e53bea99c7effcbcbbd096d"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/README.md",
+      "byte_length": 6827,
+      "sha256": "34611859bbcabfc532f74bb95019a3ed69c3debe75d9d5fbf55040b845e00a0b"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json",
+      "byte_length": 73456,
+      "sha256": "c437c9f30cb7588f8d2e8703c6d37a5a81443077a3336abf24a9c87b4a634b1d"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/domain_coverage.json",
+      "byte_length": 36178,
+      "sha256": "0b782d09485de122ed711a93ac1830105284e15d4b90b1da66217c8730a6f534"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/schedule_declaration.json",
+      "byte_length": 4256,
+      "sha256": "9d02ef0202830e40b1c3fbaf9c9de299d388dac35774fb0b64addc636c1b355c"
+    },
+    {
+      "path": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/source_pins.json",
+      "byte_length": 14440,
+      "sha256": "bcc65ad5bd2c8b2a70174e91ffaaaf7e8cf8a6eaf3be5b08484a7140778569b4"
+    },
+    {
+      "path": "tests/unit/mvp_f2/test_wu05_oracle01.py",
+      "byte_length": 23273,
+      "sha256": "93f5e950b7f5be85e2c10579921a5fdf290870e8598f6a97d39e9dc75a6fc778"
+    },
+    {
+      "path": "tests/unit/mvp_f2/wu05_oracle_reference.py",
+      "byte_length": 11242,
+      "sha256": "e1c7b81d4ba435bfce29514e92c374c9e6cf0dda3b86243c957fd32520117a35"
+    }
+  ],
+  "limited_golden": {
+    "scope": "Existing bounded eight SOURCE-BYTES vectors and historical64 composition are unchanged; no replacement binaries or new envelope issuance.",
+    "freeze_note": {
+      "path": "docs/mvp/v1.0/if03-oracle01-limited-golden-freeze-v0.1.md",
+      "byte_length": 4327,
+      "sha256": "aca5b4b61f5937f5f87e5a98e28abb7dd722d74bb1d36241eff8c30183f2e071",
+      "git_blob_sha1": "447f3619b1eb0e14f1db88766d2aac97421ab491"
+    },
+    "manifest": {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/FREEZE_MANIFEST.json",
+      "byte_length": 73955,
+      "sha256": "a5a05e8f4beb2dacd286c02254c021492424461924f312a3e6e1521a9da6ee19",
+      "git_blob_sha1": "3212f90b63e69d3508bfda03353bd867cd653297"
+    },
+    "archive": {
+      "path": "tests/fixtures/mvp_if03/oracle01_v0_1/IF03_ORACLE01_Review_Evidence.zip",
+      "byte_length": 383476,
+      "sha256": "b3b74b713dbd43b6ef70f32c6c666c0caf8e5ac08c27d96a2d025cda038bdd34",
+      "git_blob_sha1": "a1c5623fb6f1fdb795e68654c8ff430a5ff3cc24"
+    },
+    "archive_member_count": 409,
+    "archive_manifest_entries": 408,
+    "direct_binary_count": 24,
+    "historical_case_count": 64
+  },
+  "review_provenance": {
+    "external_evidence": [
+      {
+        "evidence_id": "ORACLE02_REPORT",
+        "original_local_path": "/tmp/wu05-oracle02-review-20261116-independent/WU05_ORACLE02_Independent_Review_Result.md",
+        "byte_length": 29109,
+        "sha256": "6321e060384f24337dece41e0d70370e44d0eaeaa30e0bb533884cf773a31471",
+        "role": "INDEPENDENT_PRE_REM1_REVIEW",
+        "runtime_dependency": false
+      },
+      {
+        "evidence_id": "ORACLE02_MATRIX",
+        "original_local_path": "/tmp/wu05-oracle02-review-20261116-independent/case_verdict_matrix.json",
+        "byte_length": 111554,
+        "sha256": "3be840cb5e84011c60eb96c3807a3a120515c7fe5858602015f396bf1a11bbdb",
+        "role": "INDEPENDENT_PRE_REM1_CASE_ADJUDICATION",
+        "runtime_dependency": false
+      },
+      {
+        "evidence_id": "ORACLE02_BYTES",
+        "original_local_path": "/tmp/wu05-oracle02-review-20261116-independent/integrity_and_bytes.json",
+        "byte_length": 23419,
+        "sha256": "8f64b777216e167d9a4f9f3e9aa80dcb008ba55acf89a15322e5857f85689bf3",
+        "role": "INDEPENDENT_EIGHT_VECTOR_AND_BASELINE_VERIFICATION",
+        "runtime_dependency": false
+      },
+      {
+        "evidence_id": "ORACLE02_RELATIONS",
+        "original_local_path": "/tmp/wu05-oracle02-review-20261116-independent/six_relations.json",
+        "byte_length": 8691,
+        "sha256": "67452c167f5bc8329ed575f8038646698a2289dae853b8a71a681ed76e588854",
+        "role": "INDEPENDENT_BOUNDED_RELATION_CALCULATIONS",
+        "runtime_dependency": false
+      },
+      {
+        "evidence_id": "REM1_AUTHOR_DELTA",
+        "original_local_path": "/tmp/wu05-oracle02-rem1-p4oa57u0/WU05_ORACLE02_REM1_Delta_Report.md",
+        "byte_length": 5122,
+        "sha256": "91222ee64c695bdebe9f0ca89d91a8896074608fee91b63a966a69ac68a17d4b",
+        "role": "AUTHOR_REVISION_EVIDENCE_NOT_INDEPENDENT_ACCEPTANCE",
+        "runtime_dependency": false
+      },
+      {
+        "evidence_id": "REM1_PRESERVATION",
+        "original_local_path": "/tmp/wu05-oracle02-rem1-p4oa57u0/preservation_and_delta.json",
+        "byte_length": 3042,
+        "sha256": "127199ed5a2b2d01b5c554e1ba9722cf6b899668a4c158c1db2b2537629906c5",
+        "role": "AUTHOR_REVISION_BYTE_PRESERVATION",
+        "runtime_dependency": false
+      }
+    ],
+    "pre_rem1_report_boundary": "Original review independently confirms eight positives, 79 narrow refusals and six relations; N-OWN-ENVELOPE was disputed at that historical stage. The report and matrix remain unchanged.",
+    "rem1_acceptance": {
+      "basis": "OWNER_SUPPLIED_ACCEPTED_INDEPENDENT_DELTA_OUTCOME",
+      "source": "CURRENT_MVP-F2-WU05-ORACLE02-SF-01_OWNER_EXECUTION_PROMPT",
+      "accepted_disposition": "WU05_ORACLE02_REM1_INDEPENDENT_DELTA_ACCEPTED",
+      "accepted_changes": [
+        "REM1-P1-01 own-digest REF_CYCLE and explicit claim",
+        "REM1-P2-03 TimeRecord resource roles and conditional ProvenanceParent union"
+      ],
+      "separate_independent_delta_report": "NOT_SUPPLIED_AS_A_LOCAL_FILE",
+      "reviewer_signature_identity_and_historical_clock": "NOT_SUPPLIED_NOT_FABRICATED",
+      "limitation": "Author REM1 report/logs are revision evidence, not an independent review report. Current Owner-supplied acceptance authorizes this exact subset materialization, not Mainline integration or Codec acceptance."
+    }
+  },
+  "group_claims": {
+    "complete_positives": {
+      "classification": "EXISTING_COMPLETE_SOURCE_BYTES_GOLDEN_REAFFIRMED",
+      "scope": "Exact existing opaque raw-body/payload/frame/digest/expected-envelope bytes only; no new issuance or replacement Golden."
+    },
+    "narrow_refusals": {
+      "classification": "EXPECTED_REFUSAL_REVIEWED_PRODUCTION_CONFORMANCE_NOT_RUN",
+      "scope": "Only the exact recorded input or named mutation, pinned author dispatcher/base and expected category/code. Not a general production encoder, resolver, schema or authorization service."
+    },
+    "executed_relations": {
+      "classification": "RELATIONAL_EXPECTATION_REVIEWED_ACTUAL_RESOURCE_ISSUANCE_NOT_RUN",
+      "scope": "Only the recorded scalar/declaration/arithmetic/hypothetical-reference/symbolic-DAG relation. No complete semantic Domain, actual resource, Native reissue or admission."
+    }
+  },
+  "included": {
+    "complete_positives": [
+      {
+        "case_id": "B01",
+        "record_metadata_sha256": "19155bf9ebb5746154b3d4d9ddacf6b58c9b76df9a243615affc6a52ddea5520",
+        "record": {
+          "case_id": "B01",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+          "execution": "TEST_ONLY",
+          "operation": "frozen",
+          "input": {
+            "vector_id": "B01",
+            "fixture_root": "tests/fixtures/mvp_if03/oracle01_v0_1",
+            "expected_record": "vectors/B01/expected.json"
+          },
+          "expected": "EXACT_STORED_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/02/04/05; AD01-09; RT01-03"
+            }
+          ],
+          "note": "Existing accepted positive independently reconstructed; no new freeze or issuance."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW",
+        "original_golden": {
+          "expected_envelope": {
+            "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+            "object_schema_version": "source-bytes-candidate-v0.1",
+            "canonical_profile_version": "typed-json-candidate-v0.1",
+            "digest_algorithm": "SHA-256",
+            "canonical_payload_byte_length": {
+              "type": "uint64",
+              "value": "187"
+            },
+            "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+          },
+          "raw_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "archive_expected_record": {
+            "member": "vectors/B01/expected.json",
+            "byte_length": 6973,
+            "sha256": "8060066a6bcc51e73d6a9b19a0ea9e98b69f5a4101140df5ab927229afbc1946"
+          },
+          "artifacts": [
+            {
+              "name": "canonical_payload.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/canonical_payload.bin",
+                "byte_length": 187,
+                "sha256": "a3f5df22cfd788ed92d3613856eea7ed4c507642976f63228204124d5795a69d",
+                "git_blob_sha1": "45d26d99144806cbedc67fe72685f361bacad75d"
+              },
+              "archive_member": "vectors/B01/canonical_payload.bin"
+            },
+            {
+              "name": "frame.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/frame.bin",
+                "byte_length": 281,
+                "sha256": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686",
+                "git_blob_sha1": "d8674c0314de2417f0399daf0a644d14631bedeb"
+              },
+              "archive_member": "vectors/B01/frame.bin"
+            },
+            {
+              "name": "raw_body.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/raw_body.bin",
+                "byte_length": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+              },
+              "archive_member": "vectors/B01/raw_body.bin"
+            }
+          ]
+        }
+      },
+      {
+        "case_id": "B02",
+        "record_metadata_sha256": "83f739b3fe60836c8af722881bccc387a534da325c1cf472e7d3aff55c648f93",
+        "record": {
+          "case_id": "B02",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+          "execution": "TEST_ONLY",
+          "operation": "frozen",
+          "input": {
+            "vector_id": "B02",
+            "fixture_root": "tests/fixtures/mvp_if03/oracle01_v0_1",
+            "expected_record": "vectors/B02/expected.json"
+          },
+          "expected": "EXACT_STORED_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/02/04/05; AD01-09; RT01-03"
+            }
+          ],
+          "note": "Existing accepted positive independently reconstructed; no new freeze or issuance."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW",
+        "original_golden": {
+          "expected_envelope": {
+            "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+            "object_schema_version": "source-bytes-candidate-v0.1",
+            "canonical_profile_version": "typed-json-candidate-v0.1",
+            "digest_algorithm": "SHA-256",
+            "canonical_payload_byte_length": {
+              "type": "uint64",
+              "value": "187"
+            },
+            "digest_hex": "11bb5c86b5c41d57b1fde3e55bb766b529bb4afe2a439a1a3a7fee8875f8cf5f"
+          },
+          "raw_body_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+          "archive_expected_record": {
+            "member": "vectors/B02/expected.json",
+            "byte_length": 6866,
+            "sha256": "64eca291844017748cc085b0547dc70084167d386e7190b41eb4fd416e81474e"
+          },
+          "artifacts": [
+            {
+              "name": "canonical_payload.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/canonical_payload.bin",
+                "byte_length": 187,
+                "sha256": "a7b661617f0c88bb96affb2f2aa24a36abaf1de1c119549b413adfc4377b6edf",
+                "git_blob_sha1": "5c0740208254d2bb0d69fed1c4a01f7c44800185"
+              },
+              "archive_member": "vectors/B02/canonical_payload.bin"
+            },
+            {
+              "name": "frame.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/frame.bin",
+                "byte_length": 281,
+                "sha256": "11bb5c86b5c41d57b1fde3e55bb766b529bb4afe2a439a1a3a7fee8875f8cf5f",
+                "git_blob_sha1": "e854f6190a19bfbb1c05c6c90725dd4c95ca55ef"
+              },
+              "archive_member": "vectors/B02/frame.bin"
+            },
+            {
+              "name": "raw_body.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/raw_body.bin",
+                "byte_length": 1,
+                "sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+                "git_blob_sha1": "8c7e5a667f1b771847fe88c01c3de34413a1b220"
+              },
+              "archive_member": "vectors/B02/raw_body.bin"
+            }
+          ]
+        }
+      },
+      {
+        "case_id": "B03",
+        "record_metadata_sha256": "daa9c6d409d2c2c759ed8ef5aeb527aab0c1441f19ccc18027660e26566bbe82",
+        "record": {
+          "case_id": "B03",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+          "execution": "TEST_ONLY",
+          "operation": "frozen",
+          "input": {
+            "vector_id": "B03",
+            "fixture_root": "tests/fixtures/mvp_if03/oracle01_v0_1",
+            "expected_record": "vectors/B03/expected.json"
+          },
+          "expected": "EXACT_STORED_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/02/04/05; AD01-09; RT01-03"
+            }
+          ],
+          "note": "Existing accepted positive independently reconstructed; no new freeze or issuance."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW",
+        "original_golden": {
+          "expected_envelope": {
+            "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+            "object_schema_version": "source-bytes-candidate-v0.1",
+            "canonical_profile_version": "typed-json-candidate-v0.1",
+            "digest_algorithm": "SHA-256",
+            "canonical_payload_byte_length": {
+              "type": "uint64",
+              "value": "187"
+            },
+            "digest_hex": "be5b9bbb19b6a656803fc7ba81996f91446d1fd377e451e60767625b98cfac3d"
+          },
+          "raw_body_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "archive_expected_record": {
+            "member": "vectors/B03/expected.json",
+            "byte_length": 6874,
+            "sha256": "37863b35e4047ef82b470b1a7cbb838512cf5d1bcd1fb01b359149df65c56d61"
+          },
+          "artifacts": [
+            {
+              "name": "canonical_payload.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/canonical_payload.bin",
+                "byte_length": 187,
+                "sha256": "ae6d00e2053c7ef78e0a56008b65dd3a367246233c833651e55b30b16f12e9cf",
+                "git_blob_sha1": "98b8aaecded36123f6474a87f74d833d1cc12059"
+              },
+              "archive_member": "vectors/B03/canonical_payload.bin"
+            },
+            {
+              "name": "frame.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/frame.bin",
+                "byte_length": 281,
+                "sha256": "be5b9bbb19b6a656803fc7ba81996f91446d1fd377e451e60767625b98cfac3d",
+                "git_blob_sha1": "355c4ab399902914d5fbcdc19a727fb140daf875"
+              },
+              "archive_member": "vectors/B03/frame.bin"
+            },
+            {
+              "name": "raw_body.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/raw_body.bin",
+                "byte_length": 1,
+                "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+                "git_blob_sha1": "f76dd238ade08917e6712764a16a22005a50573d"
+              },
+              "archive_member": "vectors/B03/raw_body.bin"
+            }
+          ]
+        }
+      },
+      {
+        "case_id": "B04",
+        "record_metadata_sha256": "f7873d9604cf1eb14cfba10c7f27debf94e27cffba2b02de46d249812b14f183",
+        "record": {
+          "case_id": "B04",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+          "execution": "TEST_ONLY",
+          "operation": "frozen",
+          "input": {
+            "vector_id": "B04",
+            "fixture_root": "tests/fixtures/mvp_if03/oracle01_v0_1",
+            "expected_record": "vectors/B04/expected.json"
+          },
+          "expected": "EXACT_STORED_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/02/04/05; AD01-09; RT01-03"
+            }
+          ],
+          "note": "Existing accepted positive independently reconstructed; no new freeze or issuance."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW",
+        "original_golden": {
+          "expected_envelope": {
+            "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+            "object_schema_version": "source-bytes-candidate-v0.1",
+            "canonical_profile_version": "typed-json-candidate-v0.1",
+            "digest_algorithm": "SHA-256",
+            "canonical_payload_byte_length": {
+              "type": "uint64",
+              "value": "187"
+            },
+            "digest_hex": "af2c85ddf4d4bc4c271c15e2806f367e07287c1d6a35ae992f3d3e4d3752ed61"
+          },
+          "raw_body_sha256": "4a99557e4033c3539de2eb65472017cad5f9557f7a0625a09f1c3f6e2ba69c4c",
+          "archive_expected_record": {
+            "member": "vectors/B04/expected.json",
+            "byte_length": 6891,
+            "sha256": "24d089cd3f02431ca7641f24d8b150ce78e4ffe62caf43492baa468bf0b501e8"
+          },
+          "artifacts": [
+            {
+              "name": "canonical_payload.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/canonical_payload.bin",
+                "byte_length": 187,
+                "sha256": "c359c48c7bd02d494e92d82af6e0d8526351940a85f9197163907e2b938725df",
+                "git_blob_sha1": "4e25d0bea0f0dcf7cf6d8ae1b1c9343d531e918f"
+              },
+              "archive_member": "vectors/B04/canonical_payload.bin"
+            },
+            {
+              "name": "frame.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/frame.bin",
+                "byte_length": 281,
+                "sha256": "af2c85ddf4d4bc4c271c15e2806f367e07287c1d6a35ae992f3d3e4d3752ed61",
+                "git_blob_sha1": "260d6788e8809a3ce0d595cd7f50c5675f0f997e"
+              },
+              "archive_member": "vectors/B04/frame.bin"
+            },
+            {
+              "name": "raw_body.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/raw_body.bin",
+                "byte_length": 2,
+                "sha256": "4a99557e4033c3539de2eb65472017cad5f9557f7a0625a09f1c3f6e2ba69c4c",
+                "git_blob_sha1": "4b04fff51468d8ab5201ab02b725dc477bc7cb45"
+              },
+              "archive_member": "vectors/B04/raw_body.bin"
+            }
+          ]
+        }
+      },
+      {
+        "case_id": "B05",
+        "record_metadata_sha256": "97389ba18283bc082355dfb233434f3a26b757ba2503610599d8df080e32f5d5",
+        "record": {
+          "case_id": "B05",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+          "execution": "TEST_ONLY",
+          "operation": "frozen",
+          "input": {
+            "vector_id": "B05",
+            "fixture_root": "tests/fixtures/mvp_if03/oracle01_v0_1",
+            "expected_record": "vectors/B05/expected.json"
+          },
+          "expected": "EXACT_STORED_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/02/04/05; AD01-09; RT01-03"
+            }
+          ],
+          "note": "Existing accepted positive independently reconstructed; no new freeze or issuance."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW",
+        "original_golden": {
+          "expected_envelope": {
+            "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+            "object_schema_version": "source-bytes-candidate-v0.1",
+            "canonical_profile_version": "typed-json-candidate-v0.1",
+            "digest_algorithm": "SHA-256",
+            "canonical_payload_byte_length": {
+              "type": "uint64",
+              "value": "187"
+            },
+            "digest_hex": "cb8bdd239329aa1d95308a88e36583c2285027c26a7711a89f9dab077886a387"
+          },
+          "raw_body_sha256": "bf12767b0f2a56b2190075bae8169f656e3ce8d6357d4aff184bc6c7ea48f9f6",
+          "archive_expected_record": {
+            "member": "vectors/B05/expected.json",
+            "byte_length": 6900,
+            "sha256": "756dc447823ac580fadd1d157064a5e7d19491ffeb92c3b4ad59d1d10692eb3b"
+          },
+          "artifacts": [
+            {
+              "name": "canonical_payload.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/canonical_payload.bin",
+                "byte_length": 187,
+                "sha256": "2a063985319809595f53a974a77ef43ec7f38581fa10bc42a97c974e6a0e73f0",
+                "git_blob_sha1": "a21cd26741ed21a918a4e440eb5aee298f5a31c5"
+              },
+              "archive_member": "vectors/B05/canonical_payload.bin"
+            },
+            {
+              "name": "frame.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/frame.bin",
+                "byte_length": 281,
+                "sha256": "cb8bdd239329aa1d95308a88e36583c2285027c26a7711a89f9dab077886a387",
+                "git_blob_sha1": "af8238cd8d3a0c3fa7fa11a9d71c642863744b09"
+              },
+              "archive_member": "vectors/B05/frame.bin"
+            },
+            {
+              "name": "raw_body.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/raw_body.bin",
+                "byte_length": 3,
+                "sha256": "bf12767b0f2a56b2190075bae8169f656e3ce8d6357d4aff184bc6c7ea48f9f6",
+                "git_blob_sha1": "1f45813cd0ebc79dc1c9d58307ed2685a8f7a962"
+              },
+              "archive_member": "vectors/B05/raw_body.bin"
+            }
+          ]
+        }
+      },
+      {
+        "case_id": "B06",
+        "record_metadata_sha256": "ff50bd10490690bfa835bc2400c7f37fe731b4e83d5e93205c98f8fa9afaef80",
+        "record": {
+          "case_id": "B06",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+          "execution": "TEST_ONLY",
+          "operation": "frozen",
+          "input": {
+            "vector_id": "B06",
+            "fixture_root": "tests/fixtures/mvp_if03/oracle01_v0_1",
+            "expected_record": "vectors/B06/expected.json"
+          },
+          "expected": "EXACT_STORED_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/02/04/05; AD01-09; RT01-03"
+            }
+          ],
+          "note": "Existing accepted positive independently reconstructed; no new freeze or issuance."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW",
+        "original_golden": {
+          "expected_envelope": {
+            "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+            "object_schema_version": "source-bytes-candidate-v0.1",
+            "canonical_profile_version": "typed-json-candidate-v0.1",
+            "digest_algorithm": "SHA-256",
+            "canonical_payload_byte_length": {
+              "type": "uint64",
+              "value": "187"
+            },
+            "digest_hex": "55daae37a193963e214e9a67415fe8c17eecafea0b13e54919b774f05d991970"
+          },
+          "raw_body_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+          "archive_expected_record": {
+            "member": "vectors/B06/expected.json",
+            "byte_length": 6939,
+            "sha256": "1eb55e38db6b131151959e0bbdaed9f9109d4b27ec108b099c7155bf3977a490"
+          },
+          "artifacts": [
+            {
+              "name": "canonical_payload.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/canonical_payload.bin",
+                "byte_length": 187,
+                "sha256": "b6c3051378f916aa2695f469ed5e52654217414b9c882f27e4af9869b3a5915f",
+                "git_blob_sha1": "848e9735cecacbc9fb13e136795e8e1d1efce0e0"
+              },
+              "archive_member": "vectors/B06/canonical_payload.bin"
+            },
+            {
+              "name": "frame.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/frame.bin",
+                "byte_length": 281,
+                "sha256": "55daae37a193963e214e9a67415fe8c17eecafea0b13e54919b774f05d991970",
+                "git_blob_sha1": "727444880d6f5808be0bb852c4d53550da4646c1"
+              },
+              "archive_member": "vectors/B06/frame.bin"
+            },
+            {
+              "name": "raw_body.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/raw_body.bin",
+                "byte_length": 1,
+                "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+                "git_blob_sha1": "ce542efaa5124a0437f0c4db329d7ec4b7ba70a7"
+              },
+              "archive_member": "vectors/B06/raw_body.bin"
+            }
+          ]
+        }
+      },
+      {
+        "case_id": "B07",
+        "record_metadata_sha256": "8557d26826edf818a93ca1a4ed34f66c7509a6ca5d486ebba1cc060e8c7b955f",
+        "record": {
+          "case_id": "B07",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+          "execution": "TEST_ONLY",
+          "operation": "frozen",
+          "input": {
+            "vector_id": "B07",
+            "fixture_root": "tests/fixtures/mvp_if03/oracle01_v0_1",
+            "expected_record": "vectors/B07/expected.json"
+          },
+          "expected": "EXACT_STORED_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/02/04/05; AD01-09; RT01-03"
+            }
+          ],
+          "note": "Existing accepted positive independently reconstructed; no new freeze or issuance."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW",
+        "original_golden": {
+          "expected_envelope": {
+            "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+            "object_schema_version": "source-bytes-candidate-v0.1",
+            "canonical_profile_version": "typed-json-candidate-v0.1",
+            "digest_algorithm": "SHA-256",
+            "canonical_payload_byte_length": {
+              "type": "uint64",
+              "value": "187"
+            },
+            "digest_hex": "7fd81935e350dc4cdb2ce57ab39377f16a1be43314d393f75837945f04e51a12"
+          },
+          "raw_body_sha256": "06f961b802bc46ee168555f066d28f4f0e9afdf3f88174c1ee6f9de004fc30a0",
+          "archive_expected_record": {
+            "member": "vectors/B07/expected.json",
+            "byte_length": 6910,
+            "sha256": "b6a5b565ffa1736b55a7ffd22592463e81446e8a8f923465b66c597cf2214131"
+          },
+          "artifacts": [
+            {
+              "name": "canonical_payload.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/canonical_payload.bin",
+                "byte_length": 187,
+                "sha256": "f25cee42f732cb89c94f7193820b9e8336d667f950f1007a32f8e6128af47bab",
+                "git_blob_sha1": "89cbc96d3456119f7eac5d91e595cec134a938a4"
+              },
+              "archive_member": "vectors/B07/canonical_payload.bin"
+            },
+            {
+              "name": "frame.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/frame.bin",
+                "byte_length": 281,
+                "sha256": "7fd81935e350dc4cdb2ce57ab39377f16a1be43314d393f75837945f04e51a12",
+                "git_blob_sha1": "1beed267b1e812b10237cf9fbd1938ef1e29d944"
+              },
+              "archive_member": "vectors/B07/frame.bin"
+            },
+            {
+              "name": "raw_body.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/raw_body.bin",
+                "byte_length": 2,
+                "sha256": "06f961b802bc46ee168555f066d28f4f0e9afdf3f88174c1ee6f9de004fc30a0",
+                "git_blob_sha1": "f70f10e4db19068f79bc43844b49f3eece45c4e8"
+              },
+              "archive_member": "vectors/B07/raw_body.bin"
+            }
+          ]
+        }
+      },
+      {
+        "case_id": "B08",
+        "record_metadata_sha256": "fbe61826fa07703fad5f56959de373e66b7d04eaecc9907714d82ed2a3f7cce2",
+        "record": {
+          "case_id": "B08",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+          "execution": "TEST_ONLY",
+          "operation": "frozen",
+          "input": {
+            "vector_id": "B08",
+            "fixture_root": "tests/fixtures/mvp_if03/oracle01_v0_1",
+            "expected_record": "vectors/B08/expected.json"
+          },
+          "expected": "EXACT_STORED_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/02/04/05; AD01-09; RT01-03"
+            }
+          ],
+          "note": "Existing accepted positive independently reconstructed; no new freeze or issuance."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW",
+        "original_golden": {
+          "expected_envelope": {
+            "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+            "object_schema_version": "source-bytes-candidate-v0.1",
+            "canonical_profile_version": "typed-json-candidate-v0.1",
+            "digest_algorithm": "SHA-256",
+            "canonical_payload_byte_length": {
+              "type": "uint64",
+              "value": "187"
+            },
+            "digest_hex": "a405fcdaeb1277046d4d9038029e05c4bd633692d305afc0b964086443c232a8"
+          },
+          "raw_body_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+          "archive_expected_record": {
+            "member": "vectors/B08/expected.json",
+            "byte_length": 6890,
+            "sha256": "4041b15fadd2b2d2485d2f3ebd0f26febfb62968801abf4bb2bc1bbe126e0359"
+          },
+          "artifacts": [
+            {
+              "name": "canonical_payload.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/canonical_payload.bin",
+                "byte_length": 187,
+                "sha256": "705a0db300955c692abf05dba1aa94bc94d693f5caf127dff95cbfe140e9b620",
+                "git_blob_sha1": "54331596f9de35ecadc54c39159980831e417a29"
+              },
+              "archive_member": "vectors/B08/canonical_payload.bin"
+            },
+            {
+              "name": "frame.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/frame.bin",
+                "byte_length": 281,
+                "sha256": "a405fcdaeb1277046d4d9038029e05c4bd633692d305afc0b964086443c232a8",
+                "git_blob_sha1": "a0f238ed96c1dd7f4de674ab89e25c3b43819ba4"
+              },
+              "archive_member": "vectors/B08/frame.bin"
+            },
+            {
+              "name": "raw_body.bin",
+              "pin": {
+                "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/raw_body.bin",
+                "byte_length": 1,
+                "sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+                "git_blob_sha1": "7371f47a6f8bd23a8fa1a8b2a9479cdd76380e54"
+              },
+              "archive_member": "vectors/B08/raw_body.bin"
+            }
+          ]
+        }
+      }
+    ],
+    "narrow_refusals": [
+      {
+        "case_id": "N-DUPLICATE",
+        "record_metadata_sha256": "fa01e0141ab82c3ab7ae713426a1f2bb2bc8600635dece2842e27424317b2fb2",
+        "record": {
+          "case_id": "N-DUPLICATE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a2278222c2261223a2279227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "DUPLICATE_KEY"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-BOM",
+        "record_metadata_sha256": "0b1df6668478b2f9381d0fe3ec01da8046729f4ccb3e09b9fb07ed3f3a6ac8b4",
+        "record": {
+          "case_id": "N-BOM",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "efbbbf7b7d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "BOM"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-UTF8",
+        "record_metadata_sha256": "cea9eab918eb3269ea3859960dc09fac6a132cafc00780e20402e53a4fa07b90",
+        "record": {
+          "case_id": "N-UTF8",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a22ff227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INVALID_JSON_UTF8"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SURROGATE",
+        "record_metadata_sha256": "29e6630b205be6d714669305d3a88809e83fc1f7c8154f7e47e201b2779827f3",
+        "record": {
+          "case_id": "N-SURROGATE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a225c7564383030227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "SURROGATE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-ORDER",
+        "record_metadata_sha256": "5451858597415da8ddeb321da56fa8bac2606f34a21bc32e3beca65328dd9eca",
+        "record": {
+          "case_id": "N-ORDER",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2262223a2278222c2261223a2279227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NONCANONICAL_BYTES"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-WHITESPACE",
+        "record_metadata_sha256": "7b02422b8b4e3abba85d5651195b357f5527e271561231138d287db664427df3",
+        "record": {
+          "case_id": "N-WHITESPACE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b202261223a2278227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NONCANONICAL_BYTES"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SHORT-ESCAPE",
+        "record_metadata_sha256": "521ba49a4ea79444c4b10850933ed74902679462cd3bde7ce79cf6258a45deb4",
+        "record": {
+          "case_id": "N-SHORT-ESCAPE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a225c6e227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NONCANONICAL_BYTES"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-UPPER-ESCAPE",
+        "record_metadata_sha256": "dc944237ab6ed66fb2756b75f1b652b06e0a758c72a76e38e3c54d06d5d94d50",
+        "record": {
+          "case_id": "N-UPPER-ESCAPE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a225c7530303041227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NONCANONICAL_BYTES"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-ASCII-ESCAPE",
+        "record_metadata_sha256": "d7cbb024401a114e88c616c4eb67cca1cbc802d80c03e9eedc7ed20154b7bd1f",
+        "record": {
+          "case_id": "N-ASCII-ESCAPE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a225c7530306539227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NONCANONICAL_BYTES"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SLASH-ESCAPE",
+        "record_metadata_sha256": "2f57fcb8932c9ecc0bfdfe46dd5249760e587dc099f307b9dbd3025e11d93020",
+        "record": {
+          "case_id": "N-SLASH-ESCAPE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a225c2f227d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NONCANONICAL_BYTES"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-NULL",
+        "record_metadata_sha256": "8d25e13ff99b92eb209bbe5bb20cc2170c5ed0700e7afce1d8271654317719e0",
+        "record": {
+          "case_id": "N-NULL",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a6e756c6c7d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NULL_OR_UNTAGGED"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/07"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-BARE-INT",
+        "record_metadata_sha256": "9db17d4da960788371f334afe01a10b9618526d6f856cb0d856f295165966159",
+        "record": {
+          "case_id": "N-BARE-INT",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a317d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "BARE_NUMBER"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-FLOAT",
+        "record_metadata_sha256": "adbc4d3f565f1b89d4ab2f4dbf75f7674966bf5373edf89f7b8d533022ea80ab",
+        "record": {
+          "case_id": "N-FLOAT",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a302e317d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "BARE_NUMBER"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-NAN",
+        "record_metadata_sha256": "f49dfae9ee37184dd24a7a4f1b461e19b312b89ee2929a7508dce67022e1c07f",
+        "record": {
+          "case_id": "N-NAN",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a4e614e7d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "BARE_NUMBER"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-INFINITY",
+        "record_metadata_sha256": "808039816764605847ee13cb20650c22d47c22bcef56de814e6978d9baa07a11",
+        "record": {
+          "case_id": "N-INFINITY",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "fragment",
+          "input": {
+            "hex": "7b2261223a496e66696e6974797d"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "BARE_NUMBER"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-MISSING",
+        "record_metadata_sha256": "0a56daf898be4ab1b19ff38e926a98bf144338518a1924f19a156d341a8d415f",
+        "record": {
+          "case_id": "N-MISSING",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "payload",
+          "input": {
+            "mutation": "missing"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "CLOSED_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-UNKNOWN",
+        "record_metadata_sha256": "4d851b7e21cfbac820dc67bedd8ea3a00a32f5fb2ac4fe078d5572847bb0a49c",
+        "record": {
+          "case_id": "N-UNKNOWN",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "payload",
+          "input": {
+            "mutation": "unknown"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "CLOSED_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01/05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-OWN-ENVELOPE",
+        "record_metadata_sha256": "07747c9ae9effc5e682d149201978d13a8e999191cfd293d54eae1e770cd9778",
+        "record": {
+          "case_id": "N-OWN-ENVELOPE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "payload",
+          "input": {
+            "mutation": "own_envelope",
+            "own_digest_claim": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "REF_CYCLE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-05; AD01-08 own digest/envelope inclusion is REF_CYCLE"
+            }
+          ],
+          "note": "A well-formed 64-lowercase-hex claim of the object's own digest is inserted at top level. The literal is the original B01 frame digest before mutation, not a self-consistent digest of the forbidden payload. No identity is issued. Ordinary unrelated unknown fields remain CLOSED_FIELDS."
+        },
+        "review_basis": "OWNER_REPORTED_REM1_INDEPENDENT_DELTA_ACCEPTANCE"
+      },
+      {
+        "case_id": "N-PLUS",
+        "record_metadata_sha256": "9dc2ddd0f6fc8851d84185e3b669e20c2278471f4921aa5d3d8b3d6d32187c4d",
+        "record": {
+          "case_id": "N-PLUS",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "integer",
+          "input": {
+            "signed": true,
+            "value": {
+              "type": "int64",
+              "value": "+1"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INTEGER_SPELLING"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-ZERO-PREFIX",
+        "record_metadata_sha256": "468c34eddb62909d7e0354bd2a54506b431dc2a14c871ca601a66c7724af1d90",
+        "record": {
+          "case_id": "N-ZERO-PREFIX",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "integer",
+          "input": {
+            "signed": false,
+            "value": {
+              "type": "uint64",
+              "value": "01"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INTEGER_SPELLING"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-NEGATIVE-ZERO",
+        "record_metadata_sha256": "d00d22f887dad53c0cf3509d363048fa0d175606d8ae4a5121cc3e0bfdf97b73",
+        "record": {
+          "case_id": "N-NEGATIVE-ZERO",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "integer",
+          "input": {
+            "signed": true,
+            "value": {
+              "type": "int64",
+              "value": "-0"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INTEGER_SPELLING"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-EXPONENT",
+        "record_metadata_sha256": "c8f94c34b9cc5b30278bd12a323d42a3b1c188be7eb5a01bece0cb4e468fbb37",
+        "record": {
+          "case_id": "N-EXPONENT",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "integer",
+          "input": {
+            "signed": true,
+            "value": {
+              "type": "int64",
+              "value": "1e2"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INTEGER_SPELLING"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-UINT-NEGATIVE",
+        "record_metadata_sha256": "b48c599d635416a45619a47f57ace80edc46282a4e34dd2d0e00aef21b4b3a01",
+        "record": {
+          "case_id": "N-UINT-NEGATIVE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "integer",
+          "input": {
+            "signed": false,
+            "value": {
+              "type": "uint64",
+              "value": "-1"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INTEGER_SPELLING"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-INT-OVERFLOW",
+        "record_metadata_sha256": "642c4bc5ad46136c61aa29b2cd9258c4de66f81359f04e0661e95a7cb406bae5",
+        "record": {
+          "case_id": "N-INT-OVERFLOW",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "integer",
+          "input": {
+            "signed": true,
+            "value": {
+              "type": "int64",
+              "value": "9223372036854775808"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INTEGER_RANGE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-UINT-OVERFLOW",
+        "record_metadata_sha256": "9a128b88607492160492a268a40f3acd3a480ee29daa90ee9ca3cdeed2aae747",
+        "record": {
+          "case_id": "N-UINT-OVERFLOW",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "integer",
+          "input": {
+            "signed": false,
+            "value": {
+              "type": "uint64",
+              "value": "18446744073709551616"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INTEGER_RANGE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-BOOL-COERCION",
+        "record_metadata_sha256": "756ab765fff8335d1d4c00b2db23c0707233dc54647cbe1327cfc5669b50a30b",
+        "record": {
+          "case_id": "N-BOOL-COERCION",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "integer",
+          "input": {
+            "signed": false,
+            "value": {
+              "type": "uint64",
+              "value": true
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "INTEGER_TEXT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-BOOL-INT",
+        "record_metadata_sha256": "e8bd028f67cffa062818d53b7604272a5246b6f790f5b9add805c3c80d3686d0",
+        "record": {
+          "case_id": "N-BOOL-INT",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "boolean",
+          "input": {
+            "value": 1
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "BOOLEAN_TYPE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-DECIMAL-SCALE",
+        "record_metadata_sha256": "223ff2d474031f9150668469793ab67b38f237bebc56441b9a5e3e926a4b7174",
+        "record": {
+          "case_id": "N-DECIMAL-SCALE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "decimal_scale",
+          "input": {
+            "value": {
+              "type": "uint64",
+              "value": "19"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "DECIMAL_SCALE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-RATIO-MISMATCH",
+        "record_metadata_sha256": "1d00947c7129d0c1c9bb31509c7b4564e915916afa0a9a77184aa16652e811f8",
+        "record": {
+          "case_id": "N-RATIO-MISMATCH",
+          "domains": [
+            "F2-OBSERVATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "ratio",
+          "input": {
+            "scaled_units": "733333",
+            "decimal_text": "0.733334",
+            "scale": "6",
+            "unit": "FRACTION"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "RATIO_MISMATCH"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-02"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-PROFILE",
+        "record_metadata_sha256": "6bd41ea2207919bbcd914bca72f7c00887a4638d6ed5624d2cf3511e5a8696d8",
+        "record": {
+          "case_id": "N-PROFILE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "profile"
+          },
+          "expected": {
+            "category": "UNSUPPORTED_SCHEMA",
+            "code": "PROFILE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-FRAME-LENGTH",
+        "record_metadata_sha256": "33fa35487c95f2b3daf9e9dd2972269406b9253fe2df337ee819ad68636cf4e1",
+        "record": {
+          "case_id": "N-FRAME-LENGTH",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "length"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FRAME_TRUNCATED"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-ENDIAN",
+        "record_metadata_sha256": "a22e45816a8ab67f8e46465ccf1a2185a0329afc86f5d24d41c39ae87d2f2fab",
+        "record": {
+          "case_id": "N-ENDIAN",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "endian"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FRAME_LENGTH"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SECTION-ORDER",
+        "record_metadata_sha256": "5376f0a89bd6c7ea50120b1dcbc0871b6d45fb64ce9dd4a5f0aff6eec10e9965",
+        "record": {
+          "case_id": "N-SECTION-ORDER",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "order"
+          },
+          "expected": {
+            "category": "UNSUPPORTED_SCHEMA",
+            "code": "DOMAIN_SCHEMA"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-TRAILING",
+        "record_metadata_sha256": "01375a458c69ec9b105ad2bb718e384212000938cf4f94907102e3ef83be1f3a",
+        "record": {
+          "case_id": "N-TRAILING",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "trailing"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FRAME_TRAILING"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-PAYLOAD-LENGTH",
+        "record_metadata_sha256": "93529005fc5875fbb601501cd076428a31200be857603a4a885d4c0552e59132",
+        "record": {
+          "case_id": "N-PAYLOAD-LENGTH",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "envelope_length"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "PAYLOAD_LENGTH"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-UNFRAMED-HASH",
+        "record_metadata_sha256": "fd17a86bb6d29d52e2c174a0630c654098342e6f63f148d6a57fcd3460488491",
+        "record": {
+          "case_id": "N-UNFRAMED-HASH",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "unframed_hash"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "DIGEST_MISMATCH"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-DIGEST",
+        "record_metadata_sha256": "1a27ff61504bcc978e85c32e686b26fb31e2063f80a6ef87afade3d63a4dbb5d",
+        "record": {
+          "case_id": "N-DIGEST",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "digest"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "DIGEST_MISMATCH"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-DOMAIN",
+        "record_metadata_sha256": "317a95b5f820d16083a35b73a7950278f91ec78c6a0b0fe76d8bbbfb01d46a03",
+        "record": {
+          "case_id": "N-DOMAIN",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "domain"
+          },
+          "expected": {
+            "category": "UNSUPPORTED_SCHEMA",
+            "code": "ENVELOPE_NEGOTIATION"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SCHEMA",
+        "record_metadata_sha256": "5a111cbe347678a7f02e7ed5c00cc6679372518420432c492d4a32a268c0f45b",
+        "record": {
+          "case_id": "N-SCHEMA",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "schema"
+          },
+          "expected": {
+            "category": "UNSUPPORTED_SCHEMA",
+            "code": "ENVELOPE_NEGOTIATION"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-ALGORITHM",
+        "record_metadata_sha256": "f8266a16c821961a0f673ad904862e568c192ab3708cbcb90c52a07a98e758f9",
+        "record": {
+          "case_id": "N-ALGORITHM",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "algorithm"
+          },
+          "expected": {
+            "category": "UNSUPPORTED_SCHEMA",
+            "code": "ENVELOPE_NEGOTIATION"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-ENVELOPE-PROFILE",
+        "record_metadata_sha256": "53863f3396920ed7b7e4bed7ce61b8b2bd5f597c39cabe8f90d1288abe6f2dbe",
+        "record": {
+          "case_id": "N-ENVELOPE-PROFILE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "envelope_profile"
+          },
+          "expected": {
+            "category": "UNSUPPORTED_SCHEMA",
+            "code": "ENVELOPE_NEGOTIATION"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-ZERO-LENGTH",
+        "record_metadata_sha256": "b3e32808787d88413b3cbd80a5ca4594255f88b66448f111afa97fdc36aa627e",
+        "record": {
+          "case_id": "N-ZERO-LENGTH",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "zero"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FRAME_LENGTH"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-OVER-LIMIT",
+        "record_metadata_sha256": "9df74f0df250eeb74c7a4ef2465ad3bd8d20f11a54b0a7022ebfaa9f63eaac86",
+        "record": {
+          "case_id": "N-OVER-LIMIT",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "frame",
+          "input": {
+            "base": "B01",
+            "mutation": "over_limit"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FRAME_LENGTH"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-04/05/10"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-AT-T1",
+        "record_metadata_sha256": "ec065a0200040bb59782aa21994ef90de0e90dfbc5347fade6da37b613414dd4",
+        "record": {
+          "case_id": "N-AT-T1",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "before",
+          "input": {
+            "published_at": "2027-01-07T18:00:00+08:00",
+            "cutoff_index": 0
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NOT_BEFORE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-03"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-T3-PLUS-ONE",
+        "record_metadata_sha256": "cdc670dab7bed1740bf99390933f6f723e645a1207cbf9f86add070f3f9b4d03",
+        "record": {
+          "case_id": "N-T3-PLUS-ONE",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "before",
+          "input": {
+            "published_at": "2027-01-29T18:00:01+08:00",
+            "cutoff_index": 2
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NOT_BEFORE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-03"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-NAIVE",
+        "record_metadata_sha256": "03a57d2f4d1e3173294cae614a8eb3d296dc7f9c2c2de166b277299d39f01120",
+        "record": {
+          "case_id": "N-NAIVE",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "time",
+          "input": {
+            "source_text": "2027-01-07T18:00:00"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "TIME_FORMAT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-03"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-FRACTIONAL",
+        "record_metadata_sha256": "62801cbee8f2bc560f63b3f7bfd0e69972f901bd3acda5cba288c90b0eccf04a",
+        "record": {
+          "case_id": "N-FRACTIONAL",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "time",
+          "input": {
+            "source_text": "2027-01-07T18:00:00.1+08:00"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "TIME_FORMAT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-03"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-LEAP-SECOND",
+        "record_metadata_sha256": "429d7e9daf513ea883111ac2d3e3ddc41e06f9cb5b569750dd0653e1030d9d59",
+        "record": {
+          "case_id": "N-LEAP-SECOND",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "time",
+          "input": {
+            "source_text": "2027-01-07T18:00:60+08:00"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "TIME_FORMAT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-03"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-TICK-SWAPPED",
+        "record_metadata_sha256": "4d875dfaeb22abe8f39886068e3891bfc3df3a605bc3a792630b51dd8632d28a",
+        "record": {
+          "case_id": "N-TICK-SWAPPED",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "ticks",
+          "input": {
+            "mutation": "swapped"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FIXED_SCHEDULE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-09; UX ADOPT-01"
+            },
+            {
+              "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+              "clause": "ADOPT-01 P1-03 bounded WU04 illustration; RATIFY-01"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-TICK-DROPPED",
+        "record_metadata_sha256": "673aa942ca68397048fc1eb66dda39c45b702925636d185240c8916067163dc7",
+        "record": {
+          "case_id": "N-TICK-DROPPED",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "ticks",
+          "input": {
+            "mutation": "dropped"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FIXED_SCHEDULE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-09; UX ADOPT-01"
+            },
+            {
+              "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+              "clause": "ADOPT-01 P1-03 bounded WU04 illustration; RATIFY-01"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-TICK-DUPLICATE",
+        "record_metadata_sha256": "056b1d86647badb4c2c1563a15447c54e5300f53574d5e0d4324b85431c77f1d",
+        "record": {
+          "case_id": "N-TICK-DUPLICATE",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "ticks",
+          "input": {
+            "mutation": "duplicate"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FIXED_SCHEDULE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-09; UX ADOPT-01"
+            },
+            {
+              "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+              "clause": "ADOPT-01 P1-03 bounded WU04 illustration; RATIFY-01"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-TICK-FOREIGN",
+        "record_metadata_sha256": "d9f6bb3e985206c6242df27668c63dd7de7f14a0f0f20a94153b2415a5dd72e0",
+        "record": {
+          "case_id": "N-TICK-FOREIGN",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "ticks",
+          "input": {
+            "mutation": "foreign"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FIXED_SCHEDULE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-09; UX ADOPT-01"
+            },
+            {
+              "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+              "clause": "ADOPT-01 P1-03 bounded WU04 illustration; RATIFY-01"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-W03-TICK",
+        "record_metadata_sha256": "7f2f4d691d721717f6c5caf425eb20959f01ec11b60e06672c0fcbf5c404d236",
+        "record": {
+          "case_id": "N-W03-TICK",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "ticks",
+          "input": {
+            "mutation": "annotation_as_tick"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FIXED_SCHEDULE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-09; UX ADOPT-01"
+            },
+            {
+              "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+              "clause": "ADOPT-01 P1-03 bounded WU04 illustration; RATIFY-01"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-B03-MIDNIGHT",
+        "record_metadata_sha256": "6eee9c5ffd15bb61f83e0c1be4c90fe166195f17e913ca22e31a2587498ba853",
+        "record": {
+          "case_id": "N-B03-MIDNIGHT",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "ticks",
+          "input": {
+            "mutation": "midnight"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FIXED_SCHEDULE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-09; UX ADOPT-01"
+            },
+            {
+              "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+              "clause": "ADOPT-01 P1-03 bounded WU04 illustration; RATIFY-01"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-REUSED-CONTEXT",
+        "record_metadata_sha256": "3fb6856e849b2bc8a6c4823add6aba512cff613f4cb6616c76b5815f4595ef20",
+        "record": {
+          "case_id": "N-REUSED-CONTEXT",
+          "domains": [
+            "F2-OBSERVATION",
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "contexts",
+          "input": {
+            "contexts": [
+              "t1",
+              "t2",
+              "t2",
+              "t4"
+            ]
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "REUSED_CONTEXT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-09 F2-OBSERVATION"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-CYCLE",
+        "record_metadata_sha256": "94af0e2f0208bad47503f69a52cc8ee11da20a284d78b59cf15e703696aaee6b",
+        "record": {
+          "case_id": "N-CYCLE",
+          "domains": [
+            "TEMPORAL-SEQUENCE",
+            "EVIDENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "graph",
+          "input": {
+            "nodes": {
+              "subject": {
+                "kind": "SEQUENCE",
+                "parents": [
+                  "evidence"
+                ]
+              },
+              "evidence": {
+                "kind": "EVIDENCE",
+                "parents": [
+                  "subject"
+                ]
+              }
+            },
+            "root": "subject"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "REF_CYCLE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-05/06/08; AD01-09"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-HIDDEN-ATTEMPT",
+        "record_metadata_sha256": "cb6bfe3d60646e076ddc1ea02d89234da1aa8ec4d135f65489c9d4350db48158",
+        "record": {
+          "case_id": "N-HIDDEN-ATTEMPT",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "graph",
+          "input": {
+            "nodes": {
+              "q": {
+                "kind": "QUALIFICATION",
+                "parents": [
+                  "trace"
+                ]
+              },
+              "trace": {
+                "kind": "SEMANTIC",
+                "parents": [
+                  "receipt"
+                ]
+              },
+              "receipt": {
+                "kind": "SEMANTIC",
+                "parents": [
+                  "private"
+                ]
+              },
+              "private": {
+                "kind": "ATTEMPT",
+                "parents": [],
+                "fields": [
+                  "host",
+                  "clock",
+                  "token"
+                ]
+              }
+            },
+            "root": "q"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "ATTEMPT_ANCESTRY"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-05/06/08; AD01-09"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-DANGLING",
+        "record_metadata_sha256": "123fc2e61dc4c1344141b09e58410bee23d7060d85f1adb6e5372e5c746fa210",
+        "record": {
+          "case_id": "N-DANGLING",
+          "domains": [
+            "RESULT"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "graph",
+          "input": {
+            "nodes": {
+              "r": {
+                "kind": "RESULT",
+                "parents": [
+                  "experiment"
+                ]
+              }
+            },
+            "root": "r"
+          },
+          "expected": {
+            "category": "MISSING_REQUIRED_EVIDENCE",
+            "code": "DANGLING_PARENT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-05/06/08; AD01-09"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-RESULT-ATTEMPT",
+        "record_metadata_sha256": "9a7da2240551e97c0c7f87ea4433166aecbd049be780685dd565598190cbd613",
+        "record": {
+          "case_id": "N-RESULT-ATTEMPT",
+          "domains": [
+            "RESULT",
+            "F3-RUN-ATTEMPT"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "graph",
+          "input": {
+            "nodes": {
+              "r": {
+                "kind": "RESULT",
+                "parents": [
+                  "attempt"
+                ]
+              },
+              "attempt": {
+                "kind": "ATTEMPT",
+                "parents": []
+              }
+            },
+            "root": "r"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "ATTEMPT_ANCESTRY"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-05/06/08; AD01-09"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-ASSOCIATION-INSTANCE",
+        "record_metadata_sha256": "4a7617391767022ce4c0538ea3db0fce7d23ba0e269524a677d25f289423c6cb",
+        "record": {
+          "case_id": "N-ASSOCIATION-INSTANCE",
+          "domains": [
+            "F3-EXPERIMENT"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "experiment_input",
+          "input": {
+            "kind": "SEQUENCE",
+            "temporal_binding_set_ref": "HYPOTHETICAL_SEQUENCE_SYMBOL",
+            "association_contract_version": "experiment-sequence-binding-candidate-v0.1",
+            "association_instance_ref": "HYPOTHETICAL_INSTANCE_SYMBOL"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "EXPERIMENT_INPUT_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-09 ExperimentInput"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-MISSING-RECEIPT",
+        "record_metadata_sha256": "b01f1999c61065e784fc8a1d2c2c62f02c98aeca08061402a634eefd8c0114e1",
+        "record": {
+          "case_id": "N-MISSING-RECEIPT",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "native_summary",
+          "input": {
+            "summary": {
+              "owner": "TEST_ONLY",
+              "type": "TEST_ONLY",
+              "state": "TEST_ONLY_NOT_A_NATIVE_OUTCOME",
+              "reason_code": "TEST_ONLY",
+              "unknown": {
+                "type": "not_applicable",
+                "owner": "TEST_ONLY",
+                "reason": "NON_ISSUED"
+              },
+              "first_failure": {
+                "type": "not_applicable",
+                "owner": "TEST_ONLY",
+                "reason": "NON_ISSUED"
+              },
+              "invocation": "RUN"
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NATIVE_SUMMARY_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-07"
+            }
+          ],
+          "note": "Malformed helper fragment only. Sentinel state and incomplete receipt wrapper are deliberately not Native evidence; rejection is determined by missing mandatory key before any semantic claim."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-NO-OUTCOME-STATE",
+        "record_metadata_sha256": "37488decf98620671b21f6062a6c7598873109a5650840fc8cb95baa2b3c751a",
+        "record": {
+          "case_id": "N-NO-OUTCOME-STATE",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "native_summary",
+          "input": {
+            "summary": {
+              "owner": "TEST_ONLY",
+              "type": "TEST_ONLY",
+              "reason_code": "TEST_ONLY",
+              "unknown": {
+                "type": "not_applicable",
+                "owner": "TEST_ONLY",
+                "reason": "NON_ISSUED"
+              },
+              "first_failure": {
+                "type": "not_applicable",
+                "owner": "TEST_ONLY",
+                "reason": "NON_ISSUED"
+              },
+              "invocation": "RUN",
+              "invocation_receipt_ref": {
+                "resource_kind": "NATIVE_RECEIPT"
+              }
+            }
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "NATIVE_SUMMARY_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-07; D04-A"
+            }
+          ],
+          "note": "Malformed helper fragment only. Sentinel state and incomplete receipt wrapper are deliberately not Native evidence; rejection is determined by missing mandatory key before any semantic claim."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SAFE-AUDIT",
+        "record_metadata_sha256": "2de3acda5d23655a1be48d7e72d4541e66a5f46db697bfddd8626bdbd0878946",
+        "record": {
+          "case_id": "N-SAFE-AUDIT",
+          "domains": [
+            "F2-OBSERVATION",
+            "EVIDENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "safe_fields",
+          "input": {
+            "extra": "audit_locator"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "SAFE_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "CAN-05/07; AD01-05; D05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SAFE-CALLBACK",
+        "record_metadata_sha256": "5b6e9c52bd2cb17efc51b3dbedce8e8669bbeee637fba344974cfcdbbe2822d9",
+        "record": {
+          "case_id": "N-SAFE-CALLBACK",
+          "domains": [
+            "F2-OBSERVATION",
+            "EVIDENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "safe_fields",
+          "input": {
+            "extra": "callback"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "SAFE_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "CAN-05/07; AD01-05; D05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SAFE-GRANT",
+        "record_metadata_sha256": "6ce7aec4d4b745dfdefc9499cf5de812d971ca87791526a2457dcbc96e02202a",
+        "record": {
+          "case_id": "N-SAFE-GRANT",
+          "domains": [
+            "F2-OBSERVATION",
+            "EVIDENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "safe_fields",
+          "input": {
+            "extra": "grant"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "SAFE_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "CAN-05/07; AD01-05; D05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SAFE-ATTEMPT",
+        "record_metadata_sha256": "7c56eb7bc4197569f04cb2802f451385db0870d57dedd9b0390f9a177090175f",
+        "record": {
+          "case_id": "N-SAFE-ATTEMPT",
+          "domains": [
+            "F2-OBSERVATION",
+            "EVIDENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "safe_fields",
+          "input": {
+            "extra": "attempt_id"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "SAFE_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "CAN-05/07; AD01-05; D05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-SAFE-PRICE",
+        "record_metadata_sha256": "dccf127cfad60d4beed5fe6b6e7c637104fd9933d34f366ad0ca10c34652aefe",
+        "record": {
+          "case_id": "N-SAFE-PRICE",
+          "domains": [
+            "F2-OBSERVATION",
+            "EVIDENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "safe_fields",
+          "input": {
+            "extra": "future_price"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "SAFE_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "CAN-05/07; AD01-05; D05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-GRANT-MISSING",
+        "record_metadata_sha256": "21199f0df69f4ae8d26260fdeee6d534aa07507798120c8521f09f47c3f35fdf",
+        "record": {
+          "case_id": "N-GRANT-MISSING",
+          "domains": [
+            "F2-OBSERVATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "authorization",
+          "input": {
+            "grant": null
+          },
+          "expected": {
+            "category": "DENIED_AUTHORIZATION",
+            "code": "ACCESS_DENIED"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-05; RT01-04; D05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-GRANT-REVOKED",
+        "record_metadata_sha256": "60864642000d6a1cdbc42da8384af4ef950d0d453bb2ce11905d956f9a13adc9",
+        "record": {
+          "case_id": "N-GRANT-REVOKED",
+          "domains": [
+            "F2-OBSERVATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "authorization",
+          "input": {
+            "grant": {
+              "revoked": true,
+              "policy_matches": true
+            }
+          },
+          "expected": {
+            "category": "DENIED_AUTHORIZATION",
+            "code": "ACCESS_DENIED"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-05; RT01-04; D05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-FOREIGN-PARENT",
+        "record_metadata_sha256": "fc12029c967b2f2f752a3d0378f924fe548252ef844f9b5169ebf6267786a32b",
+        "record": {
+          "case_id": "N-FOREIGN-PARENT",
+          "domains": [
+            "F2-OBSERVATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "parent_match",
+          "input": {
+            "expected_domain": "F2-QUALIFICATION",
+            "supplied_domain": "SOURCE-BYTES",
+            "expected_revision": "v1",
+            "supplied_revision": "v1"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "FOREIGN_PARENT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-STALE-PARENT",
+        "record_metadata_sha256": "363c4ceb6fb04ab20594618fffbeaba8a62ceb6bcefcd3edc2ca89c88ada7385",
+        "record": {
+          "case_id": "N-STALE-PARENT",
+          "domains": [
+            "F2-OBSERVATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "parent_match",
+          "input": {
+            "expected_domain": "F2-QUALIFICATION",
+            "supplied_domain": "F2-QUALIFICATION",
+            "expected_revision": "v2",
+            "supplied_revision": "v1"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "STALE_PARENT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-UNREVIEWED-RESOURCE",
+        "record_metadata_sha256": "1a7e9db6768b3581faf47f7e1dd69ea6a1a5e09daaf4309a65b8c14ba7069251",
+        "record": {
+          "case_id": "N-UNREVIEWED-RESOURCE",
+          "domains": [
+            "F2-QUALIFICATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "resource_schema",
+          "input": {
+            "role": "TIMEZONE_RULES",
+            "schema": "UNREVIEWED_TEST_ONLY"
+          },
+          "expected": {
+            "category": "UNSUPPORTED_SCHEMA",
+            "code": "REF_UNAPPROVED_RESOURCE_SCHEMA"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-09; IF03-OD01-S1"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-DECISION-FUTURE-PRICE",
+        "record_metadata_sha256": "1af91dcab8c4219f777e69680d5a7fb4a5e5bb1d298534d0afcf76189a1d4d39",
+        "record": {
+          "case_id": "N-DECISION-FUTURE-PRICE",
+          "domains": [
+            "F5-DECISION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "decision_fields",
+          "input": {
+            "extra": "future_price"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "DECISION_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-09 F5-DECISION"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-DECISION-OUTCOME",
+        "record_metadata_sha256": "4ac3a57963fcf809410a32bf7b295e309c8258cd3a6fc215c3351c92d6fbe625",
+        "record": {
+          "case_id": "N-DECISION-OUTCOME",
+          "domains": [
+            "F5-DECISION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "decision_fields",
+          "input": {
+            "extra": "outcome_ref"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "DECISION_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-09 F5-DECISION"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-DECISION-LABEL",
+        "record_metadata_sha256": "a6fa6dc866ddff9940e30d0ebd8e31bbd528db594f097317c4ae16348e2ccee0",
+        "record": {
+          "case_id": "N-DECISION-LABEL",
+          "domains": [
+            "F5-DECISION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "decision_fields",
+          "input": {
+            "extra": "label_maturity"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "DECISION_FIELDS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-09 F5-DECISION"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-IMMATURE-OUTCOME",
+        "record_metadata_sha256": "148f141f716fd0b4418299cec5711752e5a9a72169d626fb4e5557a8e7ed1d2c",
+        "record": {
+          "case_id": "N-IMMATURE-OUTCOME",
+          "domains": [
+            "F5-EVALUATION"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "maturity",
+          "input": {
+            "available_at": "2027-02-06T18:00:00+08:00",
+            "evaluation_at": "2027-02-05T18:00:00+08:00"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "IMMATURE_OUTCOME"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-09 F5-EVALUATION"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-D06-ORIGINALS",
+        "record_metadata_sha256": "cf6258fdee96de479201fa76b8ad06d67b99d57199128070070cfb1dc4cadae2",
+        "record": {
+          "case_id": "N-D06-ORIGINALS",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "schedule",
+          "input": {
+            "mutation": "originals"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "ORIGINAL_INPUTS"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-04 PF038/AF009; AD01-09; D06-A"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-D06-PF038",
+        "record_metadata_sha256": "a115c603d59550848fdaf1a8265c0c9fc2529e92c860f0111132754e4082061c",
+        "record": {
+          "case_id": "N-D06-PF038",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "schedule",
+          "input": {
+            "mutation": "PF038"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "STALE_SCHEDULE_INPUT"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-04 PF038/AF009; AD01-09; D06-A"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-D06-AF009",
+        "record_metadata_sha256": "598084418948bb203ae7f18d8764c63339325dfb161c82eef45660ffffee9f6b",
+        "record": {
+          "case_id": "N-D06-AF009",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "schedule",
+          "input": {
+            "mutation": "AF009"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "AF009_POLICY_MISMATCH"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-04 PF038/AF009; AD01-09; D06-A"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "N-D06-SCHEDULE",
+        "record_metadata_sha256": "801cfce6b99d8b953865d82db839c26ee96cb676be0847869d20ae418ef95c09",
+        "record": {
+          "case_id": "N-D06-SCHEDULE",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "EXECUTABLE_REFUSAL",
+          "execution": "TEST_ONLY",
+          "operation": "schedule",
+          "input": {
+            "mutation": "schedule"
+          },
+          "expected": {
+            "category": "STRUCTURALLY_INVALID",
+            "code": "STALE_SEQUENCE_SCHEDULE"
+          },
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-04 PF038/AF009; AD01-09; D06-A"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      }
+    ],
+    "executed_relations": [
+      {
+        "case_id": "R-UNICODE",
+        "record_metadata_sha256": "bc3a03eab6ce3f924bfdc4e88d04832651b1051fdb96ad0279f5f23c3d8129e2",
+        "record": {
+          "case_id": "R-UNICODE",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "CONTRACT_RELATIONAL_ASSERTION",
+          "execution": "TEST_ONLY",
+          "operation": "unicode",
+          "input": {
+            "nfc_hex": "22c3a922",
+            "nfd_hex": "2265cc8122"
+          },
+          "expected": "DISTINCT_SCALAR_BYTES",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-01; AD01-08"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "R-RAW-MUTATION",
+        "record_metadata_sha256": "66218cce8c7c263faf6f36c4722cd207bbcf220246f9566de7cde266fd524c1d",
+        "record": {
+          "case_id": "R-RAW-MUTATION",
+          "domains": [
+            "SOURCE-BYTES"
+          ],
+          "status": "CONTRACT_RELATIONAL_ASSERTION",
+          "execution": "TEST_ONLY",
+          "operation": "raw_mutation",
+          "input": {
+            "base": "B02",
+            "replacement_hex": "42"
+          },
+          "expected": "DIFFERENT_PREIMAGE_AND_FRAME",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-09 SOURCE-BYTES"
+            }
+          ],
+          "note": "Mutation of A to B; no new positive Golden digest stored or issued."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "R-FOUR-CUTOFFS",
+        "record_metadata_sha256": "8ed61e21f7e16aa5498c61e0ba19b7e2988411e3952a863231b70ddb9d9ec5dc",
+        "record": {
+          "case_id": "R-FOUR-CUTOFFS",
+          "domains": [
+            "F2-QUALIFICATION",
+            "F2-OBSERVATION",
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "CONTRACT_RELATIONAL_ASSERTION",
+          "execution": "TEST_ONLY",
+          "operation": "weekly",
+          "input": {
+            "cutoffs": [
+              "2027-01-07T18:00:00+08:00",
+              "2027-01-15T18:00:00+08:00",
+              "2027-01-29T18:00:00+08:00",
+              "2027-02-05T18:00:00+08:00"
+            ],
+            "selected": [
+              "D1",
+              "D2",
+              "D2",
+              "D3"
+            ],
+            "a04": [
+              140,
+              150,
+              150,
+              130
+            ],
+            "a05": [
+              "0.714286",
+              "0.733333",
+              "0.733333",
+              "0.692308"
+            ],
+            "no_session_week": "2027-W03",
+            "source_packet": {
+              "path": "tests/unit/mvp_f2/data/derived_observations_v0.1.json",
+              "raw_body_pointer": "/sources/{index}/raw/utf8",
+              "raw_pin_pointer": "/sources/{index}/raw",
+              "publication_pointer": "/sources/{index}/source/request/attempts/0/supplied/proof_candidate/timestamp",
+              "tag_order": [
+                "O",
+                "N",
+                "D1",
+                "D2",
+                "D3",
+                "N12",
+                "N23"
+              ]
+            }
+          },
+          "expected": "DIAGNOSTIC_DECLARATIONS_ONLY",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "CAN-03/09; AD01-04; RT01-04"
+            },
+            {
+              "path": "docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md",
+              "clause": "ADOPT-01 P1-03 bounded WU04 illustration; RATIFY-01"
+            }
+          ],
+          "note": "Offset arithmetic and source-declaration cross-check; no Native execution or zone-rule attestation."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "R-D06-CONSISTENT",
+        "record_metadata_sha256": "6979cb40e9eca21c8aea3607f5b8278546eaed30cd2a6f4de84ef2647f95bc60",
+        "record": {
+          "case_id": "R-D06-CONSISTENT",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "CONTRACT_RELATIONAL_ASSERTION",
+          "execution": "TEST_ONLY",
+          "operation": "schedule",
+          "input": {
+            "mutation": null
+          },
+          "expected": "NOT_SUPPLIED",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-04 PF038/AF009; D06-A"
+            }
+          ],
+          "note": "Hypothetical declarations agree; actual issued resources still absent."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "R-D06-POLICY-CHANGE",
+        "record_metadata_sha256": "e24c4626395f0e8553777811c2588dea62fb1908d90d4eb2c16e46044c3d5c9a",
+        "record": {
+          "case_id": "R-D06-POLICY-CHANGE",
+          "domains": [
+            "TEMPORAL-SEQUENCE"
+          ],
+          "status": "CONTRACT_RELATIONAL_ASSERTION",
+          "execution": "TEST_ONLY",
+          "operation": "policy_change",
+          "input": {},
+          "expected": "DEPENDENCY_PREIMAGE_DIFFERS",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-04 PF038/AF009; D06-A"
+            }
+          ],
+          "note": "Full policy ref alteration changes ScheduleInput declaration. No digest/issued Sequence inferred."
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      },
+      {
+        "case_id": "R-EVIDENCE-DIRECTION",
+        "record_metadata_sha256": "7ea43ae1ddf9a846922879e4299a2ac93a7ba52ea89bb7ccc1268934c8793aa7",
+        "record": {
+          "case_id": "R-EVIDENCE-DIRECTION",
+          "domains": [
+            "EVIDENCE"
+          ],
+          "status": "CONTRACT_RELATIONAL_ASSERTION",
+          "execution": "TEST_ONLY",
+          "operation": "graph",
+          "input": {
+            "nodes": {
+              "e": {
+                "kind": "EVIDENCE",
+                "parents": [
+                  "s"
+                ]
+              },
+              "s": {
+                "kind": "SOURCE",
+                "parents": []
+              }
+            },
+            "root": "e"
+          },
+          "expected": "ACYCLIC_SYMBOLIC_ONLY",
+          "source_clause": [
+            {
+              "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+              "clause": "AD01-07.CAN-05"
+            }
+          ],
+          "note": ""
+        },
+        "review_basis": "ORACLE02_INDEPENDENT_REVIEW"
+      }
+    ]
+  },
+  "excluded": [
+    {
+      "case_id": "R-REDACTION",
+      "record_metadata_sha256": "0549f907505ae01cc96489a3ad6b4b4d3d2ab235f10606f6b10efd8052b07cbb",
+      "record_status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "DOCUMENTARY_NOT_EXECUTED"
+    },
+    {
+      "case_id": "R-ATTEMPT-SEPARATION",
+      "record_metadata_sha256": "ae14e31720f077354b90a330799457d518fa7afc56deb14297ef4f732a353507",
+      "record_status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "DOCUMENTARY_NOT_EXECUTED"
+    },
+    {
+      "case_id": "R-DECISION-EVALUATION",
+      "record_metadata_sha256": "fd7876b9c9a6fa50cce493c79b21dbffc167668892db9c3bb5e610f3a0daadbc",
+      "record_status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "DOCUMENTARY_NOT_EXECUTED"
+    },
+    {
+      "case_id": "P2-DEPTH-64",
+      "record_metadata_sha256": "9315886046844136a0565e02d4e3d40fefa72fa283253aa09b35c105818cf06c",
+      "record_status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "PENDING_OWNER_BOUNDARY_DECISION"
+    },
+    {
+      "case_id": "P2-DEPTH-65",
+      "record_metadata_sha256": "56c9d6258a419477ded4bc8a0722a3b5ea258e4f7197b5049121ac49765b0276",
+      "record_status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "PENDING_OWNER_BOUNDARY_DECISION"
+    },
+    {
+      "case_id": "BLO-01",
+      "record_metadata_sha256": "e44fecf913b5fbede35788ab538b97153651718f76ce824d4755ffd0779faad8",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-02",
+      "record_metadata_sha256": "b5e5b6516a26f14179a5bdd41c0c6e4bd1fc2967a001d63b6372def2641b1dcd",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-03",
+      "record_metadata_sha256": "7ff08ca88ca254c6425c5d41c7c6c771db857b068c468277e0580064767d551e",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-04",
+      "record_metadata_sha256": "646766718d9256f2fd258b0516ca5689e8296d2bc3747ef6bc1f3af03ad56b88",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-05",
+      "record_metadata_sha256": "93afbc4f8906a399344abf93dc9f0dfdcb8f4ead898720ce19c3e819c74ff10a",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-06",
+      "record_metadata_sha256": "a321b1c6a6f06908205318d4914dd7658cbdd14db4640865fb83f9f732e5f5c7",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-07",
+      "record_metadata_sha256": "e751b93eb5075886e1420fec1b94bd2af569e0236b43e3d62f7fbe640a886e52",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-08",
+      "record_metadata_sha256": "16222ce51d28e8aa5ae23335a4c92d1d9ad9437c6371decf2f82d622439b1599",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-09",
+      "record_metadata_sha256": "149184e7790e18af77c71cba2946baf9aec70ddb3648df6323ca3fed99dda577",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "BLO-TIME",
+      "record_metadata_sha256": "d70f06a6d706950fe9cbf9e11c10360ec0dd1e3ec810655be15c4a75c9e0694b",
+      "record_status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    {
+      "case_id": "DEFER-GATES",
+      "record_metadata_sha256": "d09f5f7304e2ab77af933e5b2d7e293b4a8176701d7070b78436ea5e3356d7d5",
+      "record_status": "DEFERRED_SEPARATE_OWNER",
+      "execution": "NOT_EXECUTED",
+      "freeze_treatment": "EXCLUDED",
+      "reason": "DEFERRED_SEPARATE_OWNER"
+    }
+  ],
+  "boundaries": {
+    "scope_flags": {
+      "diagnostic_only": true,
+      "admission_eligible": false,
+      "trust": "NOT_TRUSTED_PIT_EVIDENCE",
+      "source_authentication": "NOT_ESTABLISHED",
+      "disposition": "INTEGRATED_PROVISIONAL"
+    },
+    "depth_boundary": "PENDING_OWNER_BOUNDARY_DECISION; P2-DEPTH-64/65 conditional and excluded.",
+    "historical_search_deviation": "Previously disclosed ORACLE-01 ancestor filename search remains operational P2; no repetition or investigation of protected roots in this materialization.",
+    "author_reference_predicate_limitation": "The pinned author helper broadly flags a top-level reference key. That implementation shortcut is not a frozen production rule: production must distinguish recognizable forbidden own-envelope inclusion from an unrelated unknown field. Only the exact corrected N-OWN-ENVELOPE digest claim and the separate N-UNKNOWN extra-field requirement are included.",
+    "production_codec": "NOT_IMPLEMENTED_NOT_RUN",
+    "reference_and_resource_issuance": "NOT_AUTHORIZED_NOT_RUN",
+    "native_channel_a_and_production_channel_b": "NOT_RUN_NOT_ACCEPTED",
+    "if04_if05_if07_f3_f5_typescript_services_formal": "OUT_OF_SCOPE_NOT_ACCEPTED",
+    "git_integration": "NOT_STAGED_NOT_COMMITTED_NOT_PUSHED_PENDING_OWNER_AND_INDEPENDENT_INTEGRATION_REVIEW"
+  },
+  "outstanding_blockers": [
+    "Independent integration review and later Owner clean-commit integration/Hosted CI; full make check not claimed while dirty.",
+    "Depth root/array convention requires explicit Owner boundary decision; documentary/blocked/deferred records are not promoted.",
+    "Actual reviewed timezone/source/Origin/Manifest/Version/History/Coverage and semantic resources/rights remain absent.",
+    "Original actual Native Attempt plus mandatory semantic NATIVE_RECEIPT/correspondence witness, issued versioned ScheduleInput and full D06 path remain required.",
+    "F3/F5 owned method/protocol/horizon/maturity/action/price/cost/outcome declarations and actual operations; separate IF04/05/07 and genuine Channel A/B gates."
+  ],
+  "revision_policy": "Immutable-intent versioned overlay. Future semantic changes require a new independently reviewed version retaining prior bytes; never rewrite expected data to make a Codec pass. Manifest self-hash is external."
+}
