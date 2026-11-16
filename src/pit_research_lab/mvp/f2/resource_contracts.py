@@ -16,16 +16,18 @@ from typing import Any, Literal, cast
 from pit_research_lab.domain.contracts import ContractError, int64
 from pit_research_lab.domain.ratio import NUMERICAL_POLICY, FixedRatio
 
-ROLES = tuple((
-    "CALENDAR TEMPORAL_CONFIGURATION DECISION_SCHEDULE MANIFEST SOURCE_VERSION_HISTORY "
-    "SOURCE_VERSION COVERAGE SEMANTIC_TRACE NATIVE_RECEIPT SEMANTIC_EVIDENCE "
-    "OBSERVATION_RELEASE_POLICY OBSERVATION_RELEASE_RECEIPT AUDIT_ACCESS_POLICY "
-    "READER_CAPABILITY_POLICY ASSOCIATION_PROTOCOL EXPERIMENT_ASSOCIATION AUTHOR_RECORD "
-    "OWNER_DECISION METHOD HYPOTHESIS PROTOCOL HORIZON_MATURITY EVALUATION_PLAN POLICY "
-    "EXECUTION_RULES EVALUATION_PROTOCOL POLICY_EVALUATION_PROTOCOL OUTCOME PRICE NUMERIC_POLICY "
-    "TIMEZONE_RULES PROJECTION_POLICY SOURCE_TEXT ORIGIN RESULT_METRIC LIMITATION ACTION "
-    "SCHEDULE_INVARIANT_POLICY SOURCE_CADENCE STATE"
-).split())
+ROLES = tuple(
+    (
+        "CALENDAR TEMPORAL_CONFIGURATION DECISION_SCHEDULE MANIFEST SOURCE_VERSION_HISTORY "
+        "SOURCE_VERSION COVERAGE SEMANTIC_TRACE NATIVE_RECEIPT SEMANTIC_EVIDENCE "
+        "OBSERVATION_RELEASE_POLICY OBSERVATION_RELEASE_RECEIPT AUDIT_ACCESS_POLICY "
+        "READER_CAPABILITY_POLICY ASSOCIATION_PROTOCOL EXPERIMENT_ASSOCIATION AUTHOR_RECORD "
+        "OWNER_DECISION METHOD HYPOTHESIS PROTOCOL HORIZON_MATURITY EVALUATION_PLAN POLICY "
+        "EXECUTION_RULES EVALUATION_PROTOCOL POLICY_EVALUATION_PROTOCOL OUTCOME PRICE NUMERIC_POLICY "
+        "TIMEZONE_RULES PROJECTION_POLICY SOURCE_TEXT ORIGIN RESULT_METRIC LIMITATION ACTION "
+        "SCHEDULE_INVARIANT_POLICY SOURCE_CADENCE STATE"
+    ).split()
+)
 REQUIRED = frozenset(
     "CALENDAR TEMPORAL_CONFIGURATION DECISION_SCHEDULE MANIFEST SOURCE_VERSION_HISTORY "
     "SOURCE_VERSION COVERAGE SEMANTIC_TRACE NATIVE_RECEIPT OBSERVATION_RELEASE_POLICY "
@@ -127,8 +129,10 @@ def tagged_integer(value: object, signed: bool = False) -> int:
     d = closed(value, "type value")
     literal("int64" if signed else "uint64")(d["type"])
     spelling = text(d["value"], 21)
-    require(re.fullmatch(r"0|-?[1-9][0-9]*" if signed else r"0|[1-9][0-9]*", spelling)
-            is not None, "INTEGER_SPELLING")
+    require(
+        re.fullmatch(r"0|-?[1-9][0-9]*" if signed else r"0|[1-9][0-9]*", spelling) is not None,
+        "INTEGER_SPELLING",
+    )
     number = int(spelling)
     require(-(2**63) <= number < 2**63 if signed else 0 <= number < 2**64, "INTEGER_RANGE")
     return number
@@ -151,8 +155,11 @@ class ParentCore:
 
 
 def parent(value: object, domain: str = "SOURCE-BYTES") -> ParentCore:
-    d = closed(value, "domain_tag object_schema_version canonical_profile_version "
-               "digest_algorithm canonical_payload_byte_length digest_hex")
+    d = closed(
+        value,
+        "domain_tag object_schema_version canonical_profile_version "
+        "digest_algorithm canonical_payload_byte_length digest_hex",
+    )
     require(domain in DOMAINS, "UNSUPPORTED_DOMAIN")
     literal("PITLAB/ACADEMIC/" + domain + "/candidate-v0.1")(d["domain_tag"])
     literal(DOMAINS[domain])(d["object_schema_version"])
@@ -175,8 +182,12 @@ def resource(value: object, *kinds: str) -> ResourceKey:
     d = closed(value, "resource_kind resource_version resource_schema content_ref")
     kind = text(d["resource_kind"], 128)
     require(kind in ROLES and (not kinds or kind in kinds), "RESOURCE_KIND")
-    return ResourceKey(kind, text(d["resource_version"], 128),
-                       text(d["resource_schema"], 128), parent(d["content_ref"]))
+    return ResourceKey(
+        kind,
+        text(d["resource_version"], 128),
+        text(d["resource_schema"], 128),
+        parent(d["content_ref"]),
+    )
 
 
 def ref(*kinds: str) -> Callable[[object], ResourceKey]:
@@ -193,8 +204,12 @@ def code_pin(value: object) -> None:
     d = closed(value, "role path byte_length sha256 semantic_version")
     text(d["role"], 128)
     path = text(d["path"])
-    require(not path.startswith("/") and "\\" not in path
-            and all(p not in ("", ".", "..") for p in path.split("/")), "CODE_PATH")
+    require(
+        not path.startswith("/")
+        and "\\" not in path
+        and all(p not in ("", ".", "..") for p in path.split("/")),
+        "CODE_PATH",
+    )
     tagged_integer(d["byte_length"])
     hex64(d["sha256"])
     text(d["semantic_version"], 128)
@@ -208,8 +223,11 @@ def flags(value: object) -> None:
 
 def scope(value: object) -> None:
     d = closed(value, "data_mode pit_status evidence_class scope_flags")
-    for key, val in (("data_mode", "SYNTHETIC_GOLDEN"), ("pit_status", "UNRESOLVED"),
-                     ("evidence_class", "UNVERIFIED")):
+    for key, val in (
+        ("data_mode", "SYNTHETIC_GOLDEN"),
+        ("pit_status", "UNRESOLVED"),
+        ("evidence_class", "UNVERIFIED"),
+    ):
         literal(val)(d[key])
     flags(d["scope_flags"])
 
@@ -255,8 +273,11 @@ def fact(value: object, known: Callable[[object], object]) -> None:
 def declared_taipei(value: object) -> datetime:
     """Explicit +08 declaration arithmetic; no named-zone/rule attestation."""
     raw = text(value, 25)
-    require(re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+08:00", raw)
-            is not None, "TIME_REPRESENTATION")
+    require(
+        re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+08:00", raw)
+        is not None,
+        "TIME_REPRESENTATION",
+    )
     try:
         return datetime.fromisoformat(raw).astimezone(UTC)
     except (ValueError, OverflowError) as exc:
@@ -265,14 +286,18 @@ def declared_taipei(value: object) -> datetime:
 
 def time_record(value: object) -> datetime:
     """Check declared offset arithmetic only. This does NOT validate named-zone rules."""
-    d = closed(value, "source_text timezone_name offset precision origin_ref "
-               "utc_comparison timezone_rules_ref")
+    d = closed(
+        value,
+        "source_text timezone_name offset precision origin_ref utc_comparison timezone_rules_ref",
+    )
     literal("Asia/Taipei")(d["timezone_name"])
     literal("+08:00")(d["offset"])
     literal("SECOND")(d["precision"])
     instant = declared_taipei(d["source_text"])
-    require(d["utc_comparison"] == instant.isoformat(timespec="seconds").replace("+00:00", "Z"),
-            "UTC_CONTRADICTION")
+    require(
+        d["utc_comparison"] == instant.isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "UTC_CONTRADICTION",
+    )
     resource(d["origin_ref"], "ORIGIN")
     resource(d["timezone_rules_ref"], "TIMEZONE_RULES")
     return instant
@@ -308,8 +333,11 @@ def fixed_ratio(value: object) -> FixedRatio:
     literal("FRACTION")(d["unit"])
     require(tagged_integer(d["scale"]) == 6, "RATIO_SCALE")
     try:
-        return FixedRatio(tagged_integer(d["scaled_units"]), text(d["decimal_text"]),
-                          numerical_policy=NUMERICAL_POLICY)
+        return FixedRatio(
+            tagged_integer(d["scaled_units"]),
+            text(d["decimal_text"]),
+            numerical_policy=NUMERICAL_POLICY,
+        )
     except ContractError as exc:
         raise ResourceError("INVALID_FIXED_RATIO") from exc
 
@@ -329,8 +357,9 @@ def strict_json(raw: bytes) -> dict[str, Any]:
         raise ResourceError("NONFINITE_NUMBER")
 
     try:
-        result = json.loads(raw.decode("utf-8"), object_pairs_hook=pairs,
-                            parse_constant=bad_constant)
+        result = json.loads(
+            raw.decode("utf-8"), object_pairs_hook=pairs, parse_constant=bad_constant
+        )
     except (ValueError, UnicodeError, RecursionError) as exc:
         if isinstance(exc, ResourceError):
             raise

@@ -48,8 +48,12 @@ class GrantDeclaration:
     original_evidence: bytes
 
 
-def authorization_check(request: AccessRequest, grant: GrantDeclaration | None,
-                        now: datetime, operation_receipt: bytes | None = None) -> Check:
+def authorization_check(
+    request: AccessRequest,
+    grant: GrantDeclaration | None,
+    now: datetime,
+    operation_receipt: bytes | None = None,
+) -> Check:
     """Compare all target/context/action axes and fail closed on missing verifier.
 
     Even a perfectly matching test declaration/receipt cannot pass the unissued
@@ -80,6 +84,7 @@ def safe_observation_structure(value: object) -> None:
     parent(d["qualification_ref"], "F2-QUALIFICATION")
     flags(d["scope_flags"])
     require(d["unit"] in ("NTD_thousands", "FRACTION"), "UNIT")
+
     def known(v: object) -> None:
         if d["unit"] == "NTD_thousands":
             revenue(v, d["unit"])
