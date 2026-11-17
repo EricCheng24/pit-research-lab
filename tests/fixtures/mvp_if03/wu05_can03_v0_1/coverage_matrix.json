@@ -1,0 +1,3607 @@
+{
+  "format": "WU05_CAN03_DIAGNOSTIC_COVERAGE_v0.1",
+  "baseline": "d861b6f6c0447b2fbd25b7f58beba65163b00b25",
+  "source_ledger_sha256": "c437c9f30cb7588f8d2e8703c6d37a5a81443077a3336abf24a9c87b4a634b1d",
+  "source_freeze_sha256": "9099a4faede3c893ec57dc936d33741b1c6a1ac5b8b6f612d56219808d4a73b1",
+  "prior_claimed_scoped_count": 61,
+  "prior_scope_definition_sources": [
+    "tests/unit/mvp_f2/test_wu05_can01_codec.py#CORE_IDS",
+    "tests/unit/mvp_f2/test_wu05_can02_references.py#FROZEN_IDS",
+    "tests/unit/mvp_f2/test_wu05_can02_graph.py#FROZEN_IDS"
+  ],
+  "scope": "Author observations only; 61 narrow scoped matches plus six test-only diagnostics; no issuance, independent signoff, Native replay, semantic approval or PIT. Reproduce with CAN03 tests; original source metadata unchanged.",
+  "cases": {
+    "B01": {
+      "case_id": "B01",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "execution": "TEST_ONLY",
+      "operation": "frozen",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "EXACT_STORED_BYTES",
+      "origin_partition": "complete_positives",
+      "record_metadata_sha256": "19155bf9ebb5746154b3d4d9ddacf6b58c9b76df9a243615affc6a52ddea5520",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/0",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate; canonical_codec.verify_source_frame; canonical_codec.verify_source_bytes_candidate",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "EXACT_STORED_BYTES",
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BYTE_EXACT_CONFORMANCE",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/B01",
+      "implemented_scope": "Full literal raw/payload/frame/digest bytes and all six envelope fields matched; independent stdlib derivation.",
+      "limitations": "CONTENT_INTEGRITY_ONLY; no authentication/issuance/rights/Native/PIT.",
+      "golden_expected_frame_sha256": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686",
+      "golden_evidence": {
+        "expected_envelope": {
+          "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+          "object_schema_version": "source-bytes-candidate-v0.1",
+          "canonical_profile_version": "typed-json-candidate-v0.1",
+          "digest_algorithm": "SHA-256",
+          "canonical_payload_byte_length": {
+            "type": "uint64",
+            "value": "187"
+          },
+          "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+        },
+        "raw_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "archive_expected_record": {
+          "member": "vectors/B01/expected.json",
+          "byte_length": 6973,
+          "sha256": "8060066a6bcc51e73d6a9b19a0ea9e98b69f5a4101140df5ab927229afbc1946"
+        },
+        "artifacts": [
+          {
+            "name": "canonical_payload.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/canonical_payload.bin",
+              "byte_length": 187,
+              "sha256": "a3f5df22cfd788ed92d3613856eea7ed4c507642976f63228204124d5795a69d",
+              "git_blob_sha1": "45d26d99144806cbedc67fe72685f361bacad75d"
+            },
+            "archive_member": "vectors/B01/canonical_payload.bin"
+          },
+          {
+            "name": "frame.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/frame.bin",
+              "byte_length": 281,
+              "sha256": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686",
+              "git_blob_sha1": "d8674c0314de2417f0399daf0a644d14631bedeb"
+            },
+            "archive_member": "vectors/B01/frame.bin"
+          },
+          {
+            "name": "raw_body.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B01/raw_body.bin",
+              "byte_length": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            "archive_member": "vectors/B01/raw_body.bin"
+          }
+        ]
+      }
+    },
+    "B02": {
+      "case_id": "B02",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "execution": "TEST_ONLY",
+      "operation": "frozen",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "EXACT_STORED_BYTES",
+      "origin_partition": "complete_positives",
+      "record_metadata_sha256": "83f739b3fe60836c8af722881bccc387a534da325c1cf472e7d3aff55c648f93",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/1",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate; canonical_codec.verify_source_frame; canonical_codec.verify_source_bytes_candidate",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "EXACT_STORED_BYTES",
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BYTE_EXACT_CONFORMANCE",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/B02",
+      "implemented_scope": "Full literal raw/payload/frame/digest bytes and all six envelope fields matched; independent stdlib derivation.",
+      "limitations": "CONTENT_INTEGRITY_ONLY; no authentication/issuance/rights/Native/PIT.",
+      "golden_expected_frame_sha256": "11bb5c86b5c41d57b1fde3e55bb766b529bb4afe2a439a1a3a7fee8875f8cf5f",
+      "golden_evidence": {
+        "expected_envelope": {
+          "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+          "object_schema_version": "source-bytes-candidate-v0.1",
+          "canonical_profile_version": "typed-json-candidate-v0.1",
+          "digest_algorithm": "SHA-256",
+          "canonical_payload_byte_length": {
+            "type": "uint64",
+            "value": "187"
+          },
+          "digest_hex": "11bb5c86b5c41d57b1fde3e55bb766b529bb4afe2a439a1a3a7fee8875f8cf5f"
+        },
+        "raw_body_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+        "archive_expected_record": {
+          "member": "vectors/B02/expected.json",
+          "byte_length": 6866,
+          "sha256": "64eca291844017748cc085b0547dc70084167d386e7190b41eb4fd416e81474e"
+        },
+        "artifacts": [
+          {
+            "name": "canonical_payload.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/canonical_payload.bin",
+              "byte_length": 187,
+              "sha256": "a7b661617f0c88bb96affb2f2aa24a36abaf1de1c119549b413adfc4377b6edf",
+              "git_blob_sha1": "5c0740208254d2bb0d69fed1c4a01f7c44800185"
+            },
+            "archive_member": "vectors/B02/canonical_payload.bin"
+          },
+          {
+            "name": "frame.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/frame.bin",
+              "byte_length": 281,
+              "sha256": "11bb5c86b5c41d57b1fde3e55bb766b529bb4afe2a439a1a3a7fee8875f8cf5f",
+              "git_blob_sha1": "e854f6190a19bfbb1c05c6c90725dd4c95ca55ef"
+            },
+            "archive_member": "vectors/B02/frame.bin"
+          },
+          {
+            "name": "raw_body.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B02/raw_body.bin",
+              "byte_length": 1,
+              "sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+              "git_blob_sha1": "8c7e5a667f1b771847fe88c01c3de34413a1b220"
+            },
+            "archive_member": "vectors/B02/raw_body.bin"
+          }
+        ]
+      }
+    },
+    "B03": {
+      "case_id": "B03",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "execution": "TEST_ONLY",
+      "operation": "frozen",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "EXACT_STORED_BYTES",
+      "origin_partition": "complete_positives",
+      "record_metadata_sha256": "daa9c6d409d2c2c759ed8ef5aeb527aab0c1441f19ccc18027660e26566bbe82",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/2",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate; canonical_codec.verify_source_frame; canonical_codec.verify_source_bytes_candidate",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "EXACT_STORED_BYTES",
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BYTE_EXACT_CONFORMANCE",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/B03",
+      "implemented_scope": "Full literal raw/payload/frame/digest bytes and all six envelope fields matched; independent stdlib derivation.",
+      "limitations": "CONTENT_INTEGRITY_ONLY; no authentication/issuance/rights/Native/PIT.",
+      "golden_expected_frame_sha256": "be5b9bbb19b6a656803fc7ba81996f91446d1fd377e451e60767625b98cfac3d",
+      "golden_evidence": {
+        "expected_envelope": {
+          "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+          "object_schema_version": "source-bytes-candidate-v0.1",
+          "canonical_profile_version": "typed-json-candidate-v0.1",
+          "digest_algorithm": "SHA-256",
+          "canonical_payload_byte_length": {
+            "type": "uint64",
+            "value": "187"
+          },
+          "digest_hex": "be5b9bbb19b6a656803fc7ba81996f91446d1fd377e451e60767625b98cfac3d"
+        },
+        "raw_body_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "archive_expected_record": {
+          "member": "vectors/B03/expected.json",
+          "byte_length": 6874,
+          "sha256": "37863b35e4047ef82b470b1a7cbb838512cf5d1bcd1fb01b359149df65c56d61"
+        },
+        "artifacts": [
+          {
+            "name": "canonical_payload.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/canonical_payload.bin",
+              "byte_length": 187,
+              "sha256": "ae6d00e2053c7ef78e0a56008b65dd3a367246233c833651e55b30b16f12e9cf",
+              "git_blob_sha1": "98b8aaecded36123f6474a87f74d833d1cc12059"
+            },
+            "archive_member": "vectors/B03/canonical_payload.bin"
+          },
+          {
+            "name": "frame.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/frame.bin",
+              "byte_length": 281,
+              "sha256": "be5b9bbb19b6a656803fc7ba81996f91446d1fd377e451e60767625b98cfac3d",
+              "git_blob_sha1": "355c4ab399902914d5fbcdc19a727fb140daf875"
+            },
+            "archive_member": "vectors/B03/frame.bin"
+          },
+          {
+            "name": "raw_body.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B03/raw_body.bin",
+              "byte_length": 1,
+              "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+              "git_blob_sha1": "f76dd238ade08917e6712764a16a22005a50573d"
+            },
+            "archive_member": "vectors/B03/raw_body.bin"
+          }
+        ]
+      }
+    },
+    "B04": {
+      "case_id": "B04",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "execution": "TEST_ONLY",
+      "operation": "frozen",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "EXACT_STORED_BYTES",
+      "origin_partition": "complete_positives",
+      "record_metadata_sha256": "f7873d9604cf1eb14cfba10c7f27debf94e27cffba2b02de46d249812b14f183",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/3",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate; canonical_codec.verify_source_frame; canonical_codec.verify_source_bytes_candidate",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "EXACT_STORED_BYTES",
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BYTE_EXACT_CONFORMANCE",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/B04",
+      "implemented_scope": "Full literal raw/payload/frame/digest bytes and all six envelope fields matched; independent stdlib derivation.",
+      "limitations": "CONTENT_INTEGRITY_ONLY; no authentication/issuance/rights/Native/PIT.",
+      "golden_expected_frame_sha256": "af2c85ddf4d4bc4c271c15e2806f367e07287c1d6a35ae992f3d3e4d3752ed61",
+      "golden_evidence": {
+        "expected_envelope": {
+          "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+          "object_schema_version": "source-bytes-candidate-v0.1",
+          "canonical_profile_version": "typed-json-candidate-v0.1",
+          "digest_algorithm": "SHA-256",
+          "canonical_payload_byte_length": {
+            "type": "uint64",
+            "value": "187"
+          },
+          "digest_hex": "af2c85ddf4d4bc4c271c15e2806f367e07287c1d6a35ae992f3d3e4d3752ed61"
+        },
+        "raw_body_sha256": "4a99557e4033c3539de2eb65472017cad5f9557f7a0625a09f1c3f6e2ba69c4c",
+        "archive_expected_record": {
+          "member": "vectors/B04/expected.json",
+          "byte_length": 6891,
+          "sha256": "24d089cd3f02431ca7641f24d8b150ce78e4ffe62caf43492baa468bf0b501e8"
+        },
+        "artifacts": [
+          {
+            "name": "canonical_payload.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/canonical_payload.bin",
+              "byte_length": 187,
+              "sha256": "c359c48c7bd02d494e92d82af6e0d8526351940a85f9197163907e2b938725df",
+              "git_blob_sha1": "4e25d0bea0f0dcf7cf6d8ae1b1c9343d531e918f"
+            },
+            "archive_member": "vectors/B04/canonical_payload.bin"
+          },
+          {
+            "name": "frame.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/frame.bin",
+              "byte_length": 281,
+              "sha256": "af2c85ddf4d4bc4c271c15e2806f367e07287c1d6a35ae992f3d3e4d3752ed61",
+              "git_blob_sha1": "260d6788e8809a3ce0d595cd7f50c5675f0f997e"
+            },
+            "archive_member": "vectors/B04/frame.bin"
+          },
+          {
+            "name": "raw_body.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B04/raw_body.bin",
+              "byte_length": 2,
+              "sha256": "4a99557e4033c3539de2eb65472017cad5f9557f7a0625a09f1c3f6e2ba69c4c",
+              "git_blob_sha1": "4b04fff51468d8ab5201ab02b725dc477bc7cb45"
+            },
+            "archive_member": "vectors/B04/raw_body.bin"
+          }
+        ]
+      }
+    },
+    "B05": {
+      "case_id": "B05",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "execution": "TEST_ONLY",
+      "operation": "frozen",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "EXACT_STORED_BYTES",
+      "origin_partition": "complete_positives",
+      "record_metadata_sha256": "97389ba18283bc082355dfb233434f3a26b757ba2503610599d8df080e32f5d5",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/4",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate; canonical_codec.verify_source_frame; canonical_codec.verify_source_bytes_candidate",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "EXACT_STORED_BYTES",
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BYTE_EXACT_CONFORMANCE",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/B05",
+      "implemented_scope": "Full literal raw/payload/frame/digest bytes and all six envelope fields matched; independent stdlib derivation.",
+      "limitations": "CONTENT_INTEGRITY_ONLY; no authentication/issuance/rights/Native/PIT.",
+      "golden_expected_frame_sha256": "cb8bdd239329aa1d95308a88e36583c2285027c26a7711a89f9dab077886a387",
+      "golden_evidence": {
+        "expected_envelope": {
+          "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+          "object_schema_version": "source-bytes-candidate-v0.1",
+          "canonical_profile_version": "typed-json-candidate-v0.1",
+          "digest_algorithm": "SHA-256",
+          "canonical_payload_byte_length": {
+            "type": "uint64",
+            "value": "187"
+          },
+          "digest_hex": "cb8bdd239329aa1d95308a88e36583c2285027c26a7711a89f9dab077886a387"
+        },
+        "raw_body_sha256": "bf12767b0f2a56b2190075bae8169f656e3ce8d6357d4aff184bc6c7ea48f9f6",
+        "archive_expected_record": {
+          "member": "vectors/B05/expected.json",
+          "byte_length": 6900,
+          "sha256": "756dc447823ac580fadd1d157064a5e7d19491ffeb92c3b4ad59d1d10692eb3b"
+        },
+        "artifacts": [
+          {
+            "name": "canonical_payload.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/canonical_payload.bin",
+              "byte_length": 187,
+              "sha256": "2a063985319809595f53a974a77ef43ec7f38581fa10bc42a97c974e6a0e73f0",
+              "git_blob_sha1": "a21cd26741ed21a918a4e440eb5aee298f5a31c5"
+            },
+            "archive_member": "vectors/B05/canonical_payload.bin"
+          },
+          {
+            "name": "frame.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/frame.bin",
+              "byte_length": 281,
+              "sha256": "cb8bdd239329aa1d95308a88e36583c2285027c26a7711a89f9dab077886a387",
+              "git_blob_sha1": "af8238cd8d3a0c3fa7fa11a9d71c642863744b09"
+            },
+            "archive_member": "vectors/B05/frame.bin"
+          },
+          {
+            "name": "raw_body.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B05/raw_body.bin",
+              "byte_length": 3,
+              "sha256": "bf12767b0f2a56b2190075bae8169f656e3ce8d6357d4aff184bc6c7ea48f9f6",
+              "git_blob_sha1": "1f45813cd0ebc79dc1c9d58307ed2685a8f7a962"
+            },
+            "archive_member": "vectors/B05/raw_body.bin"
+          }
+        ]
+      }
+    },
+    "B06": {
+      "case_id": "B06",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "execution": "TEST_ONLY",
+      "operation": "frozen",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "EXACT_STORED_BYTES",
+      "origin_partition": "complete_positives",
+      "record_metadata_sha256": "ff50bd10490690bfa835bc2400c7f37fe731b4e83d5e93205c98f8fa9afaef80",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/5",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate; canonical_codec.verify_source_frame; canonical_codec.verify_source_bytes_candidate",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "EXACT_STORED_BYTES",
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BYTE_EXACT_CONFORMANCE",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/B06",
+      "implemented_scope": "Full literal raw/payload/frame/digest bytes and all six envelope fields matched; independent stdlib derivation.",
+      "limitations": "CONTENT_INTEGRITY_ONLY; no authentication/issuance/rights/Native/PIT.",
+      "golden_expected_frame_sha256": "55daae37a193963e214e9a67415fe8c17eecafea0b13e54919b774f05d991970",
+      "golden_evidence": {
+        "expected_envelope": {
+          "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+          "object_schema_version": "source-bytes-candidate-v0.1",
+          "canonical_profile_version": "typed-json-candidate-v0.1",
+          "digest_algorithm": "SHA-256",
+          "canonical_payload_byte_length": {
+            "type": "uint64",
+            "value": "187"
+          },
+          "digest_hex": "55daae37a193963e214e9a67415fe8c17eecafea0b13e54919b774f05d991970"
+        },
+        "raw_body_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+        "archive_expected_record": {
+          "member": "vectors/B06/expected.json",
+          "byte_length": 6939,
+          "sha256": "1eb55e38db6b131151959e0bbdaed9f9109d4b27ec108b099c7155bf3977a490"
+        },
+        "artifacts": [
+          {
+            "name": "canonical_payload.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/canonical_payload.bin",
+              "byte_length": 187,
+              "sha256": "b6c3051378f916aa2695f469ed5e52654217414b9c882f27e4af9869b3a5915f",
+              "git_blob_sha1": "848e9735cecacbc9fb13e136795e8e1d1efce0e0"
+            },
+            "archive_member": "vectors/B06/canonical_payload.bin"
+          },
+          {
+            "name": "frame.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/frame.bin",
+              "byte_length": 281,
+              "sha256": "55daae37a193963e214e9a67415fe8c17eecafea0b13e54919b774f05d991970",
+              "git_blob_sha1": "727444880d6f5808be0bb852c4d53550da4646c1"
+            },
+            "archive_member": "vectors/B06/frame.bin"
+          },
+          {
+            "name": "raw_body.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B06/raw_body.bin",
+              "byte_length": 1,
+              "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+              "git_blob_sha1": "ce542efaa5124a0437f0c4db329d7ec4b7ba70a7"
+            },
+            "archive_member": "vectors/B06/raw_body.bin"
+          }
+        ]
+      }
+    },
+    "B07": {
+      "case_id": "B07",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "execution": "TEST_ONLY",
+      "operation": "frozen",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "EXACT_STORED_BYTES",
+      "origin_partition": "complete_positives",
+      "record_metadata_sha256": "8557d26826edf818a93ca1a4ed34f66c7509a6ca5d486ebba1cc060e8c7b955f",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/6",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate; canonical_codec.verify_source_frame; canonical_codec.verify_source_bytes_candidate",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "EXACT_STORED_BYTES",
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BYTE_EXACT_CONFORMANCE",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/B07",
+      "implemented_scope": "Full literal raw/payload/frame/digest bytes and all six envelope fields matched; independent stdlib derivation.",
+      "limitations": "CONTENT_INTEGRITY_ONLY; no authentication/issuance/rights/Native/PIT.",
+      "golden_expected_frame_sha256": "7fd81935e350dc4cdb2ce57ab39377f16a1be43314d393f75837945f04e51a12",
+      "golden_evidence": {
+        "expected_envelope": {
+          "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+          "object_schema_version": "source-bytes-candidate-v0.1",
+          "canonical_profile_version": "typed-json-candidate-v0.1",
+          "digest_algorithm": "SHA-256",
+          "canonical_payload_byte_length": {
+            "type": "uint64",
+            "value": "187"
+          },
+          "digest_hex": "7fd81935e350dc4cdb2ce57ab39377f16a1be43314d393f75837945f04e51a12"
+        },
+        "raw_body_sha256": "06f961b802bc46ee168555f066d28f4f0e9afdf3f88174c1ee6f9de004fc30a0",
+        "archive_expected_record": {
+          "member": "vectors/B07/expected.json",
+          "byte_length": 6910,
+          "sha256": "b6a5b565ffa1736b55a7ffd22592463e81446e8a8f923465b66c597cf2214131"
+        },
+        "artifacts": [
+          {
+            "name": "canonical_payload.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/canonical_payload.bin",
+              "byte_length": 187,
+              "sha256": "f25cee42f732cb89c94f7193820b9e8336d667f950f1007a32f8e6128af47bab",
+              "git_blob_sha1": "89cbc96d3456119f7eac5d91e595cec134a938a4"
+            },
+            "archive_member": "vectors/B07/canonical_payload.bin"
+          },
+          {
+            "name": "frame.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/frame.bin",
+              "byte_length": 281,
+              "sha256": "7fd81935e350dc4cdb2ce57ab39377f16a1be43314d393f75837945f04e51a12",
+              "git_blob_sha1": "1beed267b1e812b10237cf9fbd1938ef1e29d944"
+            },
+            "archive_member": "vectors/B07/frame.bin"
+          },
+          {
+            "name": "raw_body.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B07/raw_body.bin",
+              "byte_length": 2,
+              "sha256": "06f961b802bc46ee168555f066d28f4f0e9afdf3f88174c1ee6f9de004fc30a0",
+              "git_blob_sha1": "f70f10e4db19068f79bc43844b49f3eece45c4e8"
+            },
+            "archive_member": "vectors/B07/raw_body.bin"
+          }
+        ]
+      }
+    },
+    "B08": {
+      "case_id": "B08",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "execution": "TEST_ONLY",
+      "operation": "frozen",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "EXACT_STORED_BYTES",
+      "origin_partition": "complete_positives",
+      "record_metadata_sha256": "fbe61826fa07703fad5f56959de373e66b7d04eaecc9907714d82ed2a3f7cce2",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/7",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate; canonical_codec.verify_source_frame; canonical_codec.verify_source_bytes_candidate",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "EXACT_STORED_BYTES",
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BYTE_EXACT_CONFORMANCE",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/B08",
+      "implemented_scope": "Full literal raw/payload/frame/digest bytes and all six envelope fields matched; independent stdlib derivation.",
+      "limitations": "CONTENT_INTEGRITY_ONLY; no authentication/issuance/rights/Native/PIT.",
+      "golden_expected_frame_sha256": "a405fcdaeb1277046d4d9038029e05c4bd633692d305afc0b964086443c232a8",
+      "golden_evidence": {
+        "expected_envelope": {
+          "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+          "object_schema_version": "source-bytes-candidate-v0.1",
+          "canonical_profile_version": "typed-json-candidate-v0.1",
+          "digest_algorithm": "SHA-256",
+          "canonical_payload_byte_length": {
+            "type": "uint64",
+            "value": "187"
+          },
+          "digest_hex": "a405fcdaeb1277046d4d9038029e05c4bd633692d305afc0b964086443c232a8"
+        },
+        "raw_body_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+        "archive_expected_record": {
+          "member": "vectors/B08/expected.json",
+          "byte_length": 6890,
+          "sha256": "4041b15fadd2b2d2485d2f3ebd0f26febfb62968801abf4bb2bc1bbe126e0359"
+        },
+        "artifacts": [
+          {
+            "name": "canonical_payload.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/canonical_payload.bin",
+              "byte_length": 187,
+              "sha256": "705a0db300955c692abf05dba1aa94bc94d693f5caf127dff95cbfe140e9b620",
+              "git_blob_sha1": "54331596f9de35ecadc54c39159980831e417a29"
+            },
+            "archive_member": "vectors/B08/canonical_payload.bin"
+          },
+          {
+            "name": "frame.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/frame.bin",
+              "byte_length": 281,
+              "sha256": "a405fcdaeb1277046d4d9038029e05c4bd633692d305afc0b964086443c232a8",
+              "git_blob_sha1": "a0f238ed96c1dd7f4de674ab89e25c3b43819ba4"
+            },
+            "archive_member": "vectors/B08/frame.bin"
+          },
+          {
+            "name": "raw_body.bin",
+            "pin": {
+              "path": "tests/fixtures/mvp_if03/oracle01_v0_1/positives/B08/raw_body.bin",
+              "byte_length": 1,
+              "sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+              "git_blob_sha1": "7371f47a6f8bd23a8fa1a8b2a9479cdd76380e54"
+            },
+            "archive_member": "vectors/B08/raw_body.bin"
+          }
+        ]
+      }
+    },
+    "N-DUPLICATE": {
+      "case_id": "N-DUPLICATE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "DUPLICATE_KEY"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "fa01e0141ab82c3ab7ae713426a1f2bb2bc8600635dece2842e27424317b2fb2",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/8",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "DUPLICATE_KEY",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-DUPLICATE",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-BOM": {
+      "case_id": "N-BOM",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "BOM"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "0b1df6668478b2f9381d0fe3ec01da8046729f4ccb3e09b9fb07ed3f3a6ac8b4",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/9",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "BOM",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-BOM",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-UTF8": {
+      "case_id": "N-UTF8",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INVALID_JSON_UTF8"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "cea9eab918eb3269ea3859960dc09fac6a132cafc00780e20402e53a4fa07b90",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/10",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INVALID_JSON_UTF8",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-UTF8",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-SURROGATE": {
+      "case_id": "N-SURROGATE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "SURROGATE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "29e6630b205be6d714669305d3a88809e83fc1f7c8154f7e47e201b2779827f3",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/11",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "SURROGATE",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SURROGATE",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-ORDER": {
+      "case_id": "N-ORDER",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NONCANONICAL_BYTES"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "5451858597415da8ddeb321da56fa8bac2606f34a21bc32e3beca65328dd9eca",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/12",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "NONCANONICAL_BYTES",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-ORDER",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-WHITESPACE": {
+      "case_id": "N-WHITESPACE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NONCANONICAL_BYTES"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "7b02422b8b4e3abba85d5651195b357f5527e271561231138d287db664427df3",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/13",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "NONCANONICAL_BYTES",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-WHITESPACE",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-SHORT-ESCAPE": {
+      "case_id": "N-SHORT-ESCAPE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NONCANONICAL_BYTES"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "521ba49a4ea79444c4b10850933ed74902679462cd3bde7ce79cf6258a45deb4",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/14",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "NONCANONICAL_BYTES",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SHORT-ESCAPE",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-UPPER-ESCAPE": {
+      "case_id": "N-UPPER-ESCAPE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NONCANONICAL_BYTES"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "dc944237ab6ed66fb2756b75f1b652b06e0a758c72a76e38e3c54d06d5d94d50",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/15",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "NONCANONICAL_BYTES",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-UPPER-ESCAPE",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-ASCII-ESCAPE": {
+      "case_id": "N-ASCII-ESCAPE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NONCANONICAL_BYTES"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "d7cbb024401a114e88c616c4eb67cca1cbc802d80c03e9eedc7ed20154b7bd1f",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/16",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "NONCANONICAL_BYTES",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-ASCII-ESCAPE",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-SLASH-ESCAPE": {
+      "case_id": "N-SLASH-ESCAPE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NONCANONICAL_BYTES"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "2f57fcb8932c9ecc0bfdfe46dd5249760e587dc099f307b9dbd3025e11d93020",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/17",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "NONCANONICAL_BYTES",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SLASH-ESCAPE",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-NULL": {
+      "case_id": "N-NULL",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NULL_OR_UNTAGGED"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "8d25e13ff99b92eb209bbe5bb20cc2170c5ed0700e7afce1d8271654317719e0",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/18",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "NULL_OR_UNTAGGED",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-NULL",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-BARE-INT": {
+      "case_id": "N-BARE-INT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "BARE_NUMBER"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "9db17d4da960788371f334afe01a10b9618526d6f856cb0d856f295165966159",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/19",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "BARE_NUMBER",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-BARE-INT",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-FLOAT": {
+      "case_id": "N-FLOAT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "BARE_NUMBER"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "adbc4d3f565f1b89d4ab2f4dbf75f7674966bf5373edf89f7b8d533022ea80ab",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/20",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "BARE_NUMBER",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-FLOAT",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-NAN": {
+      "case_id": "N-NAN",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "BARE_NUMBER"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "f49dfae9ee37184dd24a7a4f1b461e19b312b89ee2929a7508dce67022e1c07f",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/21",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "BARE_NUMBER",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-NAN",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-INFINITY": {
+      "case_id": "N-INFINITY",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "fragment",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "BARE_NUMBER"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "808039816764605847ee13cb20650c22d47c22bcef56de814e6978d9baa07a11",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/22",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "BARE_NUMBER",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-INFINITY",
+      "implemented_scope": "Exact stored fragment bytes and explicit one/two Text-key schema; no domain semantics.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-MISSING": {
+      "case_id": "N-MISSING",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "payload",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "CLOSED_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "0a56daf898be4ab1b19ff38e926a98bf144338518a1924f19a156d341a8d415f",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/23",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "CLOSED_FIELDS",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-MISSING",
+      "implemented_scope": "Frozen B01 literal payload changed exactly as declared; no reserialization or expected derivation by production.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-UNKNOWN": {
+      "case_id": "N-UNKNOWN",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "payload",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "CLOSED_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "4d851b7e21cfbac820dc67bedd8ea3a00a32f5fb2ac4fe078d5572847bb0a49c",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/24",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "CLOSED_FIELDS",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-UNKNOWN",
+      "implemented_scope": "Frozen B01 literal payload changed exactly as declared; no reserialization or expected derivation by production.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-OWN-ENVELOPE": {
+      "case_id": "N-OWN-ENVELOPE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "payload",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "REF_CYCLE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "07747c9ae9effc5e682d149201978d13a8e999191cfd293d54eae1e770cd9778",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/25",
+      "api_under_test": "canonical_codec.parse_canonical_record",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "REF_CYCLE",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-OWN-ENVELOPE",
+      "implemented_scope": "Frozen B01 literal payload changed exactly as declared; no reserialization or expected derivation by production.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-PLUS": {
+      "case_id": "N-PLUS",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "integer",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INTEGER_SPELLING"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "9dc2ddd0f6fc8851d84185e3b669e20c2278471f4921aa5d3d8b3d6d32187c4d",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/26",
+      "api_under_test": "canonical_codec.validate_integer",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INTEGER_SPELLING",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-PLUS",
+      "implemented_scope": "Exact tagged integer and signed flag; no coercion.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-ZERO-PREFIX": {
+      "case_id": "N-ZERO-PREFIX",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "integer",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INTEGER_SPELLING"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "468c34eddb62909d7e0354bd2a54506b431dc2a14c871ca601a66c7724af1d90",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/27",
+      "api_under_test": "canonical_codec.validate_integer",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INTEGER_SPELLING",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-ZERO-PREFIX",
+      "implemented_scope": "Exact tagged integer and signed flag; no coercion.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-NEGATIVE-ZERO": {
+      "case_id": "N-NEGATIVE-ZERO",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "integer",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INTEGER_SPELLING"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "d00d22f887dad53c0cf3509d363048fa0d175606d8ae4a5121cc3e0bfdf97b73",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/28",
+      "api_under_test": "canonical_codec.validate_integer",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INTEGER_SPELLING",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-NEGATIVE-ZERO",
+      "implemented_scope": "Exact tagged integer and signed flag; no coercion.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-EXPONENT": {
+      "case_id": "N-EXPONENT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "integer",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INTEGER_SPELLING"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "c8f94c34b9cc5b30278bd12a323d42a3b1c188be7eb5a01bece0cb4e468fbb37",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/29",
+      "api_under_test": "canonical_codec.validate_integer",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INTEGER_SPELLING",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-EXPONENT",
+      "implemented_scope": "Exact tagged integer and signed flag; no coercion.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-UINT-NEGATIVE": {
+      "case_id": "N-UINT-NEGATIVE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "integer",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INTEGER_SPELLING"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "b48c599d635416a45619a47f57ace80edc46282a4e34dd2d0e00aef21b4b3a01",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/30",
+      "api_under_test": "canonical_codec.validate_integer",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INTEGER_SPELLING",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-UINT-NEGATIVE",
+      "implemented_scope": "Exact tagged integer and signed flag; no coercion.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-INT-OVERFLOW": {
+      "case_id": "N-INT-OVERFLOW",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "integer",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INTEGER_RANGE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "642c4bc5ad46136c61aa29b2cd9258c4de66f81359f04e0661e95a7cb406bae5",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/31",
+      "api_under_test": "canonical_codec.validate_integer",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INTEGER_RANGE",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-INT-OVERFLOW",
+      "implemented_scope": "Exact tagged integer and signed flag; no coercion.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-UINT-OVERFLOW": {
+      "case_id": "N-UINT-OVERFLOW",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "integer",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INTEGER_RANGE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "9a128b88607492160492a268a40f3acd3a480ee29daa90ee9ca3cdeed2aae747",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/32",
+      "api_under_test": "canonical_codec.validate_integer",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INTEGER_RANGE",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-UINT-OVERFLOW",
+      "implemented_scope": "Exact tagged integer and signed flag; no coercion.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-BOOL-COERCION": {
+      "case_id": "N-BOOL-COERCION",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "integer",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "INTEGER_TEXT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "756ab765fff8335d1d4c00b2db23c0707233dc54647cbe1327cfc5669b50a30b",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/33",
+      "api_under_test": "canonical_codec.validate_integer",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "INTEGER_TEXT",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-BOOL-COERCION",
+      "implemented_scope": "Exact tagged integer and signed flag; no coercion.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-BOOL-INT": {
+      "case_id": "N-BOOL-INT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "boolean",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "BOOLEAN_TYPE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "e8bd028f67cffa062818d53b7604272a5246b6f790f5b9add805c3c80d3686d0",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/34",
+      "api_under_test": "canonical_codec.validate_boolean",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "BOOLEAN_TYPE",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-BOOL-INT",
+      "implemented_scope": "Exact Boolean fragment input.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-DECIMAL-SCALE": {
+      "case_id": "N-DECIMAL-SCALE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "decimal_scale",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "DECIMAL_SCALE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "223ff2d474031f9150668469793ab67b38f237bebc56441b9a5e3e926a4b7174",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/35",
+      "api_under_test": "canonical_codec.validate_numeric_fragment",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "DECIMAL_SCALE",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-DECIMAL-SCALE",
+      "implemented_scope": "Supplied scale in minimal Decimal grammar with unreviewed numeric policy shape; only scale refusal tested.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-RATIO-MISMATCH": {
+      "case_id": "N-RATIO-MISMATCH",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "ratio",
+      "domains": [
+        "F2-OBSERVATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "RATIO_MISMATCH"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "1d00947c7129d0c1c9bb31509c7b4564e915916afa0a9a77184aa16652e811f8",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/36",
+      "api_under_test": "canonical_codec.validate_numeric_fragment",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "RATIO_MISMATCH",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-RATIO-MISMATCH",
+      "implemented_scope": "All four frozen ratio fields in minimal numeric grammar; policy semantics unavailable.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-PROFILE": {
+      "case_id": "N-PROFILE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "UNSUPPORTED_SCHEMA",
+        "code": "PROFILE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "6bd41ea2207919bbcd914bca72f7c00887a4638d6ed5624d2cf3511e5a8696d8",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/37",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "UNSUPPORTED_SCHEMA",
+      "actual_code": "PROFILE",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-PROFILE",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-FRAME-LENGTH": {
+      "case_id": "N-FRAME-LENGTH",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FRAME_TRUNCATED"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "33fa35487c95f2b3daf9e9dd2972269406b9253fe2df337ee819ad68636cf4e1",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/38",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "FRAME_TRUNCATED",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-FRAME-LENGTH",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-ENDIAN": {
+      "case_id": "N-ENDIAN",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FRAME_LENGTH"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "a22e45816a8ab67f8e46465ccf1a2185a0329afc86f5d24d41c39ae87d2f2fab",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/39",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "FRAME_LENGTH",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-ENDIAN",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-SECTION-ORDER": {
+      "case_id": "N-SECTION-ORDER",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "UNSUPPORTED_SCHEMA",
+        "code": "DOMAIN_SCHEMA"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "5376f0a89bd6c7ea50120b1dcbc0871b6d45fb64ce9dd4a5f0aff6eec10e9965",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/40",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "UNSUPPORTED_SCHEMA",
+      "actual_code": "DOMAIN_SCHEMA",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SECTION-ORDER",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-TRAILING": {
+      "case_id": "N-TRAILING",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FRAME_TRAILING"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "01375a458c69ec9b105ad2bb718e384212000938cf4f94907102e3ef83be1f3a",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/41",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "FRAME_TRAILING",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-TRAILING",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-PAYLOAD-LENGTH": {
+      "case_id": "N-PAYLOAD-LENGTH",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "PAYLOAD_LENGTH"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "93529005fc5875fbb601501cd076428a31200be857603a4a885d4c0552e59132",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/42",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "PAYLOAD_LENGTH",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-PAYLOAD-LENGTH",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-UNFRAMED-HASH": {
+      "case_id": "N-UNFRAMED-HASH",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "DIGEST_MISMATCH"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "fd17a86bb6d29d52e2c174a0630c654098342e6f63f148d6a57fcd3460488491",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/43",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "DIGEST_MISMATCH",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-UNFRAMED-HASH",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-DIGEST": {
+      "case_id": "N-DIGEST",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "DIGEST_MISMATCH"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "1a27ff61504bcc978e85c32e686b26fb31e2063f80a6ef87afade3d63a4dbb5d",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/44",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "DIGEST_MISMATCH",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-DIGEST",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-DOMAIN": {
+      "case_id": "N-DOMAIN",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "UNSUPPORTED_SCHEMA",
+        "code": "ENVELOPE_NEGOTIATION"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "317a95b5f820d16083a35b73a7950278f91ec78c6a0b0fe76d8bbbfb01d46a03",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/45",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "UNSUPPORTED_SCHEMA",
+      "actual_code": "ENVELOPE_NEGOTIATION",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-DOMAIN",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-SCHEMA": {
+      "case_id": "N-SCHEMA",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "UNSUPPORTED_SCHEMA",
+        "code": "ENVELOPE_NEGOTIATION"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "5a111cbe347678a7f02e7ed5c00cc6679372518420432c492d4a32a268c0f45b",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/46",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "UNSUPPORTED_SCHEMA",
+      "actual_code": "ENVELOPE_NEGOTIATION",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SCHEMA",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-ALGORITHM": {
+      "case_id": "N-ALGORITHM",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "UNSUPPORTED_SCHEMA",
+        "code": "ENVELOPE_NEGOTIATION"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "f8266a16c821961a0f673ad904862e568c192ab3708cbcb90c52a07a98e758f9",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/47",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "UNSUPPORTED_SCHEMA",
+      "actual_code": "ENVELOPE_NEGOTIATION",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-ALGORITHM",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-ENVELOPE-PROFILE": {
+      "case_id": "N-ENVELOPE-PROFILE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "UNSUPPORTED_SCHEMA",
+        "code": "ENVELOPE_NEGOTIATION"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "53863f3396920ed7b7e4bed7ce61b8b2bd5f597c39cabe8f90d1288abe6f2dbe",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/48",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "UNSUPPORTED_SCHEMA",
+      "actual_code": "ENVELOPE_NEGOTIATION",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-ENVELOPE-PROFILE",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-ZERO-LENGTH": {
+      "case_id": "N-ZERO-LENGTH",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FRAME_LENGTH"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "b3e32808787d88413b3cbd80a5ca4594255f88b66448f111afa97fdc36aa627e",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/49",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "FRAME_LENGTH",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-ZERO-LENGTH",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-OVER-LIMIT": {
+      "case_id": "N-OVER-LIMIT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "frame",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FRAME_LENGTH"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "9df74f0df250eeb74c7a4ef2465ad3bd8d20f11a54b0a7022ebfaa9f63eaac86",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/50",
+      "api_under_test": "canonical_codec.verify_source_frame",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "FRAME_LENGTH",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "EXACT_REFUSAL_SCOPED",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-OVER-LIMIT",
+      "implemented_scope": "Frozen B01 frame/envelope mutated exactly as declared; offsets are frozen LP64BE boundaries.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "R-UNICODE": {
+      "case_id": "R-UNICODE",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "TEST_ONLY",
+      "operation": "unicode",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "DISTINCT_SCALAR_BYTES",
+      "origin_partition": "executed_relations",
+      "record_metadata_sha256": "bc3a03eab6ce3f924bfdc4e88d04832651b1051fdb96ad0279f5f23c3d8129e2",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/51",
+      "api_under_test": "NONE",
+      "dispatch_kind": "INDEPENDENT_RELATION_CHECK",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "DISTINCT_SCALAR_BYTES",
+      "adjudication": "PASS_BOUNDED_RELATION_DIAGNOSTIC",
+      "conformance_class": "TEST_ONLY_RELATION",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-UNICODE",
+      "implemented_scope": "Test-only byte-level control",
+      "limitations": "Frozen TEST_ONLY relation retained; no production-case pass or issued schedule/resources; NOT_SUPPLIED gates remain."
+    },
+    "R-RAW-MUTATION": {
+      "case_id": "R-RAW-MUTATION",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "TEST_ONLY",
+      "operation": "raw_mutation",
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": "DIFFERENT_PREIMAGE_AND_FRAME",
+      "origin_partition": "executed_relations",
+      "record_metadata_sha256": "66218cce8c7c263faf6f36c4722cd207bbcf220246f9566de7cde266fd524c1d",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/52",
+      "api_under_test": "canonical_codec.encode_source_bytes_candidate",
+      "dispatch_kind": "INDEPENDENT_RELATION_CHECK",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "DIFFERENT_PREIMAGE_AND_FRAME",
+      "adjudication": "PASS_BOUNDED_RELATION_DIAGNOSTIC",
+      "conformance_class": "TEST_ONLY_RELATION",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-RAW-MUTATION",
+      "implemented_scope": "Test-only byte-level control",
+      "limitations": "Frozen TEST_ONLY relation retained; no production-case pass or issued schedule/resources; NOT_SUPPLIED gates remain."
+    },
+    "R-FOUR-CUTOFFS": {
+      "case_id": "R-FOUR-CUTOFFS",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "TEST_ONLY",
+      "operation": "weekly",
+      "domains": [
+        "F2-QUALIFICATION",
+        "F2-OBSERVATION",
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": "DIAGNOSTIC_DECLARATIONS_ONLY",
+      "origin_partition": "executed_relations",
+      "record_metadata_sha256": "8ed61e21f7e16aa5498c61e0ba19b7e2988411e3952a863231b70ddb9d9ec5dc",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/53",
+      "api_under_test": "NONE",
+      "dispatch_kind": "METADATA_ONLY",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "DIAGNOSTIC_DECLARATIONS_ONLY",
+      "adjudication": "PASS_BOUNDED_RELATION_DIAGNOSTIC",
+      "conformance_class": "TEST_ONLY_RELATION",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-FOUR-CUTOFFS",
+      "implemented_scope": "Test-only declaration/hypothesis metadata equality or difference; no runtime schedule",
+      "limitations": "Frozen TEST_ONLY relation retained; no production-case pass or issued schedule/resources; NOT_SUPPLIED gates remain."
+    },
+    "N-AT-T1": {
+      "case_id": "N-AT-T1",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "before",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NOT_BEFORE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "ec065a0200040bb59782aa21994ef90de0e90dfbc5347fade6da37b613414dd4",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/54",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-AT-T1",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful IF03 before/instant API; owner time/origin/rules resources absent."
+    },
+    "N-T3-PLUS-ONE": {
+      "case_id": "N-T3-PLUS-ONE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "before",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NOT_BEFORE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "cdc670dab7bed1740bf99390933f6f723e645a1207cbf9f86add070f3f9b4d03",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/55",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-T3-PLUS-ONE",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful IF03 before/instant API; owner time/origin/rules resources absent."
+    },
+    "N-NAIVE": {
+      "case_id": "N-NAIVE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "time",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "TIME_FORMAT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "03a57d2f4d1e3173294cae614a8eb3d296dc7f9c2c2de166b277299d39f01120",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/56",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-NAIVE",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "TimeRecord shape inspection does not implement frozen date grammar/zone/instant validation; rules resources absent."
+    },
+    "N-FRACTIONAL": {
+      "case_id": "N-FRACTIONAL",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "time",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "TIME_FORMAT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "62801cbee8f2bc560f63b3f7bfd0e69972f901bd3acda5cba288c90b0eccf04a",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/57",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-FRACTIONAL",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "TimeRecord shape inspection does not implement frozen date grammar/zone/instant validation; rules resources absent."
+    },
+    "N-LEAP-SECOND": {
+      "case_id": "N-LEAP-SECOND",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "time",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "TIME_FORMAT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "429d7e9daf513ea883111ac2d3e3ddc41e06f9cb5b569750dd0653e1030d9d59",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/58",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-LEAP-SECOND",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "TimeRecord shape inspection does not implement frozen date grammar/zone/instant validation; rules resources absent."
+    },
+    "N-TICK-SWAPPED": {
+      "case_id": "N-TICK-SWAPPED",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "ticks",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FIXED_SCHEDULE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "4d875dfaeb22abe8f39886068e3891bfc3df3a605bc3a792630b51dd8632d28a",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/59",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-TICK-SWAPPED",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful fixed-WU04 schedule membership/order API; no issued schedule supplied."
+    },
+    "N-TICK-DROPPED": {
+      "case_id": "N-TICK-DROPPED",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "ticks",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FIXED_SCHEDULE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "673aa942ca68397048fc1eb66dda39c45b702925636d185240c8916067163dc7",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/60",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-TICK-DROPPED",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful fixed-WU04 schedule membership/order API; no issued schedule supplied."
+    },
+    "N-TICK-DUPLICATE": {
+      "case_id": "N-TICK-DUPLICATE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "ticks",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FIXED_SCHEDULE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "056b1d86647badb4c2c1563a15447c54e5300f53574d5e0d4324b85431c77f1d",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/61",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-TICK-DUPLICATE",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful fixed-WU04 schedule membership/order API; no issued schedule supplied."
+    },
+    "N-TICK-FOREIGN": {
+      "case_id": "N-TICK-FOREIGN",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "ticks",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FIXED_SCHEDULE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "d9f6bb3e985206c6242df27668c63dd7de7f14a0f0f20a94153b2415a5dd72e0",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/62",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-TICK-FOREIGN",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful fixed-WU04 schedule membership/order API; no issued schedule supplied."
+    },
+    "N-W03-TICK": {
+      "case_id": "N-W03-TICK",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "ticks",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FIXED_SCHEDULE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "7f2f4d691d721717f6c5caf425eb20959f01ec11b60e06672c0fcbf5c404d236",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/63",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-W03-TICK",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful fixed-WU04 schedule membership/order API; no issued schedule supplied."
+    },
+    "N-B03-MIDNIGHT": {
+      "case_id": "N-B03-MIDNIGHT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "ticks",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FIXED_SCHEDULE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "6eee9c5ffd15bb61f83e0c1be4c90fe166195f17e913ca22e31a2587498ba853",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/64",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-B03-MIDNIGHT",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful fixed-WU04 schedule membership/order API; no issued schedule supplied."
+    },
+    "N-REUSED-CONTEXT": {
+      "case_id": "N-REUSED-CONTEXT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "contexts",
+      "domains": [
+        "F2-OBSERVATION",
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "REUSED_CONTEXT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "3fb6856e849b2bc8a6c4823add6aba512cff613f4cb6616c76b5815f4595ef20",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/65",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-REUSED-CONTEXT",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful context uniqueness API; qualified per-cutoff parents absent."
+    },
+    "N-CYCLE": {
+      "case_id": "N-CYCLE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "graph",
+      "domains": [
+        "TEMPORAL-SEQUENCE",
+        "EVIDENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "REF_CYCLE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "94af0e2f0208bad47503f69a52cc8ee11da20a284d78b59cf15e703696aaee6b",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/66",
+      "api_under_test": "dependency_graph.check_dependency_graph_symbolic",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "REF_CYCLE",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "SYMBOLIC_GRAPH_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-CYCLE",
+      "implemented_scope": "Vocabulary-only mapping preserving all nodes/edges/root membership; SEMANTIC is opaque; ATTEMPT fields descriptive only; no real closure.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-HIDDEN-ATTEMPT": {
+      "case_id": "N-HIDDEN-ATTEMPT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "graph",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "ATTEMPT_ANCESTRY"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "cb6bfe3d60646e076ddc1ea02d89234da1aa8ec4d135f65489c9d4350db48158",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/67",
+      "api_under_test": "dependency_graph.check_dependency_graph_symbolic",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "ATTEMPT_ANCESTRY",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "SYMBOLIC_GRAPH_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-HIDDEN-ATTEMPT",
+      "implemented_scope": "Vocabulary-only mapping preserving all nodes/edges/root membership; SEMANTIC is opaque; ATTEMPT fields descriptive only; no real closure.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-DANGLING": {
+      "case_id": "N-DANGLING",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "graph",
+      "domains": [
+        "RESULT"
+      ],
+      "expected": {
+        "category": "MISSING_REQUIRED_EVIDENCE",
+        "code": "DANGLING_PARENT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "123fc2e61dc4c1344141b09e58410bee23d7060d85f1adb6e5372e5c746fa210",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/68",
+      "api_under_test": "dependency_graph.check_dependency_graph_symbolic",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "MISSING_REQUIRED_EVIDENCE",
+      "actual_code": "DANGLING_PARENT",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "SYMBOLIC_GRAPH_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-DANGLING",
+      "implemented_scope": "Vocabulary-only mapping preserving all nodes/edges/root membership; SEMANTIC is opaque; ATTEMPT fields descriptive only; no real closure.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-RESULT-ATTEMPT": {
+      "case_id": "N-RESULT-ATTEMPT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "graph",
+      "domains": [
+        "RESULT",
+        "F3-RUN-ATTEMPT"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "ATTEMPT_ANCESTRY"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "9a7da2240551e97c0c7f87ea4433166aecbd049be780685dd565598190cbd613",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/69",
+      "api_under_test": "dependency_graph.check_dependency_graph_symbolic",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "ATTEMPT_ANCESTRY",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "SYMBOLIC_GRAPH_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-RESULT-ATTEMPT",
+      "implemented_scope": "Vocabulary-only mapping preserving all nodes/edges/root membership; SEMANTIC is opaque; ATTEMPT fields descriptive only; no real closure.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-ASSOCIATION-INSTANCE": {
+      "case_id": "N-ASSOCIATION-INSTANCE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "experiment_input",
+      "domains": [
+        "F3-EXPERIMENT"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "EXPERIMENT_INPUT_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "4a7617391767022ce4c0538ea3db0fce7d23ba0e269524a677d25f289423c6cb",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/70",
+      "api_under_test": "typed_references.validate_experiment_input_shape",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "EXPERIMENT_INPUT_FIELDS",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BOUNDED_SHAPE_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-ASSOCIATION-INSTANCE",
+      "implemented_scope": "Exact input object; extra association instance rejected before symbolic parent is examined.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-MISSING-RECEIPT": {
+      "case_id": "N-MISSING-RECEIPT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "native_summary",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NATIVE_SUMMARY_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "b01f1999c61065e784fc8a1d2c2c62f02c98aeca08061402a634eefd8c0114e1",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/71",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-MISSING-RECEIPT",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "Native summary grammar/receipts not supplied by CAN-01/02; no Native invoked."
+    },
+    "N-NO-OUTCOME-STATE": {
+      "case_id": "N-NO-OUTCOME-STATE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "native_summary",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "NATIVE_SUMMARY_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "37488decf98620671b21f6062a6c7598873109a5650840fc8cb95baa2b3c751a",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/72",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-NO-OUTCOME-STATE",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "Native summary grammar/receipts not supplied by CAN-01/02; no Native invoked."
+    },
+    "N-SAFE-AUDIT": {
+      "case_id": "N-SAFE-AUDIT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "safe_fields",
+      "domains": [
+        "F2-OBSERVATION",
+        "EVIDENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "SAFE_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "2de3acda5d23655a1be48d7e72d4541e66a5f46db697bfddd8626bdbd0878946",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/73",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SAFE-AUDIT",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful safe-release view API or approved disclosure/capability semantics."
+    },
+    "N-SAFE-CALLBACK": {
+      "case_id": "N-SAFE-CALLBACK",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "safe_fields",
+      "domains": [
+        "F2-OBSERVATION",
+        "EVIDENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "SAFE_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "5b6e9c52bd2cb17efc51b3dbedce8e8669bbeee637fba344974cfcdbbe2822d9",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/74",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SAFE-CALLBACK",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful safe-release view API or approved disclosure/capability semantics."
+    },
+    "N-SAFE-GRANT": {
+      "case_id": "N-SAFE-GRANT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "safe_fields",
+      "domains": [
+        "F2-OBSERVATION",
+        "EVIDENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "SAFE_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "6ce7aec4d4b745dfdefc9499cf5de812d971ca87791526a2457dcbc96e02202a",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/75",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SAFE-GRANT",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful safe-release view API or approved disclosure/capability semantics."
+    },
+    "N-SAFE-ATTEMPT": {
+      "case_id": "N-SAFE-ATTEMPT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "safe_fields",
+      "domains": [
+        "F2-OBSERVATION",
+        "EVIDENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "SAFE_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "7c56eb7bc4197569f04cb2802f451385db0870d57dedd9b0390f9a177090175f",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/76",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SAFE-ATTEMPT",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful safe-release view API or approved disclosure/capability semantics."
+    },
+    "N-SAFE-PRICE": {
+      "case_id": "N-SAFE-PRICE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "safe_fields",
+      "domains": [
+        "F2-OBSERVATION",
+        "EVIDENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "SAFE_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "dccf127cfad60d4beed5fe6b6e7c637104fd9933d34f366ad0ca10c34652aefe",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/77",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "NOT_RUN",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "OUT_OF_SCOPE",
+      "conformance_class": "NOT_RUN",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-SAFE-PRICE",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "No faithful safe-release view API or approved disclosure/capability semantics."
+    },
+    "N-GRANT-MISSING": {
+      "case_id": "N-GRANT-MISSING",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "authorization",
+      "domains": [
+        "F2-OBSERVATION"
+      ],
+      "expected": {
+        "category": "DENIED_AUTHORIZATION",
+        "code": "ACCESS_DENIED"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "21199f0df69f4ae8d26260fdeee6d534aa07507798120c8521f09f47c3f35fdf",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/78",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-GRANT-MISSING",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "Actual principal/grant/resource rights states NOT_SUPPLIED; no dummy guards."
+    },
+    "N-GRANT-REVOKED": {
+      "case_id": "N-GRANT-REVOKED",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "authorization",
+      "domains": [
+        "F2-OBSERVATION"
+      ],
+      "expected": {
+        "category": "DENIED_AUTHORIZATION",
+        "code": "ACCESS_DENIED"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "60864642000d6a1cdbc42da8384af4ef950d0d453bb2ce11905d956f9a13adc9",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/79",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-GRANT-REVOKED",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "Actual principal/grant/resource rights states NOT_SUPPLIED; no dummy guards."
+    },
+    "N-FOREIGN-PARENT": {
+      "case_id": "N-FOREIGN-PARENT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "parent_match",
+      "domains": [
+        "F2-OBSERVATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "FOREIGN_PARENT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "fc12029c967b2f2f752a3d0378f924fe548252ef844f9b5169ebf6267786a32b",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/80",
+      "api_under_test": "typed_references.validate_declared_parent_domain",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "FOREIGN_PARENT",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BOUNDED_SHAPE_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-FOREIGN-PARENT",
+      "implemented_scope": "Only exact registered domain declarations compared; equal revision labels unexamined; no parent invented.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-STALE-PARENT": {
+      "case_id": "N-STALE-PARENT",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "parent_match",
+      "domains": [
+        "F2-OBSERVATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "STALE_PARENT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "363c4ceb6fb04ab20594618fffbeaba8a62ceb6bcefcd3edc2ca89c88ada7385",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/81",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-STALE-PARENT",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "Actual immutable parent revision/history/freshness NOT_SUPPLIED; domain declaration alone cannot implement stale-parent refusal."
+    },
+    "N-UNREVIEWED-RESOURCE": {
+      "case_id": "N-UNREVIEWED-RESOURCE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "resource_schema",
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "UNSUPPORTED_SCHEMA",
+        "code": "REF_UNAPPROVED_RESOURCE_SCHEMA"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "1a7e9db6768b3581faf47f7e1dd69ea6a1a5e09daaf4309a65b8c14ba7069251",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/82",
+      "api_under_test": "typed_references.require_resource_semantics",
+      "dispatch_kind": "DIRECT",
+      "run_state": "EXECUTED",
+      "actual_category": "UNSUPPORTED_SCHEMA",
+      "actual_code": "REF_UNAPPROVED_RESOURCE_SCHEMA",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BOUNDED_SHAPE_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-UNREVIEWED-RESOURCE",
+      "implemented_scope": "Exact role/schema refusal request; no resource bytes or schema approval invented.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-DECISION-FUTURE-PRICE": {
+      "case_id": "N-DECISION-FUTURE-PRICE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "decision_fields",
+      "domains": [
+        "F5-DECISION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "DECISION_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "1af91dcab8c4219f777e69680d5a7fb4a5e5bb1d298534d0afcf76189a1d4d39",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/83",
+      "api_under_test": "typed_references.inspect_declared_field_names",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "DECISION_FIELDS",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BOUNDED_SHAPE_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-DECISION-FUTURE-PRICE",
+      "implemented_scope": "Only exact supplied extra field name checked as subset; no complete F5 payload invented.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-DECISION-OUTCOME": {
+      "case_id": "N-DECISION-OUTCOME",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "decision_fields",
+      "domains": [
+        "F5-DECISION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "DECISION_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "4ac3a57963fcf809410a32bf7b295e309c8258cd3a6fc215c3351c92d6fbe625",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/84",
+      "api_under_test": "typed_references.inspect_declared_field_names",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "DECISION_FIELDS",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BOUNDED_SHAPE_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-DECISION-OUTCOME",
+      "implemented_scope": "Only exact supplied extra field name checked as subset; no complete F5 payload invented.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-DECISION-LABEL": {
+      "case_id": "N-DECISION-LABEL",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "decision_fields",
+      "domains": [
+        "F5-DECISION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "DECISION_FIELDS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "a6fa6dc866ddff9940e30d0ebd8e31bbd528db594f097317c4ae16348e2ccee0",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/85",
+      "api_under_test": "typed_references.inspect_declared_field_names",
+      "dispatch_kind": "TRANSPARENT_NARROW_ADAPTER",
+      "run_state": "EXECUTED",
+      "actual_category": "STRUCTURALLY_INVALID",
+      "actual_code": "DECISION_FIELDS",
+      "actual_relation": null,
+      "adjudication": "PASS_SCOPED",
+      "conformance_class": "BOUNDED_SHAPE_ONLY",
+      "prior_stage_provenance": "PRIOR_STAGE_REPORTED",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-DECISION-LABEL",
+      "implemented_scope": "Only exact supplied extra field name checked as subset; no complete F5 payload invented.",
+      "limitations": "Exact narrow refusal only; no full semantic identity, authority or runtime admission."
+    },
+    "N-IMMATURE-OUTCOME": {
+      "case_id": "N-IMMATURE-OUTCOME",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "maturity",
+      "domains": [
+        "F5-EVALUATION"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "IMMATURE_OUTCOME"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "148f141f716fd0b4418299cec5711752e5a9a72169d626fb4e5557a8e7ed1d2c",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/86",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-IMMATURE-OUTCOME",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "Actual F3/F5 maturity/evaluation resources NOT_SUPPLIED."
+    },
+    "N-D06-ORIGINALS": {
+      "case_id": "N-D06-ORIGINALS",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "schedule",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "ORIGINAL_INPUTS"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "cf6258fdee96de479201fa76b8ad06d67b99d57199128070070cfb1dc4cadae2",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/87",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-D06-ORIGINALS",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "D06 actual ScheduleInput/originals/PF038/AF009/schedule resource semantics NOT_SUPPLIED."
+    },
+    "N-D06-PF038": {
+      "case_id": "N-D06-PF038",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "schedule",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "STALE_SCHEDULE_INPUT"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "a115c603d59550848fdaf1a8265c0c9fc2529e92c860f0111132754e4082061c",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/88",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-D06-PF038",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "D06 actual ScheduleInput/originals/PF038/AF009/schedule resource semantics NOT_SUPPLIED."
+    },
+    "N-D06-AF009": {
+      "case_id": "N-D06-AF009",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "schedule",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "AF009_POLICY_MISMATCH"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "598084418948bb203ae7f18d8764c63339325dfb161c82eef45660ffffee9f6b",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/89",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-D06-AF009",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "D06 actual ScheduleInput/originals/PF038/AF009/schedule resource semantics NOT_SUPPLIED."
+    },
+    "N-D06-SCHEDULE": {
+      "case_id": "N-D06-SCHEDULE",
+      "status": "EXECUTABLE_REFUSAL",
+      "execution": "TEST_ONLY",
+      "operation": "schedule",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "STRUCTURALLY_INVALID",
+        "code": "STALE_SEQUENCE_SCHEDULE"
+      },
+      "origin_partition": "narrow_refusals",
+      "record_metadata_sha256": "801cfce6b99d8b953865d82db839c26ee96cb676be0847869d20ae418ef95c09",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/90",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "BLOCKED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "BLOCKED_OWNER_RESOURCE",
+      "conformance_class": "BLOCKED_EXTERNAL_EVIDENCE",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/N-D06-SCHEDULE",
+      "implemented_scope": "NONE; faithful production operation unavailable.",
+      "limitations": "D06 actual ScheduleInput/originals/PF038/AF009/schedule resource semantics NOT_SUPPLIED."
+    },
+    "R-D06-CONSISTENT": {
+      "case_id": "R-D06-CONSISTENT",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "TEST_ONLY",
+      "operation": "schedule",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": "NOT_SUPPLIED",
+      "origin_partition": "executed_relations",
+      "record_metadata_sha256": "6979cb40e9eca21c8aea3607f5b8278546eaed30cd2a6f4de84ef2647f95bc60",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/91",
+      "api_under_test": "NONE",
+      "dispatch_kind": "METADATA_ONLY",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "NOT_SUPPLIED",
+      "adjudication": "PASS_BOUNDED_RELATION_DIAGNOSTIC",
+      "conformance_class": "TEST_ONLY_RELATION",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-D06-CONSISTENT",
+      "implemented_scope": "Test-only declaration/hypothesis metadata equality or difference; no runtime schedule",
+      "limitations": "Frozen TEST_ONLY relation retained; no production-case pass or issued schedule/resources; NOT_SUPPLIED gates remain."
+    },
+    "R-D06-POLICY-CHANGE": {
+      "case_id": "R-D06-POLICY-CHANGE",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "TEST_ONLY",
+      "operation": "policy_change",
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": "DEPENDENCY_PREIMAGE_DIFFERS",
+      "origin_partition": "executed_relations",
+      "record_metadata_sha256": "e24c4626395f0e8553777811c2588dea62fb1908d90d4eb2c16e46044c3d5c9a",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/92",
+      "api_under_test": "NONE",
+      "dispatch_kind": "METADATA_ONLY",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "DEPENDENCY_PREIMAGE_DIFFERS",
+      "adjudication": "PASS_BOUNDED_RELATION_DIAGNOSTIC",
+      "conformance_class": "TEST_ONLY_RELATION",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-D06-POLICY-CHANGE",
+      "implemented_scope": "Test-only declaration/hypothesis metadata equality or difference; no runtime schedule",
+      "limitations": "Frozen TEST_ONLY relation retained; no production-case pass or issued schedule/resources; NOT_SUPPLIED gates remain."
+    },
+    "R-REDACTION": {
+      "case_id": "R-REDACTION",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F2-QUALIFICATION",
+        "F2-OBSERVATION"
+      ],
+      "expected": "NATIVE_FACTS_UNCHANGED",
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "0549f907505ae01cc96489a3ad6b4b4d3d2ab235f10606f6b10efd8052b07cbb",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/93",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-REDACTION",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "DOCUMENTARY_NOT_EXECUTED; Documentary D04-A/D05 invariant; no actual Native facts or redaction operation executed. Release withholding must preserve original invocation/state/UnknownCause/first failure.",
+      "original_exclusion_reason": "DOCUMENTARY_NOT_EXECUTED"
+    },
+    "R-EVIDENCE-DIRECTION": {
+      "case_id": "R-EVIDENCE-DIRECTION",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "TEST_ONLY",
+      "operation": "graph",
+      "domains": [
+        "EVIDENCE"
+      ],
+      "expected": "ACYCLIC_SYMBOLIC_ONLY",
+      "origin_partition": "executed_relations",
+      "record_metadata_sha256": "7ea43ae1ddf9a846922879e4299a2ac93a7ba52ea89bb7ccc1268934c8793aa7",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/94",
+      "api_under_test": "dependency_graph.check_dependency_graph_symbolic",
+      "dispatch_kind": "INDEPENDENT_RELATION_CHECK",
+      "run_state": "EXECUTED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": "ACYCLIC_SYMBOLIC_ONLY",
+      "adjudication": "PASS_BOUNDED_RELATION_DIAGNOSTIC",
+      "conformance_class": "TEST_ONLY_RELATION",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "EXECUTED_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-EVIDENCE-DIRECTION",
+      "implemented_scope": "Test-only symbolic supplied adjacency",
+      "limitations": "Frozen TEST_ONLY relation retained; no production-case pass or issued schedule/resources; NOT_SUPPLIED gates remain."
+    },
+    "R-ATTEMPT-SEPARATION": {
+      "case_id": "R-ATTEMPT-SEPARATION",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F3-RUN-ATTEMPT",
+        "RESULT"
+      ],
+      "expected": "Fresh actual execution requires a new issuer-scoped attempt_id/revision receipt; deterministic RESULT excludes attempt envelope. No execution supplied.",
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "ae14e31720f077354b90a330799457d518fa7afc56deb14297ef4f732a353507",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/95",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-ATTEMPT-SEPARATION",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "DOCUMENTARY_NOT_EXECUTED; ",
+      "original_exclusion_reason": "DOCUMENTARY_NOT_EXECUTED"
+    },
+    "R-DECISION-EVALUATION": {
+      "case_id": "R-DECISION-EVALUATION",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F5-DECISION",
+        "F5-EVALUATION"
+      ],
+      "expected": "Mature retrospective outcomes belong in F5-EVALUATION and never rewrite sealed F5-DECISION. No F5 declarations supplied.",
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "fd7876b9c9a6fa50cce493c79b21dbffc167668892db9c3bb5e610f3a0daadbc",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/96",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/R-DECISION-EVALUATION",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "DOCUMENTARY_NOT_EXECUTED; ",
+      "original_exclusion_reason": "DOCUMENTARY_NOT_EXECUTED"
+    },
+    "P2-DEPTH-64": {
+      "case_id": "P2-DEPTH-64",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "root_depth_1": "WITHIN_DEPTH_BOUND_ONLY",
+        "root_depth_0": "WITHIN_DEPTH_BOUND_ONLY"
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "9315886046844136a0565e02d4e3d40fefa72fa283253aa09b35c105818cf06c",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/97",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "DEFERRED_DEPTH",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/P2-DEPTH-64",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "PENDING_OWNER_BOUNDARY_DECISION; PROVISIONAL P2: root-counting unresolved. Recommend root record=1; immediate nested record=2. Neither outcome is full schema conformance.",
+      "original_exclusion_reason": "PENDING_OWNER_BOUNDARY_DECISION"
+    },
+    "P2-DEPTH-65": {
+      "case_id": "P2-DEPTH-65",
+      "status": "CONTRACT_RELATIONAL_ASSERTION",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "SOURCE-BYTES"
+      ],
+      "expected": {
+        "root_depth_1": "EXCEEDS_DEPTH_BOUND",
+        "root_depth_0": "WITHIN_DEPTH_BOUND_ONLY"
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "56c9d6258a419477ded4bc8a0722a3b5ea258e4f7197b5049121ac49765b0276",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/98",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "DEFERRED_DEPTH",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/P2-DEPTH-65",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "PENDING_OWNER_BOUNDARY_DECISION; PROVISIONAL P2: root-counting unresolved. Recommend root record=1; immediate nested record=2. Neither outcome is full schema conformance.",
+      "original_exclusion_reason": "PENDING_OWNER_BOUNDARY_DECISION"
+    },
+    "BLO-01": {
+      "case_id": "BLO-01",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "e44fecf913b5fbede35788ab538b97153651718f76ce824d4755ffd0779faad8",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/99",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-01",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-02": {
+      "case_id": "BLO-02",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F2-OBSERVATION"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "b5e5b6516a26f14179a5bdd41c0c6e4bd1fc2967a001d63b6372def2641b1dcd",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/100",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-02",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-03": {
+      "case_id": "BLO-03",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "TEMPORAL-SEQUENCE"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "7ff08ca88ca254c6425c5d41c7c6c771db857b068c468277e0580064767d551e",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/101",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-03",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-04": {
+      "case_id": "BLO-04",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F3-EXPERIMENT"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "646766718d9256f2fd258b0516ca5689e8296d2bc3747ef6bc1f3af03ad56b88",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/102",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-04",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-05": {
+      "case_id": "BLO-05",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F3-RUN-ATTEMPT"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "93afbc4f8906a399344abf93dc9f0dfdcb8f4ead898720ce19c3e819c74ff10a",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/103",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-05",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-06": {
+      "case_id": "BLO-06",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "RESULT"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "a321b1c6a6f06908205318d4914dd7658cbdd14db4640865fb83f9f732e5f5c7",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/104",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-06",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-07": {
+      "case_id": "BLO-07",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "EVIDENCE"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "e751b93eb5075886e1420fec1b94bd2af569e0236b43e3d62f7fbe640a886e52",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/105",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-07",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-08": {
+      "case_id": "BLO-08",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F5-DECISION"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "16222ce51d28e8aa5ae23335a4c92d1d9ad9437c6371decf2f82d622439b1599",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/106",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-08",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-09": {
+      "case_id": "BLO-09",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F5-EVALUATION"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "149184e7790e18af77c71cba2946baf9aec70ddb3648df6323ca3fed99dda577",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/107",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-09",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; Full positive NOT_EXECUTED; absence is not an observed operation refusal.",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "BLO-TIME": {
+      "case_id": "BLO-TIME",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F2-QUALIFICATION"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "d70f06a6d706950fe9cbf9e11c10360ec0dd1e3ec810655be15c4a75c9e0694b",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/108",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/BLO-TIME",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "BLOCKED_NOT_CONSTRUCTIBLE; ",
+      "original_exclusion_reason": "BLOCKED_NOT_CONSTRUCTIBLE"
+    },
+    "DEFER-GATES": {
+      "case_id": "DEFER-GATES",
+      "status": "DEFERRED_SEPARATE_OWNER",
+      "execution": "NOT_EXECUTED",
+      "operation": null,
+      "domains": [
+        "F2-QUALIFICATION",
+        "F2-OBSERVATION",
+        "TEMPORAL-SEQUENCE",
+        "F3-EXPERIMENT",
+        "F3-RUN-ATTEMPT",
+        "RESULT",
+        "EVIDENCE",
+        "F5-DECISION",
+        "F5-EVALUATION"
+      ],
+      "expected": {
+        "category": "NOT_CONSTRUCTIBLE",
+        "expected_digest": null
+      },
+      "origin_partition": "excluded",
+      "record_metadata_sha256": "d09f5f7304e2ab77af933e5b2d7e293b4a8176701d7070b78436ea5e3356d7d5",
+      "source_pointer": "tests/fixtures/mvp_if03/wu05_oracle01_v0_1/cases.json#/cases/109",
+      "api_under_test": "NONE",
+      "dispatch_kind": "NOT_RUN",
+      "run_state": "EXCLUDED",
+      "actual_category": null,
+      "actual_code": null,
+      "actual_relation": null,
+      "adjudication": "EXCLUDED_ORIGINAL",
+      "conformance_class": "EXCLUDED",
+      "prior_stage_provenance": "NO_PRIOR_PRODUCTION_PASS_CLAIM",
+      "evidence_provenance": "NOT_RUN_THIS_RUN",
+      "evidence_pointer": "case_observations.json#/cases/DEFER-GATES",
+      "implemented_scope": "NONE; original exclusion preserved.",
+      "limitations": "DEFERRED_SEPARATE_OWNER; ",
+      "original_exclusion_reason": "DEFERRED_SEPARATE_OWNER"
+    }
+  }
+}
