@@ -1,0 +1,114 @@
+{
+  "original_input_refs": [
+    {
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "digest_algorithm": "SHA-256",
+      "canonical_payload_byte_length": {
+        "type": "uint64",
+        "value": "187"
+      },
+      "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+    }
+  ],
+  "expected_original_input_refs": [
+    {
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "digest_algorithm": "SHA-256",
+      "canonical_payload_byte_length": {
+        "type": "uint64",
+        "value": "187"
+      },
+      "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+    }
+  ],
+  "PF038": {
+    "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+    "object_schema_version": "source-bytes-candidate-v0.1",
+    "canonical_profile_version": "typed-json-candidate-v0.1",
+    "digest_algorithm": "SHA-256",
+    "canonical_payload_byte_length": {
+      "type": "uint64",
+      "value": "187"
+    },
+    "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+  },
+  "expected_input_ref": {
+    "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+    "object_schema_version": "source-bytes-candidate-v0.1",
+    "canonical_profile_version": "typed-json-candidate-v0.1",
+    "digest_algorithm": "SHA-256",
+    "canonical_payload_byte_length": {
+      "type": "uint64",
+      "value": "187"
+    },
+    "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+  },
+  "invariant_policy_ref": {
+    "resource_kind": "SCHEDULE_INVARIANT_POLICY",
+    "resource_version": "HYPOTHETICAL_NON_ISSUED",
+    "resource_schema": "HYPOTHETICAL_UNREVIEWED",
+    "content_ref": {
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "digest_algorithm": "SHA-256",
+      "canonical_payload_byte_length": {
+        "type": "uint64",
+        "value": "187"
+      },
+      "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+    }
+  },
+  "AF009": {
+    "resource_kind": "SCHEDULE_INVARIANT_POLICY",
+    "resource_version": "HYPOTHETICAL_NON_ISSUED",
+    "resource_schema": "HYPOTHETICAL_UNREVIEWED",
+    "content_ref": {
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "digest_algorithm": "SHA-256",
+      "canonical_payload_byte_length": {
+        "type": "uint64",
+        "value": "187"
+      },
+      "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+    }
+  },
+  "sequence_schedule_ref": {
+    "resource_kind": "DECISION_SCHEDULE",
+    "resource_version": "HYPOTHETICAL_NON_ISSUED",
+    "resource_schema": "HYPOTHETICAL_UNREVIEWED",
+    "content_ref": {
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "digest_algorithm": "SHA-256",
+      "canonical_payload_byte_length": {
+        "type": "uint64",
+        "value": "187"
+      },
+      "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+    }
+  },
+  "expected_schedule_ref": {
+    "resource_kind": "DECISION_SCHEDULE",
+    "resource_version": "HYPOTHETICAL_NON_ISSUED",
+    "resource_schema": "HYPOTHETICAL_UNREVIEWED",
+    "content_ref": {
+      "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+      "object_schema_version": "source-bytes-candidate-v0.1",
+      "canonical_profile_version": "typed-json-candidate-v0.1",
+      "digest_algorithm": "SHA-256",
+      "canonical_payload_byte_length": {
+        "type": "uint64",
+        "value": "187"
+      },
+      "digest_hex": "687ddd2e1d12816f5e20e505af0bb9d6f149ddf218e7f37a6eb6dc13df3ea686"
+    }
+  }
+}

@@ -1,0 +1,661 @@
+{
+  "format": "wu05-oracle01-domain-coverage-v0.1",
+  "baseline": "c2d66cf880d2e34d9f95f9351cbb616e3d5a7783",
+  "parent_order_rule": "Canonical keys sorted ASCII; arrays retain declared order recursively. Helper records expanded by exact helper_contracts below. Each ResourceRef has only content_ref:ParentRef<SOURCE-BYTES>; no role is a primary Domain.",
+  "resource_role_rule": "Includes required and conditional direct/helper role alternatives; transitive semantic body closure remains blocked, not authenticated by this list. SOURCE_TEXT, LIMITATION, ACTION, OUTCOME/PRICE depend on exact union branch. All roles require reviewed source-backed bytes/schema. Explicitly enumerated required_resource_roles are a navigation index, not an exhaustive transitive closure. In EVIDENCE, source_code_protocol_refs[] uses the broader conditional ProvenanceParent union: ParentRef of any registered primary domain except EVIDENCE itself OR ResourceRef of a registered semantic resource role. The chosen branch requires separately reviewed bytes/schema and rights and must preserve the acyclic subject graph; the explicit SEMANTIC_EVIDENCE/LIMITATION list does not narrow that union or approve any resource.",
+  "helper_contracts": {
+    "Text": "Unicode scalar string <=65536 UTF-8 bytes; role IDs/versions <=128; no normalization. All exact keys ASCII.",
+    "Hex64": "64 lowercase hex ASCII characters; cannot substitute for a typed ParentRef.",
+    "SafeReason": "exact {owner:Text,code:Text}; approved bounded non-secret codes only, raw reason audit-only; unknown public mapping retains immutable private original record, never blank success.",
+    "CodePin": "exact {role:Text,path:Text,byte_length:UInt64,sha256:Hex64,semantic_version:Text}; relative approved owner path, no absolute/dot-dot/backslash traversal, raw hash integrity only.",
+    "ScopeFlags": "exact {diagnostic_only:true,admission_eligible:false,trust:\"NOT_TRUSTED_PIT_EVIDENCE\",source_authentication:\"NOT_ESTABLISHED\",disposition:\"INTEGRATED_PROVISIONAL\"}; current diagnostic profile only, not new App enums.",
+    "ScopeRecord": "exact {data_mode:<existing App data_mode>,pit_status:<existing App enum>,evidence_class:<existing App enum>,scope_flags:ScopeFlags}; current bounded case SYNTHETIC_GOLDEN/UNRESOLVED/UNVERIFIED; preserve applicable stronger access withholding independently. No execution success inferred.",
+    "AppAxes": "exact {pit_status:<existing App enum>,execution_status:<existing App enum>,evidence_class:<existing App enum>,execution_scope_ref:ResourceRef<PROTOCOL>}; scope identifies actual operation owner/lifecycle, mandatory. Do not map Native invocation to F3 SUCCEEDED.",
+    "SourceVersionRef": "exact {body_ref:ParentRef<SOURCE-BYTES>,version_ref:ResourceRef<SOURCE_VERSION>,representation_ref:Text,revision_history_ref:ResourceRef<SOURCE_VERSION_HISTORY>}; exact source history order inside independently approved resource.",
+    "CohortEntry": "exact {issuer_ref:Text,feature_ref:Text}; array order declared by issuer; requested roster != qualified cohort.",
+    "TickContext": "exact {tick_id:Text,tick_order:UInt64,decision_cutoff:TimeRecord,context_ref:Text}; no own envelope.",
+    "FeatureValue": "exact {feature_ref:Text,value:Known<Int64 / FixedRatio6> / Unknown / NotEvaluated / Withheld,unit:Text,numeric_policy_ref:ResourceRef<NUMERIC_POLICY>}; no raw audit/future data; scale inside FixedRatio6.",
+    "SequenceMember": "exact {tick:TickContext,binding_ref:ResourceRef<SEMANTIC_TRACE>,qualification_ref:ParentRef<F2-QUALIFICATION>,observation_ref:Available{ref:ParentRef<F2-OBSERVATION>} / Withheld,scope:ScopeRecord}; binding_ref resolves F2 private PerCutoffBinding view only under audit policy; policy view omits private audit locator.",
+    "NoSessionAnnotation": "exact {iso_week:Text,kind:\"NO_SESSION_WEEK\",calendar_ref:ResourceRef<CALENDAR>}; ISO week valid under pinned calendar; annotation never becomes decision.",
+    "SequenceAccounting": "exact {scheduled_count:UInt64,accounted_count:UInt64,position_outcomes:ordered SafeReason[],release_policy_ref:ResourceRef<OBSERVATION_RELEASE_POLICY>}; count equality proves accounting only; any required failure blocks all-qualified release. Do not encode all_eligible default.",
+    "ExperimentInput": "exact tagged union {kind:\"SEQUENCE\",temporal_binding_set_ref:ParentRef<TEMPORAL-SEQUENCE>,association_contract_version:\"experiment-sequence-binding-candidate-v0.1\"} OR {kind:\"SINGLE_CUTOFF\",observation_ref:ParentRef<F2-OBSERVATION>,single_cutoff_contract_ref:ResourceRef<PROTOCOL>}; no association instance parent in EXPERIMENT; original seven DTOs not modified by this conceptual union.",
+    "SequenceTickRef": "exact {sequence_ref:ParentRef<TEMPORAL-SEQUENCE>,tick_order:UInt64,tick_id:Text}; position must resolve uniquely and agree with cutoff/observation context.",
+    "RealizedInputRef": "ParentRef<SOURCE-BYTES / F2-QUALIFICATION / F2-OBSERVATION / TEMPORAL-SEQUENCE> OR ResourceRef<OUTCOME / PRICE>; declared ordered union, not arbitrary reference; evaluation-only refs denied at decision boundary.",
+    "CodePinOrProtocol": "exact tagged union {kind:\"CODE\",pin:CodePin}  /  {kind:\"PROTOCOL\",ref:ResourceRef<PROTOCOL / NUMERIC_POLICY / EVALUATION_PROTOCOL>}.",
+    "MetricResult": "exact {metric_ref:ResourceRef<RESULT_METRIC>,value:Known<Int64 / Decimal / FixedRatio6> / Unknown / NotEvaluated,unit:Text,denominator:Known<UInt64> / NotApplicable,diagnostic_ref:ResourceRef<STATE> / NotApplicable}; actual metric/diagnostic schema remains blocked by IF03-OD01-S1 until owning protocol review.",
+    "ProvenanceParent": "ParentRef<registered ten-domain resource except EVIDENCE itself> OR ResourceRef<registered semantic resource>; full transitive graph must remain acyclic, no subject->own EVIDENCE edge."
+  },
+  "domains": [
+    {
+      "domain": "SOURCE-BYTES",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/SOURCE-BYTES/candidate-v0.1",
+        "object_schema_version": "source-bytes-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "body_byte_length",
+        "body_sha256"
+      ],
+      "contract_field_spec": "body_byte_length: UInt64: exact raw body bytes; body_sha256: Hex64: SHA-256 of exact raw body, existing integrity algorithm only",
+      "required_resource_roles": [],
+      "typed_parent_order": [],
+      "positive_cases": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08"
+      ],
+      "refusal_case_ids": [
+        "N-DUPLICATE",
+        "N-BOM",
+        "N-UTF8",
+        "N-SURROGATE",
+        "N-ORDER",
+        "N-WHITESPACE",
+        "N-SHORT-ESCAPE",
+        "N-UPPER-ESCAPE",
+        "N-ASCII-ESCAPE",
+        "N-SLASH-ESCAPE",
+        "N-NULL",
+        "N-BARE-INT",
+        "N-FLOAT",
+        "N-NAN",
+        "N-INFINITY",
+        "N-MISSING",
+        "N-UNKNOWN",
+        "N-OWN-ENVELOPE",
+        "N-PLUS",
+        "N-ZERO-PREFIX",
+        "N-NEGATIVE-ZERO",
+        "N-EXPONENT",
+        "N-UINT-NEGATIVE",
+        "N-INT-OVERFLOW",
+        "N-UINT-OVERFLOW",
+        "N-BOOL-COERCION",
+        "N-BOOL-INT",
+        "N-DECIMAL-SCALE",
+        "N-PROFILE",
+        "N-FRAME-LENGTH",
+        "N-ENDIAN",
+        "N-SECTION-ORDER",
+        "N-TRAILING",
+        "N-PAYLOAD-LENGTH",
+        "N-UNFRAMED-HASH",
+        "N-DIGEST",
+        "N-DOMAIN",
+        "N-SCHEMA",
+        "N-ALGORITHM",
+        "N-ENVELOPE-PROFILE",
+        "N-ZERO-LENGTH",
+        "N-OVER-LIMIT"
+      ],
+      "blocked_case_ids": [],
+      "relational_case_ids": [
+        "R-UNICODE",
+        "R-RAW-MUTATION",
+        "P2-DEPTH-64",
+        "P2-DEPTH-65"
+      ],
+      "deferred_case_ids": [],
+      "evidence_preconditions": "Exact immutable raw body and accepted expected records; content integrity only.",
+      "status": "VALID_COMPLETE_DOMAIN_POSITIVE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 SOURCE-BYTES; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "ORACLE-02 independent reviewer"
+    },
+    {
+      "domain": "F2-QUALIFICATION",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/F2-QUALIFICATION/candidate-v0.1",
+        "object_schema_version": "f2-qualification-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "source_body_refs",
+        "manifest_ref",
+        "calendar_ref",
+        "cutoff",
+        "context_ref",
+        "feature_cohort",
+        "coverage_ref",
+        "native_semantic_trace_ref",
+        "rules_code_refs",
+        "qualification_state",
+        "scope"
+      ],
+      "contract_field_spec": "source_body_refs: ordered SourceVersionRef[] 1..4096; manifest_ref: ResourceRef<MANIFEST>; calendar_ref: ResourceRef<CALENDAR>; cutoff: TimeRecord; context_ref: Text; exact issuer-bound Native context ID; feature_cohort: ordered CohortEntry[] 1..4096; coverage_ref: ResourceRef<COVERAGE>; native_semantic_trace_ref: ResourceRef<SEMANTIC_TRACE>; no attempt-specific allocation/clock fields; rules_code_refs: ordered CodePin[] 1..4096; evaluator/adapter/schema/policy roles explicit; qualification_state: NativeSummary; exact typed original state/failure; scope: ScopeRecord",
+      "required_resource_roles": [
+        "CALENDAR",
+        "COVERAGE",
+        "MANIFEST",
+        "NATIVE_RECEIPT",
+        "ORIGIN",
+        "SEMANTIC_TRACE",
+        "SOURCE_VERSION",
+        "SOURCE_VERSION_HISTORY",
+        "SOURCE_TEXT",
+        "TIMEZONE_RULES"
+      ],
+      "typed_parent_order": [
+        "calendar_ref:ResourceRef<CALENDAR>",
+        "coverage_ref:ResourceRef<COVERAGE>",
+        "cutoff:TimeRecord",
+        "manifest_ref:ResourceRef<MANIFEST>",
+        "native_semantic_trace_ref:ResourceRef<SEMANTIC_TRACE>",
+        "qualification_state:NativeSummary",
+        "source_body_refs[]:SourceVersionRef"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-AT-T1",
+        "N-T3-PLUS-ONE",
+        "N-NAIVE",
+        "N-FRACTIONAL",
+        "N-LEAP-SECOND",
+        "N-HIDDEN-ATTEMPT",
+        "N-MISSING-RECEIPT",
+        "N-NO-OUTCOME-STATE",
+        "N-UNREVIEWED-RESOURCE"
+      ],
+      "blocked_case_ids": [
+        "BLO-01",
+        "BLO-TIME"
+      ],
+      "relational_case_ids": [
+        "R-FOUR-CUTOFFS",
+        "R-REDACTION"
+      ],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Reviewed original seven source bodies/ORIGIN, MANIFEST, source versions/history and coverage as distinct evidence; reviewed CALENDAR/TIMEZONE_RULES; evaluator/adapter/schema/policy CodePins; mandatory semantic NATIVE_RECEIPT and original Attempt/correspondence witness, rights and qualified parents.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 F2-QUALIFICATION; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F2 / resource issuance and original audit witness"
+    },
+    {
+      "domain": "F2-OBSERVATION",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/F2-OBSERVATION/candidate-v0.1",
+        "object_schema_version": "f2-observation-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "qualification_ref",
+        "tick_context",
+        "issuer_ref",
+        "feature_values",
+        "projection_policy_ref",
+        "release_policy_ref",
+        "scope"
+      ],
+      "contract_field_spec": "qualification_ref: ParentRef<F2-QUALIFICATION>; tick_context: TickContext; issuer_ref: Text; feature_values: ordered FeatureValue[] 1..4096; projection_policy_ref: ResourceRef<PROJECTION_POLICY>; release_policy_ref: ResourceRef<OBSERVATION_RELEASE_POLICY>; scope: ScopeRecord",
+      "required_resource_roles": [
+        "NUMERIC_POLICY",
+        "OBSERVATION_RELEASE_POLICY",
+        "ORIGIN",
+        "PROJECTION_POLICY",
+        "SOURCE_TEXT",
+        "TIMEZONE_RULES"
+      ],
+      "typed_parent_order": [
+        "feature_values[]:FeatureValue",
+        "projection_policy_ref:ResourceRef<PROJECTION_POLICY>",
+        "qualification_ref:ParentRef<F2-QUALIFICATION>",
+        "release_policy_ref:ResourceRef<OBSERVATION_RELEASE_POLICY>",
+        "tick_context.decision_cutoff:TimeRecord"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-RATIO-MISMATCH",
+        "N-REUSED-CONTEXT",
+        "N-SAFE-AUDIT",
+        "N-SAFE-CALLBACK",
+        "N-SAFE-GRANT",
+        "N-SAFE-ATTEMPT",
+        "N-SAFE-PRICE",
+        "N-GRANT-MISSING",
+        "N-GRANT-REVOKED",
+        "N-FOREIGN-PARENT",
+        "N-STALE-PARENT"
+      ],
+      "blocked_case_ids": [
+        "BLO-02"
+      ],
+      "relational_case_ids": [
+        "R-FOUR-CUTOFFS",
+        "R-REDACTION"
+      ],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Complete F2-QUALIFICATION and distinct tick contexts; reviewed numeric/projection/release policy bodies, original typed values/origins; separate actual authorization and immutable operation receipts for release.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 F2-OBSERVATION; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F2 / policy and qualification issuance"
+    },
+    {
+      "domain": "TEMPORAL-SEQUENCE",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/TEMPORAL-SEQUENCE/candidate-v0.1",
+        "object_schema_version": "temporal-sequence-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "configuration_ref",
+        "schedule_ref",
+        "bindings",
+        "annotations",
+        "release_state",
+        "provenance_ref",
+        "scope"
+      ],
+      "contract_field_spec": "configuration_ref: ResourceRef<TEMPORAL_CONFIGURATION>; schedule_ref: ResourceRef<DECISION_SCHEDULE>; bindings: ordered SequenceMember[] 1..4096; exact membership/schedule length; annotations: ordered NoSessionAnnotation[] 0..4096; release_state: SequenceAccounting; provenance_ref: ResourceRef<SEMANTIC_TRACE> input manifest, never own completed EVIDENCE; scope: ScopeRecord",
+      "required_resource_roles": [
+        "CALENDAR",
+        "DECISION_SCHEDULE",
+        "OBSERVATION_RELEASE_POLICY",
+        "SEMANTIC_TRACE",
+        "TEMPORAL_CONFIGURATION",
+        "SCHEDULE_INVARIANT_POLICY",
+        "ORIGIN",
+        "TIMEZONE_RULES"
+      ],
+      "typed_parent_order": [
+        "annotations[].calendar_ref:ResourceRef<CALENDAR>",
+        "bindings[]:SequenceMember",
+        "configuration_ref:ResourceRef<TEMPORAL_CONFIGURATION>",
+        "provenance_ref:ResourceRef<SEMANTIC_TRACE>",
+        "release_state.release_policy_ref:ResourceRef<OBSERVATION_RELEASE_POLICY>",
+        "schedule_ref:ResourceRef<DECISION_SCHEDULE>"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-TICK-SWAPPED",
+        "N-TICK-DROPPED",
+        "N-TICK-DUPLICATE",
+        "N-TICK-FOREIGN",
+        "N-W03-TICK",
+        "N-B03-MIDNIGHT",
+        "N-REUSED-CONTEXT",
+        "N-CYCLE",
+        "N-D06-ORIGINALS",
+        "N-D06-PF038",
+        "N-D06-AF009",
+        "N-D06-SCHEDULE"
+      ],
+      "blocked_case_ids": [
+        "BLO-03"
+      ],
+      "relational_case_ids": [
+        "R-FOUR-CUTOFFS",
+        "R-D06-CONSISTENT",
+        "R-D06-POLICY-CHANGE"
+      ],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Actual owner-declared versioned ScheduleInput SOURCE-BYTES with original_input_refs/full invariant_policy_ref, AF009 equality, PF038 link, reviewed DECISION_SCHEDULE/configuration/calendar/provenance and four distinct qualification/observation bindings; F3/F5 temporal declarations. Transitive bindings[].tick.decision_cutoff:TimeRecord requires ORIGIN and TIMEZONE_RULES; these prerequisites remain unissued.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 TEMPORAL-SEQUENCE; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F2/F3 / ScheduleInput and schedule issuance"
+    },
+    {
+      "domain": "F3-EXPERIMENT",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/F3-EXPERIMENT/candidate-v0.1",
+        "object_schema_version": "f3-experiment-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "hypothesis",
+        "input_binding",
+        "method",
+        "protocol_ref",
+        "horizon_maturity_ref",
+        "seed",
+        "evaluation_plan_ref"
+      ],
+      "contract_field_spec": "hypothesis: ResourceRef<HYPOTHESIS>; input_binding: ExperimentInput; method: ResourceRef<METHOD>; protocol_ref: ResourceRef<PROTOCOL>; horizon_maturity_ref: ResourceRef<HORIZON_MATURITY>; seed: Int64 0..2^63-1; evaluation_plan_ref: ResourceRef<EVALUATION_PLAN>",
+      "required_resource_roles": [
+        "EVALUATION_PLAN",
+        "HORIZON_MATURITY",
+        "HYPOTHESIS",
+        "METHOD",
+        "PROTOCOL"
+      ],
+      "typed_parent_order": [
+        "evaluation_plan_ref:ResourceRef<EVALUATION_PLAN>",
+        "horizon_maturity_ref:ResourceRef<HORIZON_MATURITY>",
+        "hypothesis:ResourceRef<HYPOTHESIS>",
+        "input_binding:ExperimentInput (SEQUENCE parent + CONTRACT VERSION, or SINGLE_CUTOFF observation + PROTOCOL)",
+        "method:ResourceRef<METHOD>",
+        "protocol_ref:ResourceRef<PROTOCOL>"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-ASSOCIATION-INSTANCE"
+      ],
+      "blocked_case_ids": [
+        "BLO-04"
+      ],
+      "relational_case_ids": [],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Owned hypothesis, method, protocol, horizon/maturity and evaluation plan schemas/bytes; seed declaration; issued sequence plus association CONTRACT VERSION; never association instance.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 F3-EXPERIMENT; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F3 owner"
+    },
+    {
+      "domain": "F3-RUN-ATTEMPT",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/F3-RUN-ATTEMPT/candidate-v0.1",
+        "object_schema_version": "f3-run-attempt-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "attempt_id",
+        "experiment_ref",
+        "operation_receipt_ref",
+        "result_ref"
+      ],
+      "contract_field_spec": "attempt_id: Text: fresh issuer-scoped execution identifier; experiment_ref: ParentRef<F3-EXPERIMENT>; operation_receipt_ref: ResourceRef<NATIVE_RECEIPT>; immutable actual attempt/lifecycle revision, clocks/provenance/failure as specified by F3 owner; result_ref: Available{ref:ParentRef<RESULT>}  /  NotEvaluated",
+      "required_resource_roles": [
+        "NATIVE_RECEIPT"
+      ],
+      "typed_parent_order": [
+        "experiment_ref:ParentRef<F3-EXPERIMENT>",
+        "operation_receipt_ref:ResourceRef<NATIVE_RECEIPT>",
+        "result_ref:Available<ParentRef<RESULT>> | NotEvaluated"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-RESULT-ATTEMPT"
+      ],
+      "blocked_case_ids": [
+        "BLO-05"
+      ],
+      "relational_case_ids": [
+        "R-ATTEMPT-SEPARATION"
+      ],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Real fresh issuer-scoped attempt_id, experiment parent, actual NATIVE_RECEIPT and immutable revision/lifecycle semantics; original attempt/witness. No fictitious NOT_RUN/RUN receipt.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 F3-RUN-ATTEMPT; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F3 operation owner"
+    },
+    {
+      "domain": "RESULT",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/RESULT/candidate-v0.1",
+        "object_schema_version": "result-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "experiment_ref",
+        "realized_input_refs",
+        "code_protocol_refs",
+        "typed_results",
+        "limitations"
+      ],
+      "contract_field_spec": "experiment_ref: ParentRef<F3-EXPERIMENT>; realized_input_refs: ordered RealizedInputRef[] 0..4096; code_protocol_refs: ordered CodePinOrProtocol[] 1..4096; typed_results: ordered MetricResult[] 0..4096; empty cannot claim missing metrics are successful; limitations: ordered ResourceRef<LIMITATION>[] 0..4096",
+      "required_resource_roles": [
+        "EVALUATION_PROTOCOL",
+        "LIMITATION",
+        "NUMERIC_POLICY",
+        "OUTCOME",
+        "PRICE",
+        "PROTOCOL",
+        "RESULT_METRIC",
+        "ORIGIN",
+        "SOURCE_TEXT",
+        "STATE"
+      ],
+      "typed_parent_order": [
+        "code_protocol_refs[]:CodePinOrProtocol",
+        "experiment_ref:ParentRef<F3-EXPERIMENT>",
+        "limitations[]:ResourceRef<LIMITATION>",
+        "realized_input_refs[]:RealizedInputRef",
+        "typed_results[]:MetricResult"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-DANGLING",
+        "N-RESULT-ATTEMPT"
+      ],
+      "blocked_case_ids": [
+        "BLO-06"
+      ],
+      "relational_case_ids": [
+        "R-ATTEMPT-SEPARATION"
+      ],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Issued experiment, mature realized inputs/code/protocol/metric/limitation schemas and actual computed evidence; successful empty metrics cannot stand for missing result.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 RESULT; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F3 / computation owners"
+    },
+    {
+      "domain": "EVIDENCE",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/EVIDENCE/candidate-v0.1",
+        "object_schema_version": "evidence-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "subject_ref",
+        "semantic_audit_ref",
+        "source_code_protocol_refs",
+        "limitations",
+        "evidence_claim"
+      ],
+      "contract_field_spec": "subject_ref: ParentRef<SOURCE-BYTES / F2-QUALIFICATION / F2-OBSERVATION / TEMPORAL-SEQUENCE / F3-EXPERIMENT / RESULT / F5-DECISION / F5-EVALUATION>; semantic_audit_ref: ResourceRef<SEMANTIC_EVIDENCE>; original exact attempt receipts separately retained; source_code_protocol_refs: ordered ProvenanceParent[] 1..4096; limitations: ordered ResourceRef<LIMITATION>[] 0..4096; evidence_claim: exact existing App evidence_class literal; default UNVERIFIED, no predicate grant",
+      "required_resource_roles": [
+        "LIMITATION",
+        "SEMANTIC_EVIDENCE"
+      ],
+      "typed_parent_order": [
+        "limitations[]:ResourceRef<LIMITATION>",
+        "semantic_audit_ref:ResourceRef<SEMANTIC_EVIDENCE>",
+        "source_code_protocol_refs[]:ProvenanceParent: ParentRef<registered primary domain except EVIDENCE> OR ResourceRef<registered semantic resource role> (conditional union; not exhausted by required_resource_roles)",
+        "subject_ref:ParentRef<SOURCE-BYTES|F2-QUALIFICATION|F2-OBSERVATION|TEMPORAL-SEQUENCE|F3-EXPERIMENT|RESULT|F5-DECISION|F5-EVALUATION>"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-CYCLE",
+        "N-SAFE-AUDIT",
+        "N-SAFE-CALLBACK",
+        "N-SAFE-GRANT",
+        "N-SAFE-ATTEMPT",
+        "N-SAFE-PRICE"
+      ],
+      "blocked_case_ids": [
+        "BLO-07"
+      ],
+      "relational_case_ids": [
+        "R-EVIDENCE-DIRECTION"
+      ],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Issued subject, reviewed SEMANTIC_EVIDENCE and provenance/limitations; original private attempt correspondence separately retained with audit rights; no subject backedge. source_code_protocol_refs[] may select any permitted ProvenanceParent branch, including registered semantic ResourceRef roles beyond the explicitly enumerated direct SEMANTIC_EVIDENCE and conditional LIMITATION roles; each selected dependency needs its own reviewed bytes/schema/rights and acyclic closure.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 EVIDENCE; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F2/F3/F5 evidence owner"
+    },
+    {
+      "domain": "F5-DECISION",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/F5-DECISION/candidate-v0.1",
+        "object_schema_version": "f5-decision-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "sequence_tick_ref",
+        "policy_ref",
+        "observation_refs",
+        "action",
+        "decision_execution_rules_ref"
+      ],
+      "contract_field_spec": "sequence_tick_ref: SequenceTickRef; policy_ref: ResourceRef<POLICY>; observation_refs: ordered ParentRef<F2-OBSERVATION>[] 1..4096; action: ResourceRef<ACTION>  /  NotEvaluated  /  NotApplicable; decision_execution_rules_ref: ResourceRef<EXECUTION_RULES>",
+      "required_resource_roles": [
+        "ACTION",
+        "EXECUTION_RULES",
+        "POLICY"
+      ],
+      "typed_parent_order": [
+        "action:ResourceRef<ACTION> | NotEvaluated | NotApplicable",
+        "decision_execution_rules_ref:ResourceRef<EXECUTION_RULES>",
+        "observation_refs[]:ParentRef<F2-OBSERVATION>",
+        "policy_ref:ResourceRef<POLICY>",
+        "sequence_tick_ref.sequence_ref:ParentRef<TEMPORAL-SEQUENCE>"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-DECISION-FUTURE-PRICE",
+        "N-DECISION-OUTCOME",
+        "N-DECISION-LABEL"
+      ],
+      "blocked_case_ids": [
+        "BLO-08"
+      ],
+      "relational_case_ids": [
+        "R-DECISION-EVALUATION"
+      ],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Issued sequence tick/observations; predeclared owned policy/action/execution rules, time-available information and release rights; no future price/outcome/label.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 F5-DECISION; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F5 owner"
+    },
+    {
+      "domain": "F5-EVALUATION",
+      "exact_schema_tag_profile": {
+        "domain_tag": "PITLAB/ACADEMIC/F5-EVALUATION/candidate-v0.1",
+        "object_schema_version": "f5-evaluation-candidate-v0.1",
+        "canonical_profile_version": "typed-json-candidate-v0.1"
+      },
+      "semantic_fields": [
+        "canonical_profile_version",
+        "decision_refs",
+        "outcome_refs",
+        "evaluation_policy_ref",
+        "metrics",
+        "limitations"
+      ],
+      "contract_field_spec": "decision_refs: ordered ParentRef<F5-DECISION>[] 1..4096; outcome_refs: ordered ResourceRef<OUTCOME / PRICE>[] 1..4096; evaluation_policy_ref: ResourceRef<EVALUATION_PROTOCOL>; metrics: ordered MetricResult[] 0..4096; limitations: ordered ResourceRef<LIMITATION>[] 0..4096",
+      "required_resource_roles": [
+        "EVALUATION_PROTOCOL",
+        "LIMITATION",
+        "OUTCOME",
+        "PRICE",
+        "RESULT_METRIC",
+        "ORIGIN",
+        "NUMERIC_POLICY",
+        "STATE",
+        "SOURCE_TEXT"
+      ],
+      "typed_parent_order": [
+        "decision_refs[]:ParentRef<F5-DECISION>",
+        "evaluation_policy_ref:ResourceRef<EVALUATION_PROTOCOL>",
+        "limitations[]:ResourceRef<LIMITATION>",
+        "metrics[]:MetricResult",
+        "outcome_refs[]:ResourceRef<OUTCOME|PRICE>"
+      ],
+      "positive_cases": [],
+      "refusal_case_ids": [
+        "N-IMMATURE-OUTCOME"
+      ],
+      "blocked_case_ids": [
+        "BLO-09"
+      ],
+      "relational_case_ids": [
+        "R-DECISION-EVALUATION"
+      ],
+      "deferred_case_ids": [
+        "DEFER-GATES"
+      ],
+      "evidence_preconditions": "Issued decisions, actually mature PRICE/OUTCOME evidence, owned evaluation protocol/metrics/cost/window/limitations; no invented trade or return.",
+      "status": "BLOCKED_NOT_CONSTRUCTIBLE",
+      "source_clause": [
+        {
+          "path": "docs/mvp/v1.0/shared-interface-contract-v0.1.md",
+          "clause": "AD01-09 F5-EVALUATION; CAN-01..10; RT01-03/04"
+        }
+      ],
+      "next_owner_or_work_unit": "F5 / F3 maturity owner"
+    }
+  ],
+  "helper_clause_specs": {
+    "CAN-02": "**AD01-07.CAN-02 — Numbers.** No bare JSON numeric token is allowed in canonical records. Int64={\"type\":\"int64\",\"value\":SINT}; SINT is \"0\" or \"-\"?[1-9][0-9]* and value in [-2^63,2^63-1]. UInt64={\"type\":\"uint64\",\"value\":UINT}; UINT is \"0\" or [1-9][0-9]* and value in [0,2^64-1]. Boolean schema fields use true/false only, never int/bool coercion. Decimal={type:\"decimal\",coefficient:Int64,scale:UInt64,unit:Text,numeric_policy_ref:ResourceRef}; scale 0..18 candidate, coefficient*10^(-scale), preserve declared scale; exponent spelling is not accepted. No positive sign/leading zeros/-0; zero coefficient is exactly \"0\", while its declared decimal scale remains data. Negative integers/Decimal allowed only in fields with an appropriate semantic domain; overflow/precision loss refused. FixedRatio6={type:\"fixed_ratio6\",scaled_units:UInt64,decimal_text:Text,scale:UInt64,unit:\"FRACTION\",numeric_policy_ref:ResourceRef}; scale exactly 6, scaled_units 0..1000000; decimal_text exactly integer part + dot + six digits, checked against scaled units and Native policy FIXED_SIX_DECIMAL_FRACTION_HALF_EVEN-v0.1. Ratio body includes both text and exact scaled representation consistently; no recomputation from arbitrary display text. Float, NaN/Inf, implicit string/boolean/Decimal coercion and exact fractions are unsupported; new fraction schema requires separate decision. Seed is Int64 0..2^63-1. All bounds are candidate defaults under IF03-OD01-S2, not an existing general Native Decimal contract.",
+    "CAN-03": "**AD01-07.CAN-03 — Time.** TimeRecord has exactly source_text, timezone_name, offset, precision, origin_ref, utc_comparison, timezone_rules_ref. Current profile: precision=\"SECOND\", source_text=YYYY-MM-DDTHH:MM:SS(+|-)HH:MM, valid proleptic Gregorian year 0001..9999, no leap second, no fractional seconds; explicit offset numeric hours 00..23/minutes 00..59 and actual named zone must agree. utc_comparison uses YYYY-MM-DDTHH:MM:SSZ and must equal the instant derived from original declaration, never independent replacement evidence. Require pinned timezone-rules ResourceRef; reject naive/malformed/unsupported precision, gap, unavailable rules, contradictory offset-zone or nonunique interpretation. An explicit offset may resolve a repeated local wall time only if pinned zone rules give exactly one consistent instant. Origin is identity-bearing, not rewritten from UI. For current WU01 boundary only Asia/Taipei +08:00 original SECOND declarations are supported. A broader valid timezone case needs approved schema/rules; same UTC can compare SAME_INSTANT while original zone/text/origin differs as evidence identity. The actual exact Native TimeProof path uses published_at < cutoff; AT is not BEFORE. Do not generalize that one path to every publication/observation proof variant. IF03-OD02-S1 blocks unpinned/broader-zone oracle claims.",
+    "CAN-05": "**AD01-07.CAN-05 — Reference semantics.** CanonicalPayload and ReferenceEnvelope are disjoint. Payload contains only the exact domain semantic fields plus canonical_profile_version, and already-defined typed parent cores. The object's OWN digest/envelope, locator, capability or issuance timestamp MUST NOT be in its own payload. ReferenceEnvelope exact hashed-identity core fields: domain_tag, object_schema_version, canonical_profile_version, digest_algorithm, canonical_payload_byte_length:UInt64, digest_hex:64 lowercase ASCII hex. The length is canonical PAYLOAD bytes, excluding frame/header/envelope. Optional issuer/display locator metadata is in a separate ResolutionMetadata record, outside parent cores and digest; it confers no capability. ParentRef<T> is the six-field core with expected registered domain T; no resolver callback or arbitrary URI. ResourceRef<R>={resource_kind,resource_version,resource_schema,content_ref:ParentRef<SOURCE-BYTES>}; owner must approve exact referenced resource bytes/schema; generic opaque bytes prove no semantics. Reject unsupported schema/domain, dangling/stale/foreign/reordered parent, own-envelope inclusion and graph cycles. Verify raw resource bytes via SOURCE-BYTES body length/raw hash, then semantic schema; verify canonical resource by exact payload/frame/envelope recomputation. Display aliases and Git/source/provider names are hints/provenance only. F3 experiment uses sequence parent plus association CONTRACT VERSION, never its association INSTANCE: seal experiment before association binds to it. Evidence points to subject, never subject to its own final evidence; use original semantic-input trace resource to avoid cycles.",
+    "CAN-07": "**AD01-07.CAN-07 — Unknown/error/operation state.** Closed fact tags: Available{type:\"available\",ref:<exact expected typed ref>}; Known{type:\"known\",value:<schema type>,origin_ref:ResourceRef<ORIGIN>}; Unknown{type:\"unknown\",cause:<exact original UnknownCause>,origin_ref:ResourceRef<ORIGIN>,source_text_ref:ResourceRef<SOURCE_TEXT>|NotApplicable}; NotEvaluated{type:\"not_evaluated\",owner:Text,reason:Text}; NotApplicable{type:\"not_applicable\",owner:Text,reason:Text}; Withheld{type:\"withheld\",owner:Text,reason:Text,policy_ref:ResourceRef<OBSERVATION_RELEASE_POLICY>}. Preserve exact Native UnknownCause names (ABSENT_SOURCE_FIELD, EXPLICIT_SOURCE_UNKNOWN, AMBIGUOUS_SOURCE, UNMAPPED), no cause inference. NativeFailure={type:\"native_failure\",owner:Text,category:Text,code:Text,affected_scope_refs:ordered ResourceRef[],safe_diagnostic:Text,origin_ref:ResourceRef<ORIGIN>,attempted_operation:Text}; original detailed failure record retained audit-only when public text would leak. NativeSummary={owner:Text,type:Text,state:Text,reason_code:Text,unknown:Unknown|NotApplicable,first_failure:NativeFailure|NotApplicable,invocation:RUN|ATTEMPTED|NOT_RUN,invocation_receipt_ref:ResourceRef<NATIVE_RECEIPT>}. No missing -> zero/null or generic empty success. Exact first failing owner/reason/order survives wrappers; safe public code is not claimed lossless original text. RUN means actual returned operation per original receipt, ATTEMPTED entered exception, NOT_RUN no owner entered. These are operation labels, not new App lifecycle enums. Successful A04/A05 remains VALUE_AVAILABLE, no invented Native WITHHELD."
+  }
+}
