@@ -505,7 +505,11 @@ def _envelope(payload: bytes, digest: str) -> dict[str, object]:
 
 @dataclass(frozen=True, slots=True)
 class SourceBytesCandidate:
-    """Immutable in-memory candidate; envelope property returns a detached copy."""
+    """Internally consistent candidate; original raw-body provenance is not established.
+
+    Construction reconciles payload/frame/digest only. Raw-body reconciliation
+    still requires verify_source_bytes_candidate with the actual original bytes.
+    """
 
     payload: bytes
     frame: bytes
@@ -519,6 +523,13 @@ class SourceBytesCandidate:
     disposition: Literal["INTEGRATED_PROVISIONAL"] = field(
         default="INTEGRATED_PROVISIONAL", init=False
     )
+
+    def __post_init__(self) -> None:
+        if type(self.payload) is not bytes:
+            _refuse("BYTES_REQUIRED")
+        actual = verify_source_frame(self.frame, _envelope(self.payload, self.frame_digest))
+        if actual != self.payload:
+            _refuse("PAYLOAD_MISMATCH")
 
     @property
     def candidate_envelope(self) -> dict[str, object]:
