@@ -1,0 +1,568 @@
+{
+  "format": "WU05_RSF02D_OWNER_DECISION_RECORD_v0.1",
+  "task_id": "MVP-F2-WU05-RSF02-D",
+  "record_version": "v0.1",
+  "baseline_main_sha": "ce3393df09d1b9126c9b78e854a7f8f44bd37da6",
+  "academic_repository": "EricCheng24/pit-research-lab",
+  "source_evidence_zip_sha256": "313cb2fdcc75437ef6d4324762833d56c60df1d8031f3d645c72520510f3d30d",
+  "source_owner_decision_record": "MVP-F2-WU05-RSF02-D_Owner_Decision_Record_v0.1.md",
+  "source_owner_decision_record_sha256": "c894a5d19a157724d66661a1ea67b989d7014a0658073d549ec59070f797ba67",
+  "source_rsf02_adoption_matrix": "rsf02_review_material/RSF02_Draft_Schema_Adoption_Matrix.csv",
+  "source_rsf02_adoption_matrix_sha256": "9ab0bcea9313060bf7634fdc75051af0abd862d2556103b343f5449323586f16",
+  "review_predecessor": "WU05_RSF02_INDEPENDENT_DECISION_PACKET_ACCEPTED",
+  "authority_scope": "DELEGATED_ACADEMIC_PROJECT_LEVEL_DESIGN_DIRECTIONS_ONLY",
+  "disposition": "RSF02D_OWNER_PROJECT_DIRECTIONS_RECORDED_PENDING_INDEPENDENT_REVIEW",
+  "scope_and_nonpromotion": {
+    "project_context": "Academic SYN-A bounded WU04 fixed-four weekly profile",
+    "existing_draft_schema_version": "0.1-DRAFT-NON_ISSUED",
+    "all_schema_adoption_pending": true,
+    "role_specific_owner_signoffs_supplied": false,
+    "independent_semantic_s1_acceptances_supplied": false,
+    "approved_resource_bodies_supplied": false,
+    "rights_or_issuer_granted": false,
+    "native_replay_accepted": false,
+    "pit_admitted": false,
+    "full_functional_wu05_closed": false,
+    "formal_project_or_survivor_authority": false
+  },
+  "stage_gates": [
+    {
+      "stage": "S0",
+      "meaning": "Request/preparation; no adoption"
+    },
+    {
+      "stage": "S1",
+      "meaning": "Attributable schema semantics and independent semantic review"
+    },
+    {
+      "stage": "S2",
+      "meaning": "Exact resource body, version and typed parents verified"
+    },
+    {
+      "stage": "S3",
+      "meaning": "Independent full-domain Golden verification"
+    },
+    {
+      "stage": "S4",
+      "meaning": "Issuer, rights and Native replay operational verification"
+    },
+    {
+      "stage": "S5",
+      "meaning": "Consumer-specific acceptance"
+    }
+  ],
+  "schema_decisions": [
+    {
+      "decision_id": "RSF02-A01",
+      "resource_role": "ORIGIN",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "SYN-A synthetic/retained facts only; immutable SOURCE-BYTES-linked input_pointer must resolve to exactly one approved original field; verify raw bytes, declared source schema, fact owner, object identity, and retained Native correspondence where selected; preserve original Unknown vs Known without inference.",
+      "decision_summary": "SYN-A synthetic/retained facts only; immutable SOURCE-BYTES-linked input_pointer must resolve to exactly one approved original field; verify raw bytes, declared source schema, fact owner, object identity, and retained Native correspondence where selected; preserve original Unknown vs Known without inference.",
+      "draft_schema_label": "rs-spec-origin-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L287-L294",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L467; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L459",
+      "responsible_roles_and_evidence_source": "F2 semantic issuer with F4/Data source custodian; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L287-L294`.",
+      "required_s1_evidence": "Original input pointer syntax/resolution; F4/data custodian source evidence; independent semantic reviewer.",
+      "existing_decision_packet_readiness": "NEEDS_POINTER_AND_AUTHORITY_INVARIANT_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A02",
+      "resource_role": "SOURCE_VERSION",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "Keep exact SYN-A source representation/version/period and publication declaration; match raw_body_ref to exact raw bytes and source assertion; only original evidence with strictly earlier publication than cutoff can establish BEFORE; source label never substitutes for content or rights.",
+      "decision_summary": "Keep exact SYN-A source representation/version/period and publication declaration; match raw_body_ref to exact raw bytes and source assertion; only original evidence with strictly earlier publication than cutoff can establish BEFORE; source label never substitutes for content or rights.",
+      "draft_schema_label": "rs-spec-source-version-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L295-L308",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L535; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L512; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L459",
+      "responsible_roles_and_evidence_source": "F2 semantic issuer with F4/Data source custodian; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L295-L308`.",
+      "required_s1_evidence": "Source/version/publication evidence and owner-reconciled raw assertions.",
+      "existing_decision_packet_readiness": "NEEDS_VERSION_PUBLICATION_CORRESPONDENCE_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A03",
+      "resource_role": "SOURCE_VERSION_HISTORY",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "Accept only a declared, bounded historical revision chain with exact ordered versions, independently evidenced notice/correction timing and reachable links; no unproved all-time completeness or inferred supersession.",
+      "decision_summary": "Accept only a declared, bounded historical revision chain with exact ordered versions, independently evidenced notice/correction timing and reachable links; no unproved all-time completeness or inferred supersession.",
+      "draft_schema_label": "rs-spec-source-version-history-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L309-L324",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L535; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L512",
+      "responsible_roles_and_evidence_source": "F2 semantic issuer with F4/Data source custodian; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L309-L324`.",
+      "required_s1_evidence": "F4 correction notices, bounded completeness policy, revision provenance.",
+      "existing_decision_packet_readiness": "NEEDS_HISTORY_SCOPE_AND_NOTICE_SEMANTICS_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A04",
+      "resource_role": "MANIFEST",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "Retain ordered SYN-A source-version membership; require source/manifest/calendar reconciliation and exact original source membership; reject duplicate/foreign typed versions as a semantic requirement, not by silently sorting arrays; preserve PF042 naming.",
+      "decision_summary": "Retain ordered SYN-A source-version membership; require source/manifest/calendar reconciliation and exact original source membership; reject duplicate/foreign typed versions as a semantic requirement, not by silently sorting arrays; preserve PF042 naming.",
+      "draft_schema_label": "rs-spec-manifest-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L325-L332",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L316; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L535; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L512",
+      "responsible_roles_and_evidence_source": "F2 semantic issuer with F4/Data source custodian; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L325-L332`.",
+      "required_s1_evidence": "Explicit duplicate/order/member policy, independently reviewed source closure; parser compatibility assessment.",
+      "existing_decision_packet_readiness": "NEEDS_MEMBERSHIP_AND_REFERENCE_CLOSURE_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A05",
+      "resource_role": "COVERAGE",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "Restrict to current nonempty candidate set; termination/completeness require actual query, history and proof; failed and unknown checks remain distinct; empty-cohort/full positive for Weekly NO_QUALIFIED_CLAIM remains NOT_CONSTRUCTIBLE.",
+      "decision_summary": "Restrict to current nonempty candidate set; termination/completeness require actual query, history and proof; failed and unknown checks remain distinct; empty-cohort/full positive for Weekly NO_QUALIFIED_CLAIM remains NOT_CONSTRUCTIBLE.",
+      "draft_schema_label": "rs-spec-coverage-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L333-L348",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L512; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L628",
+      "responsible_roles_and_evidence_source": "Technical Lead/F2; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L333-L348`.",
+      "required_s1_evidence": "Evidence for query, context, traversal and termination; empty cohort requires separate version review.",
+      "existing_decision_packet_readiness": "NEEDS_BOUNDED_COVERAGE_TERMINATION_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A06",
+      "resource_role": "TIMEZONE_RULES",
+      "decision": "SELECT_BOUNDED_SCHEMA_DIRECTION",
+      "owner_selected_direction": "Restrict to Asia/Taipei, +08:00, SECOND precision and exact covered original SYN-A publication/cutoff interval; versioned externally reviewed rules_source_ref required; host tzdb or inferred DST rules are not authority.",
+      "decision_summary": "Restrict to Asia/Taipei, +08:00, SECOND precision and exact covered original SYN-A publication/cutoff interval; versioned externally reviewed rules_source_ref required; host tzdb or inferred DST rules are not authority.",
+      "draft_schema_label": "rs-spec-timezone-rules-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L349-L356",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L459; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L712; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L722",
+      "responsible_roles_and_evidence_source": "Technical Lead/F2; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L349-L356`.",
+      "required_s1_evidence": "Attested exact rule source/version/rights and independently checked full interval coverage.",
+      "existing_decision_packet_readiness": "SCHEMA_ONLY_BOUNDED_CHOICE_REQUESTABLE_WITH_RULE_SOURCE_CONDITIONS",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A07",
+      "resource_role": "CALENDAR",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "Accept authored SYN-A session/closure facts only, with source-backed calendar input, contiguous ordered day coverage, globally unique session IDs and session-to-cutoff mapping; W03 no-session annotation is not a tick; F3 separately approves schedule use.",
+      "decision_summary": "Accept authored SYN-A session/closure facts only, with source-backed calendar input, contiguous ordered day coverage, globally unique session IDs and session-to-cutoff mapping; W03 no-session annotation is not a tick; F3 separately approves schedule use.",
+      "draft_schema_label": "rs-spec-calendar-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L357-L363",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L304; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L313; docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md:L56-L62",
+      "responsible_roles_and_evidence_source": "F2 calendar facts; F3 approves schedule use; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L357-L363`.",
+      "required_s1_evidence": "Calendar source provenance, distinct session identity semantics, F3 schedule-use decision.",
+      "existing_decision_packet_readiness": "NEEDS_SESSION_ID_AND_CALENDAR_PROVENANCE_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A08",
+      "resource_role": "SOURCE_CADENCE",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "Keep source publication cadence separate from weekly decision, horizon/maturity, rebalance and evaluation; retain original source-version availability and reporting-period evidence; no interpolation of monthly source disclosures into weekly publications.",
+      "decision_summary": "Keep source publication cadence separate from weekly decision, horizon/maturity, rebalance and evaluation; retain original source-version availability and reporting-period evidence; no interpolation of monthly source disclosures into weekly publications.",
+      "draft_schema_label": "rs-spec-source-cadence-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L364-L370",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L305; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L361; docs/mvp/v1.0/ux-adr-01-temporal-execution-contract-v0.1.md:L21-L29",
+      "responsible_roles_and_evidence_source": "F2 semantic issuer with F4/Data source custodian; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L364-L370`.",
+      "required_s1_evidence": "F4 source-kind vocabulary and version-to-availability mapping.",
+      "existing_decision_packet_readiness": "NEEDS_CADENCE_VOCABULARY_AND_VERSION_MAPPING_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A09",
+      "resource_role": "NUMERIC_POLICY",
+      "decision": "SELECT_BOUNDED_SCHEMA_DIRECTION",
+      "owner_selected_direction": "Retain original signed Int64 revenue in NTD_thousands and Native six-decimal FixedRatio6 fractional units/scaled bounds/half-even rounding; text/display is not replacement evidence; no float or unreviewed coercion.",
+      "decision_summary": "Retain original signed Int64 revenue in NTD_thousands and Native six-decimal FixedRatio6 fractional units/scaled bounds/half-even rounding; text/display is not replacement evidence; no float or unreviewed coercion.",
+      "draft_schema_label": "rs-spec-numeric-policy-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L371-L382",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L457; src/pit_research_lab/domain/ratio.py:L30",
+      "responsible_roles_and_evidence_source": "Technical Lead/F2; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L371-L382`.",
+      "required_s1_evidence": "Exact approved Native numeric policy bytes, scope/right-to-use evidence and independent equivalence verification.",
+      "existing_decision_packet_readiness": "SCHEMA_ONLY_BOUNDED_CHOICE_REQUESTABLE_WITH_PROVENANCE_CONDITIONS",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A10",
+      "resource_role": "PROJECTION_POLICY",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "Retain exactly the current two ordered feature rules with exact numeric policy, unit/type and source-to-projection mapping; unmapped Native reason must fail closed, never leak private attempt/token/audit/time/future outcome; SAFE projection does not grant release.",
+      "decision_summary": "Retain exactly the current two ordered feature rules with exact numeric policy, unit/type and source-to-projection mapping; unmapped Native reason must fail closed, never leak private attempt/token/audit/time/future outcome; SAFE projection does not grant release.",
+      "draft_schema_label": "rs-spec-projection-policy-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L383",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L333-L339; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L388; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L513",
+      "responsible_roles_and_evidence_source": "Technical Lead/F2; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L383`.",
+      "required_s1_evidence": "Exact selected features/order, nonleaking safe-reason correspondence, independent IF05 review.",
+      "existing_decision_packet_readiness": "NEEDS_EXACT_FEATURE_AND_SAFE_REASON_MAPPING_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A11",
+      "resource_role": "OBSERVATION_RELEASE_POLICY",
+      "decision": "SELECT_BOUNDED_SCHEMA_DIRECTION",
+      "owner_selected_direction": "Retain policy axes exact_target, context_match, current_grant, IF05_predicate and audit_separation; deny by default; policy-version changes must invalidate dependent observation eligibility; repeated principal class semantics require explicit duplicate rejection without unreviewed array normalization.",
+      "decision_summary": "Retain policy axes exact_target, context_match, current_grant, IF05_predicate and audit_separation; deny by default; policy-version changes must invalidate dependent observation eligibility; repeated principal class semantics require explicit duplicate rejection without unreviewed array normalization.",
+      "draft_schema_label": "rs-spec-observation-release-policy-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L384-L399",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L378-L390; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L752-L753",
+      "responsible_roles_and_evidence_source": "Technical Lead/F2; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L384-L399`.",
+      "required_s1_evidence": "Approval of principal/operation semantics, independently tested denial rules, still no live IF04/05 grant.",
+      "existing_decision_packet_readiness": "SCHEMA_ONLY_POLICY_CHOICE_REQUESTABLE_NO_LIVE_GRANT",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A12",
+      "resource_role": "AUDIT_ACCESS_POLICY",
+      "decision": "SELECT_BOUNDED_SCHEMA_DIRECTION",
+      "owner_selected_direction": "Separate F2 issuer/reviewer audit principals and exact target, operation, cutoff/context and immutable receipt; revocation must deny current access while retaining historical fact; no SAFE/audit co-grant or privilege escalation.",
+      "decision_summary": "Separate F2 issuer/reviewer audit principals and exact target, operation, cutoff/context and immutable receipt; revocation must deny current access while retaining historical fact; no SAFE/audit co-grant or privilege escalation.",
+      "draft_schema_label": "rs-spec-audit-access-policy-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L400-L407",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L357; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L378-L390",
+      "responsible_roles_and_evidence_source": "Technical Lead/F2; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L400-L407`.",
+      "required_s1_evidence": "Actual principal appointment, provenance/rights, exact current grant/revocation and independent security review.",
+      "existing_decision_packet_readiness": "SCHEMA_ONLY_POLICY_CHOICE_REQUESTABLE_NO_AUDIT_GRANT",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A13",
+      "resource_role": "SCHEDULE_INVARIANT_POLICY",
+      "decision": "SELECT_BOUNDED_SCHEMA_DIRECTION",
+      "owner_selected_direction": "Select FIXED_FOUR_WEEKLY_SYN_A only: preserve order/unknowns, W03 annotation-only, accounting_implies_admission=false; require separately adopted PROTOCOL and immutable AF009/PF038 source-input equality; no generic schedule approval.",
+      "decision_summary": "Select FIXED_FOUR_WEEKLY_SYN_A only: preserve order/unknowns, W03 annotation-only, accounting_implies_admission=false; require separately adopted PROTOCOL and immutable AF009/PF038 source-input equality; no generic schedule approval.",
+      "draft_schema_label": "rs-spec-schedule-invariant-policy-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L408-L415",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L353; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L365; src/pit_research_lab/mvp/f2/resource_binding.py:L167-L219",
+      "responsible_roles_and_evidence_source": "F2/F3; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L408-L415`.",
+      "required_s1_evidence": "F3 PROTOCOL definition and separately independently verified ScheduleInput policy match.",
+      "existing_decision_packet_readiness": "SCHEMA_ONLY_BOUNDED_CHOICE_REQUESTABLE_WITH_PROTOCOL_CONDITION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A14",
+      "resource_role": "TEMPORAL_CONFIGURATION",
+      "decision": "DEFER_SCHEMA_SEMANTICS",
+      "owner_selected_direction": "Preserve original draft shape only. Do not adopt full configuration semantics until F3 PROTOCOL/HORIZON_MATURITY and F5 EXECUTION_RULES/EVALUATION_PROTOCOL each have separately attributable approved definitions and per-axis compatibility.",
+      "decision_summary": "Preserve original draft shape only. Do not adopt full configuration semantics until F3 PROTOCOL/HORIZON_MATURITY and F5 EXECUTION_RULES/EVALUATION_PROTOCOL each have separately attributable approved definitions and per-axis compatibility.",
+      "draft_schema_label": "rs-spec-temporal-configuration-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L416-L436",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L304-L313; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L361; docs/mvp/v1.0/f3-f5-research-methods-decision-spec-v0.1.md:L78-L92",
+      "responsible_roles_and_evidence_source": "F2 issuer; F3 schedule/horizon approval; F5 execution/evaluation declarations; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L416-L436`.",
+      "required_s1_evidence": "B01-B04 Owner semantic adoption, Source/Calendar/Cadence consistency, independent cross-owner review.",
+      "existing_decision_packet_readiness": "DEFER_SCHEMA_ADOPTION_PENDING_CROSS_OWNER_DEFINITIONS",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A15",
+      "resource_role": "DECISION_SCHEDULE",
+      "decision": "REQUIRE_INVARIANTS",
+      "owner_selected_direction": "Authorize only bounded four-cutoff SYN-A decision profile with layered schedule_path_check+validate_four_ticks+source/calendar/AF009/PF038 checks; generic parser cardinalities do not imply generic operational acceptance; preserve original fields.",
+      "decision_summary": "Authorize only bounded four-cutoff SYN-A decision profile with layered schedule_path_check+validate_four_ticks+source/calendar/AF009/PF038 checks; generic parser cardinalities do not imply generic operational acceptance; preserve original fields.",
+      "draft_schema_label": "rs-spec-decision-schedule-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L437-L447",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L311-L314; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L361; src/pit_research_lab/mvp/f2/resource_binding.py:L146-L219",
+      "responsible_roles_and_evidence_source": "F2 generator; F3 schedule approval; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L437-L447`.",
+      "required_s1_evidence": "Session membership proof, F3 anchor/holiday roll, exact source-input and policy provenance, independent layered tests.",
+      "existing_decision_packet_readiness": "NEEDS_BOUNDED_LAYERED_VALIDATION_AND_SESSION_MAPPING_DECISION",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A16",
+      "resource_role": "NATIVE_RECEIPT",
+      "decision": "DEFER_SCHEMA_SEMANTICS",
+      "owner_selected_direction": "Preserve draft and current fail-closed Native correspondence. No actual RUN/ATTEMPT/NOT_RUN proof can be synthesized; no-outcome NativeSummary remains refused pending separately reviewed tagged representation and original Attempt witness.",
+      "decision_summary": "Preserve draft and current fail-closed Native correspondence. No actual RUN/ATTEMPT/NOT_RUN proof can be synthesized; no-outcome NativeSummary remains refused pending separately reviewed tagged representation and original Attempt witness.",
+      "draft_schema_label": "rs-spec-native-receipt-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L448-L461",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L467; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L465; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L622",
+      "responsible_roles_and_evidence_source": "Technical Lead/F2; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L448-L461`.",
+      "required_s1_evidence": "Original Native attempt format/receipt/observed code evidence, independent semantic correspondence, G04 no-outcome amendment.",
+      "existing_decision_packet_readiness": "DEFER_NATIVE_SEMANTIC_ADOPTION_PENDING_G04",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    },
+    {
+      "decision_id": "RSF02-A17",
+      "resource_role": "SEMANTIC_TRACE",
+      "decision": "DEFER_SCHEMA_SEMANTICS",
+      "owner_selected_direction": "Preserve one role with QUAL_INPUT, PER_CUTOFF_BINDING, SET_INPUT_MANIFEST independently mapped. Separate audit-only attempt/evidence and deterministic parents, reject hidden reverse edges; stronger WITHHELD must survive in a separately verified release/access status view before consumer use.",
+      "decision_summary": "Preserve one role with QUAL_INPUT, PER_CUTOFF_BINDING, SET_INPUT_MANIFEST independently mapped. Separate audit-only attempt/evidence and deterministic parents, reject hidden reverse edges; stronger WITHHELD must survive in a separately verified release/access status view before consumer use.",
+      "draft_schema_label": "rs-spec-semantic-trace-body-proposal-v0.1",
+      "draft_body_version": "0.1-DRAFT-NON_ISSUED",
+      "draft_schema_source": "src/pit_research_lab/mvp/f2/resource_bodies.py:L462",
+      "source_contract_authority": "docs/mvp/v1.0/shared-interface-contract-v0.1.md:L315-L327; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L351-L359; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L539; docs/mvp/v1.0/shared-interface-contract-v0.1.md:L413-L437",
+      "responsible_roles_and_evidence_source": "Technical Lead/F2; independent semantic reviewer not yet attested; original decision source: `src/pit_research_lab/mvp/f2/resource_bodies.py:L462`.",
+      "required_s1_evidence": "F01 status-view proof or versioned schema amendment; original Native witness; subtype-to-domain mapping and typed closure.",
+      "existing_decision_packet_readiness": "DEFER_TRACE_MAPPING_ADOPTION_PENDING_G04_AND_F01",
+      "current_status": "`S1_NOT_YET_ACCEPTED / APPROVED_BODY_NOT_SUPPLIED / ISSUANCE_NOT_AUTHORIZED`. No direct parser edit or old draft-version rename is authorized by this decision.",
+      "schema_semantics_adopted": false,
+      "independent_semantic_review_completed": false,
+      "resource_body_approved": false,
+      "resource_issued": false
+    }
+  ],
+  "cross_owner_decisions": [
+    {
+      "decision_id": "RSF02-B01",
+      "resource_role": "PROTOCOL",
+      "project_decision": "PROJECT_SCOPE_APPROVED_OWNER_DEFINITION_REQUIRED",
+      "required_semantics_and_boundaries": "Maintain one registered role with explicitly scoped different protocol instances (schedule anchor/holiday-roll, F2 operation scope, F3 experiment research protocol). No universal opaque protocol or implicit default; each exact semantics/body/version/parent mapping separately required.",
+      "attributable_subject_matter_owner_and_reviewer": "Member B/F3 protocol owner with F2 calendar/Native consultation; independent F3 reviewer.",
+      "required_delivery_before_s1": "precise owner-authored schema, registered version and supported value/time/unit/unknown/refusal definitions; exact parent roles and negative tests; interface scope and adoption proof, separately reviewed. Request-scope acceptance is not schema approval.",
+      "current_status": "`OWNER_REQUEST_SCOPE_SELECTED / OWNER_SEMANTIC_SIGNOFF_NOT_SUPPLIED / SCHEMA_NOT_REGISTERED / RESOURCE_NOT_ISSUED`. When ownership is joint, approval of one role does not count as approval by the other.",
+      "owner_semantic_approval": false,
+      "body_schema_registered": false,
+      "body_issued": false
+    },
+    {
+      "decision_id": "RSF02-B02",
+      "resource_role": "HORIZON_MATURITY",
+      "project_decision": "PROJECT_SCOPE_APPROVED_OWNER_DEFINITION_REQUIRED",
+      "required_semantics_and_boundaries": "Require explicit prediction horizon, fit-time label availability, maturity proof, split/overlap handling and source cutoff independence; no default or immature label consumption.",
+      "attributable_subject_matter_owner_and_reviewer": "Member B/F3 research-method owner, consulted F5; independent methods reviewer.",
+      "required_delivery_before_s1": "precise owner-authored schema, registered version and supported value/time/unit/unknown/refusal definitions; exact parent roles and negative tests; interface scope and adoption proof, separately reviewed. Request-scope acceptance is not schema approval.",
+      "current_status": "`OWNER_REQUEST_SCOPE_SELECTED / OWNER_SEMANTIC_SIGNOFF_NOT_SUPPLIED / SCHEMA_NOT_REGISTERED / RESOURCE_NOT_ISSUED`. When ownership is joint, approval of one role does not count as approval by the other.",
+      "owner_semantic_approval": false,
+      "body_schema_registered": false,
+      "body_issued": false
+    },
+    {
+      "decision_id": "RSF02-B03",
+      "resource_role": "EXECUTION_RULES",
+      "project_decision": "PROJECT_SCOPE_APPROVED_OWNER_DEFINITION_REQUIRED",
+      "required_semantics_and_boundaries": "Require action/rebalance/executable price/cost and unavailable/withheld/session handling bound to information cutoff; no same-decision hindsight price; no invented trade execution.",
+      "attributable_subject_matter_owner_and_reviewer": "F5 execution-policy owner with F3/F2 interface consultation; independent F5 reviewer.",
+      "required_delivery_before_s1": "precise owner-authored schema, registered version and supported value/time/unit/unknown/refusal definitions; exact parent roles and negative tests; interface scope and adoption proof, separately reviewed. Request-scope acceptance is not schema approval.",
+      "current_status": "`OWNER_REQUEST_SCOPE_SELECTED / OWNER_SEMANTIC_SIGNOFF_NOT_SUPPLIED / SCHEMA_NOT_REGISTERED / RESOURCE_NOT_ISSUED`. When ownership is joint, approval of one role does not count as approval by the other.",
+      "owner_semantic_approval": false,
+      "body_schema_registered": false,
+      "body_issued": false
+    },
+    {
+      "decision_id": "RSF02-B04",
+      "resource_role": "EVALUATION_PROTOCOL",
+      "project_decision": "PROJECT_SCOPE_APPROVED_OWNER_DEFINITION_REQUIRED",
+      "required_semantics_and_boundaries": "Require F3 and F5 separately accountable definitions for mature outcome, evaluation window/metrics/aggregation/cost/risk, insufficient sample/unknown conditions; retrospective result never rewrites sealed decision.",
+      "attributable_subject_matter_owner_and_reviewer": "Joint F3 methodology and F5 evaluation owners; separately attributable reviews.",
+      "required_delivery_before_s1": "precise owner-authored schema, registered version and supported value/time/unit/unknown/refusal definitions; exact parent roles and negative tests; interface scope and adoption proof, separately reviewed. Request-scope acceptance is not schema approval.",
+      "current_status": "`OWNER_REQUEST_SCOPE_SELECTED / OWNER_SEMANTIC_SIGNOFF_NOT_SUPPLIED / SCHEMA_NOT_REGISTERED / RESOURCE_NOT_ISSUED`. When ownership is joint, approval of one role does not count as approval by the other.",
+      "owner_semantic_approval": false,
+      "body_schema_registered": false,
+      "body_issued": false
+    }
+  ],
+  "boundary_decisions": [
+    {
+      "decision_id": "RSF02-Q00",
+      "selected_policy": "ADOPT_S0_TO_S5_REVIEW_SEQUENCE",
+      "decision_text": "S0 request/preparation, S1 schema/independent semantic review, S2 body/version/parents, S3 independent full Golden, S4 issuer/rights/Native replay, S5 consumer acceptance are distinct and nonpromoting."
+    },
+    {
+      "decision_id": "RSF02-F01",
+      "selected_policy": "SELECT_SEPARATE_STRONGER_ACCESS_STATUS_VIEW_WITH_VERIFICATION_GATE",
+      "decision_text": "Retain current PER_CUTOFF_BINDING.app_axes.pit_status=UNRESOLVED as its narrower provisional record, but preserve stronger WITHHELD in separately authorized and immutable SAFE access/availability status and ensure all consumers see it; until independently verified, treat projection as WITHHELD/no admission. If independent reviewer proves separate mapping insufficient, require versioned AppAxes/body/contract amendment; no silent rename."
+    },
+    {
+      "decision_id": "RSF02-F02",
+      "selected_policy": "RETAIN_STRICT_NONEMPTY_TEXT_FOR_CURRENT_DRAFT",
+      "decision_text": "Local draft text() nonempty restriction is intentional in selected bounded scope; generic CAN Text min_bytes=0 remains unchanged. Per-field empty-string use requires explicit versioned schema compatibility review; do not change all text fields or global codec."
+    },
+    {
+      "decision_id": "RSF02-F03",
+      "selected_policy": "CORRECT_NEW_DECISION_CITATIONS_ONLY",
+      "decision_text": "Use support/case_pointer_map.json numeric pointers into /cases array for 110 records; retain original RSF01 historical package byte-for-byte; no alteration to original Frozen Oracle."
+    },
+    {
+      "decision_id": "RSF02-F04",
+      "selected_policy": "ADOPT_FIXED_FOUR_LAYERED_VALIDATION_PROFILE",
+      "decision_text": "Current generic draft parser can parse broader structures but is NOT generic accepted schedule. For fixed four cutoffs require layered calendar/SourceInput/source/policy, validate_four_ticks, schedule_path_check and subtype-specific SEMANTIC_TRACE gates. General 1..4096 schedules are separately version-gated."
+    },
+    {
+      "decision_id": "RSF02-Q04",
+      "selected_policy": "PRESERVE_G04_FAIL_CLOSED_AND_COMMISSION_NATIVE_FORMAT_DECISION",
+      "decision_text": "No-outcome remains NotEvaluated/NOT_SUPPLIED, never invented state or successful NativeSummary; original actual Attempt format/witness/correspondence requires attributable Native owner and independent review. A future explicit tagged state/union may be proposed only through CAN07 amendment plus negative/positive oracle."
+    },
+    {
+      "decision_id": "RSF02-Q09",
+      "selected_policy": "SELECT_ROOT_ONE_CONTAINERS_COUNT_MAX_64_PENDING_CONTRACT_RATIFICATION",
+      "decision_text": "Normative proposed container depth counts root record at 1, every nested dict or list at +1, scalar leaves at +0; maximum allowed is 64; 65 rejects. No requirement that an array is a record, just counts in safety-depth. Require formal clarification/amendment, independently authored exact 64/65 vectors, regression/compatibility checks. Until ratified and implemented, existing P2-DEPTH-64/65 remain excluded."
+    },
+    {
+      "decision_id": "RSF02-Q10",
+      "selected_policy": "AUTHORIZE_NARROW_READINESS_WORDING_RECONCILIATION",
+      "decision_text": "Bounded SOURCE-BYTES codec/8 golden positives are available; generic SOURCE_BYTES_CODEC_NOT_SUPPLIED is stale only in that narrow clause. Do not delete Resource Body/rights/Native/full-domain semantics/replay blockers; new status wording cannot promote admission."
+    },
+    {
+      "decision_id": "RSF02-Q11",
+      "selected_policy": "KEEP_IF04_IF05_IF07_INDEPENDENT_DEFAULT_DENY",
+      "decision_text": "Assign later role ownership and separate review for capability, eligibility/release, original source trust. No access grant, SAFE/audit release, PIT admission, database/real TWSE trust or F3/F5 execution from schema decisions."
+    }
+  ],
+  "rsf01_gap_decisions": [
+    {
+      "gap_id": "G01",
+      "project_level_owner_decision": "Approve decision process and scope/ownership boundaries; no draft auto-promotion",
+      "current_execution_gate": "S1 pending on all 17"
+    },
+    {
+      "gap_id": "G02",
+      "project_level_owner_decision": "Original source, version, history, manifest, coverage must be evidence-matched and F4 consulted",
+      "current_execution_gate": "S2/S3 blocked pending exact bytes and rights"
+    },
+    {
+      "gap_id": "G03",
+      "project_level_owner_decision": "SYN-A original named-zone/time/calendar/numeric policy source verification only",
+      "current_execution_gate": "S2/S3 blocked pending approved rule source"
+    },
+    {
+      "gap_id": "G04",
+      "project_level_owner_decision": "Keep Native correspondence/no-outcome fail-closed; commission typed original Attempt and formal CAN07 review",
+      "current_execution_gate": "No Native identity/semantic receipt issuance"
+    },
+    {
+      "gap_id": "G05",
+      "project_level_owner_decision": "Keep SAFE projection distinct from release/audit rights and IF04/05",
+      "current_execution_gate": "DENIED/WITHHELD remain"
+    },
+    {
+      "gap_id": "G06",
+      "project_level_owner_decision": "Commission B01–B04 as four separate attributable F3/F5-owned definitions",
+      "current_execution_gate": "Temporal configuration not adopted"
+    },
+    {
+      "gap_id": "G07",
+      "project_level_owner_decision": "Authorize fixed-four PF038/AF009 layered design and immutable ScheduleInput path; no fake equality",
+      "current_execution_gate": "Schedule/Sequence identity blocked pending real parents"
+    },
+    {
+      "gap_id": "G08",
+      "project_level_owner_decision": "Conditional/deferred roles stay deferred unless selected actual subtype requires them",
+      "current_execution_gate": "No universal role approval"
+    },
+    {
+      "gap_id": "G09",
+      "project_level_owner_decision": "Select root=1 + arrays-count max64 only as formal clarification target",
+      "current_execution_gate": "P2-64/65 remain excluded until reviewed ratification and new oracle"
+    },
+    {
+      "gap_id": "G10",
+      "project_level_owner_decision": "Authorize narrow obsolete SOURCE-BYTES readiness wording reconciliation only",
+      "current_execution_gate": "No semantic/rights/Native blockers removed"
+    }
+  ],
+  "proposed_record_depth": {
+    "decision_id": "RSF02-Q09",
+    "status": "SELECTED_PENDING_CONTRACT_RATIFICATION",
+    "root_container_depth": 1,
+    "nested_object_increment": 1,
+    "nested_array_increment": 1,
+    "scalar_leaf_depth_increment": 0,
+    "max_container_depth_proposed": 64,
+    "at_depth_64": "ALLOWED_BY_PROPOSED_RULE_ONLY",
+    "at_depth_65": "REFUSED_BY_PROPOSED_RULE_ONLY",
+    "existing_p2_depth_64_65": "DEFERRED_EXCLUDED_PENDING_RATIFICATION_AND_INDEPENDENT_VECTORS",
+    "current_codec_ceiling_change_authorized": false,
+    "normative_contract_amendment_approved": false,
+    "independent_64_65_golden_completed": false
+  },
+  "decision_counts": {
+    "schema_decisions": 17,
+    "REQUIRE_INVARIANTS": 9,
+    "SELECT_BOUNDED_SCHEMA_DIRECTION": 5,
+    "DEFER_SCHEMA_SEMANTICS": 3,
+    "cross_owner_decisions": 4,
+    "boundary_decisions": 9,
+    "rsf01_gaps_reconciled": 10,
+    "schema_semantics_adopted": 0,
+    "independent_semantic_reviews_completed": 0,
+    "resource_bodies_approved": 0,
+    "resources_issued": 0,
+    "cross_owner_semantic_approvals": 0,
+    "registered_cross_owner_body_schemas": 0
+  },
+  "next_gate": "RSF02D_DOCUMENTATION_INDEPENDENT_REVIEW_THEN_ATTRIBUTABLE_ROLE_SPECIFIC_S1",
+  "forbidden_status_promotions": [
+    "SCHEMA_SEMANTICS_ADOPTED",
+    "APPROVED_RESOURCE_BODY",
+    "RESOURCE_ISSUED",
+    "RIGHTS_GRANTED",
+    "NATIVE_REPLAY_ACCEPTED",
+    "PIT_ADMITTED",
+    "WU05_FULL_CLOSURE"
+  ]
+}
