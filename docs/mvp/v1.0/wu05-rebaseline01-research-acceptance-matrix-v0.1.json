@@ -1,0 +1,606 @@
+{
+  "schema": "WU05_REBASELINE01_RESEARCH_ACCEPTANCE_MATRIX_v0.1",
+  "task": "MVP-F2-WU05-REBASELINE-01",
+  "project": "Academic PIT Research Lab",
+  "date_local": "2026-11-18 Asia/Taipei",
+  "baseline_main": "5f2d5711af48de61862d4ea97da8b8b17f78a3e3",
+  "owner_record_filename": "MVP-F2-WU05-REBASELINE-01_Owner_Acceptance_Record_v0.1.md",
+  "owner_record_sha256": "b8fbf7f20a5be3f5d39fb34c8359f163a14e07421d1b0f907e96445f050f6039",
+  "owner_scope_accepted": true,
+  "research_functional_acceptance": false,
+  "old_scheme_b_full_closure_completed": false,
+  "legacy_s1_ratified_count_out_of_five": 0,
+  "new_scope_status": "OWNER_ACCEPTED_PENDING_MAINLINE_INTEGRATION",
+  "new_acceptance_routing": "STAGE_V_TEST_FIRST_THEN_STAGE_M_SIX_CAPABILITY_ACCEPTANCE",
+  "never_claim": [
+    "SCHEMA_SEMANTICS_ADOPTED",
+    "RESOURCE_ISSUED",
+    "RIGHTS_GRANTED",
+    "NATIVE_REPLAY_ACCEPTED",
+    "PIT_ADMITTED",
+    "WU05_FULL_CLOSURE",
+    "ALL_DOMAIN_GOLDEN_COMPLETE"
+  ],
+  "retained_constraints": [
+    "NO_MUTATION_OF_FORMAL_CAP_F2_OR_SURVIVOR_OS",
+    "FROZEN_GOLDEN_UNCHANGED",
+    "DRAFT_0.1_NON_ISSUED_UNCHANGED",
+    "IF03_CONTRACT_IF_USED_MUST_STILL_BE_SATISFIED",
+    "EXTERNAL_DATA_RIGHTS_AND_ORIGINAL_AVAILABLE_AT_REQUIRED_WHEN_REAL_TWSE_USED"
+  ],
+  "critical_path_remove": [
+    "S0_S5_FULL_RESOURCE_ISSUANCE",
+    "17_DRAFT_SCHEMA_RATIFICATION",
+    "40_ROLE_ISSUED_RESOURCES",
+    "F3_F5_ORGANIZATIONAL_APPROVALS_AS_PRECONDITION_TO_SYNTHETIC_RUNTIME",
+    "RSF02_S1_EVIDENCE01",
+    "RSF03_FULL_GOVERNANCE_CHAIN",
+    "FULL_DOMAIN_NATIVE_CORRESPONDENCE_WHERE_NOT_CLAIMED"
+  ],
+  "capabilities": [
+    {
+      "id": "RC-01",
+      "name": "PIT Data Foundation",
+      "minimum": "As-of reconstruction with strict-before, original sources and revisions",
+      "acceptance_status": "NOT_VERIFIED",
+      "required_for_final_mvp": true
+    },
+    {
+      "id": "RC-02",
+      "name": "Temporal Leakage Control",
+      "minimum": "No post-cutoff or immature information, explicit fail-closed states",
+      "acceptance_status": "NOT_VERIFIED",
+      "required_for_final_mvp": true
+    },
+    {
+      "id": "RC-03",
+      "name": "Sequential Decision Environment",
+      "minimum": "Deterministic episode clock, observe/action/transition/log with isolation",
+      "acceptance_status": "NOT_VERIFIED",
+      "required_for_final_mvp": true
+    },
+    {
+      "id": "RC-04",
+      "name": "Deterministic Replay",
+      "minimum": "Independent-process repeat with pinned data, code, config and seed",
+      "acceptance_status": "NOT_VERIFIED",
+      "required_for_final_mvp": true
+    },
+    {
+      "id": "RC-05",
+      "name": "Agent Benchmark Fairness",
+      "minimum": "Same information/action/evaluation protocol; 2 agents for V, 4 final",
+      "acceptance_status": "NOT_VERIFIED",
+      "required_for_final_mvp": true
+    },
+    {
+      "id": "RC-06",
+      "name": "Evaluation & Diagnostics",
+      "minimum": "Time-safe walk-forward, mature outcomes, costs, failure and robustness",
+      "acceptance_status": "NOT_VERIFIED",
+      "required_for_final_mvp": true
+    }
+  ],
+  "vertical_slice": {
+    "status": "NOT_RUN",
+    "cutoffs_local": [
+      "2027-01-07T18:00:00+08:00",
+      "2027-01-15T18:00:00+08:00",
+      "2027-01-29T18:00:00+08:00",
+      "2027-02-05T18:00:00+08:00"
+    ],
+    "w03_no_session_is_fifth_tick": false,
+    "strict_publication_before_cutoff": true,
+    "min_agent_types": 2,
+    "min_clean_process_replays": 2,
+    "passing_it_is_full_mvp": false
+  },
+  "final_mvp": {
+    "status": "NOT_VERIFIED",
+    "min_agent_classes": 4,
+    "all_six_capabilities_required": true,
+    "twse_real_data_required_for_twse_empirical_claim": true,
+    "synthetic_results_label": "SYNTHETIC_DEMONSTRATION_ONLY"
+  },
+  "research_role_crosswalk": [
+    {
+      "role": "CALENDAR",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "TEMPORAL_CONFIGURATION",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-03",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "DECISION_SCHEDULE",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-03",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "MANIFEST",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "SOURCE_VERSION_HISTORY",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "SOURCE_VERSION",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "COVERAGE",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "SEMANTIC_TRACE",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-04",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "NATIVE_RECEIPT",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "DEFERRED_FULL_GOVERNANCE",
+      "primary_research_capability": null,
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "CONDITIONAL_NATIVE_PROOF"
+    },
+    {
+      "role": "SEMANTIC_EVIDENCE",
+      "legacy_category": "CONDITIONAL",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-04",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "OBSERVATION_RELEASE_POLICY",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-02",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "OBSERVATION_RELEASE_RECEIPT",
+      "legacy_category": "CONDITIONAL",
+      "rebaseline_category": "DEFERRED_FULL_GOVERNANCE",
+      "primary_research_capability": null,
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "FULL_RELEASE_GOVERNANCE"
+    },
+    {
+      "role": "AUDIT_ACCESS_POLICY",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "DEFERRED_FULL_GOVERNANCE",
+      "primary_research_capability": null,
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "FULL_AUDIT_ACCESS_GOVERNANCE"
+    },
+    {
+      "role": "READER_CAPABILITY_POLICY",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "DEFERRED_FULL_GOVERNANCE",
+      "primary_research_capability": null,
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "LIVE_CAPABILITY_GOVERNANCE"
+    },
+    {
+      "role": "ASSOCIATION_PROTOCOL",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-05",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "EXPERIMENT_ASSOCIATION",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-05",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "AUTHOR_RECORD",
+      "legacy_category": "INTERFACE",
+      "rebaseline_category": "DEFERRED_FULL_GOVERNANCE",
+      "primary_research_capability": null,
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "FORMAL_AUTHOR_WORKFLOW"
+    },
+    {
+      "role": "OWNER_DECISION",
+      "legacy_category": "INTERFACE",
+      "rebaseline_category": "DEFERRED_FULL_GOVERNANCE",
+      "primary_research_capability": null,
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "FORMAL_OWNER_WORKFLOW"
+    },
+    {
+      "role": "METHOD",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-05",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "HYPOTHESIS",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-06",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "PROTOCOL",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-05",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "HORIZON_MATURITY",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-02",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "EVALUATION_PLAN",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-06",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "POLICY",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-05",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "EXECUTION_RULES",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-03",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "EVALUATION_PROTOCOL",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-06",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "POLICY_EVALUATION_PROTOCOL",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-06",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "OUTCOME",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-06",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "PRICE",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-06",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "NUMERIC_POLICY",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "TIMEZONE_RULES",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "PROJECTION_POLICY",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-02",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "SOURCE_TEXT",
+      "legacy_category": "CONDITIONAL",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "ORIGIN",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "RESULT_METRIC",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-06",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "LIMITATION",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "SUPPORTING_CONCEPT",
+      "primary_research_capability": "RC-06",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "ACTION",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-03",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "SCHEDULE_INVARIANT_POLICY",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-03",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "SOURCE_CADENCE",
+      "legacy_category": "REQUIRED",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-01",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    },
+    {
+      "role": "STATE",
+      "legacy_category": "OTHER_IN_LEGACY_40",
+      "rebaseline_category": "MINIMAL_RESEARCH_SEMANTICS",
+      "primary_research_capability": "RC-03",
+      "full_resource_body_or_registration_required_for_academic_mvp": false,
+      "explanation": "Concept/behavior only; no implicit S1/S2-S5 adoption"
+    }
+  ],
+  "role_crosswalk_is_not_contract_amendment": true,
+  "acceptance_tests": [
+    {
+      "id": "RC01-T01",
+      "capability": "RC-01",
+      "stage": "V",
+      "objective": "BEFORE/AT cutoff original publication; AT excluded",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC01-T02",
+      "capability": "RC-01",
+      "stage": "V",
+      "objective": "Earlier revision as-of cutoff; later revision must not overwrite prior view",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC01-T03",
+      "capability": "RC-01",
+      "stage": "V",
+      "objective": "Distinct source origins with equal publication time remain distinct",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC01-T04",
+      "capability": "RC-01",
+      "stage": "M",
+      "objective": "Change original source bytes => altered input trace/hash and preserved old version",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC02-T01",
+      "capability": "RC-02",
+      "stage": "V",
+      "objective": "D1 before t1; D2 at t1 excluded; D3 after t3 excluded and before t4 included",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC02-T02",
+      "capability": "RC-02",
+      "stage": "V",
+      "objective": "Future label/reward not visible through observation",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC02-T03",
+      "capability": "RC-02",
+      "stage": "V",
+      "objective": "Unknown/Withheld/NotEvaluated/absent not coerced to known or zero",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC02-T04",
+      "capability": "RC-02",
+      "stage": "M",
+      "objective": "Post-cutoff feature fitting/label maturity injection refused",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC03-T01",
+      "capability": "RC-03",
+      "stage": "V",
+      "objective": "Fixed-four ordered tick episode, W03 annotation-only",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC03-T02",
+      "capability": "RC-03",
+      "stage": "V",
+      "objective": "Agent cannot request or mutate next cutoff state through current step",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC03-T03",
+      "capability": "RC-03",
+      "stage": "V",
+      "objective": "Invalid action refusal and independent episode state isolation",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC04-T01",
+      "capability": "RC-04",
+      "stage": "V",
+      "objective": "Two fresh-process deterministic replays match trace digests",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC04-T02",
+      "capability": "RC-04",
+      "stage": "M",
+      "objective": "Source/config/seed mutation is detected and original trace remains recoverable",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC04-T03",
+      "capability": "RC-04",
+      "stage": "V",
+      "objective": "Manifest records exact data bytes, code, configuration, seed and runtime",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC05-T01",
+      "capability": "RC-05",
+      "stage": "V",
+      "objective": "Two distinct agents observe equal allowed information at each cutoff",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC05-T02",
+      "capability": "RC-05",
+      "stage": "M",
+      "objective": "Four-class final benchmark uses identical observation-availability mask",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC05-T03",
+      "capability": "RC-05",
+      "stage": "M",
+      "objective": "Agent train/test access violation produces failing verification",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC06-T01",
+      "capability": "RC-06",
+      "stage": "M",
+      "objective": "Prediction label maturity and embargo boundaries validated",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC06-T02",
+      "capability": "RC-06",
+      "stage": "M",
+      "objective": "Walk-forward split and cost/execution timestamp avoid lookahead",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    },
+    {
+      "id": "RC06-T03",
+      "capability": "RC-06",
+      "stage": "M",
+      "objective": "Metrics include baseline, failures, abstentions, regime/window reporting",
+      "execution": "NOT_RUN",
+      "result": "NOT_VERIFIED"
+    }
+  ],
+  "evidence_policy": {
+    "test_execution_required": true,
+    "independent_technical_review_required": true,
+    "source_and_input_pins_required": true,
+    "full_resource_issuance_required": false,
+    "external_use_rights_for_real_data_required": true,
+    "native_evidence_required_only_for_actual_native_claims": true
+  },
+  "source_blob_pins": {
+    "src/pit_research_lab/mvp/f2/resource_contracts.py": "b201aae33c28ce432a34c3450858da1122309014",
+    "src/pit_research_lab/mvp/f2/resource_bodies.py": "190329d898bfc20cf655d76c5c25f1bb829b9b1e",
+    "src/pit_research_lab/mvp/f2/resource_access.py": "b4be5a3b2aaa3c30a01b9bae3cc11b6e5ea8c222",
+    "docs/mvp/v1.0/wu05-rsf02d-owner-decision-record-v0.1.md": "812017db15e5363e9309f98bfed149fc914860a5",
+    "docs/mvp/v1.0/wu05-rsf02s1-ratify-owner-adjudication-candidate-v0.1.md": "62bc83f410fe4a975b2072519dd1ea185ce6e3be"
+  },
+  "not_a_proof_of_research_runtime": true
+}
