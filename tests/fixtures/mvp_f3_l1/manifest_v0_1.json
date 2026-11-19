@@ -1,0 +1,11 @@
+{
+  "schema": "F2_L1_SOURCE_MANIFEST_V1",
+  "file": "revenue_growth_panel_v0_1.json",
+  "sha256": "8c2b03e3875e2029a3d9e0534588b76a5e470e944cea746fdd1fb7aba917927d",
+  "byte_length": 654364,
+  "generator": "independent-streams-v1",
+  "seed": 17,
+  "price_seed": 17001,
+  "qualification": "NOT_IMPLIED_BY_MANIFEST",
+  "non_if03": true
+}
