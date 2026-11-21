@@ -1,0 +1,17 @@
+{
+  "actual_execution_status": "NOT_RUN",
+  "author": "Codex under MVP-P1-01 Owner authorization",
+  "byte_length": 5024,
+  "execution_provenance": "FIXTURE_ONLY",
+  "file": "projection_v0_1.json",
+  "fixture_family": "F6_FIXED_RESEARCH_AUTHORED_SCENARIOS",
+  "fixture_version": "0.1",
+  "formal_golden_acceptance": false,
+  "if03_issuance": false,
+  "integrity_rule": "SHA256_EXACT_UTF8_FILE_BYTES_INCLUDING_FINAL_NEWLINE",
+  "origin": "AUTHORED_TEST_ONLY_NOT_NATIVE_EXECUTION",
+  "purpose": "Pure closed-contract and conservative projection test examples",
+  "research_execution_attestation": "NONE",
+  "scope": "AUTHORED_SYNTHETIC_DISPLAY_SCENARIOS_ONLY",
+  "sha256": "eeea25a221d42dd7695d2dead52cd7fb07151c69b15c325e56ce3a33429529c8"
+}
