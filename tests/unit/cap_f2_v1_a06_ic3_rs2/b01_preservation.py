@@ -27,7 +27,7 @@ NEW_FILE_PINS = {
 CURRENT_PINS = {
     ".github/workflows/ci.yml": (
         4817,
-        "506dc6de1ef7d935241b82e9a4638092ac20cfdaa5aa75accf30727e7b25dabb",
+        "92d7ae608b10eae6ebbda9dfa3a52ee0077726e58a17d3630c5169c6e6c8d0a2",
     ),
     "src/pit_research_lab/domain/contracts.py": (
         24933,
