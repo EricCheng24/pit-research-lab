@@ -4,6 +4,7 @@ import ast
 import subprocess
 from hashlib import sha256
 from pathlib import Path
+from types import MappingProxyType
 
 import pytest
 
@@ -302,6 +303,20 @@ BASELINE = {
     "uv.lock": (51855, "6e209693269166357c042375f340b9428eb533c95259f93ca0f7f30ba9a4d7a3"),
 }
 
+# MVP-CI-QUALITY-TIMEOUT-02 authorizes only these current bytes. BASELINE stays frozen.
+APPROVED_CURRENT_PINS = MappingProxyType(
+    {
+        ".github/workflows/ci.yml": (
+            4817,
+            "92d7ae608b10eae6ebbda9dfa3a52ee0077726e58a17d3630c5169c6e6c8d0a2",
+        ),
+        "tests/unit/cap_f2_v1_a06_ic3_rs2/b01_preservation.py": (
+            5024,
+            "a3b8fa8088005747f269f3062db090549e5206089b11ad9600606fb0181b6cff",
+        ),
+    }
+)
+
 
 def verify_bytes(path, expected):
     body = path.read_bytes()
@@ -318,15 +333,103 @@ def historical(root, ref, path):
     return result.stdout
 
 
+def verify_baseline_path(root, path):
+    expected = BASELINE[path]
+    verify_bytes(root / path, APPROVED_CURRENT_PINS.get(path, expected))
+    body = historical(root, BASE, path)
+    assert (len(body), sha256(body).hexdigest()) == expected, "HISTORICAL_BASELINE_PIN_MISMATCH"
+
+
 def test_literal_original_baseline_and_frozen_objects():
-    for path, expected in BASELINE.items():
-        verify_bytes(ROOT / path, expected)
-        body = historical(ROOT, BASE, path)
-        assert (len(body), sha256(body).hexdigest()) == expected
+    for path in BASELINE:
+        verify_baseline_path(ROOT, path)
     for name in ("derivation.py", "derived_slice.py", "ratio.py", "ratio_slice.py"):
         path = "src/pit_research_lab/domain/" + name
         body = historical(ROOT, "6edf54d4b81b7047c632937112aa4d764aa806b6", path)
         assert (len(body), sha256(body).hexdigest()) == BASELINE[path]
+
+
+def test_exact_approved_current_exceptions_are_immutable():
+    assert BASE == "1dbba5480517d94d5977284347fae6b8bbea3436"
+    assert set(APPROVED_CURRENT_PINS) == {
+        ".github/workflows/ci.yml",
+        "tests/unit/cap_f2_v1_a06_ic3_rs2/b01_preservation.py",
+    }
+    for path, expected in APPROVED_CURRENT_PINS.items():
+        assert expected != BASELINE[path]
+        verify_baseline_path(ROOT, path)
+    with pytest.raises(TypeError):
+        APPROVED_CURRENT_PINS["unapproved.py"] = (0, "0" * 64)
+
+
+@pytest.mark.parametrize("path", tuple(APPROVED_CURRENT_PINS))
+@pytest.mark.parametrize("mutation", ("same_size", "different_size"))
+def test_approved_current_mutation_fails_closed(path, mutation, tmp_path):
+    body = (ROOT / path).read_bytes()
+    changed = bytes([body[0] ^ 1]) + body[1:] if mutation == "same_size" else body + b"\n"
+    target = tmp_path / path
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(changed)
+    with pytest.raises(AssertionError, match="BASELINE_PIN_MISMATCH"):
+        verify_baseline_path(tmp_path, path)
+
+
+@pytest.mark.parametrize("path", tuple(APPROVED_CURRENT_PINS))
+@pytest.mark.parametrize("field", ("size", "digest"))
+def test_incorrect_approved_current_pin_fails_closed(path, field, monkeypatch):
+    size, digest = APPROVED_CURRENT_PINS[path]
+    incorrect = (size + 1, digest) if field == "size" else (size, "0" * 64)
+    monkeypatch.setitem(
+        globals(),
+        "APPROVED_CURRENT_PINS",
+        MappingProxyType({**APPROVED_CURRENT_PINS, path: incorrect}),
+    )
+    with pytest.raises(AssertionError, match="BASELINE_PIN_MISMATCH"):
+        verify_baseline_path(ROOT, path)
+
+
+@pytest.mark.parametrize("path", (*APPROVED_CURRENT_PINS, "Makefile"))
+@pytest.mark.parametrize("mutation", ("same_size", "different_size", "missing"))
+def test_historical_object_tamper_or_absence_fails_closed(path, mutation, monkeypatch):
+    original = historical(ROOT, BASE, path)
+    changed = bytes([original[0] ^ 1]) + original[1:]
+    if mutation == "different_size":
+        changed = original + b"\n"
+
+    def git_show(args, **kwargs):
+        assert args == ["git", "--no-optional-locks", "-C", str(ROOT), "show", BASE + ":" + path]
+        assert kwargs == {"capture_output": True, "check": False}
+        return subprocess.CompletedProcess(args, 128 if mutation == "missing" else 0, changed)
+
+    monkeypatch.setattr(subprocess, "run", git_show)
+    reason = "FROZEN_HISTORY_UNAVAILABLE" if mutation == "missing" else "HISTORICAL_BASELINE"
+    with pytest.raises(AssertionError, match=reason):
+        verify_baseline_path(ROOT, path)
+
+
+@pytest.mark.parametrize("path", (*APPROVED_CURRENT_PINS, "Makefile"))
+def test_missing_baseline_ref_fails_closed(path, monkeypatch):
+    monkeypatch.setitem(globals(), "BASE", "0" * 40)
+    with pytest.raises(AssertionError, match="FROZEN_HISTORY_UNAVAILABLE"):
+        verify_baseline_path(ROOT, path)
+
+
+@pytest.mark.parametrize("path", tuple(p for p in BASELINE if p not in APPROVED_CURRENT_PINS))
+def test_unrelated_baseline_current_mutation_fails_closed(path, tmp_path):
+    target = tmp_path / path
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes((ROOT / path).read_bytes() + b"\n")
+    with pytest.raises(AssertionError, match="BASELINE_PIN_MISMATCH"):
+        verify_baseline_path(tmp_path, path)
+    assert path not in APPROVED_CURRENT_PINS
+
+
+def test_new_unrelated_current_file_is_never_implicitly_approved(tmp_path):
+    path = "unapproved.py"
+    (tmp_path / path).write_bytes((ROOT / ".github/workflows/ci.yml").read_bytes())
+    with pytest.raises(KeyError, match="unapproved.py"):
+        verify_baseline_path(tmp_path, path)
+    assert path not in APPROVED_CURRENT_PINS and path not in BASELINE
 
 
 def test_baseline_tamper_and_missing_history_are_failures(tmp_path):
