@@ -118,8 +118,8 @@ jobs:
         run: uv run --locked python scripts/database.py up test
       - name: Probe guarded Test PostgreSQL
         run: uv run --locked python scripts/database.py probe test
-      - name: Run fast and real integration tests
-        run: make test-all
+      - name: Run mandatory integration tests
+        run: uv run --locked pytest -q -m integration
       - name: Destroy guarded Test resources
         if: ${{ always() && steps.setup.outcome == 'success' }}
         timeout-minutes: 5
