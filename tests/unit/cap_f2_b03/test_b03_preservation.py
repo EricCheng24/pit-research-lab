@@ -307,12 +307,12 @@ BASELINE = {
 APPROVED_CURRENT_PINS = MappingProxyType(
     {
         ".github/workflows/ci.yml": (
-            4817,
-            "92d7ae608b10eae6ebbda9dfa3a52ee0077726e58a17d3630c5169c6e6c8d0a2",
+            4840,
+            "e2dab287651ea71c299e9049c6836d99356656ae592989c550bf8c2abdec4064",
         ),
         "tests/unit/cap_f2_v1_a06_ic3_rs2/b01_preservation.py": (
             5024,
-            "a3b8fa8088005747f269f3062db090549e5206089b11ad9600606fb0181b6cff",
+            "eb8b88a3468cfc4b0dd9d9bd723fced51f4d20d840f072a8330c5858e76cde81",
         ),
     }
 )
