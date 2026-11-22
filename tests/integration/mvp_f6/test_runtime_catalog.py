@@ -112,38 +112,84 @@ class FaultCatalog(r.SyntheticCatalog):
 def catalogs(tmp_path, record_property):
     """At most four private catalogs, no thread/child. Delete only owned leaves."""
     assert tmp_path.is_relative_to("/tmp")
-    assert any(part.startswith("pit-p103b-bcore.") for part in tmp_path.parts)
-    assert tmp_path.stat().st_uid == os.getuid()
-    tmp_path.chmod(0o700)
+    assert all(stat.S_ISDIR(parent.lstat().st_mode) for parent in (tmp_path, *tmp_path.parents))
+    parent_info = tmp_path.lstat()
+    assert parent_info.st_uid == os.getuid()
+    private_root = tmp_path / "pit-p103b-bcore.1.integration"
+    private_root.mkdir(mode=0o700)  # Existing or linked leaves must refuse, never be adopted.
+    root_info = private_root.lstat()
+    assert private_root.parent == tmp_path
+    assert stat.S_ISDIR(root_info.st_mode) and root_info.st_uid == os.getuid()
+    assert stat.S_IMODE(root_info.st_mode) == 0o700
+    record_property("private_root", str(private_root))
+    record_property(
+        "private_root_identity",
+        json.dumps(
+            {
+                "dev": root_info.st_dev,
+                "ino": root_info.st_ino,
+                "uid": root_info.st_uid,
+                "mode": stat.S_IMODE(root_info.st_mode),
+            }
+        ),
+    )
     objects = []
 
     def create():
         assert len(objects) < 4
-        location = r.TestLocation(tmp_path, f"catalog{len(objects)}.sqlite3")
+        location = r.TestLocation(private_root, f"catalog{len(objects)}.sqlite3")
         catalog = FaultCatalog(location).initialize(INSTALL, SHA, TIME)
         objects.append(catalog)
         return catalog
 
-    yield create
-    for catalog in objects:
-        catalog.close()
-    size = 0
-    inventory = []
-    for path in tmp_path.iterdir():
-        info = path.lstat()
-        assert info.st_uid == os.getuid() and stat.S_ISREG(info.st_mode) and info.st_nlink == 1
-        assert path.name.startswith("catalog") and info.st_size <= r.DB_CEILING
-        size += info.st_size
-        inventory.append((path.name, info.st_size))
-    assert size <= 256 * 1024 * 1024
-    record_property("owned_final_bytes", size)
-    record_property(
-        "sampled_transaction_bytes", max((obj.sampled_bytes for obj in objects), default=0)
-    )
-    record_property("owned_inventory", json.dumps(inventory))
-    for path in tmp_path.iterdir():
-        path.unlink()
-    record_property("owned_cleanup_remaining", len(tuple(tmp_path.iterdir())))
+    try:
+        yield create
+    finally:
+        cleanup_complete = False
+        try:
+            for catalog in objects:
+                catalog.close()
+            parent_now = tmp_path.lstat()
+            assert (parent_now.st_dev, parent_now.st_ino) == (
+                parent_info.st_dev,
+                parent_info.st_ino,
+            )
+            assert stat.S_ISDIR(parent_now.st_mode) and parent_now.st_uid == os.getuid()
+            current = private_root.lstat()
+            assert (current.st_dev, current.st_ino) == (root_info.st_dev, root_info.st_ino)
+            assert stat.S_ISDIR(current.st_mode) and current.st_uid == os.getuid()
+            assert stat.S_IMODE(current.st_mode) == 0o700
+            leaves = [(path, path.lstat()) for path in private_root.iterdir()]
+            size = sum(info.st_size for _, info in leaves)
+            record_property("owned_final_bytes", size)
+            record_property(
+                "sampled_transaction_bytes", max((obj.sampled_bytes for obj in objects), default=0)
+            )
+            record_property("owned_inventory", json.dumps([(p.name, i.st_size) for p, i in leaves]))
+            record_property(
+                "owned_file_modes",
+                json.dumps([(p.name, stat.S_IMODE(i.st_mode)) for p, i in leaves]),
+            )
+            assert size <= 256 * 1024 * 1024
+            expected_names = {f"catalog{i}.sqlite3" for i in range(len(objects))}
+            # Validate the entire inventory before deleting any leaf. Sidecars,
+            # symlinks and unknown files are retained as failed-cleanup evidence.
+            for path, info in leaves:
+                assert path.name in expected_names
+                assert info.st_uid == os.getuid() and stat.S_ISREG(info.st_mode)
+                assert info.st_nlink == 1 and stat.S_IMODE(info.st_mode) == 0o600
+                assert info.st_size <= r.DB_CEILING
+            for path, info in leaves:
+                assert path.lstat() == info
+                path.unlink()
+            remaining = len(tuple(private_root.iterdir()))
+            record_property("owned_cleanup_remaining", remaining)
+            assert remaining == 0
+            private_root.rmdir()
+            assert not os.path.lexists(private_root)
+            cleanup_complete = True
+        finally:
+            record_property("private_root_removed", cleanup_complete)
 
 
 def reserve(catalog, ack, candidate=None, revision=0):
