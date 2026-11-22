@@ -160,6 +160,7 @@ def test_import_and_construction_are_inert_and_f6_origins(monkeypatch, tmp_path)
             exec(compile(source, "<inert B module body>", "exec"), probe.__dict__)
             probes.append(probe)
         catalog = probes[-1]
-        catalog.SyntheticCatalog(catalog.TestLocation(tmp_path, "inert.sqlite3"))
+        inert_root = tmp_path / "pit-p103b-bcore.1.inert"
+        catalog.SyntheticCatalog(catalog.TestLocation(inert_root, "inert.sqlite3"))
         assert p.launch_refusal(expectation()) is p.Refusal.B_CORE_AUTHORITY_ABSENT
     assert tuple(tmp_path.iterdir()) == before
