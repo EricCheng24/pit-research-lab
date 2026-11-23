@@ -219,12 +219,16 @@ def no_physical_calls(monkeypatch):
 @pytest.fixture
 def catalogs(tmp_path, record_property):
     assert tmp_path.is_relative_to("/tmp")
+    # C01 reopens the same DB through B-CORE's independently restricted test path.
+    parent = tmp_path / f"pit-p103b-bcore.{os.getuid()}.recorded"
+    parent.mkdir(mode=0o700)
+    parent_original = parent.lstat()
     objects, roots = [], []
     started = monotonic()
 
     def create():
         assert len(objects) < 2
-        root = tmp_path / f"pit-p103b-bcore.1000.recorded{len(objects)}"
+        root = parent / f"pit-p103b-os-source.{os.getuid()}.recorded{len(objects)}"
         root.mkdir(mode=0o700)
         roots.append((root, root.lstat()))
         catalog = FaultCatalog(r.RecordedLocation(root, "catalog.sqlite3"))
@@ -247,6 +251,9 @@ def catalogs(tmp_path, record_property):
             )
             assert stat.S_ISDIR(now.st_mode) and stat.S_IMODE(now.st_mode) == 0o700
             leaves = [(path, path.lstat()) for path in root.iterdir()]
+            if not leaves and root not in {catalog.location.root for catalog in objects}:
+                root.rmdir()
+                continue
             assert {path.name for path, _ in leaves} == {"catalog.sqlite3"}
             for path, info in leaves:
                 assert (
@@ -257,6 +264,15 @@ def catalogs(tmp_path, record_property):
                 assert path.lstat() == info
                 path.unlink()
             root.rmdir()
+        parent_now = parent.lstat()
+        assert (parent_now.st_dev, parent_now.st_ino, parent_now.st_uid) == (
+            parent_original.st_dev,
+            parent_original.st_ino,
+            os.getuid(),
+        )
+        assert stat.S_ISDIR(parent_now.st_mode) and stat.S_IMODE(parent_now.st_mode) == 0o700
+        assert not list(parent.iterdir())
+        parent.rmdir()
         assert total <= 16 * 1024 * 1024
         record_property("recorded_only_final_bytes", total)
         record_property("recorded_only_elapsed_seconds", monotonic() - started)
