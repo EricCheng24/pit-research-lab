@@ -1,0 +1,4 @@
+namespace,code,key,name,sector,listed_date
+SYNTHETIC_F4_D1,0001,FIC-ALPHA,Fictional Alpha,technology,2020-01-02
+SYNTHETIC_F4_D1,0002,FIC-BETA,Fictional Beta,services,2020-02-03
+SYNTHETIC_F4_D1,0003,FIC-GAMMA,Fictional Gamma,technology,2020-03-04
