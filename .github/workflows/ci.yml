@@ -56,48 +56,176 @@ jobs:
     name: PostgreSQL Integration
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    env:
+      F4_CI_CLOCK: |
+        ci_deadline_refusal() {
+          printf 'phase=deadline code=%s\n' "$1" >&2
+          return 1
+        }
+        ci_remaining() {
+          local phase=$1 clock now end cap
+          if ! IFS=' ' read -r clock _ < /proc/uptime ||
+             [[ ! $clock =~ ^([0-9]{1,12})\.[0-9]{2}$ ||
+                ! ${F4_CI_STARTED:-} =~ ^[0-9]{1,12}$ ]]; then
+            ci_deadline_refusal INVALID_ANCHOR
+            return 1
+          fi
+          now=$((10#${clock%%.*}))
+          if ((10#$F4_CI_STARTED > now)); then
+            ci_deadline_refusal FUTURE_ANCHOR
+            return 1
+          fi
+          remaining=$((10#$F4_CI_STARTED + 870 - now))
+          case "$phase" in
+            normal) ;;
+            f4|legacy)
+              if [[ ! ${ci_entry:-} =~ ^([0-9]{1,12})\.[0-9]{2}$ ]] ||
+                 ((10#${ci_entry%%.*} < 10#$F4_CI_STARTED ||
+                    10#${ci_entry//./} > 10#${clock//./})); then
+                ci_deadline_refusal INVALID_PHASE_ENTRY
+                return 1
+              fi
+              if [[ $phase == f4 ]]; then end=1095; cap=225
+              else end=1170; cap=75; fi
+              remaining=$((10#$F4_CI_STARTED + end - now))
+              cap=$((10#${ci_entry%%.*} + cap - now))
+              ((remaining <= cap)) || remaining=$cap
+              export F4_CI_CLEANUP_STARTED=$((10#${ci_entry%%.*}))
+              ;;
+            *) ci_deadline_refusal INVALID_PHASE; return 1 ;;
+          esac
+        }
+        ci_duration() {
+          # Reserve 2s for kill escalation and 2s for rounding and dispatch.
+          duration=$((remaining - 4))
+          if ((duration <= 0)); then
+            ci_deadline_refusal DEADLINE_EXHAUSTED
+            return 1
+          fi
+        }
+        ci_bound() {
+          local phase=$1 remaining duration status
+          shift
+          ci_remaining "$phase" && ci_duration || return $?
+          # Keep timeout's group leader alive through escalation even if its
+          # command exits on TERM while a descendant ignores it.
+          if { timeout --signal=TERM --kill-after=2s "${duration}s" \
+              /usr/bin/bash --noprofile --norc -c '
+                trap "trap \"\" TERM INT; /usr/bin/sleep 3" TERM INT
+                "$@"
+              ' ci-step "$@" 2>&3 3>&-
+          } 3>&2 2>/dev/null; then
+            return 0
+          else
+            status=$?
+          fi
+          case "$status" in
+            124|137|143) ci_deadline_refusal LAUNCH_TIMEOUT_UNCERTAIN || : ;;
+          esac
+          return "$status"
+        }
+        ci_uv() {
+          if [[ $1 != run || $2 != --locked ]]; then
+            ci_deadline_refusal INVALID_LOCKED_LAUNCH
+            return 1
+          fi
+          shift 2
+          ci_bound normal uv run --locked --no-sync --offline "$@"
+        }
     steps:
+      - name: Record integration deadline anchor
+        run: |
+          read -r uptime _ < /proc/uptime
+          printf 'F4_CI_STARTED=%s\n' "${uptime%%.*}" >> "$GITHUB_ENV"
       - name: Checkout
+        timeout-minutes: 2
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Install Python
+        timeout-minutes: 2
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12.13'
           architecture: x64
       - name: Install uv
+        timeout-minutes: 2
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           version: '0.11.29'
           enable-cache: false
       - name: Verify uv version
+        timeout-minutes: 1
         run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_bound normal /usr/bin/bash --noprofile --norc -e -o pipefail -s <<'CI_STEP'
           uv --version
           python -c 'import subprocess; assert subprocess.check_output(["uv", "--version"], text=True).split()[1] == "0.11.29"'
+          CI_STEP
       - name: Sync locked dependencies
-        run: uv sync --locked --python 3.12
-      - name: Verify project Python version
-        run: uv run --locked python -c 'import sys; assert sys.version_info[:3] == (3, 12, 13); print(sys.version.split()[0])'
-      - name: Verify runner prerequisites
         run: |
-          command -v bash make docker ss sha256sum
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_bound normal uv sync --locked --python 3.12
+      - name: Verify project Python version
+        timeout-minutes: 1
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_uv run --locked python -c 'import sys; assert sys.version_info[:3] == (3, 12, 13); print(sys.version.split()[0])'
+      - name: Verify runner prerequisites
+        timeout-minutes: 1
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_bound normal /usr/bin/bash --noprofile --norc -e -o pipefail -s <<'CI_STEP'
+          command -v bash make docker ss sha256sum timeout
           bash --version
           make --version
           docker --version
           docker compose version
           compose_version="$(docker compose version --short)"
           [[ "$compose_version" == 2.* || "$compose_version" == v2.* ]]
-          docker info --format '{{.ServerVersion}}'
+          CI_STEP
+      - name: Verify hosted scope and acquire pinned PostgreSQL image
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_bound normal /usr/bin/bash --noprofile --norc -e -o pipefail -s <<'CI_STEP'
+          decision="$(uv run --locked --no-sync --offline python scripts/ci_f4_d1.py preflight)"
+          case "$decision" in
+            IMAGE_PRESENT) printf '%s\n' "$decision" ;;
+            IMAGE_ACQUISITION_REQUIRED)
+              source /dev/stdin <<< "$F4_CI_CLOCK"
+              ci_remaining normal
+              ((remaining <= 120)) || remaining=120
+              ci_duration
+              image=postgres:17.11-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826
+              if timeout --foreground --kill-after=2s "${duration}s" docker --context default image pull --quiet "$image" >/dev/null 2>&1; then
+                printf '%s\n' 'phase=image code=PINNED_IMAGE_ACQUIRED'
+              else
+                status=$?
+                printf '%s\n' 'phase=image code=PINNED_IMAGE_PULL_REFUSED' >&2
+                exit "$status"
+              fi
+              ;;
+            *)
+              printf '%s\n' 'phase=image code=IMAGE_DECISION_REFUSED' >&2
+              exit 1
+              ;;
+          esac
+          CI_STEP
       - name: Generate ephemeral configuration once
         id: setup
         run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_bound normal /usr/bin/bash --noprofile --norc -e -o pipefail -s <<'CI_STEP'
           ci_namespace="ci$(printf '%s' "${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}" | sha256sum | cut -c1-18)"
           [[ "$ci_namespace" =~ ^ci[a-f0-9]{18}$ ]]
-          uv run --locked python scripts/database.py setup --namespace "$ci_namespace" --dev-port 55432 --test-port 55433
+          umask 077
+          uv run --locked --no-sync --offline python scripts/database.py setup --namespace "$ci_namespace" --dev-port 55432 --test-port 55433
+          CI_STEP
       - name: Verify configuration file metadata
         run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_bound normal /usr/bin/bash --noprofile --norc -e -o pipefail -s <<'CI_STEP'
           python - <<'PY'
           import os
           from pathlib import Path
@@ -112,15 +240,42 @@ jobs:
               subprocess.run(["git", "check-ignore", "-q", name], check=True)
           print("Both configuration files are ignored, owner-controlled regular files with mode 0600")
           PY
+          CI_STEP
       - name: Preflight Test PostgreSQL
-        run: uv run --locked python scripts/database.py preflight test
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_uv run --locked python scripts/database.py preflight test
+      - name: Arm guarded legacy Test PostgreSQL
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_uv run --locked python scripts/ci_f4_d1.py arm-legacy
       - name: Start guarded Test PostgreSQL
-        run: uv run --locked python scripts/database.py up test
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_uv run --locked python scripts/database.py up test
       - name: Probe guarded Test PostgreSQL
-        run: uv run --locked python scripts/database.py probe test
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_uv run --locked python scripts/database.py probe test
+      - name: Prepare guarded F4 integration targets
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_uv run --locked python scripts/ci_f4_d1.py prepare
       - name: Run mandatory integration tests
-        run: uv run --locked pytest -q -m integration
+        run: |
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_uv run --locked python scripts/ci_f4_d1.py run
+      - name: Destroy guarded F4 test resources
+        if: ${{ always() }}
+        timeout-minutes: 4
+        run: |
+          IFS=' ' read -r ci_entry _ < /proc/uptime
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_bound f4 uv run --locked --no-sync --offline python scripts/ci_f4_d1.py cleanup
       - name: Destroy guarded Test resources
         if: ${{ always() && steps.setup.outcome == 'success' }}
         timeout-minutes: 5
-        run: uv run --locked python scripts/database.py destroy-test
+        run: |
+          IFS=' ' read -r ci_entry _ < /proc/uptime
+          source /dev/stdin <<< "$F4_CI_CLOCK"
+          ci_bound legacy uv run --locked --no-sync --offline python scripts/ci_f4_d1.py cleanup-legacy
