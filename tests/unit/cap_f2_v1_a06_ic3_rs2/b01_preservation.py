@@ -26,8 +26,8 @@ NEW_FILE_PINS = {
 # Filled from the settled, authorized changed files; never derived during a test.
 CURRENT_PINS = {
     ".github/workflows/ci.yml": (
-        4840,
-        "e2dab287651ea71c299e9049c6836d99356656ae592989c550bf8c2abdec4064",
+        11107,
+        "d7e648c27134c48fa9f89e4638f7f7044e2f5230e125b4162790b779d3081eff",
     ),
     "src/pit_research_lab/domain/contracts.py": (
         24933,

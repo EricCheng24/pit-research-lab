@@ -1,0 +1,5 @@
+namespace,code,key,name,period,basis,currency,unit,amount,report_date
+SYNTHETIC_F4_D1,0001,FIC-ALPHA,Fictional Alpha,2025-01,consolidated,TWD,TWD_THOUSANDS,0,2025-02-09
+SYNTHETIC_F4_D1,0001,FIC-ALPHA,Fictional Alpha,2025-02,consolidated,TWD,TWD_THOUSANDS,-12.500,2025-03-09
+SYNTHETIC_F4_D1,0002,FIC-BETA,Fictional Beta,2025-01,standalone,TWD,TWD,MISSING,2025-02-09
+SYNTHETIC_F4_D1,0003,FIC-GAMMA,Fictional Gamma,2025-01,consolidated,TWD,TWD_THOUSANDS,22,2025-02-09
