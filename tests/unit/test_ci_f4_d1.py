@@ -1,14 +1,17 @@
-"""Offline contracts for the hosted job. Docker and database I/O stay stubbed."""
+"""Offline hosted-job contracts with stubbed Docker and database I/O."""
 
 import hashlib
 import importlib.util
 import json
 import os
+import socket
 import stat
 import subprocess
 import sys
+from contextlib import ExitStack, contextmanager
 from dataclasses import replace
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 
 import pytest
@@ -424,33 +427,477 @@ def test_probe_must_pass_fixed_inspection(job, monkeypatch, defect):
         job.inspect_probe(unit, name, ident, image)
 
 
+def image_record(repository="postgres", labels=None):
+    return {
+        "Id": f"sha256:{'4' * 64}",
+        "RepoDigests": [f"{repository}@{ci.IMAGE.rsplit('@', 1)[1]}"],
+        "Os": "linux",
+        "Architecture": "amd64",
+        "Config": {"Volumes": {ci.PGDATA: {}}, "Labels": labels},
+    }
+
+
+def image_reply(status, body, *, changes=None):
+    headers = {
+        "Server": "Docker/28.0.4 (linux)",
+        "Api-Version": "1.48",
+        "Ostype": "linux",
+        "Connection": "close",
+        "Content-Type": "application/json",
+        "Content-Length": str(len(body)),
+    }
+    headers.update(changes or {})
+    lines = [f"HTTP/1.1 {status} Test reply"]
+    lines.extend(f"{key}: {val}" for key, val in headers.items() if val is not None)
+    return "\r\n".join(lines).encode() + b"\r\n\r\n" + body
+
+
+FAKE_IMAGE_DAEMON = r"""
+import os
+import sys
+from pathlib import Path
+
+raw_root, mode, *fds = sys.argv[1:]
+root = Path(raw_root)
+for index, fd in enumerate(fds):
+    with os.fdopen(int(fd), "r+b", buffering=0) as conn:
+        request = bytearray()
+        while not request.endswith(b"\r\n\r\n"):
+            data = conn.read(1024)
+            assert data and len(request) + len(data) <= 4096
+            request.extend(data)
+        (root / f"request-{index}").write_bytes(request)
+        if mode == "replace":
+            (root / "replacement").touch()
+        if mode == "stall":
+            assert conn.read(1) == b""
+            (root / f"peer-saw-eof-{index}").touch()
+        else:
+            response = (root / f"response-{index}").read_bytes()
+            assert os.write(conn.fileno(), response) == len(response)
+"""
+
+
+@pytest.fixture
+def image_daemon(monkeypatch):
+    @contextmanager
+    def serve(*responses, mode="reply"):
+        with TemporaryDirectory(prefix="f4-image-") as directory, ExitStack() as connections:
+            root = Path(directory)
+            path = Path("/var/run/docker.sock")
+            request = (
+                b"GET /v1.44/images/postgres%40sha256%3A"
+                b"3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826/json "
+                b"HTTP/1.1\r\nHost: docker\r\nAccept: application/json\r\nConnection: close\r\n\r\n"
+            )
+            clients, peers = [], []
+            for index, response in enumerate(responses):
+                (root / f"response-{index}").write_bytes(response)
+                client, peer = socket.socketpair(socket.AF_UNIX, socket.SOCK_STREAM)
+                clients.append(connections.enter_context(client))
+                peers.append(connections.enter_context(peer))
+            # Exchange real bytes with a private AF_UNIX peer. The test adapter
+            # supplies socket identity and uses inherited, already-connected fds.
+            info = os.fstat(clients[0].fileno())
+            replacement = os.fstat(peers[0].fileno())
+            assert (info.st_dev, info.st_ino) != (replacement.st_dev, replacement.st_ino)
+            inherited = tuple(peer.fileno() for peer in peers)
+            process = subprocess.Popen(
+                [
+                    sys.executable,
+                    "-B",
+                    "-c",
+                    FAKE_IMAGE_DAEMON,
+                    str(root),
+                    mode,
+                    *map(str, inherited),
+                ],
+                pass_fds=inherited,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            for peer in peers:
+                peer.close()
+            position = 0
+            original_lstat, original_fork = Path.lstat, os.fork
+
+            def lstat(leaf, *args, **kwargs):
+                if leaf == path:
+                    return replacement if (root / "replacement").is_file() else info
+                return original_lstat(leaf, *args, **kwargs)
+
+            def fork():
+                nonlocal position
+                pid = original_fork()
+                if pid:
+                    clients[position].close()
+                    position += 1
+                return pid
+
+            class ConnectedSocket:
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, *_):
+                    clients[position].close()
+                    (root / f"closed-{position}").touch()
+
+                def __getattr__(self, attr):
+                    return getattr(clients[position], attr)
+
+                def connect(self, address):
+                    assert address == str(path)
+
+                def sendall(self, data):
+                    assert os.write(clients[position].fileno(), data) == len(data)
+
+            def connectable(family, kind):
+                assert (family, kind) == (socket.AF_UNIX, socket.SOCK_STREAM)
+                return ConnectedSocket()
+
+            with process, monkeypatch.context() as patch:
+                patch.setattr(Path, "lstat", lstat)
+                patch.setattr(ci.os, "fork", fork)
+                patch.setattr(ci.socket, "socket", connectable)
+                try:
+                    yield [info.st_dev, info.st_ino]
+                    assert process.wait(timeout=6) == 0
+                    for index in range(len(responses)):
+                        assert (root / f"request-{index}").read_bytes() == request
+                        receipt = "peer-saw-eof" if mode == "stall" else "closed"
+                        assert (root / f"{receipt}-{index}").is_file()
+                finally:
+                    if process.poll() is None:
+                        process.kill()
+                        process.wait(timeout=3)
+
+    return serve
+
+
 @pytest.mark.parametrize(
     "defect", ["digest", "extra-volume", "architecture", "not-found", "daemon"]
 )
-def test_exact_image_and_distinguish_missing(job, monkeypatch, defect):
-    digest = ci.IMAGE.rsplit("@", 1)[1]
-    record = [f"sha256:{'4' * 64}", [f"postgres@{digest}"], "linux", "amd64", {ci.PGDATA: {}}, None]
-    response = (0, ci.encode(record), b"")
+def test_exact_image_and_distinguish_missing(job, image_daemon, defect):
+    record = image_record()
     if defect == "digest":
-        record[1] = ["postgres@sha256:" + "0" * 64]
+        record["RepoDigests"] = ["postgres@sha256:" + "0" * 64]
     elif defect == "extra-volume":
-        record[4]["/other"] = {}
+        record["Config"]["Volumes"]["/other"] = {}
     elif defect == "architecture":
-        record[3] = "arm64"
-    elif defect == "not-found":
-        response = (1, b"", f"Error: No such image: {ci.IMAGE}\n".encode())
-    else:
-        response = (1, b"", SENTINEL.encode())
-    if defect in {"digest", "extra-volume", "architecture"}:
-        response = (0, ci.encode(record), b"")
-    monkeypatch.setattr(job, "command", lambda args: response)
+        record["Architecture"] = "arm64"
     if defect == "not-found":
-        assert job.image(allow_missing=True) is None
-        with pytest.raises(ci.Refusal, match="IMAGE_INSPECT"):
-            job.image()
+        response = image_reply(404, ci.encode({"message": SENTINEL}))
+        with image_daemon(response, response) as endpoint:
+            assert job.image(endpoint, allow_missing=True) is None
+            with pytest.raises(ci.Refusal, match="^IMAGE_MISSING$"):
+                job.image(endpoint)
     else:
-        with pytest.raises(ci.Refusal, match="IMAGE_"):
-            job.image(allow_missing=True)
+        if defect == "daemon":
+            response = image_reply(500, ci.encode({"message": SENTINEL}))
+            code = "IMAGE_HTTP_STATUS"
+        else:
+            response = image_reply(200, ci.encode(record))
+            code = "IMAGE_IDENTITY"
+        with image_daemon(response) as endpoint, pytest.raises(ci.Refusal, match=f"^{code}$"):
+            job.image(endpoint, allow_missing=True)
+
+
+@pytest.mark.parametrize(
+    "repository", ["postgres", "library/postgres", "docker.io/library/postgres"]
+)
+def test_image_inspect_accepts_digest_aliases(job, image_daemon, capsys, repository):
+    labels = {"example": SENTINEL}
+    record = image_record(repository, labels)
+    body = ci.encode(record)
+    chunks = (body[:41], body[41:])
+    encoded = b"".join(f"{len(chunk):x}\r\n".encode() + chunk + b"\r\n" for chunk in chunks)
+    response = image_reply(
+        200,
+        encoded + b"0\r\n\r\n",
+        changes={"Content-Length": None, "Transfer-Encoding": "chunked"},
+    )
+    with image_daemon(response) as endpoint:
+        assert job.image(endpoint) == {"id": record["Id"], "labels": labels}
+    assert capsys.readouterr() == ("", "")
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "code"),
+    [
+        ("Id", "sha256:" + "X" * 64, "IMAGE_IDENTITY"),
+        ("Id", 5, "IMAGE_IDENTITY"),
+        ("Os", "windows", "IMAGE_IDENTITY"),
+        ("RepoDigests", [], "IMAGE_IDENTITY"),
+        ("RepoDigests", "postgres", "IMAGE_IDENTITY"),
+        ("Volumes", {}, "IMAGE_IDENTITY"),
+        ("Volumes", {ci.PGDATA: {"unexpected": 1}}, "IMAGE_IDENTITY"),
+        ("Labels", [SENTINEL], "IMAGE_IDENTITY"),
+        ("Labels", {"example": 1}, "IMAGE_IDENTITY"),
+        ("Config", None, "IMAGE_JSON_SHAPE"),
+    ],
+)
+def test_image_inspect_validates_exact_fields(job, image_daemon, field, value, code):
+    record = image_record()
+    target = record["Config"] if field in {"Volumes", "Labels"} else record
+    target[field] = value
+    with image_daemon(image_reply(200, ci.encode(record))) as endpoint:
+        with pytest.raises(ci.Refusal, match=f"^{code}$"):
+            job.image(endpoint, allow_missing=True)
+
+
+@pytest.mark.parametrize(
+    ("status", "code"),
+    [
+        (400, "IMAGE_API_REJECTED"),
+        *[
+            (status, "IMAGE_HTTP_STATUS")
+            for status in (100, 201, 302, 307, 401, 403, 429, 500, 503)
+        ],
+    ],
+)
+def test_image_inspect_refuses_other_statuses(job, image_daemon, capsys, status, code):
+    response = image_reply(status, ci.encode({"message": SENTINEL}), changes={"Location": SENTINEL})
+    with image_daemon(response) as endpoint, pytest.raises(ci.Refusal, match=f"^{code}$") as exc:
+        job.image(endpoint, allow_missing=True)
+    assert ci.safe_code(exc.value) == code
+    assert capsys.readouterr() == ("", "")
+
+
+@pytest.mark.parametrize(
+    ("headers", "code"),
+    [
+        ({"Api-Version": None, "Ostype": None, "Server": None}, "IMAGE_API_ROUTE"),
+        ({"Api-Version": "1.43"}, "IMAGE_API_UNSUPPORTED"),
+        ({"Api-Version": "2.0"}, "IMAGE_API_UNSUPPORTED"),
+        ({"Api-Version": "1.48, 1.43"}, "IMAGE_API_ROUTE"),
+        ({"Server": "proxy"}, "IMAGE_API_ROUTE"),
+        ({"Content-Type": "text/html"}, "IMAGE_HTTP_CONTENT"),
+        ({"Content-Encoding": "gzip"}, "IMAGE_HTTP_CONTENT"),
+        ({"Content-Length": None}, "IMAGE_HTTP_FRAMING"),
+        ({"Content-Length": "2, 2"}, "IMAGE_HTTP_FRAMING"),
+        ({"Content-Length": "1000"}, "IMAGE_HTTP_FRAMING"),
+        ({"Content-Length": "2"}, "IMAGE_HTTP_FRAMING"),
+        ({"content-length": "3"}, "IMAGE_HTTP_FRAMING"),
+        ({"Transfer-Encoding": "chunked"}, "IMAGE_HTTP_FRAMING"),
+        ({"Content-Length": None, "Transfer-Encoding": "identity"}, "IMAGE_HTTP_FRAMING"),
+        ({"Content-Length": str(ci.IMAGE_ERROR_LIMIT + 1)}, "IMAGE_HTTP_LIMIT"),
+        ({"X-Huge": "a" * ci.IMAGE_HEADER_LIMIT}, "IMAGE_HTTP_LIMIT"),
+    ],
+    ids=[
+        "generic-route",
+        "old-api",
+        "wrong-major",
+        "ambiguous-api",
+        "proxy",
+        "html",
+        "encoding",
+        "missing-frame",
+        "mixed-length",
+        "truncated",
+        "surplus",
+        "duplicate-length",
+        "ambiguous-frame",
+        "unknown-transfer",
+        "oversized-body",
+        "oversized-header",
+    ],
+)
+def test_image_inspect_refuses_ambiguous_404(job, image_daemon, headers, code):
+    response = image_reply(404, ci.encode({"message": SENTINEL}), changes=headers)
+    with image_daemon(response) as endpoint, pytest.raises(ci.Refusal, match=f"^{code}$"):
+        job.image(endpoint, allow_missing=True)
+
+
+@pytest.mark.parametrize(
+    ("body", "code"),
+    [
+        (b"not-json", "IMAGE_JSON"),
+        (b"\xff", "IMAGE_JSON"),
+        (b'{"message": NaN}', "IMAGE_JSON"),
+        (b'{"message":"first","message":"second"}', "DUPLICATE_JSON_KEY"),
+        (b'{"message":"missing"}{}', "IMAGE_JSON"),
+        (b"{}", "IMAGE_ERROR_ENVELOPE"),
+        (b"[]", "IMAGE_ERROR_ENVELOPE"),
+        (b'{"message":"missing","extra":3}', "IMAGE_ERROR_ENVELOPE"),
+        (b'{"message":"  "}', "IMAGE_ERROR_ENVELOPE"),
+        (b'{"message":2}', "IMAGE_ERROR_ENVELOPE"),
+    ],
+    ids=[
+        "invalid-json",
+        "invalid-utf8",
+        "invalid-constant",
+        "duplicate-json-key",
+        "second-json",
+        "missing-message",
+        "array",
+        "extra-key",
+        "blank",
+        "not-string",
+    ],
+)
+def test_image_inspect_requires_strict_error_envelope(job, image_daemon, body, code):
+    with image_daemon(image_reply(404, body)) as endpoint:
+        with pytest.raises(ci.Refusal, match=f"^{code}$"):
+            job.image(endpoint, allow_missing=True)
+
+
+@pytest.mark.parametrize("body", [b"z\r\n", b"3\r\n{}", b"0\r\n", b"0\r\nX-Trailer: no\r\n\r\n"])
+def test_image_inspect_refuses_invalid_chunk_framing(job, image_daemon, body):
+    response = image_reply(
+        404, body, changes={"Content-Length": None, "Transfer-Encoding": "chunked"}
+    )
+    with (
+        image_daemon(response) as endpoint,
+        pytest.raises(ci.Refusal, match="^IMAGE_HTTP_FRAMING$"),
+    ):
+        job.image(endpoint, allow_missing=True)
+
+
+@pytest.mark.parametrize("mode", ["cached", "missing", "refused"])
+def test_image_preflight_preserves_gate_order_and_journal(
+    job, image_daemon, monkeypatch, capsys, mode
+):
+    record = image_record()
+    status = {"cached": 200, "missing": 404, "refused": 503}[mode]
+    body = ci.encode(record if mode == "cached" else {"message": SENTINEL})
+    with image_daemon(image_reply(status, body)) as endpoint:
+        monkeypatch.setattr(job, "endpoint", lambda: endpoint)
+        monkeypatch.setattr(
+            job, "docker", lambda *args: b"28.0.4\n" if args[0] == "info" else b"2.38.2\n"
+        )
+        monkeypatch.setattr(job, "git", lambda *args: b"")
+        calls = []
+        monkeypatch.setattr(job, "initial_ports", lambda: calls.append("ports"))
+        monkeypatch.setattr(job, "scoped_absent", lambda project, **kw: calls.append(project))
+        prior = job.image
+
+        def inspect_after_gates(binding, *, allow_missing=False):
+            assert binding == job.journal.events("job")["socket"] == endpoint
+            assert calls[0] == "ports" and len(calls) == 9
+            assert all("initial-absence" in job.journal.events(name) for name in ci.UNITS)
+            return prior(binding, allow_missing=allow_missing)
+
+        monkeypatch.setattr(job, "image", inspect_after_gates)
+        if mode == "refused":
+            with pytest.raises(ci.Refusal, match="^IMAGE_HTTP_STATUS$"):
+                job.preflight()
+        else:
+            assert job.preflight() == (
+                "IMAGE_PRESENT" if mode == "cached" else "IMAGE_ACQUISITION_REQUIRED"
+            )
+    journal = job.journal.events("job")
+    assert ("pull-intent" in journal) == (mode == "missing")
+    assert ("cached-image" in journal) == (mode == "cached")
+    if mode == "cached":
+        assert journal["cached-image"] == record["Id"]
+    assert "image" not in journal
+    assert capsys.readouterr() == ("", "")
+
+
+def test_image_inspect_refuses_endpoint_replacement(job, image_daemon):
+    absent = image_reply(404, ci.encode({"message": SENTINEL}))
+    with image_daemon(absent, mode="replace") as endpoint:
+        with pytest.raises(ci.Refusal, match="^DOCKER_SOCKET_REPLACED$"):
+            job.image(endpoint, allow_missing=True)
+
+
+@pytest.mark.parametrize("defect", ["regular", "symlink", "inode"])
+def test_image_inspect_never_connects_to_unbound_path(job, monkeypatch, defect):
+    assert ci.DOCKER_SOCKET_PATH == Path("/var/run/docker.sock")
+    with TemporaryDirectory(prefix="f4-image-") as directory:
+        path = Path(directory) / "engine.sock"
+        binding = [1, 1]
+        if defect == "regular":
+            path.touch()
+        elif defect == "symlink":
+            path.symlink_to(path.with_name("other"))
+        else:
+            lstat = Path.lstat
+
+            def different_inode(leaf, *args, **kwargs):
+                if leaf == path:
+                    return SimpleNamespace(st_dev=1, st_ino=2, st_mode=stat.S_IFSOCK)
+                return lstat(leaf, *args, **kwargs)
+
+            monkeypatch.setattr(Path, "lstat", different_inode)
+        monkeypatch.setattr(ci, "DOCKER_SOCKET_PATH", path)
+        with pytest.raises(ci.Refusal, match="^DOCKER_SOCKET_REPLACED$"):
+            job.image(binding, allow_missing=True)
+
+
+def test_image_inspect_refuses_socket_io(job, monkeypatch):
+    def refused(*_):
+        raise ConnectionRefusedError(SENTINEL)
+
+    monkeypatch.setattr(ci.socket, "socket", refused)
+    with pytest.raises(ci.Refusal, match="^IMAGE_IO_REFUSED$"):
+        job.image([1, 2], allow_missing=True)
+
+
+@pytest.mark.parametrize("bound", ["socket", "worker"])
+def test_image_inspect_stalled_socket_closes_under_supervision(
+    job, image_daemon, monkeypatch, bound
+):
+    with image_daemon(b"", mode="stall") as endpoint:
+        if bound == "socket":
+            budget = job.budget
+            monkeypatch.setattr(
+                job,
+                "budget",
+                lambda limit: min(budget(limit), 0.4) if job.in_worker else budget(limit),
+            )
+            with pytest.raises(ci.Refusal, match="^IMAGE_IO_TIMEOUT$"):
+                job.image(endpoint, allow_missing=True)
+        else:
+            worker, stop_worker = job.worker, ci.stop_worker
+            stopped = []
+
+            def short_worker(action, limit):
+                assert limit == 15
+                return worker(action, 0.8)
+
+            def stop(pid):
+                stop_worker(pid)
+                stopped.append(pid)
+
+            monkeypatch.setattr(job, "worker", short_worker)
+            monkeypatch.setattr(ci, "stop_worker", stop)
+            with pytest.raises(ci.Refusal, match="^WORKER_TIMEOUT_UNCERTAIN$"):
+                job.image(endpoint, allow_missing=True)
+            assert len(stopped) == 1
+            with pytest.raises(ChildProcessError):
+                os.waitpid(stopped[0], os.WNOHANG)
+
+
+@pytest.mark.parametrize("mode", ["exact", "missing", "wrong-digest", "replacement", "unplanned"])
+def test_exact_image_binding_after_preflight(job, image_daemon, monkeypatch, mode):
+    record = image_record()
+    if mode == "wrong-digest":
+        record["RepoDigests"] = ["postgres@sha256:" + "0" * 64]
+    response = (
+        image_reply(404, ci.encode({"message": SENTINEL}))
+        if mode == "missing"
+        else image_reply(200, ci.encode(record))
+    )
+    with image_daemon(response) as endpoint:
+        job.journal.record("job", "socket", endpoint)
+        if mode == "replacement":
+            job.journal.record("job", "cached-image", "sha256:" + "0" * 64)
+        elif mode != "unplanned":
+            job.journal.record("job", "pull-intent")
+        monkeypatch.setattr(job, "endpoint", lambda: endpoint)
+        if mode == "exact":
+            assert job.verify_image_socket(bind=True) == {"id": record["Id"], "labels": {}}
+        else:
+            code = {
+                "missing": "IMAGE_MISSING",
+                "wrong-digest": "IMAGE_IDENTITY",
+                "replacement": "IMAGE_REPLACED",
+                "unplanned": "IMAGE_NOT_PLANNED",
+            }[mode]
+            with pytest.raises(ci.Refusal, match=f"^{code}$"):
+                job.verify_image_socket(bind=True)
+    assert job.journal.events("job").get("image") == (record["Id"] if mode == "exact" else None)
 
 
 def test_listener_and_foreign_project_refusals(job, monkeypatch):
@@ -980,7 +1427,7 @@ def test_image_binding_records_only_verified_id(job, monkeypatch):
     identity = "sha256:" + "0" * 64
     image = {"id": identity, "labels": {"unrelated-image-label": SENTINEL}}
     monkeypatch.setattr(job, "endpoint", lambda: [1, 2])
-    monkeypatch.setattr(job, "image", lambda: image)
+    monkeypatch.setattr(job, "image", lambda endpoint: image)
     assert job.verify_image_socket(bind=True) == image
     assert job.journal.events("job")["image"] == identity
     assert SENTINEL.encode() not in (job.ctx.private / "job.jsonl").read_bytes()
@@ -1298,6 +1745,40 @@ def test_launch_status_and_substitution_are_preserved(deadline_shell, mode, step
     assert [item[0] for item in launched] == (["uv", "docker"] if mode == "pull" else ["uv"])
     if mode == "pull":
         assert launched[-1][1] == ["--context", "default", "image", "pull", "--quiet", ci.IMAGE]
+
+
+@pytest.mark.parametrize("outcome", ["cached", "acquired", "pull-timeout"])
+def test_workflow_only_pulls_after_exact_absence(deadline_shell, scenario_uptime, outcome):
+    env, steps = deadline_shell
+    tools = Path(env["SHIM_STATE"]) / "bin"
+    decision = "IMAGE_PRESENT" if outcome == "cached" else "IMAGE_ACQUISITION_REQUIRED"
+    launch_log = LAUNCHER_STUB.split('mode = os.environ.get("SHIM_MODE")', 1)[0]
+    header = f"#!{sys.executable}\n{launch_log}"
+    (tools / "uv").write_text(header + f"print({decision!r})\n")
+    delay = "import time\ntime.sleep(15)\n" if outcome == "pull-timeout" else ""
+    (tools / "docker").write_text(header + delay)
+    if outcome == "pull-timeout":
+        now = scenario_uptime.start(0, advancing=True)
+        env["F4_CI_STARTED"] = str(now - ci.NORMAL_SECONDS + 7)
+    result = shell_step(steps[PREFLIGHT_STEP], env)
+    launches = captured_launches(env)
+    if outcome == "cached":
+        assert result.returncode == 0 and result.stdout == "IMAGE_PRESENT\n"
+        assert [item[0] for item in launches] == ["uv"]
+    else:
+        assert [item[0] for item in launches] == ["uv", "docker"]
+        assert launches[-1][1] == ["--context", "default", "image", "pull", "--quiet", ci.IMAGE]
+        if outcome == "acquired":
+            assert (
+                result.returncode == 0
+                and result.stdout == "phase=image code=PINNED_IMAGE_ACQUIRED\n"
+            )
+        else:
+            assert result.returncode != 0 and "ACQUIRED" not in result.stdout
+            assert (
+                "PINNED_IMAGE_PULL_REFUSED" in result.stderr
+                or "LAUNCH_TIMEOUT_UNCERTAIN" in result.stderr
+            )
 
 
 def owned_process_state(pid, start):

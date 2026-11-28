@@ -22,6 +22,7 @@ from collections import Counter
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from urllib.parse import quote
 from uuid import uuid4
 
 REPO = "EricCheng24/pit-research-lab"
@@ -57,6 +58,16 @@ IMAGE = (
     "postgres:17.11-bookworm@"
     "sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826"
 )
+IMAGE_DIGEST = IMAGE.split("@", 1)[1]
+DOCKER_SOCKET_PATH = Path("/var/run/docker.sock")
+# Engine 28.0 supports v1.24–v1.48. Pull resolves the same repository and digest
+# as this digest-only lookup, without depending on a local tag association.
+IMAGE_API_MINOR = 44
+IMAGE_LOOKUP = f"postgres@{IMAGE_DIGEST}"
+IMAGE_HEADER_LIMIT = 8192
+IMAGE_BODY_LIMIT = 256 * 1024
+IMAGE_ERROR_LIMIT = 8192
+IMAGE_CHUNK_LIMIT = 1024
 FIXTURE_DIR = "tests/fixtures/mvp_f4_d1"
 FIXTURES = (
     (
@@ -120,6 +131,116 @@ def unique_object(pairs):
 
 def decode(raw):
     return json.loads(raw, object_pairs_hook=unique_object)
+
+
+def image_http_line(stream, limit):
+    line = stream.readline(limit + 1)
+    require(len(line) <= limit, "IMAGE_HTTP_LIMIT")
+    require(line.endswith(b"\r\n"), "IMAGE_HTTP_FRAMING")
+    return line[:-2]
+
+
+def image_http_headers(stream):
+    status_line = image_http_line(stream, IMAGE_HEADER_LIMIT)
+    status = re.fullmatch(rb"HTTP/1\.1 ([1-5][0-9]{2}) [ -~]*", status_line)
+    require(status is not None, "IMAGE_HTTP_FRAMING")
+    remaining = IMAGE_HEADER_LIMIT - len(status_line) - 2
+    headers = {}
+    while True:
+        line = image_http_line(stream, remaining)
+        remaining -= len(line) + 2
+        if not line:
+            return int(status[1]), headers
+        field = re.fullmatch(rb"([!#$%&'*+.^_`|~0-9A-Za-z-]+):([\t -~]*)", line)
+        require(field is not None, "IMAGE_HTTP_FRAMING")
+        name = field[1].lower()
+        require(name not in headers, "IMAGE_HTTP_FRAMING")
+        headers[name] = field[2].strip()
+
+
+def image_http_body(stream, headers, limit):
+    size = headers.get(b"content-length")
+    transfer = headers.get(b"transfer-encoding")
+    require(
+        (size is None) != (transfer is None) and b"trailer" not in headers, "IMAGE_HTTP_FRAMING"
+    )
+    if size is not None:
+        require(re.fullmatch(rb"[0-9]{1,10}", size), "IMAGE_HTTP_FRAMING")
+        length = int(size)
+        require(length <= limit, "IMAGE_HTTP_LIMIT")
+        body = stream.read(length)
+        require(len(body) == length, "IMAGE_HTTP_FRAMING")
+    else:
+        require(transfer.lower() == b"chunked", "IMAGE_HTTP_FRAMING")
+        body = bytearray()
+        for _ in range(IMAGE_CHUNK_LIMIT):
+            chunk_size = image_http_line(stream, 10)
+            require(re.fullmatch(rb"[0-9a-fA-F]{1,8}", chunk_size), "IMAGE_HTTP_FRAMING")
+            length = int(chunk_size, 16)
+            if not length:
+                require(stream.read(2) == b"\r\n", "IMAGE_HTTP_FRAMING")
+                break
+            require(len(body) + length <= limit, "IMAGE_HTTP_LIMIT")
+            chunk = stream.read(length)
+            require(len(chunk) == length and stream.read(2) == b"\r\n", "IMAGE_HTTP_FRAMING")
+            body.extend(chunk)
+        else:
+            raise Refusal("IMAGE_HTTP_LIMIT")
+    # Connection: close makes surplus bytes and truncated framing distinguishable.
+    require(not stream.read(1), "IMAGE_HTTP_FRAMING")
+    return body
+
+
+def reject_image_json_constant(_value):
+    raise Refusal("IMAGE_JSON")
+
+
+def image_http_response(stream):
+    status, headers = image_http_headers(stream)
+    if status == 400:
+        # The version middleware also uses 400 for an unsupported client API.
+        raise Refusal("IMAGE_API_REJECTED")
+    require(status in (200, 404), "IMAGE_HTTP_STATUS")
+    # Engine 28's generic JSON 404 bypasses the registered-route middleware.
+    # Only the latter supplies these Docker version and platform headers.
+    version = re.fullmatch(rb"([1-9][0-9]{0,2})\.([0-9]{1,3})", headers.get(b"api-version", b""))
+    require(
+        version is not None
+        and headers.get(b"ostype") == b"linux"
+        and re.fullmatch(rb"Docker/[A-Za-z0-9.+-]+ \(linux\)", headers.get(b"server", b"")),
+        "IMAGE_API_ROUTE",
+    )
+    require(int(version[1]) == 1 and int(version[2]) >= IMAGE_API_MINOR, "IMAGE_API_UNSUPPORTED")
+    require(
+        re.fullmatch(
+            rb"application/json(?:;[ \t]*charset=utf-8)?", headers.get(b"content-type", b"").lower()
+        )
+        and b"content-encoding" not in headers,
+        "IMAGE_HTTP_CONTENT",
+    )
+    body = image_http_body(
+        stream, headers, IMAGE_ERROR_LIMIT if status == 404 else IMAGE_BODY_LIMIT
+    )
+    try:
+        result = json.loads(
+            body.decode("utf-8"),
+            object_pairs_hook=unique_object,
+            parse_constant=reject_image_json_constant,
+        )
+    except (ValueError, RecursionError):
+        raise Refusal("IMAGE_JSON") from None
+    return status, result
+
+
+def require_image_socket(binding):
+    try:
+        info = DOCKER_SOCKET_PATH.lstat()
+    except OSError:
+        raise Refusal("DOCKER_SOCKET_REPLACED") from None
+    require(
+        stat.S_ISSOCK(info.st_mode) and [info.st_dev, info.st_ino] == binding,
+        "DOCKER_SOCKET_REPLACED",
+    )
 
 
 def uptime():
@@ -783,51 +904,69 @@ class HostedJob:
         require(stat.S_ISSOCK(info.st_mode), "DOCKER_SOCKET")
         return [info.st_dev, info.st_ino]
 
-    def image(self, *, allow_missing=False):
-        status, out, err = self.command(
-            [
-                "docker",
-                "image",
-                "inspect",
-                "--format",
-                "[{{json .Id}},{{json .RepoDigests}},{{json .Os}},{{json .Architecture}},"
-                "{{json .Config.Volumes}},{{json .Config.Labels}}]",
-                IMAGE,
-            ]
-        )
-        if (
-            allow_missing
-            and status == 1
-            and not out
-            and err.strip()
-            in {
-                f"Error response from daemon: No such image: {IMAGE}".encode(),
-                f"Error: No such image: {IMAGE}".encode(),
-            }
-        ):
+    def inspect_image(self, endpoint, allow_missing):
+        request = (
+            f"GET /v1.{IMAGE_API_MINOR}/images/{quote(IMAGE_LOOKUP, safe='')}/json HTTP/1.1\r\n"
+            "Host: docker\r\nAccept: application/json\r\nConnection: close\r\n\r\n"
+        ).encode("ascii")
+        try:
+            with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as conn:
+                conn.settimeout(self.budget(15))
+                require_image_socket(endpoint)
+                try:
+                    conn.connect(str(DOCKER_SOCKET_PATH))
+                    conn.sendall(request)
+                    with conn.makefile("rb") as stream:
+                        status, data = image_http_response(stream)
+                finally:
+                    require_image_socket(endpoint)
+        except TimeoutError:
+            raise Refusal("IMAGE_IO_TIMEOUT") from None
+        except OSError:
+            raise Refusal("IMAGE_IO_REFUSED") from None
+
+        if status == 404:
+            require(
+                isinstance(data, dict)
+                and data.keys() == {"message"}
+                and isinstance(data["message"], str)
+                and bool(data["message"].strip()),
+                "IMAGE_ERROR_ENVELOPE",
+            )
+            require(allow_missing, "IMAGE_MISSING")
             return None
-        require(status == 0 and not err, "IMAGE_INSPECT")
-        ident, digests, system, arch, volumes, labels = decode(out)
-        digest = IMAGE.rsplit("@", 1)[1]
+        require(isinstance(data, dict) and isinstance(data.get("Config"), dict), "IMAGE_JSON_SHAPE")
+        config = data["Config"]
+        ident, digests = data.get("Id"), data.get("RepoDigests")
+        volumes, labels = config.get("Volumes"), config.get("Labels")
         require(
-            IMAGE_ID.fullmatch(ident)
-            and system == "linux"
-            and arch == "amd64"
+            isinstance(ident, str)
+            and IMAGE_ID.fullmatch(ident)
+            and data.get("Os") == "linux"
+            and data.get("Architecture") == "amd64"
             and type(digests) is list
+            and all(isinstance(ref, str) for ref in digests)
             and any(
-                f"{name}@{digest}" in digests
+                f"{name}@{IMAGE_DIGEST}" in digests
                 for name in ("postgres", "library/postgres", "docker.io/library/postgres")
             )
             and volumes == {PGDATA: {}}
-            and (labels is None or isinstance(labels, dict)),
+            and "Labels" in config
+            and (
+                labels is None
+                or (isinstance(labels, dict) and all(isinstance(v, str) for v in labels.values()))
+            ),
             "IMAGE_IDENTITY",
         )
         return {"id": ident, "labels": labels or {}}
 
+    def image(self, endpoint, *, allow_missing=False):
+        return self.worker(lambda: self.inspect_image(endpoint, allow_missing), 15)
+
     def verify_image_socket(self, *, bind=False):
         events = self.journal.events("job")
         require(self.endpoint() == events["socket"], "DOCKER_SOCKET_REPLACED")
-        image = self.image()
+        image = self.image(events["socket"])
         previous = events.get("image") or events.get("cached-image")
         require(previous is None or image["id"] == previous, "IMAGE_REPLACED")
         if bind and "image" not in events:
@@ -883,7 +1022,7 @@ class HostedJob:
             self.journal.record(unit.name, "initial-absence")
         self.journal.record("job", "socket", endpoint)
         self.journal.record("legacy", "setup-intent")
-        image = self.image(allow_missing=True)
+        image = self.image(endpoint, allow_missing=True)
         if image is None:
             self.journal.record("job", "pull-intent")
             return "IMAGE_ACQUISITION_REQUIRED"
